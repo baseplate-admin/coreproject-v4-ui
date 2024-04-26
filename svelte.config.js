@@ -29,8 +29,9 @@ const config = {
 					})
 				: auto(),
 		alias: {
-			$stores: path.resolve('./src/lib/store'),
+			$stores: path.resolve('./src/lib/stores'),
 			$hooks: path.resolve('./src/hooks'),
+			$constants: path.resolve('./src/lib/constants'),
 			$components: path.resolve('./src/lib/components'),
 			$icons: path.resolve('./src/lib/icons'),
 			$data: path.resolve('./src/lib/data'),
@@ -39,7 +40,7 @@ const config = {
 			$functions: path.resolve('./src/lib/functions'),
 			$modals: path.resolve('./src/lib/components/modals'),
 			$skeletons: path.resolve('./src/lib/skeletons'),
-			$home: path.resolve('./')
+			$types: path.resolve('./src/lib/types')
 		}
 	}
 };

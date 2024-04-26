@@ -14,7 +14,8 @@
 	import Preference from '$icons/shapes/preference.svelte';
 	import CoreProjectLogo from '$icons/shapes/logo.svelte';
 	import VercelHover from '$components/vercel_hover.svelte';
-	import { is_authenticated } from '$home/src/lib/stores/auth.svelte';
+
+	import { is_authenticated } from '$stores/auth.svelte';
 	import { page } from '$app/stores';
 	import { cn } from '$functions/classnames';
 	import { blur } from 'svelte/transition';
@@ -268,8 +269,8 @@
 									})(item_href)}
 
 									<a
-										on:mouseenter|preventDefault={handle_mouse_enter}
-										on:mouseleave|preventDefault={handle_mouse_leave}
+										onmouseenter={handle_mouse_enter}
+										onmouseleave={handle_mouse_leave}
 										href={item_href}
 										class="{cn(
 											'btn relative h-[4vw] w-[4vw] rounded-[0.75vw] border-none p-0',

@@ -54,5 +54,12 @@
 	"type": "module",
 	"workspaces": [
 		"./scripts"
-	]
+	],
+	"dependencies": {
+		"detect-browser": "^5.3.0",
+		"easytimer.js": "^4.6.0",
+		"lodash-es": "^4.17.21",
+		"svelte-gestures": "^4.0.0",
+		"svelte-intersection-observer": "^1.0.0"
+	}
 }
