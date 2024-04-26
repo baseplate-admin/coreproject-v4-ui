@@ -3,8 +3,6 @@ import path from 'path';
 import node_adapter from '@sveltejs/adapter-node';
 import static_adapter from '@sveltejs/adapter-static';
 import auto from '@sveltejs/adapter-auto';
-import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
-import path from 'path';
 
 const is_static = process.env.BUILD_STATIC_ENV ?? false;
 const is_node = process.env.BUILD_NODE_ENV ?? false;
