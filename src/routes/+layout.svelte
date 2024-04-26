@@ -2,6 +2,6 @@
 	import '../styles/index.postcss';
 </script>
 
-<div class="bg-black">
+<div>
 	<slot />
 </div>

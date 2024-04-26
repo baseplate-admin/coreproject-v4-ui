@@ -29,7 +29,7 @@ const config = {
 					})
 				: auto(),
 		alias: {
-			$store: path.resolve('./src/lib/store'),
+			$stores: path.resolve('./src/lib/store'),
 			$hooks: path.resolve('./src/hooks'),
 			$components: path.resolve('./src/lib/components'),
 			$icons: path.resolve('./src/lib/icons'),
