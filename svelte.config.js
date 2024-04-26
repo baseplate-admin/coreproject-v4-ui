@@ -1,6 +1,13 @@
-import adapter from '@sveltejs/adapter-auto';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 import path from 'path';
+import node_adapter from '@sveltejs/adapter-node';
+import static_adapter from '@sveltejs/adapter-static';
+import auto from '@sveltejs/adapter-auto';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+import path from 'path';
+
+const is_static = process.env.BUILD_STATIC_ENV ?? false;
+const is_node = process.env.BUILD_NODE_ENV ?? false;
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -12,7 +19,17 @@ const config = {
 		// adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapter-auto for a list.
 		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
 		// See https://kit.svelte.dev/docs/adapters for more information about adapters.
-		adapter: adapter(),
+		adapter: is_static
+			? static_adapter({
+					fallback: 'app.html',
+					// precompress: true,
+					strict: true
+				})
+			: is_node
+				? node_adapter({
+						precompress: false
+					})
+				: auto(),
 		alias: {
 			$store: path.resolve('./src/lib/store'),
 			$hooks: path.resolve('./src/hooks'),

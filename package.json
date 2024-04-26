@@ -5,6 +5,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"build": "vite build",
+		"build:static": "cross-env BUILD_STATIC_ENV=static vite build",
+		"build:node": "cross-env BUILD_NODE_ENV=node vite build",
 		"preview": "vite preview",
 		"test": "npm run test:integration && npm run test:unit",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -23,10 +25,12 @@
 		"@typescript-eslint/eslint-plugin": "^7.0.0",
 		"@typescript-eslint/parser": "^7.0.0",
 		"autoprefixer": "^10.4.19",
+		"cross-env": "^7.0.3",
 		"eslint": "^8.56.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.36.0-next.4",
 		"postcss": "^8.4.38",
+		"postcss-load-config": "^5.0.0",
 		"prettier": "^3.1.1",
 		"prettier-plugin-svelte": "^3.1.2",
 		"sass": "^1.75.0",
@@ -35,7 +39,7 @@
 		"tailwindcss": "^3.4.3",
 		"ts-node": "^10.9.2",
 		"tslib": "^2.4.1",
-		"typescript": "^5.0.0",
+		"typescript": "^5.4.5",
 		"vite": "^5.0.3",
 		"vitest": "^1.2.0"
 	},
@@ -44,6 +48,8 @@
 		"./scripts"
 	],
 	"dependencies": {
+		"@sveltejs/adapter-node": "^5.0.1",
+		"@sveltejs/adapter-static": "^3.0.1",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/typography": "^0.5.12",
 		"daisyui": "^4.10.2",
