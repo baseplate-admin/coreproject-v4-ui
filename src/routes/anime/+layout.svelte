@@ -258,8 +258,6 @@
 									{@const item_icon = item[1].icon}
 									{@const item_href = item[1].url}
 
-									{@const component = item_icon.component}
-
 									{@const is_active = ((item_href) => {
 										const regex = new RegExp(`^${item_href}\/?$`);
 										if (regex.test($page.url.pathname)) {
@@ -287,7 +285,7 @@
 													class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 												>
 													<icon class="!text-secondary">
-														<svelte:component this={component} class={item_icon.class} />
+														<svelte:component this={item_icon.component} class={item_icon.class} />
 													</icon>
 												</div>
 											{:else}
@@ -296,7 +294,7 @@
 													class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 												>
 													<icon class={cn('!text-white')}>
-														<svelte:component this={component} class={item_icon.class} />
+														<svelte:component this={item_icon.component} class={item_icon.class} />
 													</icon>
 
 													<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]"
@@ -311,24 +309,20 @@
 						</VercelHover>
 					</div>
 					<div class="flex flex-col items-center">
-						<!-- {Object.entries(icon_mapping.bottom).map((item, index) => {
-							const item_icon = item[1].icon;
-							const item_name = item[0];
-							const Component = item_icon.component;
+						{#each Object.entries(icon_mapping.bottom) as item}
+							{@const item_icon = item[1].icon}
+							{@const item_name = item[0]}
 
-							return (
-								<button
-									key={index}
-									type="button"
-									class="btn h-[4vw] w-[4vw] flex-col justify-center gap-[0.45vw] border-none !bg-transparent p-0 text-sm"
-								>
-									<Component class={cn(item_icon.class)} />
-									<span class="!m-0 text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
-										{item_name}
-									</span>
-								</button>
-							);
-						})} -->
+							<button
+								type="button"
+								class="btn h-[4vw] w-[4vw] flex-col justify-center gap-[0.45vw] border-none !bg-transparent p-0 text-sm"
+							>
+								<svelte:component this={item_icon.component} class={item_icon.class} />
+								<span class="!m-0 text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
+									{item_name}
+								</span>
+							</button>
+						{/each}
 					</div>
 				</div>
 			</aside>
