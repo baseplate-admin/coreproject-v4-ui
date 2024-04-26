@@ -98,7 +98,7 @@
 			on:swipe={swipe_handler}
 			bind:this={main_hero_slider_element}
 		>
-			{#each latest_animes_data as anime, index}
+			{#each latest_animes as anime, index}
 				{@const active = index === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
 
@@ -218,7 +218,7 @@
 				></div>
 
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
-					{#each latest_animes_data as _, index}
+					{#each latest_animes as _, index}
 						<button
 							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] {slide_buttons[
 								index
