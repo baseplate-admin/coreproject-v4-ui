@@ -250,6 +250,7 @@
 							glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
 							active_element_class="rounded-[0.75vw] bg-white/10"
 							direction="vertical"
+							GLIDER_TRANSITION_DURATION={200}
 							let:handle_mouse_enter
 							let:handle_mouse_leave
 						>
