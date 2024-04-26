@@ -2,6 +2,4 @@
 	import '../styles/index.postcss';
 </script>
 
-<div>
-	<slot />
-</div>
+<slot />

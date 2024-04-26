@@ -1,17 +1,26 @@
 <script lang="ts">
 	import { cn } from '$functions/classnames';
+	import type { Snippet } from 'svelte';
 
 	let hover_glider_element: HTMLElement | null = null,
 		glider_container_element: HTMLElement | null = null;
 
-	export let glider_container_class: string | null = null,
-		active_element_class: string | null = null;
-
-	export let direction: 'horizontal' | 'vertical' = 'horizontal',
-		GLIDER_TRANSITION_DURATION = 200;
+	let {
+		glider_container_class = null,
+		active_element_class = null,
+		direction,
+		GLIDER_TRANSITION_DURATION = 200,
+		children
+	}: {
+		glider_container_class: string | null;
+		active_element_class: string | null;
+		direction: 'horizontal' | 'vertical';
+		GLIDER_TRANSITION_DURATION: number;
+		children: Snippet<[(event: Event) => void, () => void]>;
+	} = $props();
 
 	let mouse_leave_timeout: NodeJS.Timeout,
-		is_hovered_from_prev_el = false;
+		is_hovered_from_prev_el = $state(false);
 
 	const handle_mouse_enter = (event: Event) => {
 			const target = event.target as HTMLElement;
@@ -69,5 +78,5 @@
 		bind:this={hover_glider_element}
 		class={cn(active_element_class, 'absolute opacity-0 duration-200 ease-in-out')}
 	></div>
-	<slot {handle_mouse_enter} {handle_mouse_leave} />
+	{@render children(handle_mouse_enter, handle_mouse_leave)}
 </div>
