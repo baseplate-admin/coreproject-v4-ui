@@ -16,7 +16,7 @@
 	const handle_mouse_enter = (event: Event) => {
 			const target = event.target as HTMLElement;
 			const target_computed_style = getComputedStyle(target);
-			if (typeof glider_container_element === null || typeof hover_glider_element) return;
+			if (glider_container_element === null || hover_glider_element === null) return;
 
 			glider_container_element!.style.position = 'relative';
 
