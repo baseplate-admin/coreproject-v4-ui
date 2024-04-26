@@ -2,25 +2,36 @@
 	import IntersectionObserver from 'svelte-intersection-observer';
 	import { IS_CHROMIUM, IS_FIREFOX } from '$constants/browser';
 	import { cn } from '$functions/classnames';
+	import type { Snippet } from 'svelte';
 
-	let klass = '';
-	export { klass as class };
-	export let remove_gradient_on_mouse_enter = false;
-	export let parent_class = '';
-	export let offset_scrollbar: boolean = false;
-	export let gradient_mask: boolean = false;
+	let {
+		children,
+		klass,
+		offset_scrollbar = false,
+		remove_gradient_on_mouse_enter = false,
+		parent_class = '',
+		gradient_mask = false
+	}: Partial<{
+		children: Snippet;
+		klass: string;
+		remove_gradient_on_mouse_enter: boolean;
+		parent_class: string;
+		offset_scrollbar: boolean;
+		gradient_mask: boolean;
+	}> = $props();
 
-	let scroll_area: HTMLElement;
-	let add_mask_bottom: boolean,
+	let scroll_area = $state<HTMLElement>();
+	let add_mask_bottom = $state<boolean>(),
 		expanded = false;
 
-	let first_element_intersecting: boolean,
-		end_element_intersecting: boolean,
-		first_element: HTMLElement,
-		end_element: HTMLElement;
+	let first_element_intersecting = $state<boolean>(),
+		end_element_intersecting = $state<boolean>(),
+		first_element = $state<HTMLElement>(),
+		end_element = $state<HTMLElement>();
 
-	$: add_mask_bottom = scroll_area ? scroll_area.scrollHeight > scroll_area.clientHeight : false;
-
+	$effect(() => {
+		add_mask_bottom = scroll_area ? scroll_area?.scrollHeight > scroll_area.clientHeight : false;
+	});
 	const handle_scroll = async (event: Event) => {
 			const target = event.target as HTMLElement;
 			const { scrollHeight, clientHeight, scrollTop } = target;
@@ -32,7 +43,7 @@
 			if (remove_gradient_on_mouse_enter) {
 				add_mask_bottom = false;
 			} else {
-				scroll_area.addEventListener('transitionend', () => {
+				scroll_area?.addEventListener('transitionend', () => {
 					if (first_element_intersecting && end_element_intersecting) {
 						add_mask_bottom = false;
 					}
@@ -42,11 +53,11 @@
 		handle_mouseleave = () => {
 			if (!expanded) {
 				if (remove_gradient_on_mouse_enter) {
-					scroll_area.addEventListener('transitionend', () => {
+					scroll_area?.addEventListener('transitionend', () => {
 						add_mask_bottom = true;
 					});
 				} else {
-					scroll_area.addEventListener('transitionend', () => {
+					scroll_area?.addEventListener('transitionend', () => {
 						if (first_element_intersecting && end_element_intersecting) {
 							add_mask_bottom = true;
 						}
@@ -61,9 +72,18 @@
 <div
 	role="contentinfo"
 	bind:this={scroll_area}
-	on:scroll|preventDefault={handle_scroll}
-	on:mouseenter|preventDefault={handle_mouseenter}
-	on:mouseleave|preventDefault={handle_mouseleave}
+	onscroll={(event) => {
+		event.preventDefault();
+		handle_scroll(event);
+	}}
+	onmouseenter={(event) => {
+		event.preventDefault();
+		handle_mouseenter();
+	}}
+	onmouseleave={(event) => {
+		event.preventDefault();
+		handle_mouseleave();
+	}}
 	class={cn(
 		parent_class,
 		offset_scrollbar &&
@@ -89,7 +109,7 @@
 		</IntersectionObserver>
 
 		<div class={cn(klass)}>
-			<slot />
+			{@render children?.()}
 		</div>
 
 		<IntersectionObserver

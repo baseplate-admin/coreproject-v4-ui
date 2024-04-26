@@ -22,6 +22,8 @@
 	import Info from '$icons/shapes/info.svelte';
 	import Edit from '$icons/shapes/edit.svelte';
 
+	import ScrollArea from '$components/scroll_area.svelte';
+
 	const slider_delay = 10,
 		timer = new EasyTimer({
 			target: {
@@ -172,7 +174,7 @@
 										gradient_mask
 										offset_scrollbar
 										parent_class="max-h-16 md:max-h-[6vw] hidden md:flex"
-										class="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
+										klass="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
 									>
 										{anime.synopsis}
 									</ScrollArea>
