@@ -14,13 +14,16 @@
 
 	import { swipe } from 'svelte-gestures';
 	import { Timer as EasyTimer } from 'easytimer.js';
-	import { tweened } from 'svelte/motion';
+	import { tweened, type Tweened } from 'svelte/motion';
 	import { FormatDate } from '$functions/format_date';
 	import { blur } from 'svelte/transition';
 	import Circle from '$icons/shapes/circle.svelte';
 	import Play from '$icons/shapes/play.svelte';
 	import Info from '$icons/shapes/info.svelte';
 	import Edit from '$icons/shapes/edit.svelte';
+
+	import ScrollArea from '$components/scroll_area.svelte';
+	import { cn } from '$functions/classnames';
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -38,7 +41,45 @@
 			{ background: 'bg-error', border: 'border-error' }
 		];
 
-	let latest_animes: LatestAnimes[];
+	let latest_animes: LatestAnimes[] = [
+		{
+			id: 1,
+			name: 'Jujutsu Kaisen',
+			type: 'TV',
+			episodes: 24,
+			status: 'Completed',
+			release_date: 'Autumn 2014',
+			studio: 'mappa',
+			genres: ['sci-fi', 'action', 'echhi'],
+			synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
+			image: 'https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840'
+		},
+		{
+			id: 2,
+			name: 'One Piece',
+			type: 'TV',
+			episodes: 12,
+			status: 'Completed',
+			release_date: 'Spring 2014',
+			studio: 'tokito',
+			genres: ['hentai', 'action', 'romance', 'smooth'],
+			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+			image: 'https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png'
+		},
+		{
+			id: 3,
+			name: 'Demon Slayer',
+			type: 'TV',
+			episodes: 12,
+			status: 'Completed',
+			release_date: 'Winter 2014',
+			studio: 'sheldon',
+			genres: ['hentai', 'action', 'romance', 'smooth'],
+			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+			image:
+				'https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg'
+		}
+	];
 
 	let main_hero_slider_element: HTMLElement,
 		main_hero_slide_active_index = $state<number>(0);
@@ -68,7 +109,10 @@
 			}
 		};
 	let progress_value = $state<number>(0),
-		tweened_progress_value = $derived(tweened(progress_value));
+		tweened_progress_value = $state<Tweened<number>>(tweened<number>());
+	$effect(() => {
+		tweened_progress_value.set(progress_value);
+	});
 
 	timer.start();
 	timer.on('targetAchieved', () => {
@@ -96,7 +140,7 @@
 			on:swipe={swipe_handler}
 			bind:this={main_hero_slider_element}
 		>
-			{#each latest_animes_data as anime, index}
+			{#each latest_animes as anime, index}
 				{@const active = index === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
 
@@ -172,7 +216,7 @@
 										gradient_mask
 										offset_scrollbar
 										parent_class="max-h-16 md:max-h-[6vw] hidden md:flex"
-										class="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
+										klass="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
 									>
 										{anime.synopsis}
 									</ScrollArea>
@@ -216,14 +260,14 @@
 				></div>
 
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
-					{#each latest_animes_data as _, index}
+					{#each latest_animes as _, index}
 						<button
-							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] {slide_buttons[
-								index
-							].border} hover:border-surface-50/50 transition duration-300 {index ===
-							main_hero_slide_active_index
-								? slide_buttons[index].background
-								: ''}"
+							class={cn(
+								'col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]',
+								slide_buttons[index].border,
+								'hover:border-surface-50/50 transition duration-300',
+								index === main_hero_slide_active_index && slide_buttons[index].background
+							)}
 							onclick={() => {
 								timer?.reset();
 								timer?.start();
@@ -236,7 +280,7 @@
 
 			<button
 				class="btn btn-primary absolute -left-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				on:click={() => {
+				onclick={() => {
 					timer?.reset();
 					timer?.start();
 					minus_one_to_main_hero_slide_active_index();
@@ -274,8 +318,9 @@
 					<ArrowUpRight class="w-[1vw]" />
 				</button>
 			</div>
-			<!-- <LatestEpisodes {latest_episodes} /> -->
+			<!-- Latest Episodes Start here-->
 
+			<!-- Latest Episodes Eng Here -->
 			<div class="mt-[0.75vw] flex items-center justify-between gap-[2vw] pr-[0.75vw]">
 				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]"
 					>Showing recently aired episodes from your Anime List</span

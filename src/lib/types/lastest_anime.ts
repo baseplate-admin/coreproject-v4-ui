@@ -9,4 +9,4 @@ export type LatestAnimes = {
 	genres: string[];
 	synopsis: string;
 	image: string;
-}[];
+};
