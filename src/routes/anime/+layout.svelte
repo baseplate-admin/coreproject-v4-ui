@@ -251,63 +251,63 @@
 							active_element_class="rounded-[0.75vw] bg-white/10"
 							direction="vertical"
 							GLIDER_TRANSITION_DURATION={200}
-							let:handle_mouse_enter
-							let:handle_mouse_leave
 						>
-							{#each Object.entries(icon_mapping.middle) as item}
-								{@const item_name = item[0]}
-								{@const item_icon = item[1].icon}
-								{@const item_href = item[1].url}
+							{#snippet children(handle_mouse_enter, handle_mouse_leave)}
+								{#each Object.entries(icon_mapping.middle) as item}
+									{@const item_name = item[0]}
+									{@const item_icon = item[1].icon}
+									{@const item_href = item[1].url}
 
-								{@const component = item_icon.component}
+									{@const component = item_icon.component}
 
-								{@const is_active = ((item_href) => {
-									const regex = new RegExp(`^${item_href}\/?$`);
-									if (regex.test($page.url.pathname)) {
-										return true;
-									} else {
-										return false;
-									}
-								})(item_href)}
+									{@const is_active = ((item_href) => {
+										const regex = new RegExp(`^${item_href}\/?$`);
+										if (regex.test($page.url.pathname)) {
+											return true;
+										} else {
+											return false;
+										}
+									})(item_href)}
 
-								<a
-									on:mouseenter|preventDefault={handle_mouse_enter}
-									on:mouseleave|preventDefault={handle_mouse_leave}
-									href={item_href}
-									class="{cn(
-										'btn relative h-[4vw] w-[4vw] rounded-[0.75vw] border-none p-0',
-										is_active
-											? 'relative !bg-accent before:absolute before:-left-[0.15vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
-											: '!bg-transparent'
-									)} "
-								>
-									<div class="inline-grid">
-										{#if is_active}
-											<div
-												transition:blur
-												class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
-											>
-												<icon class="!text-secondary">
-													<svelte:component this={component} class={item_icon.class} />
-												</icon>
-											</div>
-										{:else}
-											<div
-												transition:blur
-												class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
-											>
-												<icon class={cn('!text-white')}>
-													<svelte:component this={component} class={item_icon.class} />
-												</icon>
-
-												<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]"
-													>{item_name}</span
+									<a
+										on:mouseenter|preventDefault={handle_mouse_enter}
+										on:mouseleave|preventDefault={handle_mouse_leave}
+										href={item_href}
+										class="{cn(
+											'btn relative h-[4vw] w-[4vw] rounded-[0.75vw] border-none p-0',
+											is_active
+												? 'relative !bg-accent before:absolute before:-left-[0.15vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
+												: '!bg-transparent'
+										)} "
+									>
+										<div class="inline-grid">
+											{#if is_active}
+												<div
+													transition:blur
+													class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 												>
-											</div>
-										{/if}
-									</div>
-								</a>
-							{/each}
+													<icon class="!text-secondary">
+														<svelte:component this={component} class={item_icon.class} />
+													</icon>
+												</div>
+											{:else}
+												<div
+													transition:blur
+													class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
+												>
+													<icon class={cn('!text-white')}>
+														<svelte:component this={component} class={item_icon.class} />
+													</icon>
+
+													<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]"
+														>{item_name}</span
+													>
+												</div>
+											{/if}
+										</div>
+									</a>
+								{/each}
+							{/snippet}
 						</VercelHover>
 					</div>
 					<div class="flex flex-col items-center">

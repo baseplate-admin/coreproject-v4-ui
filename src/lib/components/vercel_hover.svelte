@@ -16,7 +16,7 @@
 		active_element_class: string | null;
 		direction: 'horizontal' | 'vertical';
 		GLIDER_TRANSITION_DURATION: number;
-		children: Snippet<[any]>;
+		children: Snippet<[(event: Event) => void, () => void]>;
 	} = $props();
 
 	let mouse_leave_timeout: NodeJS.Timeout,
@@ -78,5 +78,5 @@
 		bind:this={hover_glider_element}
 		class={cn(active_element_class, 'absolute opacity-0 duration-200 ease-in-out')}
 	></div>
-	{@render children({ handle_mouse_enter, handle_mouse_leave })}
+	{@render children(handle_mouse_enter, handle_mouse_leave)}
 </div>
