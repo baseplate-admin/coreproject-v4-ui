@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { FormatDate } from '$functions/format_date';
 	import { scale, slide } from 'svelte/transition';
-	import { SvelteComponent, onMount } from 'svelte';
 	import Play from '$icons/shapes/play.svelte';
 	import ScrollArea from '$components/scroll_area.svelte';
 	import type { Episode as EpisodeType } from '$types/episodes';
@@ -10,7 +9,7 @@
 
 	/* Bindings */
 	let ANIMATION_DURATION = 300;
-	export let scroll_area_element: SvelteComponent;
+	export let scroll_area_element: HTMLElement;
 	let anime_episode: HTMLElement;
 
 	export let show_more_info: boolean;

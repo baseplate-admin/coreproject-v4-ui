@@ -21,7 +21,7 @@
 	import Play from '$icons/shapes/play.svelte';
 	import Info from '$icons/shapes/info.svelte';
 	import Edit from '$icons/shapes/edit.svelte';
-
+	import LatestEpisodes from '$components/pages/home/LatestEpisodes/Index.svelte';
 	import ScrollArea from '$components/scroll_area.svelte';
 	import { cn } from '$functions/classnames';
 
@@ -40,46 +40,6 @@
 			{ background: 'bg-primary', border: 'border-primary' },
 			{ background: 'bg-error', border: 'border-error' }
 		];
-
-	let latest_animes: LatestAnimes[] = [
-		{
-			id: 1,
-			name: 'Jujutsu Kaisen',
-			type: 'TV',
-			episodes: 24,
-			status: 'Completed',
-			release_date: 'Autumn 2014',
-			studio: 'mappa',
-			genres: ['sci-fi', 'action', 'echhi'],
-			synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
-			image: 'https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840'
-		},
-		{
-			id: 2,
-			name: 'One Piece',
-			type: 'TV',
-			episodes: 12,
-			status: 'Completed',
-			release_date: 'Spring 2014',
-			studio: 'tokito',
-			genres: ['hentai', 'action', 'romance', 'smooth'],
-			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-			image: 'https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png'
-		},
-		{
-			id: 3,
-			name: 'Demon Slayer',
-			type: 'TV',
-			episodes: 12,
-			status: 'Completed',
-			release_date: 'Winter 2014',
-			studio: 'sheldon',
-			genres: ['hentai', 'action', 'romance', 'smooth'],
-			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-			image:
-				'https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg'
-		}
-	];
 
 	let main_hero_slider_element: HTMLElement,
 		main_hero_slide_active_index = $state<number>(0);
@@ -127,6 +87,107 @@
 
 		progress_value = value;
 	});
+
+	let latest_animes: LatestAnimes[] = [
+		{
+			id: 1,
+			name: 'Jujutsu Kaisen',
+			type: 'TV',
+			episodes: 24,
+			status: 'Completed',
+			release_date: 'Autumn 2014',
+			studio: 'mappa',
+			genres: ['sci-fi', 'action', 'echhi'],
+			synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
+			image: 'https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840'
+		},
+		{
+			id: 2,
+			name: 'One Piece',
+			type: 'TV',
+			episodes: 12,
+			status: 'Completed',
+			release_date: 'Spring 2014',
+			studio: 'tokito',
+			genres: ['hentai', 'action', 'romance', 'smooth'],
+			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+			image: 'https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png'
+		},
+		{
+			id: 3,
+			name: 'Demon Slayer',
+			type: 'TV',
+			episodes: 12,
+			status: 'Completed',
+			release_date: 'Winter 2014',
+			studio: 'sheldon',
+			genres: ['hentai', 'action', 'romance', 'smooth'],
+			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+			image:
+				'https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg'
+		}
+	];
+
+	let latest_episodes = [
+		{
+			id: 1,
+			name: 'SpyxFamily',
+			cover:
+				'https://m.media-amazon.com/images/M/MV5BOTcwZTkwMjctNjEyNS00ZjMxLWIyZjctZTljOTUwNzY4ZjczXkEyXkFqcGdeQXVyMTAyNjg4NjE0._V1_QL75_UX500_CR0,0,500,281_.jpg',
+			episode_number: 6,
+			release_date: '2023-06-28T10:30:00.000Z',
+			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
+                      living, finds his family slaughtered by a demon. To make matters worse, his younger sister
+                      Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
+                      sister back into a human, and kill the demon that massacred his family.`
+		},
+		{
+			id: 2,
+			name: 'Kaguya-sama: Love Is War',
+			cover: 'https://images.justwatch.com/backdrop/104140955/s640/season-1.%7Bformat%7D',
+			episode_number: 5,
+			release_date: '2023-06-22T10:30:00.000Z',
+			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
+                      living, finds his family slaughtered by a demon. To make matters worse, his younger sister
+                      Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
+                      sister back into a human, and kill the demon that massacred his family.`
+		},
+		{
+			id: 3,
+			name: 'Aharen-san wa Hakaraenai',
+			cover: 'https://lostinanime.com/wp-content/uploads/2022/06/Aharen-san-wa-Hakarenai-12-51.jpg',
+			episode_number: 9,
+			release_date: '2023-06-18T11:30:00.000Z',
+			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
+                      living, finds his family slaughtered by a demon. To make matters worse, his younger sister
+                      Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
+                      sister back into a human, and kill the demon that massacred his family.`
+		},
+		{
+			id: 4,
+			name: 'Summer time Rendering',
+			cover:
+				'https://m.media-amazon.com/images/M/MV5BZjZkYTdlZGMtOGQyYy00MDlkLTkzZTEtZTI2OGIyM2VlOWM4XkEyXkFqcGdeQXVyMTA0NDQ4NTcz._V1_QL75_UX500_CR0,0,500,281_.jpg',
+			episode_number: 12,
+			release_date: '2023-06-10T12:30:00.000Z',
+			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
+                      living, finds his family slaughtered by a demon. To make matters worse, his younger sister
+                      Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
+                      sister back into a human, and kill the demon that massacred his family.`
+		},
+		{
+			id: 5,
+			name: 'Jujutsu Kaisen',
+			cover:
+				'https://cdn.oneesports.gg/cdn-data/2023/07/Anime_JujutsuKaisen_Season2_GojoSatoru_GetoSuguru_GegeAkutami-450x253.jpg',
+			episode_number: 27,
+			release_date: '2023-06-03T12:30:00.000Z',
+			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
+                      living, finds his family slaughtered by a demon. To make matters worse, his younger sister
+                      Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
+                      sister back into a human, and kill the demon that massacred his family.`
+		}
+	];
 </script>
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
@@ -319,7 +380,7 @@
 				</button>
 			</div>
 			<!-- Latest Episodes Start here-->
-
+			<LatestEpisodes {latest_episodes} />
 			<!-- Latest Episodes Eng Here -->
 			<div class="mt-[0.75vw] flex items-center justify-between gap-[2vw] pr-[0.75vw]">
 				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]"
