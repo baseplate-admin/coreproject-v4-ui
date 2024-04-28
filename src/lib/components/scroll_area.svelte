@@ -6,14 +6,14 @@
 
 	let {
 		children,
-		klass,
+		class: klass,
 		offset_scrollbar = false,
 		remove_gradient_on_mouse_enter = false,
 		parent_class = '',
 		gradient_mask = false
 	}: Partial<{
 		children: Snippet;
-		klass: string;
+		class: string;
 		remove_gradient_on_mouse_enter: boolean;
 		parent_class: string;
 		offset_scrollbar: boolean;
