@@ -3,31 +3,52 @@
 	import CoreProject from '$icons/text/core_project.svelte';
 	import * as _ from 'lodash-es';
 	import { blur } from 'svelte/transition';
+	import { Timer as EasyTimer } from 'easytimer.js';
 
 	let { children } = $props();
+	const slider_delay = 1;
 
 	let animes = [
-		{ name: 'Demon Slayer', cover: '/static/public/images/mock/DemonSlayer-cover.avif' },
-		{ name: 'Hyouka', cover: '/static/public/images/mock/Hyouka-bg.avif' },
-		{ name: 'You Lie in April', cover: '/static/public/images/mock/YourLieInApril-bg.avif' },
-		{ name: 'Attack on Titan', cover: '/static/public/images/mock/AttackOnTitan-bg.avif' },
-		{ name: 'Jujutsu Kaisen', cover: '/static/public/images/mock/JujutsuKaisen.avif' },
-		{ name: 'Death Note', cover: '/static/public/images/mock/DeathNote-bg.avif' }
+		{ name: 'Demon Slayer', cover: '/images/mock/DemonSlayer-cover.avif' },
+		{ name: 'Hyouka', cover: '/images/mock/Hyouka-bg.avif' },
+		{ name: 'You Lie in April', cover: '/images/mock/YourLieInApril-bg.avif' },
+		{ name: 'Attack on Titan', cover: '/images/mock/AttackOnTitan-bg.avif' },
+		{ name: 'Jujutsu Kaisen', cover: '/images/mock/JujutsuKaisen.avif' },
+		{ name: 'Death Note', cover: '/images/mock/DeathNote-bg.avif' }
 	];
 
 	let picked_anime = $state<(typeof animes)[0]>();
 
 	const get_random_anime = () => {
-		const array_without_element = _.isUndefined(picked_anime)
-			? animes
-			: _.without(animes, picked_anime);
+		const array_without_element =
+			picked_anime === undefined ? animes : _.without(animes, picked_anime);
 		const sample = _.sample(array_without_element);
-		if (_.isUndefined(sample)) {
+
+		if (sample === undefined) {
 			get_random_anime();
 		} else {
 			picked_anime = sample;
 		}
 	};
+	let timer = new EasyTimer({
+		target: {
+			seconds: slider_delay
+		},
+		precision: 'secondTenths'
+	});
+	timer.on('targetAchieved', () => {
+		get_random_anime();
+		timer.reset();
+	});
+
+	$effect.pre(() => {
+		if (!timer.isRunning()) {
+			get_random_anime();
+			timer.start();
+		} else {
+			console.log(1);
+		}
+	});
 </script>
 
 <div class="relative grid h-screen w-screen md:grid-cols-2 bg-secondary">

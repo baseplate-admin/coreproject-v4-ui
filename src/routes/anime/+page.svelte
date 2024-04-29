@@ -145,7 +145,7 @@
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
 
 				{#if active}
-					<anime-slides
+					<div
 						role="presentation"
 						class="absolute inset-0 md:bottom-[2vw]"
 						transition:blur
@@ -216,7 +216,7 @@
 										gradient_mask
 										offset_scrollbar
 										parent_class="max-h-16 md:max-h-[6vw] hidden md:flex"
-										klass="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
+										class="text-surface-200 text-xs font-medium leading-4 md:pt-[0.75vw] md:text-[0.85vw] md:leading-[1.1vw]"
 									>
 										{anime.synopsis}
 									</ScrollArea>
@@ -248,7 +248,7 @@
 								</div>
 							</div>
 						</div>
-					</anime-slides>
+					</div>
 				{/if}
 			{/each}
 
