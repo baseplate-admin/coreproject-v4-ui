@@ -8,6 +8,7 @@
 	import Info from '$icons/shapes/info.svelte';
 	import Markdown from '$components/markdown.svelte';
 	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
+	import Arrow from '$icons/shapes/arrow.svelte';
 
 	let form_is_submitable: boolean | null = null;
 
