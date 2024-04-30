@@ -10,11 +10,11 @@
 	gradient_mask
 	offset_scrollbar
 	parent_class="mt-[1vw] w-full max-h-[23vw] snap-y smooth-scroll snap-mandatory"
-	klass="flex w-full flex-col gap-[1vw]"
+	class="flex w-full flex-col gap-[1vw]"
 >
 	{#snippet children(scroll_area)}
 		{#each latest_episodes as episode, index}
-			<Episode {episode} show_more_info={index === 0} scroll_area_element={scroll_area} />
+			<Episode {episode} show_more_info={index === 0} />
 		{/each}
 	{/snippet}
 </ScrollArea>

@@ -1,20 +1,31 @@
 <script lang="ts">
 	import { FormatDate } from '$functions/format_date';
-	import { scale, slide } from 'svelte/transition';
-	import Play from '$icons/shapes/play.svelte';
 	import ScrollArea from '$components/scroll_area.svelte';
-	import type { Episode as EpisodeType } from '$types/episodes';
 
-	export let episode: EpisodeType;
+	import { scale, slide } from 'svelte/transition';
+	import { onMount } from 'svelte';
+	import Play from '$icons/shapes/play.svelte';
+
+	type Episode = {
+		id: number;
+		cover: string;
+		name: string;
+		episode_number: number;
+		release_date: string;
+		synopsis: string;
+	};
+
+	export let episode: Episode;
 
 	/* Bindings */
 	let ANIMATION_DURATION = 300;
-	export let scroll_area_element: HTMLElement;
-	let anime_episode: HTMLElement;
+	let scroll_area_element: HTMLElement | null = null,
+		anime_episode: HTMLElement | null = null;
 
 	export let show_more_info: boolean;
 
 	/** Bindings */
+	onMount(() => (scroll_area_element = anime_episode?.parentElement?.parentElement!));
 
 	function handle_mouseenter() {
 		show_more_info = true;
@@ -26,7 +37,7 @@
 
 	function handle_animationstart() {
 		const parent_element = anime_episode?.parentElement!;
-
+		console.log(parent_element);
 		// Declare rects
 		const parent_rect = parent_element?.getBoundingClientRect(), // taking parent not scroll_area_element
 			anime_episode_rect = anime_episode?.getBoundingClientRect();
@@ -50,8 +61,8 @@
 
 <div
 	bind:this={anime_episode}
-	on:mouseenter={handle_mouseenter}
-	on:mouseleave={handle_mouseleave}
+	onmouseenter={handle_mouseenter}
+	onmouseleave={handle_mouseleave}
 	role="group"
 	class="group relative h-[5vw] shrink-0 snap-center duration-300 ease-in-out"
 	class:!h-[16vw]={show_more_info}
@@ -91,7 +102,9 @@
 		<div
 			in:slide={{ duration: ANIMATION_DURATION, delay: ANIMATION_DURATION * (2 / 3) }}
 			out:slide={{ duration: ANIMATION_DURATION * (2 / 3) }}
-			on:animationstart={handle_animationstart}
+			onanimationstart={() => {
+				handle_animationstart();
+			}}
 			class="absolute inset-x-0 bottom-0 flex flex-col gap-[0.5vw] p-[1.3125vw]"
 		>
 			<genres class="flex items-center md:my-[0.35vw] md:gap-[0.5vw]">
@@ -106,7 +119,7 @@
 			<ScrollArea
 				offset_scrollbar
 				gradient_mask
-				klass="h-[6vw] text-[0.8vw] leading-[1vw] text-accent"
+				class="h-[6vw] text-[0.8vw] leading-[1vw] text-accent"
 			>
 				{episode.synopsis}
 			</ScrollArea>

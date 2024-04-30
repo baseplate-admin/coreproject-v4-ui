@@ -4,6 +4,10 @@
 	import { cn } from '$functions/classnames';
 	import type { Snippet } from 'svelte';
 
+	let scroll_area = $state<HTMLElement>();
+	let add_mask_bottom = $state<boolean>(),
+		expanded = $state(false);
+
 	let {
 		children,
 		class: klass,
@@ -12,17 +16,13 @@
 		parent_class = '',
 		gradient_mask = false
 	}: Partial<{
-		children: Snippet;
+		children: Snippet<[HTMLElement]>;
 		class: string;
 		remove_gradient_on_mouse_enter: boolean;
 		parent_class: string;
 		offset_scrollbar: boolean;
 		gradient_mask: boolean;
 	}> = $props();
-
-	let scroll_area = $state<HTMLElement>();
-	let add_mask_bottom = $state<boolean>(),
-		expanded = false;
 
 	let first_element_intersecting = $state<boolean>(),
 		end_element_intersecting = $state<boolean>(),
@@ -109,7 +109,7 @@
 		</IntersectionObserver>
 
 		<div class={cn(klass)}>
-			{@render children?.()}
+			{@render children?.(scroll_area)}
 		</div>
 
 		<IntersectionObserver
