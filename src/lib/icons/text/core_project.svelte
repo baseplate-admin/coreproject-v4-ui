@@ -8,11 +8,10 @@
 		e: 'text-surface-100'
 	};
 
-	let class = '';
-	export { class as class };
+	let { class: klass }: { class: string } = $props();
 </script>
 
-<div class={cn(class, 'flex select-none gap-[0.25vw] text-[1.5vw] font-bold leading-none')}>
+<div class={cn(klass, 'flex select-none gap-[0.25vw] text-[1.5vw] font-bold leading-none')}>
 	<p>
 		{#each 'core'.split('') as letter}
 			<span class="inline-flex {core_mapping[letter]}">{letter}</span>

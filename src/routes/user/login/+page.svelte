@@ -161,13 +161,12 @@
 				<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]"
 					>Don't have a core account?</span
 				>
-				<!-- <a
-					href={reverse('register_view')}
-					use:enhance_anchor={{ verb: 'GET', target: 'body' }}
+				<a
+					href="./register"
 					class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"
 				>
 					Register
-				</a> -->
+				</a>
 			</div>
 			<button
 				type="submit"

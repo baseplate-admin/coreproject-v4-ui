@@ -45,8 +45,6 @@
 		if (!timer.isRunning()) {
 			get_random_anime();
 			timer.start();
-		} else {
-			console.log(1);
 		}
 	});
 </script>

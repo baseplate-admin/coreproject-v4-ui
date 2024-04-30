@@ -3,7 +3,7 @@
 		class: klass,
 		markdown,
 		unsafe = false
-	}: { class: string; markdown: string; unsafe?: boolean } = $props();
+	}: { markdown: string } & Partial<{ class: string; unsafe: boolean }> = $props();
 
 	// Import scss
 	import 'highlight.js/scss/github-dark.scss';
