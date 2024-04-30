@@ -1,8 +1,7 @@
 <script lang="ts">
 	import { cn } from '$functions/classnames';
 
-	let klass = '';
-	export { klass as class };
+	let { class: klass }: { class: string } = $props();
 </script>
 
 <div class={cn(klass, 'mt-[1vw] items-center justify-center text-[1.5vw]')}>
