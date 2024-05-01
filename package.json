@@ -27,8 +27,8 @@
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/eslint": "^8.56.0",
 		"@types/lodash-es": "^4.17.12",
-		"@typescript-eslint/eslint-plugin": "^7.0.0",
-		"@typescript-eslint/parser": "^7.0.0",
+		"@typescript-eslint/eslint-plugin": "^7.8.0",
+		"@typescript-eslint/parser": "^7.8.0",
 		"autoprefixer": "^10.4.19",
 		"cross-env": "^7.0.3",
 		"daisyui": "^4.10.2",
@@ -41,7 +41,7 @@
 		"prettier-plugin-svelte": "^3.1.2",
 		"rollup-plugin-visualizer": "^5.12.0",
 		"sass": "^1.75.0",
-		"svelte": "^5.0.0-next.1",
+		"svelte": "^5.0.0-next.118",
 		"svelte-check": "^3.6.0",
 		"tailwind-merge": "^2.3.0",
 		"tailwind-scrollbar": "^3.1.0",
@@ -50,7 +50,7 @@
 		"tslib": "^2.4.1",
 		"typescript": "^5.4.5",
 		"vite": "^5.0.3",
-		"vitest": "^1.2.0"
+		"vitest": "^1.5.3"
 	},
 	"type": "module",
 	"workspaces": [
@@ -71,6 +71,6 @@
 		"svelte-gestures": "^4.0.0",
 		"svelte-intersection-observer": "^1.0.0",
 		"xss": "^1.0.15",
-		"zod": "^3.23.4"
+		"zod": "^3.23.5"
 	}
 }
