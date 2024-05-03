@@ -73,6 +73,6 @@
 		"svelte-gestures": "^4.0.0",
 		"svelte-intersection-observer": "^1.0.0",
 		"xss": "^1.0.15",
-		"zod": "^3.23.5"
+		"zod": "^3.23.6"
 	}
 }
