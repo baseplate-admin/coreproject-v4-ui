@@ -85,7 +85,10 @@
 {:else}
 	<form
 		use:autofocus
-		on:submit|preventDefault={handle_submit}
+		onsubmit={async (event) => {
+			event.preventDefault();
+			await handle_submit();
+		}}
 		class="flex h-full flex-col justify-between"
 	>
 		<div>
@@ -94,7 +97,7 @@
 				>hey there! let's login</span
 			>
 			<button
-				on:click={() => window.history.back()}
+				onclick={() => window.history.back()}
 				class="btn btn-link h-max min-h-full p-0 md:gap-[0.5vw] md:text-[1.25vw]"
 			>
 				<Arrow variant="fill" class="-rotate-90 md:size-[1.25vw]" />
@@ -109,8 +112,10 @@
 				</label>
 				<input
 					bind:value={username_or_email.value}
-					on:input={handle_username_input}
-					on:input={check_if_form_is_submittable}
+					oninput={(event) => {
+						handle_username_input(event);
+						check_if_form_is_submittable();
+					}}
 					placeholder="sora_amamiya@coreproject.moe / soraamamiya#0001"
 					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 				/>
@@ -132,8 +137,10 @@
 				<div class="relative flex flex-col">
 					<input
 						bind:value={password.value}
-						on:input={handle_password_input}
-						on:input={check_if_form_is_submittable}
+						oninput={(event) => {
+							handle_password_input(event);
+							check_if_form_is_submittable();
+						}}
 						placeholder="enter your existing password"
 						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 					/>
