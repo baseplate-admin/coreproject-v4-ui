@@ -22,6 +22,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
+		"@scalar/api-reference": "^1.22.20",
 		"@scalar/api-reference-react": "^0.1.62",
 		"@stoplight/elements": "^8.1.2",
 		"@sveltejs/adapter-auto": "^3.0.0",
@@ -37,6 +38,7 @@
 		"@types/react-dom": "^18.3.0",
 		"@typescript-eslint/eslint-plugin": "^7.8.0",
 		"@typescript-eslint/parser": "^7.8.0",
+		"@vitejs/plugin-vue": "^5.0.4",
 		"autoprefixer": "^10.4.19",
 		"cross-env": "^7.0.3",
 		"daisyui": "^4.10.5",
