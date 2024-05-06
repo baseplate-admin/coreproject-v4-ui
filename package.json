@@ -22,8 +22,6 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.28.1",
-		"@scalar/api-reference": "^1.22.20",
-		"@scalar/api-reference-react": "^0.1.62",
 		"@stoplight/elements": "^8.1.2",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",
