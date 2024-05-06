@@ -1,15 +1,15 @@
 <script lang="ts">
-	import IntersectionObserver from 'svelte-intersection-observer';
-	import { IS_CHROMIUM, IS_FIREFOX } from '$constants/browser';
-	import { cn } from '$functions/classnames';
-	import type { Snippet } from 'svelte';
+	import IntersectionObserver from "svelte-intersection-observer";
+	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
+	import { cn } from "$functions/classnames";
+	import type { Snippet } from "svelte";
 
 	let {
 		children,
 		class: klass,
 		offset_scrollbar = false,
 		remove_gradient_on_mouse_enter = false,
-		parent_class = '',
+		parent_class = "",
 		gradient_mask = false
 	}: Partial<{
 		children: Snippet;
@@ -43,7 +43,7 @@
 			if (remove_gradient_on_mouse_enter) {
 				add_mask_bottom = false;
 			} else {
-				scroll_area?.addEventListener('transitionend', () => {
+				scroll_area?.addEventListener("transitionend", () => {
 					if (first_element_intersecting && end_element_intersecting) {
 						add_mask_bottom = false;
 					}
@@ -53,11 +53,11 @@
 		handle_mouseleave = () => {
 			if (!expanded) {
 				if (remove_gradient_on_mouse_enter) {
-					scroll_area?.addEventListener('transitionend', () => {
+					scroll_area?.addEventListener("transitionend", () => {
 						add_mask_bottom = true;
 					});
 				} else {
-					scroll_area?.addEventListener('transitionend', () => {
+					scroll_area?.addEventListener("transitionend", () => {
 						if (first_element_intersecting && end_element_intersecting) {
 							add_mask_bottom = true;
 						}
@@ -89,9 +89,9 @@
 		offset_scrollbar &&
 			// Chromium support for scrollbar sucks
 			!IS_CHROMIUM &&
-			'pr-3 md:pr-[0.75vw]',
+			"pr-3 md:pr-[0.75vw]",
 
-		'flex h-full w-full overflow-y-scroll overscroll-y-contain [scrollbar-color:rgba(255,255,255,0.12)transparent]'
+		"flex h-full w-full overflow-y-scroll overscroll-y-contain [scrollbar-color:rgba(255,255,255,0.12)transparent]"
 	)}
 	class:scrollbar-none={IS_CHROMIUM}
 	class:scrollbar-thin={IS_FIREFOX}
