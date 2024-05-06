@@ -137,7 +137,7 @@
 		<div
 			class="relative h-96 w-full md:h-[27.875vw] md:w-[42.1875vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' }}
-			on:swipe={swipe_handler}
+			onswipe={swipe_handler}
 			bind:this={main_hero_slider_element}
 		>
 			{#each latest_animes as anime, index}
@@ -290,7 +290,7 @@
 			</button>
 			<button
 				class="bg-secondary-800 btn btn-primary absolute -right-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				on:click={async () => {
+				onclick={async () => {
 					timer?.reset();
 					timer?.start();
 					add_one_to_main_hero_slide_active_index();
