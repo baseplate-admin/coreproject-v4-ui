@@ -1,20 +1,20 @@
 <script lang="ts">
-	import Refresh from '$icons/shapes/refresh.svelte';
-	import CoreProject from '$icons/text/core_project.svelte';
-	import * as _ from 'lodash-es';
-	import { blur } from 'svelte/transition';
-	import { Timer as EasyTimer } from 'easytimer.js';
+	import Refresh from "$icons/shapes/refresh.svelte";
+	import CoreProject from "$icons/text/core_project.svelte";
+	import * as _ from "lodash-es";
+	import { blur } from "svelte/transition";
+	import { Timer as EasyTimer } from "easytimer.js";
 
 	let { children } = $props();
 	const slider_delay = 1;
 
 	let animes = [
-		{ name: 'Demon Slayer', cover: '/images/mock/DemonSlayer-cover.avif' },
-		{ name: 'Hyouka', cover: '/images/mock/Hyouka-bg.avif' },
-		{ name: 'You Lie in April', cover: '/images/mock/YourLieInApril-bg.avif' },
-		{ name: 'Attack on Titan', cover: '/images/mock/AttackOnTitan-bg.avif' },
-		{ name: 'Jujutsu Kaisen', cover: '/images/mock/JujutsuKaisen.avif' },
-		{ name: 'Death Note', cover: '/images/mock/DeathNote-bg.avif' }
+		{ name: "Demon Slayer", cover: "/images/mock/DemonSlayer-cover.avif" },
+		{ name: "Hyouka", cover: "/images/mock/Hyouka-bg.avif" },
+		{ name: "You Lie in April", cover: "/images/mock/YourLieInApril-bg.avif" },
+		{ name: "Attack on Titan", cover: "/images/mock/AttackOnTitan-bg.avif" },
+		{ name: "Jujutsu Kaisen", cover: "/images/mock/JujutsuKaisen.avif" },
+		{ name: "Death Note", cover: "/images/mock/DeathNote-bg.avif" }
 	];
 
 	let picked_anime = $state<(typeof animes)[0]>();
@@ -34,9 +34,9 @@
 		target: {
 			seconds: slider_delay
 		},
-		precision: 'secondTenths'
+		precision: "secondTenths"
 	});
-	timer.on('targetAchieved', () => {
+	timer.on("targetAchieved", () => {
 		get_random_anime();
 		timer.reset();
 	});
@@ -49,7 +49,7 @@
 	});
 </script>
 
-<div class="relative grid h-screen w-screen md:grid-cols-2 bg-secondary">
+<div class="relative grid h-screen w-screen bg-secondary md:grid-cols-2">
 	<div class="relative h-dvh">
 		{#if picked_anime}
 			<div class="h-dvh">
@@ -68,7 +68,7 @@
 					class="absolute inset-0 bottom-[6vw] hidden flex-col items-center justify-center text-center text-white md:flex"
 				>
 					<span class="text-[0.9vw] font-semibold uppercase leading-none">welcome to</span>
-					<CoreProject class="!leading-none md:!text-[1.5vw] !mt-[0.5vw]" />
+					<CoreProject class="!mt-[0.5vw] !leading-none md:!text-[1.5vw]" />
 					<span class="mt-[2.875vw] max-w-[22vw] text-[1.25vw] font-semibold leading-[1.75vw]"
 						>Bridging the gap between streaming and torrenting sites with a modern and clean
 						interface.</span
@@ -112,7 +112,7 @@
 	</div>
 
 	<div
-		class="absolute inset-x-0 md:static bg-secondary md:px-[8vw] md:py-[2.2vw] self-end md:self-auto rounded-t-3xl md:rounded-t-none p-7 md:p-0"
+		class="absolute inset-x-0 self-end rounded-t-3xl bg-secondary p-7 md:static md:self-auto md:rounded-t-none md:p-0 md:px-[8vw] md:py-[2.2vw]"
 	>
 		{@render children?.()}
 	</div>

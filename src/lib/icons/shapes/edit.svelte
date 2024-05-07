@@ -1,13 +1,13 @@
 <script lang="ts">
-	import type { SVGAttributes } from 'svelte/elements';
+	import type { SVGAttributes } from "svelte/elements";
 
 	interface $$Props extends SVGAttributes<SVGElement> {
-		variant: 'with_underline_around_pencil' | 'without_underline_around_pencil';
+		variant: "with_underline_around_pencil" | "without_underline_around_pencil";
 	}
 	const { variant, ...props } = $$props as $$Props;
 </script>
 
-{#if variant === 'with_underline_around_pencil'}
+{#if variant === "with_underline_around_pencil"}
 	<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
 		<path
 			d="M9 15H15.75"
@@ -24,7 +24,7 @@
 			stroke-linejoin="round"
 		/>
 	</svg>
-{:else if variant === 'without_underline_around_pencil'}
+{:else if variant === "without_underline_around_pencil"}
 	<svg {...props} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
 		<g clip-path="url(#clip0_1917_2501)">
 			<path
