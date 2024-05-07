@@ -1,44 +1,44 @@
 <script lang="ts">
-	import Chevron from '$icons/shapes/chevron.svelte';
-	import Settings from '$icons/shapes/settings.svelte';
-	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
-	import Chat from '$icons/shapes/chat.svelte';
-	import Recent from '$icons/shapes/recent.svelte';
-	import Notification from '$icons/shapes/notifications.svelte';
-	import Language from '$icons/shapes/language.svelte';
-	import Preference from '$icons/shapes/preference.svelte';
-	import Moon from '$icons/shapes/moon.svelte';
-	import CoreProjectText from '$icons/text/core_project_text.svelte';
+	import Chevron from "$icons/shapes/chevron.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import Chat from "$icons/shapes/chat.svelte";
+	import Recent from "$icons/shapes/recent.svelte";
+	import Notification from "$icons/shapes/notifications.svelte";
+	import Language from "$icons/shapes/language.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
+	import Moon from "$icons/shapes/moon.svelte";
+	import CoreProjectText from "$icons/text/core_project_text.svelte";
 
-	import type { LatestAnimes } from '$types/lastest_anime';
+	import type { LatestAnimes } from "$types/lastest_anime";
 
-	import { swipe } from 'svelte-gestures';
-	import { Timer as EasyTimer } from 'easytimer.js';
-	import { tweened, type Tweened } from 'svelte/motion';
-	import { FormatDate } from '$functions/format_date';
-	import { blur } from 'svelte/transition';
-	import Circle from '$icons/shapes/circle.svelte';
-	import Play from '$icons/shapes/play.svelte';
-	import Info from '$icons/shapes/info.svelte';
-	import Edit from '$icons/shapes/edit.svelte';
-	import LatestEpisodes from '$components/pages/home/LatestEpisodes/Index.svelte';
-	import ScrollArea from '$components/scroll_area.svelte';
-	import { cn } from '$functions/classnames';
+	import { swipe } from "svelte-gestures";
+	import { Timer as EasyTimer } from "easytimer.js";
+	import { tweened, type Tweened } from "svelte/motion";
+	import { FormatDate } from "$functions/format_date";
+	import { blur } from "svelte/transition";
+	import Circle from "$icons/shapes/circle.svelte";
+	import Play from "$icons/shapes/play.svelte";
+	import Info from "$icons/shapes/info.svelte";
+	import Edit from "$icons/shapes/edit.svelte";
+	import LatestEpisodes from "$components/pages/home/LatestEpisodes/Index.svelte";
+	import ScrollArea from "$components/scroll_area.svelte";
+	import { cn } from "$functions/classnames";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
 			target: {
 				seconds: slider_delay
 			},
-			precision: 'secondTenths'
+			precision: "secondTenths"
 		}),
 		slide_buttons = [
-			{ background: 'bg-accent', border: 'border-accent' },
-			{ background: 'bg-info', border: 'border-info' },
-			{ background: 'bg-warning', border: 'border-warning' },
-			{ background: 'bg-white', border: 'border-white' },
-			{ background: 'bg-primary', border: 'border-primary' },
-			{ background: 'bg-error', border: 'border-error' }
+			{ background: "bg-accent", border: "border-accent" },
+			{ background: "bg-info", border: "border-info" },
+			{ background: "bg-warning", border: "border-warning" },
+			{ background: "bg-white", border: "border-white" },
+			{ background: "bg-primary", border: "border-primary" },
+			{ background: "bg-error", border: "border-error" }
 		];
 
 	let main_hero_slider_element: HTMLElement,
@@ -62,9 +62,9 @@
 			const direction = event.detail.direction;
 			timer.reset();
 
-			if (direction === 'left') {
+			if (direction === "left") {
 				add_one_to_main_hero_slide_active_index();
-			} else if (direction === 'right') {
+			} else if (direction === "right") {
 				minus_one_to_main_hero_slide_active_index();
 			}
 		};
@@ -75,13 +75,13 @@
 	});
 
 	timer.start();
-	timer.on('targetAchieved', () => {
+	timer.on("targetAchieved", () => {
 		// change slider
 		add_one_to_main_hero_slide_active_index();
 		timer.reset();
 	});
 
-	timer.on('secondTenthsUpdated', () => {
+	timer.on("secondTenthsUpdated", () => {
 		const time = timer.getTotalTimeValues().secondTenths,
 			value = (100 / slider_delay) * (time / 10);
 
@@ -91,51 +91,51 @@
 	let latest_animes: LatestAnimes[] = [
 		{
 			id: 1,
-			name: 'Jujutsu Kaisen',
-			type: 'TV',
+			name: "Jujutsu Kaisen",
+			type: "TV",
 			episodes: 24,
-			status: 'Completed',
-			release_date: 'Autumn 2014',
-			studio: 'mappa',
-			genres: ['sci-fi', 'action', 'echhi'],
+			status: "Completed",
+			release_date: "Autumn 2014",
+			studio: "mappa",
+			genres: ["sci-fi", "action", "echhi"],
 			synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
-			image: 'https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840'
+			image: "https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
 		},
 		{
 			id: 2,
-			name: 'One Piece',
-			type: 'TV',
+			name: "One Piece",
+			type: "TV",
 			episodes: 12,
-			status: 'Completed',
-			release_date: 'Spring 2014',
-			studio: 'tokito',
-			genres: ['hentai', 'action', 'romance', 'smooth'],
+			status: "Completed",
+			release_date: "Spring 2014",
+			studio: "tokito",
+			genres: ["hentai", "action", "romance", "smooth"],
 			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-			image: 'https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png'
+			image: "https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png"
 		},
 		{
 			id: 3,
-			name: 'Demon Slayer',
-			type: 'TV',
+			name: "Demon Slayer",
+			type: "TV",
 			episodes: 12,
-			status: 'Completed',
-			release_date: 'Winter 2014',
-			studio: 'sheldon',
-			genres: ['hentai', 'action', 'romance', 'smooth'],
+			status: "Completed",
+			release_date: "Winter 2014",
+			studio: "sheldon",
+			genres: ["hentai", "action", "romance", "smooth"],
 			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
 			image:
-				'https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg'
+				"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
 		}
 	];
 
 	let latest_episodes = [
 		{
 			id: 1,
-			name: 'SpyxFamily',
+			name: "SpyxFamily",
 			cover:
-				'https://m.media-amazon.com/images/M/MV5BOTcwZTkwMjctNjEyNS00ZjMxLWIyZjctZTljOTUwNzY4ZjczXkEyXkFqcGdeQXVyMTAyNjg4NjE0._V1_QL75_UX500_CR0,0,500,281_.jpg',
+				"https://m.media-amazon.com/images/M/MV5BOTcwZTkwMjctNjEyNS00ZjMxLWIyZjctZTljOTUwNzY4ZjczXkEyXkFqcGdeQXVyMTAyNjg4NjE0._V1_QL75_UX500_CR0,0,500,281_.jpg",
 			episode_number: 6,
-			release_date: '2023-06-28T10:30:00.000Z',
+			release_date: "2023-06-28T10:30:00.000Z",
 			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
                       living, finds his family slaughtered by a demon. To make matters worse, his younger sister
                       Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
@@ -143,10 +143,10 @@
 		},
 		{
 			id: 2,
-			name: 'Kaguya-sama: Love Is War',
-			cover: 'https://images.justwatch.com/backdrop/104140955/s640/season-1.%7Bformat%7D',
+			name: "Kaguya-sama: Love Is War",
+			cover: "https://images.justwatch.com/backdrop/104140955/s640/season-1.%7Bformat%7D",
 			episode_number: 5,
-			release_date: '2023-06-22T10:30:00.000Z',
+			release_date: "2023-06-22T10:30:00.000Z",
 			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
                       living, finds his family slaughtered by a demon. To make matters worse, his younger sister
                       Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
@@ -154,10 +154,10 @@
 		},
 		{
 			id: 3,
-			name: 'Aharen-san wa Hakaraenai',
-			cover: 'https://lostinanime.com/wp-content/uploads/2022/06/Aharen-san-wa-Hakarenai-12-51.jpg',
+			name: "Aharen-san wa Hakaraenai",
+			cover: "https://lostinanime.com/wp-content/uploads/2022/06/Aharen-san-wa-Hakarenai-12-51.jpg",
 			episode_number: 9,
-			release_date: '2023-06-18T11:30:00.000Z',
+			release_date: "2023-06-18T11:30:00.000Z",
 			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
                       living, finds his family slaughtered by a demon. To make matters worse, his younger sister
                       Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
@@ -165,11 +165,11 @@
 		},
 		{
 			id: 4,
-			name: 'Summer time Rendering',
+			name: "Summer time Rendering",
 			cover:
-				'https://m.media-amazon.com/images/M/MV5BZjZkYTdlZGMtOGQyYy00MDlkLTkzZTEtZTI2OGIyM2VlOWM4XkEyXkFqcGdeQXVyMTA0NDQ4NTcz._V1_QL75_UX500_CR0,0,500,281_.jpg',
+				"https://m.media-amazon.com/images/M/MV5BZjZkYTdlZGMtOGQyYy00MDlkLTkzZTEtZTI2OGIyM2VlOWM4XkEyXkFqcGdeQXVyMTA0NDQ4NTcz._V1_QL75_UX500_CR0,0,500,281_.jpg",
 			episode_number: 12,
-			release_date: '2023-06-10T12:30:00.000Z',
+			release_date: "2023-06-10T12:30:00.000Z",
 			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
                       living, finds his family slaughtered by a demon. To make matters worse, his younger sister
                       Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
@@ -177,11 +177,11 @@
 		},
 		{
 			id: 5,
-			name: 'Jujutsu Kaisen',
+			name: "Jujutsu Kaisen",
 			cover:
-				'https://cdn.oneesports.gg/cdn-data/2023/07/Anime_JujutsuKaisen_Season2_GojoSatoru_GetoSuguru_GegeAkutami-450x253.jpg',
+				"https://cdn.oneesports.gg/cdn-data/2023/07/Anime_JujutsuKaisen_Season2_GojoSatoru_GetoSuguru_GegeAkutami-450x253.jpg",
 			episode_number: 27,
-			release_date: '2023-06-03T12:30:00.000Z',
+			release_date: "2023-06-03T12:30:00.000Z",
 			synopsis: `It is the Taisho Period in Japan. Tanjiro, a kindhearted boy who sells charcoal for a
                       living, finds his family slaughtered by a demon. To make matters worse, his younger sister
                       Nezuko, the sole survivor, has been transformed into a demon herself. Though devastated by this grim reality, Tanjiro resolves to become a “demon slayer” so that he can turn his
@@ -194,11 +194,10 @@
 	<div class="flex flex-col justify-between md:flex-row">
 		<!-- LATEST ANIME SECTION-->
 
-		<!-- svelte-ignore deprecated_event_handler -->
 		<div
 			class="relative h-96 w-full md:h-[27.875vw] md:w-[42.1875vw]"
-			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: 'pan-y' }}
-			on:swipe={swipe_handler}
+			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
+			onswipe={swipe_handler}
 			bind:this={main_hero_slider_element}
 		>
 			{#each latest_animes as anime, index}
@@ -237,7 +236,7 @@
 						></div>
 
 						<div
-							class="absolute flex flex-col bottom-0 md:left-0 p-4 md:px-[3.75vw] md:py-[2.625vw]"
+							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:px-[3.75vw] md:py-[2.625vw]"
 						>
 							<span class="text-3xl font-bold text-white md:text-[2vw] md:leading-[2.375vw]"
 								>{anime.name}</span
@@ -324,9 +323,9 @@
 					{#each latest_animes as _, index}
 						<button
 							class={cn(
-								'col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]',
+								"col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]",
 								slide_buttons[index].border,
-								'hover:border-surface-50/50 transition duration-300',
+								"hover:border-surface-50/50 transition duration-300",
 								index === main_hero_slide_active_index && slide_buttons[index].background
 							)}
 							onclick={() => {
@@ -351,7 +350,7 @@
 			</button>
 			<button
 				class="bg-secondary-800 btn btn-primary absolute -right-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				on:click={async () => {
+				onclick={async () => {
 					timer?.reset();
 					timer?.start();
 					add_one_to_main_hero_slide_active_index();
@@ -387,7 +386,7 @@
 					>Showing recently aired episodes from your Anime List</span
 				>
 				<button
-					class="btn btn-secondary min-h-full h-max p-0 text-[0.75vw] font-semibold text-warning"
+					class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning"
 					>Change to All</button
 				>
 			</div>

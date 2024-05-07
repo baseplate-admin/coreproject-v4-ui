@@ -5,9 +5,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: ['master']
+    branches: ["master"]
   pull_request:
-    branches: ['master']
+    branches: ["master"]
 
 jobs:
   build:
@@ -24,6 +24,14 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-      - run: npm ci
-      - run: npm run test:unit
+          cache: "npm"
+      - run: npm i
+
+      - name: Run Unit Tests
+        run: npm run test:unit
+
+      - name: Test Builds for various adapters
+        run: |
+          npm run build
+          npm run build:node
+          npm run build:static

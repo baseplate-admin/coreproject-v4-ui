@@ -1,30 +1,30 @@
 <script lang="ts">
-	import { z } from 'zod';
-	import * as _ from 'lodash-es';
-	import { cn } from '$functions/classnames';
-	import { handle_input } from '$functions/forms/handle_input';
-	import { autofocus } from '$functions/forms/autofocus';
-	import { is_authenticated } from '$stores/auth.svelte';
-	import Info from '$icons/shapes/info.svelte';
-	import Markdown from '$components/markdown.svelte';
-	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
-	import Arrow from '$icons/shapes/arrow.svelte';
+	import { z } from "zod";
+	import * as _ from "lodash-es";
+	import { cn } from "$functions/classnames";
+	import { handle_input } from "$functions/forms/handle_input";
+	import { autofocus } from "$functions/forms/autofocus";
+	import { is_authenticated } from "$stores/auth.svelte";
+	import Info from "$icons/shapes/info.svelte";
+	import Markdown from "$components/markdown.svelte";
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import Arrow from "$icons/shapes/arrow.svelte";
 
 	let form_is_submitable: boolean | null = null;
 
 	let username_or_email = {
-			value: '',
+			value: "",
 			error: new Array<string>()
 		},
 		password = {
-			value: '',
+			value: "",
 			error: new Array<string>()
 		};
 
 	const handle_username_input = (event: Event) => {
 			handle_input({
 				event,
-				schema: z.string().min(1, 'Please enter a **Email address** or **Username**'),
+				schema: z.string().min(1, "Please enter a **Email address** or **Username**"),
 				error_field: username_or_email
 			});
 		},
@@ -85,7 +85,10 @@
 {:else}
 	<form
 		use:autofocus
-		on:submit|preventDefault={handle_submit}
+		onsubmit={async (event) => {
+			event.preventDefault();
+			await handle_submit();
+		}}
 		class="flex h-full flex-col justify-between"
 	>
 		<div>
@@ -94,10 +97,10 @@
 				>hey there! let's login</span
 			>
 			<button
-				on:click={() => window.history.back()}
-				class="btn btn-link p-0 h-max min-h-full md:text-[1.25vw] md:gap-[0.5vw]"
+				onclick={() => window.history.back()}
+				class="btn btn-link h-max min-h-full p-0 md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<Arrow variant="fill" class="md:size-[1.25vw] -rotate-90" />
+				<Arrow variant="fill" class="-rotate-90 md:size-[1.25vw]" />
 				Go Back
 			</button>
 		</div>
@@ -109,10 +112,12 @@
 				</label>
 				<input
 					bind:value={username_or_email.value}
-					on:input={handle_username_input}
-					on:input={check_if_form_is_submittable}
+					oninput={(event) => {
+						handle_username_input(event);
+						check_if_form_is_submittable();
+					}}
 					placeholder="sora_amamiya@coreproject.moe / soraamamiya#0001"
-					class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
+					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 				/>
 				<div
 					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
@@ -121,7 +126,7 @@
 					{#if _.isEmpty(username_or_email.error)}
 						<span>we’ll send you a verification email, so please ensure it’s active</span>
 					{:else}
-						<Markdown class="text-error" markdown={username_or_email.error.join('')} />
+						<Markdown class="text-error" markdown={username_or_email.error.join("")} />
 					{/if}
 				</div>
 			</div>
@@ -132,10 +137,12 @@
 				<div class="relative flex flex-col">
 					<input
 						bind:value={password.value}
-						on:input={handle_password_input}
-						on:input={check_if_form_is_submittable}
+						oninput={(event) => {
+							handle_password_input(event);
+							check_if_form_is_submittable();
+						}}
 						placeholder="enter your existing password"
-						class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
+						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 					/>
 				</div>
 				<div
@@ -145,7 +152,7 @@
 					{#if _.isEmpty(password.error)}
 						<span>enter password of your account</span>
 					{:else}
-						<Markdown class="text-error" markdown={password.error.join('')} />
+						<Markdown class="text-error" markdown={password.error.join("")} />
 					{/if}
 				</div>
 			</div>
@@ -172,8 +179,8 @@
 			<button
 				type="submit"
 				class={cn(
-					form_is_submitable || 'btn-disabled',
-					`btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:py-[1vw] md:px-[1.25vw] md:text-[0.95vw]`
+					form_is_submitable || "btn-disabled",
+					`btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]`
 				)}
 			>
 				<span>Continue</span>

@@ -1,157 +1,157 @@
-import { encode } from 'html-entities';
+import { encode } from "html-entities";
 
-type ISiteName = 'CoreProject' | 'AnimeCore' | 'MangaCore';
+type ISiteName = "CoreProject" | "AnimeCore" | "MangaCore";
 
 type ILocale =
-	| 'af_ZA'
-	| 'af_NA'
-	| 'ak_GH'
-	| 'am_ET'
-	| 'ar_AR'
-	| 'as_IN'
-	| 'ay_BO'
-	| 'az_AZ'
-	| 'be_BY'
-	| 'bg_BG'
-	| 'bm_ML'
-	| 'bn_IN'
-	| 'bo_CN'
-	| 'bo_IN'
-	| 'br_FR'
-	| 'bs_BA'
-	| 'ca_ES'
-	| 'cgg_UG'
-	| 'chr_US'
-	| 'cs_CZ'
-	| 'cy_GB'
-	| 'da_DK'
-	| 'de_DE'
-	| 'de_AT'
-	| 'de_CH'
-	| 'de_LI'
-	| 'el_GR'
-	| 'en_US'
-	| 'en_GB'
-	| 'en_AU'
-	| 'en_CA'
-	| 'en_IN'
-	| 'en_SG'
-	| 'en_ZA'
-	| 'eo_EO'
-	| 'es_ES'
-	| 'es_LA'
-	| 'et_EE'
-	| 'eu_ES'
-	| 'fa_IR'
-	| 'ff_SN'
-	| 'fi_FI'
-	| 'fil_PH'
-	| 'fo_FO'
-	| 'fr_FR'
-	| 'fr_BE'
-	| 'fr_CA'
-	| 'fr_CH'
-	| 'fr_LU'
-	| 'fur_IT'
-	| 'ga_IE'
-	| 'gl_ES'
-	| 'gn_PY'
-	| 'gu_IN'
-	| 'gun_FR'
-	| 'ha_NG'
-	| 'he_IL'
-	| 'hi_IN'
-	| 'hr_HR'
-	| 'ht_HT'
-	| 'hu_HU'
-	| 'hy_AM'
-	| 'id_ID'
-	| 'ig_NG'
-	| 'ii_CN'
-	| 'is_IS'
-	| 'it_IT'
-	| 'it_CH'
-	| 'iu_CA'
-	| 'ja_JP'
-	| 'jv_ID'
-	| 'ka_GE'
-	| 'kk_KZ'
-	| 'km_KH'
-	| 'kn_IN'
-	| 'ko_KR'
-	| 'kok_IN'
-	| 'ks_IN'
-	| 'ku_TR'
-	| 'ky_KG'
-	| 'la_VA'
-	| 'lb_LU'
-	| 'lo_LA'
-	| 'lt_LT'
-	| 'lv_LV'
-	| 'mi_NZ'
-	| 'mk_MK'
-	| 'ml_IN'
-	| 'mn_MN'
-	| 'mo_RO'
-	| 'mr_IN'
-	| 'ms_MY'
-	| 'mt_MT'
-	| 'my_MM'
-	| 'nb_NO'
-	| 'nd_ZW'
-	| 'ne_NP'
-	| 'nl_NL'
-	| 'nl_BE'
-	| 'nn_NO'
-	| 'nso_ZA'
-	| 'oc_FR'
-	| 'om_ET'
-	| 'or_IN'
-	| 'pa_IN'
-	| 'pl_PL'
-	| 'ps_AF'
-	| 'pt_PT'
-	| 'pt_BR'
-	| 'qu_PE'
-	| 'rm_CH'
-	| 'ro_RO'
-	| 'ru_RU'
-	| 'rw_RW'
-	| 'sa_IN'
-	| 'se_NO'
-	| 'si_LK'
-	| 'sk_SK'
-	| 'sl_SI'
-	| 'sq_AL'
-	| 'sr_RS'
-	| 'sv_SE'
-	| 'sw_KE'
-	| 'syr_SY'
-	| 'ta_IN'
-	| 'te_IN'
-	| 'tg_TJ'
-	| 'th_TH'
-	| 'ti_ER'
-	| 'tk_TM'
-	| 'tl_PH'
-	| 'tn_ZA'
-	| 'tr_TR'
-	| 'ts_ZA'
-	| 'tt_RU'
-	| 'ug_CN'
-	| 'uk_UA'
-	| 'ur_PK'
-	| 'uz_UZ'
-	| 'vi_VN'
-	| 'wo_SN'
-	| 'xh_ZA'
-	| 'yo_NG'
-	| 'zh_CN'
-	| 'zh_HK'
-	| 'zh_MO'
-	| 'zh_SG'
-	| 'zh_TW'
-	| 'zu_ZA';
+	| "af_ZA"
+	| "af_NA"
+	| "ak_GH"
+	| "am_ET"
+	| "ar_AR"
+	| "as_IN"
+	| "ay_BO"
+	| "az_AZ"
+	| "be_BY"
+	| "bg_BG"
+	| "bm_ML"
+	| "bn_IN"
+	| "bo_CN"
+	| "bo_IN"
+	| "br_FR"
+	| "bs_BA"
+	| "ca_ES"
+	| "cgg_UG"
+	| "chr_US"
+	| "cs_CZ"
+	| "cy_GB"
+	| "da_DK"
+	| "de_DE"
+	| "de_AT"
+	| "de_CH"
+	| "de_LI"
+	| "el_GR"
+	| "en_US"
+	| "en_GB"
+	| "en_AU"
+	| "en_CA"
+	| "en_IN"
+	| "en_SG"
+	| "en_ZA"
+	| "eo_EO"
+	| "es_ES"
+	| "es_LA"
+	| "et_EE"
+	| "eu_ES"
+	| "fa_IR"
+	| "ff_SN"
+	| "fi_FI"
+	| "fil_PH"
+	| "fo_FO"
+	| "fr_FR"
+	| "fr_BE"
+	| "fr_CA"
+	| "fr_CH"
+	| "fr_LU"
+	| "fur_IT"
+	| "ga_IE"
+	| "gl_ES"
+	| "gn_PY"
+	| "gu_IN"
+	| "gun_FR"
+	| "ha_NG"
+	| "he_IL"
+	| "hi_IN"
+	| "hr_HR"
+	| "ht_HT"
+	| "hu_HU"
+	| "hy_AM"
+	| "id_ID"
+	| "ig_NG"
+	| "ii_CN"
+	| "is_IS"
+	| "it_IT"
+	| "it_CH"
+	| "iu_CA"
+	| "ja_JP"
+	| "jv_ID"
+	| "ka_GE"
+	| "kk_KZ"
+	| "km_KH"
+	| "kn_IN"
+	| "ko_KR"
+	| "kok_IN"
+	| "ks_IN"
+	| "ku_TR"
+	| "ky_KG"
+	| "la_VA"
+	| "lb_LU"
+	| "lo_LA"
+	| "lt_LT"
+	| "lv_LV"
+	| "mi_NZ"
+	| "mk_MK"
+	| "ml_IN"
+	| "mn_MN"
+	| "mo_RO"
+	| "mr_IN"
+	| "ms_MY"
+	| "mt_MT"
+	| "my_MM"
+	| "nb_NO"
+	| "nd_ZW"
+	| "ne_NP"
+	| "nl_NL"
+	| "nl_BE"
+	| "nn_NO"
+	| "nso_ZA"
+	| "oc_FR"
+	| "om_ET"
+	| "or_IN"
+	| "pa_IN"
+	| "pl_PL"
+	| "ps_AF"
+	| "pt_PT"
+	| "pt_BR"
+	| "qu_PE"
+	| "rm_CH"
+	| "ro_RO"
+	| "ru_RU"
+	| "rw_RW"
+	| "sa_IN"
+	| "se_NO"
+	| "si_LK"
+	| "sk_SK"
+	| "sl_SI"
+	| "sq_AL"
+	| "sr_RS"
+	| "sv_SE"
+	| "sw_KE"
+	| "syr_SY"
+	| "ta_IN"
+	| "te_IN"
+	| "tg_TJ"
+	| "th_TH"
+	| "ti_ER"
+	| "tk_TM"
+	| "tl_PH"
+	| "tn_ZA"
+	| "tr_TR"
+	| "ts_ZA"
+	| "tt_RU"
+	| "ug_CN"
+	| "uk_UA"
+	| "ur_PK"
+	| "uz_UZ"
+	| "vi_VN"
+	| "wo_SN"
+	| "xh_ZA"
+	| "yo_NG"
+	| "zh_CN"
+	| "zh_HK"
+	| "zh_MO"
+	| "zh_SG"
+	| "zh_TW"
+	| "zu_ZA";
 
 export class OpengraphGenerator {
 	#title: string;
@@ -257,7 +257,7 @@ export class OpengraphGenerator {
 		return `<meta property="og:audio" content="${this.#audio}">`;
 	}
 	private get image() {
-		let image = '';
+		let image = "";
 
 		image += `<meta property="og:image" content="${this.#image}">`;
 		image += `<meta name="twitter:image" content="${this.#image}" />`;
@@ -265,7 +265,7 @@ export class OpengraphGenerator {
 		return image;
 	}
 	public get video() {
-		let video_opengraph_text = '';
+		let video_opengraph_text = "";
 		if (this.#video?.url) {
 			video_opengraph_text += `<meta property="og:video" content="${this.#video.url}">`;
 		}
@@ -301,7 +301,7 @@ export class OpengraphGenerator {
 	}
 
 	private get keywords() {
-		return `<meta name="keywords" content="${this.#keywords?.join(', ')}"/>`;
+		return `<meta name="keywords" content="${this.#keywords?.join(", ")}"/>`;
 	}
 
 	public generate_opengraph() {
