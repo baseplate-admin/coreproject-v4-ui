@@ -1,10 +1,9 @@
 <script lang="ts">
-	import { FormatDate } from '$functions/format_date';
-	import ScrollArea from '$components/scroll_area.svelte';
+	import { FormatDate } from "$functions/format_date";
+	import ScrollArea from "$components/scroll_area.svelte";
 
-	import { scale, slide } from 'svelte/transition';
-	import { onMount } from 'svelte';
-	import Play from '$icons/shapes/play.svelte';
+	import { scale } from "svelte/transition";
+	import Play from "$icons/shapes/play.svelte";
 
 	type Episode = {
 		id: number;
@@ -15,17 +14,15 @@
 		synopsis: string;
 	};
 
-	export let episode: Episode;
+	let { episode, position }: { episode: Episode; position: "first" | "last" | undefined } =
+		$props();
 
 	/* Bindings */
-	let ANIMATION_DURATION = 300;
-	let scroll_area_element: HTMLElement | null = null,
-		anime_episode: HTMLElement | null = null;
+	let ANIMATION_DURATION = 100;
 
-	export let show_more_info: boolean;
+	let show_more_info = $state(false);
 
 	/** Bindings */
-	onMount(() => (scroll_area_element = anime_episode?.parentElement?.parentElement!));
 
 	function handle_mouseenter() {
 		show_more_info = true;
@@ -35,32 +32,13 @@
 		show_more_info = false;
 	}
 
-	function handle_animationstart() {
-		const parent_element = anime_episode?.parentElement!;
-		console.log(parent_element);
-		// Declare rects
-		const parent_rect = parent_element?.getBoundingClientRect(), // taking parent not scroll_area_element
-			anime_episode_rect = anime_episode?.getBoundingClientRect();
+	function handle_animationstart() {}
 
-		const scroll_area_center = scroll_area_element?.offsetHeight! / 2;
-		const anime_episode_center =
-			anime_episode_rect?.top! - parent_rect?.top + anime_episode_rect?.height! / 2;
-		const target_scroll_top =
-			anime_episode_center - scroll_area_center + parseInt(getComputedStyle(parent_element)?.gap) ||
-			0;
-
-		scroll_area_element?.scroll({
-			top: target_scroll_top,
-			behavior: 'smooth'
-		});
-	}
-
-	const formated_episode_number = String(episode.episode_number).padStart(2, '0'),
+	const formated_episode_number = String(episode.episode_number).padStart(2, "0"),
 		formated_release_date = new FormatDate(episode.release_date).format_to_time_from_now;
 </script>
 
 <div
-	bind:this={anime_episode}
 	onmouseenter={handle_mouseenter}
 	onmouseleave={handle_mouseleave}
 	role="group"
@@ -100,15 +78,14 @@
 
 	{#if show_more_info}
 		<div
-			in:slide={{ duration: ANIMATION_DURATION, delay: ANIMATION_DURATION * (2 / 3) }}
-			out:slide={{ duration: ANIMATION_DURATION * (2 / 3) }}
-			onanimationstart={() => {
-				handle_animationstart();
+			in:scale={{
+				duration: ANIMATION_DURATION
 			}}
+			out:scale
 			class="absolute inset-x-0 bottom-0 flex flex-col gap-[0.5vw] p-[1.3125vw]"
 		>
 			<genres class="flex items-center md:my-[0.35vw] md:gap-[0.5vw]">
-				{#each ['Action', 'Romance', 'Hentai'] as genre}
+				{#each ["Action", "Romance", "Hentai"] as genre}
 					<genre
 						class="bg-warning font-semibold leading-none text-secondary md:rounded-[0.25vw] md:px-[0.6vw] md:py-[0.3vw] md:text-[0.8vw]"
 					>
