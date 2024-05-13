@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type { ComponentType } from 'svelte';
+	import type { IPageState } from "./types";
 
 	// Forms
-	let form_first = import('./1.svelte');
+	const form_first = import("./1.svelte");
 	// let form_second = import('./2.svelte');
 	// let form_third = import('./3.svelte');
 
-	let pages = [
+	const pages = [
 		form_first
 		// form_second,
 		// form_third
@@ -15,16 +15,14 @@
 	let page = $state(0);
 
 	// The state of all of our pages
-	let pages_state = $state<{
-		[key: number]: Record<string, string | number>;
-	}>(new Array<{}>());
+	let pages_state = $state<IPageState[]>(new Array<{}>());
 
 	// Our handlers
-	function goToPage(e: CustomEvent) {
-		page = e.detail.page;
+	function goToPage(_page: number) {
+		page = _page;
 	}
 
-	function handleSubmit(e: CustomEvent) {
+	function handleSubmit(data: any) {
 		if (page === pages.length - 1) {
 			// end of the page. do something.. Maybe seek for anime girls with stockings and leggings
 			// XD
@@ -32,7 +30,7 @@
 		} else {
 			// If we're not on the last page, store our data and increase a step
 			if (pages_state) {
-				pages_state[page] = e.detail;
+				pages_state[page] = data;
 				page += 1;
 			}
 		}
@@ -53,10 +51,10 @@
 	{#if Module}
 		<svelte:component
 			this={Module.default}
-			on:go_to_page={goToPage}
-			on:submit={handleSubmit}
-			{pages_state}
+			ongotopage={goToPage}
+			onsubmit={handleSubmit}
 			{page}
+			{pages_state}
 		/>
 	{/if}
 {/await}

@@ -1,24 +1,24 @@
 <script lang="ts">
-	import type { page_prop } from './types.ts';
-
-	import { createEventDispatcher } from 'svelte';
 	import Markdown from '$components/markdown.svelte';
 	import * as _ from 'lodash-es';
 	import { z } from 'zod';
 	import { handle_input } from '$functions/forms/handle_input';
 	import { zxcvbn, zxcvbnOptions, type OptionsType } from '@zxcvbn-ts/core';
 	import { cn } from '$functions/classnames';
-	import { FETCH_TIMEOUT } from '$constants/fetch';
 	import { autofocus } from '$functions/forms/autofocus';
 	import Arrow from '$icons/shapes/arrow.svelte';
 	import Info from '$icons/shapes/info.svelte';
 	import Tick from '$icons/shapes/tick.svelte';
 	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
 	import CoreText from '$icons/text/core.svelte';
+	import type { PageProps } from './types';
 
-	let pages_state = new Array({});
+	let { onsubmit, pages_state }: PageProps = $props();
+
+	// let pages_state = new Array({});
 
 	let combined_state: { [key: string]: string };
+
 	$effect.pre(() => {
 		console.log(pages_state);
 		combined_state = Object.assign({}, ...pages_state);
@@ -75,6 +75,7 @@
 	let email = $state<{ value: string; error: string[] }>(),
 		password = $state<{ value: string; error: string[] }>(),
 		confirm_password = $state<{ value: string; error: string[] }>();
+
 	$effect(() => {
 		email = {
 			value: combined_state?.email ?? '',
@@ -89,6 +90,7 @@
 			error: new Array<string>()
 		};
 	});
+
 	let password_strength = $state(0);
 	let form_is_submitable = $state(false);
 
@@ -97,8 +99,6 @@
 			return field?.value && _.isEmpty(field.error);
 		});
 	}
-
-	const dispatch = createEventDispatcher();
 
 	const password_error_mapping: { [key: string]: string } = {
 		atleast_8: 'minimum 8 characters',
@@ -111,7 +111,7 @@
 
 	function handle_submit() {
 		if (form_is_submitable) {
-			dispatch('submit', {
+			onsubmit({
 				email: email?.value,
 				password: password?.value
 			});
