@@ -12,7 +12,7 @@
 		// form_third
 	];
 	// current page
-	let page = $state(0);
+	let page = $state.frozen(0);
 
 	// The state of all of our pages
 	let pages_state = $state<IPageState[]>(new Array<{}>());
@@ -38,7 +38,7 @@
 
 	// Do some wizardy here later
 	// https://github.com/sveltejs/language-tools/issues/486#issuecomment-1372330560
-	let current_page: (typeof pages)[0] | undefined = $state<(typeof pages)[0]>();
+	let current_page: (typeof pages)[0] | undefined = $state.frozen<(typeof pages)[0]>();
 
 	$effect(() => {
 		current_page = pages[page];
