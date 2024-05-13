@@ -53,6 +53,7 @@
 		"@typescript-eslint/parser": "^7.8.0",
 		"@vitejs/plugin-vue": "^5.0.4",
 		"autoprefixer": "^10.4.19",
+		"color-thief-wasm-web": "^1.0.11",
 		"cross-env": "^7.0.3",
 		"daisyui": "^4.10.5",
 		"dayjs": "^1.11.11",
