@@ -15,7 +15,7 @@
 	let page = $state.frozen(0);
 
 	// The state of all of our pages
-	let pages_state = $state<IPageState[]>(new Array<{}>());
+	let pages_state = $state(new Array<IPageState>());
 
 	// Our handlers
 	function goToPage(_page: number) {
