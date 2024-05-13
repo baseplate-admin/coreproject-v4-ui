@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { IPageState } from "./types";
+	import type { IPagesState } from "./types";
 
 	// Forms
 	const form_first = import("./1.svelte");
@@ -15,14 +15,14 @@
 	let page = $state.frozen(0);
 
 	// The state of all of our pages
-	let pages_state = $state(new Array<IPageState>());
+	let pages_state = $state<IPagesState>({});
 
 	// Our handlers
 	function goToPage(_page: number) {
 		page = _page;
 	}
 
-	function handleSubmit(data: any) {
+	function handleSubmit(data: Record<string, string | number | undefined>) {
 		if (page === pages.length - 1) {
 			// end of the page. do something.. Maybe seek for anime girls with stockings and leggings
 			// XD
@@ -51,8 +51,8 @@
 	{#if Module}
 		<svelte:component
 			this={Module.default}
-			ongotopage={goToPage}
-			onsubmit={handleSubmit}
+			on_gotopage={goToPage}
+			on_submit={handleSubmit}
 			{page}
 			{pages_state}
 		/>

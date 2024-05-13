@@ -13,7 +13,7 @@
 	import CoreText from '$icons/text/core.svelte';
 	import type { PageProps } from './types';
 
-	let { onsubmit, pages_state }: PageProps = $props();
+	let { on_submit, pages_state }: PageProps = $props();
 
 	// let pages_state = new Array({});
 
@@ -21,7 +21,7 @@
 
 	$effect.pre(() => {
 		console.log(pages_state);
-		combined_state = Object.assign({}, ...pages_state);
+		combined_state = Object.assign({}, ...Object.entries(pages_state));
 	});
 
 	let confirm_password_element: HTMLInputElement | null = null;
@@ -111,7 +111,7 @@
 
 	function handle_submit() {
 		if (form_is_submitable) {
-			onsubmit({
+			on_submit({
 				email: email?.value,
 				password: password?.value
 			});
