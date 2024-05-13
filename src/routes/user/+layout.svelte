@@ -6,7 +6,7 @@
 	import { Timer as EasyTimer } from "easytimer.js";
 
 	let { children } = $props();
-	const slider_delay = 1;
+	const slider_delay = 10;
 
 	let animes = [
 		{ name: "Demon Slayer", cover: "/images/mock/DemonSlayer-cover.avif" },
@@ -30,12 +30,14 @@
 			picked_anime = sample;
 		}
 	};
+
 	let timer = new EasyTimer({
 		target: {
 			seconds: slider_delay
 		},
 		precision: "secondTenths"
 	});
+
 	timer.on("targetAchieved", () => {
 		get_random_anime();
 		timer.reset();
@@ -98,6 +100,7 @@
 										onclick={(event) => {
 											event.preventDefault();
 											get_random_anime();
+											timer.reset();
 										}}
 									>
 										<Refresh class="w-4 md:w-[1vw]" />
@@ -111,9 +114,7 @@
 		{/if}
 	</div>
 
-	<div
-		class="absolute inset-x-0 self-end rounded-t-3xl bg-secondary p-7 md:static md:self-auto md:rounded-t-none md:p-0 md:px-[8vw] md:py-[2.2vw]"
-	>
-		{@render children?.()}
+	<div class="absolute inset-x-0 self-end rounded-t-3xl bg-secondary p-7 md:static md:self-auto md:rounded-t-none md:p-0 md:px-[8vw] md:py-[2.2vw]">
+		{@render children()}
 	</div>
 </div>
