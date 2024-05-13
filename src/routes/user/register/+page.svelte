@@ -18,8 +18,8 @@
 	let pages_state = $state<IPagesState>({});
 
 	// Our handlers
-	function goToPage(_page: number) {
-		page = _page;
+	function handleGoToPage(go_to_page: number) {
+		page = go_to_page;
 	}
 
 	function handleSubmit(data: Record<string, string | number | undefined>) {
@@ -51,7 +51,7 @@
 	{#if Module}
 		<svelte:component
 			this={Module.default}
-			on_gotopage={goToPage}
+			on_gotopage={handleGoToPage}
 			on_submit={handleSubmit}
 			{page}
 			{pages_state}
