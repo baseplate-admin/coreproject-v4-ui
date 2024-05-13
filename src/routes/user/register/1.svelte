@@ -11,7 +11,7 @@
 	import Tick from '$icons/shapes/tick.svelte';
 	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
 	import CoreText from '$icons/text/core.svelte';
-	import type { PageProps } from './types';
+	import type { FormFieldState, PageProps } from './types';
 
 	let { on_submit, pages_state }: PageProps = $props();
 
@@ -20,7 +20,7 @@
 	let combined_state: { [key: string]: string };
 
 	$effect.pre(() => {
-		console.log(pages_state);
+		$inspect(pages_state);
 		combined_state = Object.assign({}, ...Object.entries(pages_state));
 	});
 
@@ -69,25 +69,34 @@
 	};
 
 	$effect.pre(() => {
-		register_languages();
+		// register_languages();
 	});
 
-	let email = $state<{ value: string; error: string[] }>(),
-		password = $state<{ value: string; error: string[] }>(),
-		confirm_password = $state<{ value: string; error: string[] }>();
+	// bind:value needs to be defined first to bind
+	// otherwise shows: typeerror $.get(...) is undefined
+	let email = $state<FormFieldState>({ value: "", error: new Array<string>() }),
+		password = $state<FormFieldState>({ value: "", error: new Array<string>() }),
+		confirm_password = $state<FormFieldState>({ value: "", error: new Array<string>() });
 
 	$effect(() => {
-		email = {
-			value: combined_state?.email ?? '',
-			error: new Array<string>()
+		// update only if state exists on combined_state
+		if (combined_state.email) {
+			email = {
+				value: combined_state?.email ?? "",
+				error: new Array<string>()
+			};
 		};
-		password = {
-			value: combined_state?.password ?? '',
-			error: new Array<string>()
+		if (combined_state.password) {
+			password = {
+				value: combined_state?.password ?? "",
+				error: new Array<string>()
+			};
 		};
-		confirm_password = {
-			value: combined_state?.confirm_password ?? '',
-			error: new Array<string>()
+		if (combined_state.confirm_password) {
+			confirm_password = {
+				value: combined_state?.confirm_password ?? "",
+				error: new Array<string>()
+			};
 		};
 	});
 

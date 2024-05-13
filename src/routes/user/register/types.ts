@@ -8,3 +8,5 @@ export type PageProps = {
 	on_submit: (data: Record<string, string | number | undefined>) => void;
 	on_gotopage: (page: number) => void;
 };
+
+export type FormFieldState = { value: string; error: string[] };
