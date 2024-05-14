@@ -14,41 +14,32 @@
 
 	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
-	let combined_state: { [key: string]: string };
-
-	let form_is_submitable = $state(false);
-
-	$effect.pre(() => {
-		$inspect(pages_state);
-		combined_state = Object.assign({}, ...Object.entries(pages_state));
-	});
+	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
 
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
 	let username = $state({ value: "", error: new Array<string>() }),
 		otp = $state({ value: "", error: new Array<string>() });
 
+	let form_is_submitable = $derived([username, otp].every((field) => {
+		return field.value && field.error.length === 0;
+	}));
+
 	$effect(() => {
 		// update only if state exists on combined_state
 		if (combined_state.username) {
 			username = {
-				value: combined_state.username ?? "",
+				value: combined_state.username,
 				error: new Array<string>()
 			};
 		};
 		if (combined_state.otp) {
 			otp = {
-				value: combined_state.otp ?? "",
+				value: combined_state.otp,
 				error: new Array<string>()
 			};
 		};
 	});
-
-	function check_if_form_is_submitable() {
-		form_is_submitable = [username, otp].every((field) => {
-			return field.value && field.error.length === 0;
-		});
-	}
 
 	const button_mapping = [
 		{
@@ -155,10 +146,7 @@
 			</label>
 			<input
 				bind:value={username.value}
-				oninput={(e) => {
-					handle_username_input(e);
-					check_if_form_is_submitable();
-				}}
+				oninput={handle_username_input}
 				name="username"
 				autocomplete="off"
 				placeholder="Username eg: sora#4444"
@@ -179,10 +167,7 @@
 			<label for="otp" class="text-lg font-semibold leading-none md:text-[1.1vw]"> OTP: </label>
 			<input
 				bind:value={otp.value}
-				oninput={(e) => {
-					handle_otp_input(e);
-					check_if_form_is_submitable();
-				}}
+				oninput={handle_otp_input}
 				name="otp"
 				placeholder="One Time Password"
 				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"

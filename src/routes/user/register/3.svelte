@@ -6,9 +6,9 @@
 
 	let { on_gotopage, pages_state }: PageProps = $props();
 
-	let combined_state: { [key: string]: string } = Object.assign({}, ...Object.entries(pages_state));
+	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
 
-	let form_is_submitable = $state(["username", "email"].every((item) =>
+	let form_is_submitable = $derived(["username", "email"].every((item) =>
 		Object.keys(combined_state).includes(item)
 	));
 

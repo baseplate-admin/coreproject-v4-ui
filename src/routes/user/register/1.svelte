@@ -14,15 +14,6 @@
 
 	let { on_submit, pages_state }: PageProps = $props();
 
-	// let pages_state = new Array({});
-
-	let combined_state: { [key: string]: string };
-
-	$effect.pre(() => {
-		$inspect(pages_state);
-		combined_state = Object.assign({}, ...Object.entries(pages_state));
-	});
-
 	let confirm_password_element: HTMLInputElement | null = null;
 
 	const register_languages = async () => {
@@ -71,42 +62,46 @@
 		// register_languages();
 	});
 
+	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
+
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
 	let email = $state({ value: "", error: new Array<string>() }),
 		password = $state({ value: "", error: new Array<string>() }),
 		confirm_password = $state({ value: "", error: new Array<string>() });
 
+	let password_strength = $state(0);
+	let form_is_submitable = $derived([email, password, confirm_password].every((field) => {
+		return field.value && field.error.length === 0;
+	}));
+
 	$effect(() => {
 		// update only if state exists on combined_state
 		if (combined_state.email) {
 			email = {
-				value: combined_state?.email ?? "",
+				value: combined_state.email,
 				error: new Array<string>()
 			};
 		};
 		if (combined_state.password) {
 			password = {
-				value: combined_state?.password ?? "",
+				value: combined_state.password,
 				error: new Array<string>()
 			};
 		};
 		if (combined_state.confirm_password) {
 			confirm_password = {
-				value: combined_state?.confirm_password ?? "",
+				value: combined_state.confirm_password,
 				error: new Array<string>()
 			};
 		};
 	});
 
-	let password_strength = $state(0);
-	let form_is_submitable = $state(false);
-
-	function check_if_form_is_submitable() {
-		form_is_submitable = [email, password, confirm_password].every((field) => {
-			return field.value && field.error.length === 0;
-		});
-	}
+	// function check_if_form_is_submitable() {
+	// 	form_is_submitable = [email, password, confirm_password].every((field) => {
+	// 		return field.value && field.error.length === 0;
+	// 	});
+	// }
 
 	const password_error_mapping: { [key: string]: string } = {
 		atleast_8: 'minimum 8 characters',
@@ -247,7 +242,7 @@
 				oninput={(event) => {
 					event.preventDefault();
 					handle_email_input(event);
-					check_if_form_is_submitable();
+					// check_if_form_is_submitable();
 				}}
 				placeholder="Email address"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
@@ -272,7 +267,7 @@
 				oninput={(event) => {
 					event.preventDefault();
 					handle_password_input(event);
-					check_if_form_is_submitable();
+					// check_if_form_is_submitable();
 				}}
 				placeholder="Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
@@ -337,7 +332,7 @@
 				oninput={(event) => {
 					event.preventDefault();
 					handle_confirm_password(event);
-					check_if_form_is_submitable();
+					// check_if_form_is_submitable();
 				}}
 				placeholder="Confirm Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
