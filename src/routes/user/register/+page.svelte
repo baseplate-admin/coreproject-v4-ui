@@ -2,9 +2,9 @@
 	import type { IPagesState } from "./types";
 
 	// Forms
-	const form_first = import("./forms/1.svelte");
-	const form_second = import("./forms/2.svelte");
-	const form_third = import("./forms/3.svelte");
+	const form_first = import("./1.svelte");
+	const form_second = import("./2.svelte");
+	const form_third = import("./3.svelte");
 
 	const pages = [
 		form_first,
