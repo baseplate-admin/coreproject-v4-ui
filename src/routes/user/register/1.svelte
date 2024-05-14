@@ -58,9 +58,11 @@
 		zxcvbnOptions.setOptions(options);
 	};
 
-	$effect.pre(() => {
+	// $effect.pre(() => {
+		// we can uncomment this when on production?
+		// tokitouq: personal preference
 		// register_languages();
-	});
+	// });
 
 	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
 

@@ -47,7 +47,6 @@
 		"@zxcvbn-ts/language-nl-be": "^3.0.2",
 		"@zxcvbn-ts/language-pl": "^3.0.2",
 		"@zxcvbn-ts/language-pt-br": "^3.0.2",
-		"@types/react": "^18.3.1",
 		"@types/react": "^18.3.2",
 		"@types/react-dom": "^18.3.0",
 		"@typescript-eslint/eslint-plugin": "^7.8.0",
