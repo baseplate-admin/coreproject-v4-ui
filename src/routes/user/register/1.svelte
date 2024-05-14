@@ -129,12 +129,14 @@
 	}
 
 	const handle_email_input = async (event: Event) => {
+			if (!email) return;
+
 			handle_input({
 				event: event,
 				schema: z.string().email('Please enter a valid email address'),
-				error_field: email!
+				error_field: email
 			});
-			if (_.isEmpty(email?.error)) {
+			// if (_.isEmpty(email?.error)) {
 				// const res = await fetch(reverse('email-validity-endpoint'), {
 				// 	method: 'POST',
 				// 	headers: {
@@ -161,7 +163,7 @@
 				// 	default:
 				// 		throw new Error('Not Implemented');
 				// }
-			}
+			// }
 		},
 		handle_password_input = (event: Event) => {
 			if (!password || !confirm_password) return;
