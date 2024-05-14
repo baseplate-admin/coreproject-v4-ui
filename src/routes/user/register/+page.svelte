@@ -4,12 +4,12 @@
 	// Forms
 	const form_first = import("./1.svelte");
 	const form_second = import("./2.svelte");
-	// let form_third = import('./3.svelte');
+	const form_third = import("./3.svelte");
 
 	const pages = [
 		form_first,
 		form_second,
-		// form_third
+		form_third
 	];
 	// current page
 	let page = $state.frozen(1);
