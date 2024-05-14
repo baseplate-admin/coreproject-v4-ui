@@ -97,12 +97,6 @@
 		};
 	});
 
-	// function check_if_form_is_submitable() {
-	// 	form_is_submitable = [email, password, confirm_password].every((field) => {
-	// 		return field.value && field.error.length === 0;
-	// 	});
-	// }
-
 	const password_error_mapping: { [key: string]: string } = {
 		atleast_8: 'minimum 8 characters',
 		missing_one_special_character: 'minimum 1 special character',
@@ -239,11 +233,7 @@
 			</label>
 			<input
 				bind:value={email.value}
-				oninput={(event) => {
-					event.preventDefault();
-					handle_email_input(event);
-					// check_if_form_is_submitable();
-				}}
+				oninput={handle_email_input}
 				placeholder="Email address"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
@@ -264,11 +254,7 @@
 			</label>
 			<input
 				bind:value={password.value}
-				oninput={(event) => {
-					event.preventDefault();
-					handle_password_input(event);
-					// check_if_form_is_submitable();
-				}}
+				oninput={handle_password_input}
 				placeholder="Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
@@ -296,10 +282,9 @@
 				</div>
 
 				<div class="mt-3 md:mt-[1.25vw]">
-					<span
-						class="text-surface-50 text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]"
-						>must contain</span
-					>
+					<span class="text-surface-50 text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]">
+						must contain
+					</span>
 
 					<div class="flex flex-col gap-1 md:mt-[0.5vw] md:gap-[0.3vw]">
 						{#each Object.entries(password_error_mapping) as item}
@@ -329,11 +314,7 @@
 			<input
 				bind:value={confirm_password.value}
 				bind:this={confirm_password_element}
-				oninput={(event) => {
-					event.preventDefault();
-					handle_confirm_password(event);
-					// check_if_form_is_submitable();
-				}}
+				oninput={handle_confirm_password}
 				placeholder="Confirm Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
@@ -344,7 +325,7 @@
 				{:else}
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 
-					<Markdown class="text-error" markdown={confirm_password.error.join('') ?? ''} />
+					<Markdown class="text-error" markdown={confirm_password.error[0]} />
 				{/if}
 			</div>
 		</div>
