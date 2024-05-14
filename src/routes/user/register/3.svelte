@@ -4,8 +4,6 @@
 	import Arrow from "$icons/shapes/arrow.svelte";
 	import type { PageProps } from "./types";
 
-	// import { FETCH_TIMEOUT } from "$constants/fetch";
-
 	let { on_gotopage, pages_state }: PageProps = $props();
 
 	let combined_state: { [key: string]: string } = Object.assign({}, ...Object.entries(pages_state));
@@ -50,9 +48,7 @@
 
 <div class="flex h-full flex-col justify-between">
 	<div class="flex flex-col items-start">
-		<span
-			class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]"
-		>
+		<span class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]">
 			welcome to&nbsp;
 			<CoreText />
 			project
@@ -76,18 +72,18 @@
 				<span class="text-lg font-medium leading-none md:text-[1.1vw]">Username:</span>
 				<span
 					class="text-base font-medium leading-none text-accent md:text-[1.1vw]"
-					class:text-error={!combined_state?.username}
+					class:text-error={!combined_state.username}
 				>
-					{combined_state?.username ?? 'not provided'}
+					{combined_state.username ?? 'not provided'}
 				</span>
 			</div>
 			<div class="flex flex-col md:gap-[0.5vw]">
 				<span class="text-lg font-medium leading-none md:text-[1.1vw]">Email:</span>
 				<span
 					class="text-base font-medium leading-none text-accent md:text-[1.1vw]"
-					class:text-error={!combined_state?.email}
+					class:text-error={!combined_state.email}
 				>
-					{combined_state?.email ?? 'not provided'}
+					{combined_state.email ?? 'not provided'}
 				</span>
 			</div>
 		</div>
@@ -104,9 +100,9 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]"
-				>Already have an account?</span
-			>
+			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
+				Already have an account?
+			</span>
 			<a
 				href={"/login"}
 				class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"

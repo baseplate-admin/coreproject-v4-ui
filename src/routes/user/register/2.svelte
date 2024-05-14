@@ -10,7 +10,7 @@
 	import { OTP_LENGTH } from "$constants/otp";
 	// import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { autofocus } from "$functions/forms/autofocus";
-	import type { FormFieldState, PageProps } from "./types";
+	import type { PageProps } from "./types";
 
 	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
@@ -25,20 +25,20 @@
 
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
-	let username = $state<FormFieldState>({ value: "", error: new Array<string>() }),
-		otp = $state<FormFieldState>({ value: "", error: new Array<string>() });
+	let username = $state({ value: "", error: new Array<string>() }),
+		otp = $state({ value: "", error: new Array<string>() });
 
 	$effect(() => {
 		// update only if state exists on combined_state
 		if (combined_state.username) {
 			username = {
-				value: combined_state?.username ?? "",
+				value: combined_state.username ?? "",
 				error: new Array<string>()
 			};
 		};
 		if (combined_state.otp) {
 			otp = {
-				value: combined_state?.otp ?? "",
+				value: combined_state.otp ?? "",
 				error: new Array<string>()
 			};
 		};
@@ -46,7 +46,7 @@
 
 	function check_if_form_is_submitable() {
 		form_is_submitable = [username, otp].every((field) => {
-			return field.value && _.isEmpty(field.error);
+			return field.value && field.error.length === 0;
 		});
 	}
 
@@ -168,10 +168,10 @@
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
 				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
-				{#if !_.isEmpty(username.error)}
-					<Markdown class="text-error" markdown={username.error.join('')} />
-				{:else}
+				{#if username.error.length === 0}
 					<span>you can change username in your user settings later, so go bonkers!</span>
+				{:else}
+					<Markdown class="text-error" markdown={username.error.join("")} />
 				{/if}
 			</div>
 		</div>
@@ -191,12 +191,12 @@
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
 				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
-				{#if !_.isEmpty(otp.error)}
-					<Markdown class="text-error" markdown={otp.error.join('')} />
+				{#if otp.error.length === 0}
+					<span>
+						if you didn’t receive the code, check your spam folder. Or use the resend button
+					</span>
 				{:else}
-					<span
-						>if you didn’t receive the code, check your spam folder. Or use the resend button</span
-					>
+					<Markdown class="text-error" markdown={otp.error.join('')} />
 				{/if}
 			</div>
 		</div>
@@ -213,9 +213,9 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]"
-				>Already have an account?</span
-			>
+			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
+				Already have an account?
+			</span>
 			<a
 				href={"/login"}
 				class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"

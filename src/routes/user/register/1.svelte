@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Markdown from '$components/markdown.svelte';
-	import * as _ from 'lodash-es';
 	import { z } from 'zod';
 	import { handle_input } from '$functions/forms/handle_input';
 	import { zxcvbn, zxcvbnOptions, type OptionsType } from '@zxcvbn-ts/core';
@@ -105,7 +104,7 @@
 
 	function check_if_form_is_submitable() {
 		form_is_submitable = [email, password, confirm_password].every((field) => {
-			return field?.value && _.isEmpty(field.error);
+			return field?.value && field.error.length === 0;
 		});
 	}
 
@@ -121,8 +120,8 @@
 	function handle_submit() {
 		if (form_is_submitable) {
 			on_submit({
-				email: email?.value,
-				password: password?.value
+				email: email.value,
+				password: password.value
 			});
 		}
 		// Show some errors here
@@ -244,7 +243,7 @@
 				Email:
 			</label>
 			<input
-				bind:value={email!.value}
+				bind:value={email.value}
 				oninput={(event) => {
 					event.preventDefault();
 					handle_email_input(event);
@@ -255,11 +254,11 @@
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
 				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
-				{#if _.isEmpty(email?.error) || _.isEmpty(email?.value)}
+				{#if email.error.length === 0 || !email.value}
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
 					<span class="text-error">
-						<Markdown markdown={email?.error.join('') ?? ''} unsafe={true}></Markdown>
+						<Markdown markdown={email.error.join('') ?? ''} unsafe={true}></Markdown>
 					</span>
 				{/if}
 			</div>
@@ -269,7 +268,7 @@
 				Password:
 			</label>
 			<input
-				bind:value={password!.value}
+				bind:value={password.value}
 				oninput={(event) => {
 					event.preventDefault();
 					handle_password_input(event);
@@ -313,20 +312,15 @@
 							{@const value = item[1]}
 
 							<div class="flex items-center gap-2 md:gap-[0.5vw]">
-								{#if (_.isEmpty(password?.error) && _.isEmpty(password?.value)) || (password?.value && password?.error.includes(key))}
-									<div>
-										<Tick class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]" />
-									</div>
+								{#if (password.error.length === 0 && !password.value) || (password.value && password.error.includes(key))}
+									<Tick class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]" />
 								{:else}
-									<!-- Filled tick  -->
-									<div>
-										<Tick class="w-3 text-primary transition-opacity md:w-[1vw]" />
-									</div>
+									<Tick class="w-3 text-primary transition-opacity md:w-[1vw]" />
 								{/if}
 
-								<span class="text-surface-300 text-[0.7rem] leading-none md:text-[0.75vw]"
-									>{value}</span
-								>
+								<span class="text-surface-300 text-[0.7rem] leading-none md:text-[0.75vw]">
+									{value}
+								</span>
 							</div>
 						{/each}
 					</div>
@@ -338,7 +332,7 @@
 				Confirm Password:
 			</label>
 			<input
-				bind:value={confirm_password!.value}
+				bind:value={confirm_password.value}
 				bind:this={confirm_password_element}
 				oninput={(event) => {
 					event.preventDefault();
@@ -349,22 +343,22 @@
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
-				{#if _.isEmpty(confirm_password?.error)}
+				{#if confirm_password.error.length === 0}
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 					<span>Please make sure you enter the same password in both fields</span>
 				{:else}
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 
-					<Markdown class="text-error" markdown={confirm_password?.error.join('') ?? ''} />
+					<Markdown class="text-error" markdown={confirm_password.error.join('') ?? ''} />
 				{/if}
 			</div>
 		</div>
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]"
-				>Already have an account?</span
-			>
+			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
+				Already have an account?
+			</span>
 			<a
 				href="./login"
 				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"

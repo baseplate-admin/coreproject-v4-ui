@@ -12,7 +12,7 @@
 		form_third
 	];
 	// current page
-	let page = $state.frozen(1);
+	let page = $state.frozen(0);
 
 	// The state of all of our pages
 	let pages_state = $state<IPagesState>({});
