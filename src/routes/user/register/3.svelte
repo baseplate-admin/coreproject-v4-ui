@@ -8,9 +8,11 @@
 
 	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
 
-	let form_is_submitable = $derived(["username", "email"].every((item) =>
-		Object.keys(combined_state).includes(item)
-	));
+	let form_is_submitable = $derived.by(() => {
+		return ["username", "email"].every((item) =>
+			Object.keys(combined_state).includes(item)
+		);
+	});
 
 	const button_mapping = [
 		{

@@ -71,7 +71,7 @@
 		confirm_password = $state({ value: "", error: new Array<string>() });
 
 	let password_strength = $state(0);
-	let form_is_submitable = $derived([email, password, confirm_password].every((field) => {
+	let form_is_submitable = $derived.by(() => [email, password, confirm_password].every((field) => {
 		return field.value && field.error.length === 0;
 	}));
 

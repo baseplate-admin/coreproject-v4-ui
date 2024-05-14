@@ -21,7 +21,7 @@
 	let username = $state({ value: "", error: new Array<string>() }),
 		otp = $state({ value: "", error: new Array<string>() });
 
-	let form_is_submitable = $derived([username, otp].every((field) => {
+	let form_is_submitable = $derived.by(() => [username, otp].every((field) => {
 		return field.value && field.error.length === 0;
 	}));
 
