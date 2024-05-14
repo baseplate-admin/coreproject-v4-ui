@@ -18,11 +18,11 @@
 	let pages_state = $state<IPagesState>({});
 
 	// Our handlers
-	function handleGoToPage(go_to_page: number) {
+	function on_gotopage(go_to_page: number) {
 		page = go_to_page;
 	}
 
-	function handleSubmit(data: Record<string, string | number | undefined>) {
+	function on_submit(data: Record<string, string | number | undefined>) {
 		if (page === pages.length - 1) {
 			// end of the page. do something.. Maybe seek for anime girls with stockings and leggings
 			// XD
@@ -51,8 +51,8 @@
 	{#if Module}
 		<svelte:component
 			this={Module.default}
-			on_gotopage={handleGoToPage}
-			on_submit={handleSubmit}
+			{on_gotopage}
+			{on_submit}
 			{page}
 			{pages_state}
 		/>
