@@ -1,37 +1,48 @@
 <script lang="ts">
-	import Info from '$icons/Info/Index.svelte';
-	import ArrowUpRight from '$icons/ArrowUpRight/Index.svelte';
-	import Arrow from '$icons/Arrow/Index.svelte';
+	import Info from "$icons/shapes/info.svelte";
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte"
+	import Arrow from "$icons/shapes/arrow.svelte";
 
-	import { createEventDispatcher } from 'svelte';
-	import { z } from 'zod';
-	import Markdown from '$components/minor/Markdown/Index.svelte';
-	import { handle_input } from '../../functions/handle_input';
+	import { z } from "zod";
+	import Markdown from "$components/markdown.svelte";
+	import { handle_input } from "$functions/forms/handle_input";
 	import _ from 'lodash-es';
-	import { OTP_LENGTH } from '$constants/otp';
-	import { reverse } from '$functions/urls';
-	import { get_csrf_token } from '$functions/get_csrf_token';
-	import { FETCH_TIMEOUT } from '$constants/fetch';
-	import { autofocus } from '$functions/autofocus';
-	import { enhance_anchor } from '$functions/anchor_enhancements';
+	import { OTP_LENGTH } from "$constants/otp";
+	// import { FETCH_TIMEOUT } from "$constants/fetch";
+	import { autofocus } from "$functions/forms/autofocus";
+	import type { FormFieldState, PageProps } from "./types";
 
-	export let pages_state: [{ otp: string }, { username: string }];
+	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
-	let combined_state: { [key: string]: string } | null = null;
-	$: combined_state = Object.assign({}, ...pages_state);
+	let combined_state: { [key: string]: string };
 
-	let form_is_submitable: boolean | null = null;
+	let form_is_submitable = $state(false);
 
-	const dispatch = createEventDispatcher();
+	$effect.pre(() => {
+		$inspect(pages_state);
+		combined_state = Object.assign({}, ...Object.entries(pages_state));
+	});
 
-	let username = {
-			value: combined_state?.otp ?? '',
-			error: new Array<string>()
-		},
-		otp = {
-			value: combined_state?.username ?? '',
-			error: new Array<string>()
+	// bind:value needs to be defined first to bind
+	// otherwise shows: typeerror $.get(...) is undefined
+	let username = $state<FormFieldState>({ value: "", error: new Array<string>() }),
+		otp = $state<FormFieldState>({ value: "", error: new Array<string>() });
+
+	$effect(() => {
+		// update only if state exists on combined_state
+		if (combined_state.username) {
+			username = {
+				value: combined_state?.username ?? "",
+				error: new Array<string>()
+			};
 		};
+		if (combined_state.otp) {
+			otp = {
+				value: combined_state?.otp ?? "",
+				error: new Array<string>()
+			};
+		};
+	});
 
 	function check_if_form_is_submitable() {
 		form_is_submitable = [username, otp].every((field) => {
@@ -47,9 +58,7 @@
 		{
 			value: `< change email >`,
 			action: () => {
-				dispatch('go_to_page', {
-					page: 0
-				});
+				on_gotopage(0);
 			}
 		}
 	];
@@ -69,33 +78,32 @@
 				error_field: username
 			});
 
-			if (username.value && _.isEmpty(username.error)) {
-				const res = await fetch(reverse('username-validity-endpoint'), {
-					method: 'POST',
-					headers: {
-						Accept: 'application/json',
-						'Content-Type': 'application/json',
-						'X-CSRFToken': get_csrf_token()
-					},
-					signal: AbortSignal.timeout(FETCH_TIMEOUT),
-					body: JSON.stringify({
-						username: username.value
-					})
-				});
+			// if (username.value && _.isEmpty(username.error)) {
+			// 	const res = await fetch(reverse('username-validity-endpoint'), {
+			// 		method: 'POST',
+			// 		headers: {
+			// 			Accept: 'application/json',
+			// 			'Content-Type': 'application/json',
+			// 		},
+			// 		signal: AbortSignal.timeout(FETCH_TIMEOUT),
+			// 		body: JSON.stringify({
+			// 			username: username.value
+			// 		})
+			// 	});
 
-				// 302 = username found
-				// 404 = not found
+			// 	// 302 = username found
+			// 	// 404 = not found
 
-				switch (Number(res.status)) {
-					case 302:
-						username.error = [...username.error, `Username **${username.value}** is already taken`];
-						break;
-					case 404:
-						break;
-					default:
-						throw new Error('Not Implemented');
-				}
-			}
+			// 	switch (Number(res.status)) {
+			// 		case 302:
+			// 			username.error = [...username.error, `Username **${username.value}** is already taken`];
+			// 			break;
+			// 		case 404:
+			// 			break;
+			// 		default:
+			// 			throw new Error('Not Implemented');
+			// 	}
+			// }
 		},
 		handle_otp_input = (event: Event) => {
 			handle_input({
@@ -112,7 +120,7 @@
 		};
 
 	function handle_submit() {
-		dispatch('submit', {
+		on_submit({
 			username: username.value,
 			otp: otp.value
 		});
@@ -121,7 +129,7 @@
 
 <form
 	use:autofocus
-	on:submit|preventDefault={handle_submit}
+	onsubmit={handle_submit}
 	class="flex h-full flex-col justify-between"
 >
 	<div class="flex flex-col items-start">
@@ -131,10 +139,8 @@
 			choose your username and verify
 		</span>
 		<button
-			on:click={() => {
-				dispatch('go_to_page', {
-					page: 0
-				});
+			onclick={() => {
+				on_gotopage(0);
 			}}
 			class="btn btn-link p-0 h-max min-h-full md:text-[1.25vw] md:gap-[0.5vw]"
 		>
@@ -149,8 +155,10 @@
 			</label>
 			<input
 				bind:value={username.value}
-				on:input|preventDefault={handle_username_input}
-				on:input={check_if_form_is_submitable}
+				oninput={(e) => {
+					handle_username_input(e);
+					check_if_form_is_submitable();
+				}}
 				name="username"
 				autocomplete="off"
 				placeholder="Username eg: sora#4444"
@@ -171,8 +179,10 @@
 			<label for="otp" class="text-lg font-semibold leading-none md:text-[1.1vw]"> OTP: </label>
 			<input
 				bind:value={otp.value}
-				on:input={handle_otp_input}
-				on:input={check_if_form_is_submitable}
+				oninput={(e) => {
+					handle_otp_input(e);
+					check_if_form_is_submitable();
+				}}
 				name="otp"
 				placeholder="One Time Password"
 				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
@@ -194,7 +204,7 @@
 			{#each button_mapping as item}
 				<button
 					class="btn btn-secondary flex h-max min-h-max flex-col items-start p-0 text-base font-semibold leading-none text-primary underline md:text-[1vw]"
-					on:click|preventDefault={item.action}
+					onclick={item.action}
 				>
 					{item.value}
 				</button>
@@ -207,8 +217,7 @@
 				>Already have an account?</span
 			>
 			<a
-				href={reverse('login_view')}
-				use:enhance_anchor={{ verb: 'GET', target: 'body' }}
+				href={"/login"}
 				class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"
 			>
 				Login

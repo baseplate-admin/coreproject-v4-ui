@@ -3,16 +3,16 @@
 
 	// Forms
 	const form_first = import("./1.svelte");
-	// let form_second = import('./2.svelte');
+	const form_second = import("./2.svelte");
 	// let form_third = import('./3.svelte');
 
 	const pages = [
-		form_first
-		// form_second,
+		form_first,
+		form_second,
 		// form_third
 	];
 	// current page
-	let page = $state.frozen(0);
+	let page = $state.frozen(1);
 
 	// The state of all of our pages
 	let pages_state = $state<IPagesState>({});
