@@ -11,7 +11,7 @@
 	import Tick from '$icons/shapes/tick.svelte';
 	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
 	import CoreText from '$icons/text/core.svelte';
-	import type { FormFieldState, PageProps } from './types';
+	import type { FormFieldState, PageProps } from '../types';
 
 	let { on_submit, pages_state }: PageProps = $props();
 

@@ -10,7 +10,7 @@
 	import { OTP_LENGTH } from "$constants/otp";
 	// import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { autofocus } from "$functions/forms/autofocus";
-	import type { FormFieldState, PageProps } from "./types";
+	import type { FormFieldState, PageProps } from "../types";
 
 	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
