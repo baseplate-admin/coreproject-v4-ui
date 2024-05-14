@@ -11,7 +11,7 @@
 	import Tick from '$icons/shapes/tick.svelte';
 	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
 	import CoreText from '$icons/text/core.svelte';
-	import type { FormFieldState, PageProps } from './types';
+	import type { PageProps } from './types';
 
 	let { on_submit, pages_state }: PageProps = $props();
 
@@ -74,9 +74,9 @@
 
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
-	let email = $state<FormFieldState>({ value: "", error: new Array<string>() }),
-		password = $state<FormFieldState>({ value: "", error: new Array<string>() }),
-		confirm_password = $state<FormFieldState>({ value: "", error: new Array<string>() });
+	let email = $state({ value: "", error: new Array<string>() }),
+		password = $state({ value: "", error: new Array<string>() }),
+		confirm_password = $state({ value: "", error: new Array<string>() });
 
 	$effect(() => {
 		// update only if state exists on combined_state
