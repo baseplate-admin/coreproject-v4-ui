@@ -104,7 +104,7 @@
 
 	function check_if_form_is_submitable() {
 		form_is_submitable = [email, password, confirm_password].every((field) => {
-			return field?.value && field.error.length === 0;
+			return field.value && field.error.length === 0;
 		});
 	}
 
@@ -258,7 +258,7 @@
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
 					<span class="text-error">
-						<Markdown markdown={email.error.join('') ?? ''} unsafe={true}></Markdown>
+						<Markdown markdown={email.error[0]} unsafe={true}></Markdown>
 					</span>
 				{/if}
 			</div>

@@ -165,13 +165,13 @@
 				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
 			/>
 			<div
-				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
+				class="text-surface-300 flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
 				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 				{#if username.error.length === 0}
 					<span>you can change username in your user settings later, so go bonkers!</span>
 				{:else}
-					<Markdown class="text-error" markdown={username.error.join("")} />
+					<Markdown class="text-error" markdown={username.error[0]} />
 				{/if}
 			</div>
 		</div>
@@ -196,7 +196,7 @@
 						if you didn’t receive the code, check your spam folder. Or use the resend button
 					</span>
 				{:else}
-					<Markdown class="text-error" markdown={otp.error.join('')} />
+					<Markdown class="text-error" markdown={otp.error[0]} />
 				{/if}
 			</div>
 		</div>
