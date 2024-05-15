@@ -93,7 +93,7 @@
 							{#key picked_anime}
 								<div
 									transition:blur
-									class="col-start-1 row-start-1 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning md:text-[1vw]"
+									class="col-start-1 row-start-1 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning md:text-[1vw] flex items-center gap-2"
 								>
 									{picked_anime.name}
 									<button
@@ -103,7 +103,7 @@
 											timer.reset();
 										}}
 									>
-										<Refresh class="w-4 md:w-[1vw]" />
+										<Refresh class="w-3 md:w-[1vw]" />
 									</button>
 								</div>
 							{/key}
