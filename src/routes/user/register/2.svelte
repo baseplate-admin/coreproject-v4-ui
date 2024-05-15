@@ -121,23 +121,19 @@
 <form
 	use:autofocus
 	onsubmit={handle_submit}
-	class="flex h-full flex-col justify-between"
+	class="flex h-full flex-col gap-10 md:gap-0 justify-between"
 >
-	<div class="flex flex-col items-start">
-		<span
-			class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]"
+	<div class="flex flex-col gap-2 md:gap-1 items-start">
+		<a
+			href={"/anime"}
+			class="btn btn-link h-max min-h-max p-0 md:gap-[0.5vw] text-base md:text-[1.25vw]"
 		>
+			<Arrow variant="fill" class="-rotate-90 size-4 md:size-[1.25vw]" />
+			Home
+		</a>
+		<span class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]">
 			choose your username and verify
 		</span>
-		<button
-			onclick={() => {
-				on_gotopage(0);
-			}}
-			class="btn btn-link p-0 h-max min-h-full md:text-[1.25vw] md:gap-[0.5vw]"
-		>
-			<Arrow variant="fill" class="md:size-[1.25vw] -rotate-90" />
-			Go Back
-		</button>
 	</div>
 	<div class="flex flex-col gap-5 md:gap-[1.5vw]">
 		<div class="flex w-full flex-col gap-[0.3rem] md:gap-[0.35vw]">
@@ -153,7 +149,7 @@
 				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
 			/>
 			<div
-				class="text-surface-300 flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
+				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
 				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 				{#if username.error.length === 0}

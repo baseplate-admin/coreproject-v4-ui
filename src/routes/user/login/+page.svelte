@@ -89,7 +89,7 @@
 			event.preventDefault();
 			await handle_submit();
 		}}
-		class="flex h-full flex-col gap-14 md:gap-0 justify-between"
+		class="flex h-full flex-col gap-10 md:gap-0 justify-between"
 	>
 		<div class="flex flex-col gap-2 md:gap-1 items-start">
 			<a
