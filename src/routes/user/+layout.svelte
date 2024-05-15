@@ -83,38 +83,65 @@
 						>continue on animecore, mangacore and soundcore with same account.</span
 					>
 				</div>
-				<div class="absolute left-7 top-7 md:bottom-[1.85vw] md:left-[2vw] md:top-auto md:flex">
-					<div class="flex flex-col gap-2 md:gap-[0.75vw]">
-						<span
-							class="text-[2.25vw] font-semibold uppercase leading-none tracking-widest text-white/75 md:text-[0.75vw]"
-							>Background from anime</span
-						>
-						<div class="grid">
-							{#key picked_anime}
-								<div
-									transition:blur
-									class="col-start-1 row-start-1 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning md:text-[1vw]"
+				<div class="hidden absolute bottom-[1.85vw] left-[2vw] top-auto md:flex flex-col gap-[0.75vw]">
+					<span class="font-semibold uppercase leading-none tracking-widest text-white/75 text-[0.75vw]">
+						Background from anime
+					</span>
+					<div class="grid">
+						{#key picked_anime}
+							<div
+								transition:blur
+								class="col-start-1 row-start-1 font-bold uppercase leading-none tracking-widest text-warning text-[1vw] flex items-center gap-2"
+							>
+								{picked_anime.name}
+								<button
+									onclick={(event) => {
+										event.preventDefault();
+										get_random_anime();
+										timer.reset();
+									}}
 								>
-									{picked_anime.name}
-									<button
-										onclick={(event) => {
-											event.preventDefault();
-											get_random_anime();
-											timer.reset();
-										}}
-									>
-										<Refresh class="w-4 md:w-[1vw]" />
-									</button>
-								</div>
-							{/key}
-						</div>
+									<Refresh class="w-[1vw]" />
+								</button>
+							</div>
+						{/key}
 					</div>
 				</div>
 			</div>
 		{/if}
 	</div>
 
-	<div class="absolute inset-x-0 self-end rounded-t-3xl bg-secondary p-7 md:static md:self-auto md:rounded-t-none md:p-0 md:px-[8vw] md:py-[2.2vw]">
-		{@render children()}
+	<div class="absolute inset-x-0 self-end md:static md:self-auto">
+		<div class="md:hidden p-7 pb-5">
+			{#if picked_anime}
+				<div class="flex flex-col gap-2">
+					<span class="text-[2.25vw] font-semibold uppercase leading-none tracking-widest text-white/75">
+						Background from anime
+					</span>
+					<div class="grid">
+						{#key picked_anime}
+							<div
+								transition:blur
+								class="col-start-1 row-start-1 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning flex items-center gap-2"
+							>
+								{picked_anime.name}
+								<button
+									onclick={(event) => {
+										event.preventDefault();
+										get_random_anime();
+										timer.reset();
+									}}
+								>
+									<Refresh class="w-3" />
+								</button>
+							</div>
+						{/key}
+					</div>
+				</div>
+			{/if}
+		</div>
+		<div class="size-full bg-secondary p-7 md:p-0 md:px-[8vw] md:py-[2.2vw]">
+			{@render children()}
+		</div>
 	</div>
 </div>

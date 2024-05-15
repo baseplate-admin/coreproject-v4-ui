@@ -204,9 +204,16 @@
 		event.preventDefault();
 		handle_submit();
 	}}
-	class="flex h-full flex-col justify-between"
+	class="flex h-full flex-col gap-10 md:gap-0 justify-between"
 >
-	<div class="flex flex-col items-start">
+	<div class="flex flex-col gap-2 md:gap-1 items-start">
+		<a
+			href={"/anime"}
+			class="btn btn-link h-max min-h-max p-0 md:gap-[0.5vw] text-base md:text-[1.25vw]"
+		>
+			<Arrow variant="fill" class="-rotate-90 size-4 md:size-[1.25vw]" />
+			Home
+		</a>
 		<span
 			class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]"
 		>
@@ -214,16 +221,6 @@
 			<CoreText />
 			account
 		</span>
-		<button
-			onclick={(event) => {
-				event.preventDefault();
-				window.history.back();
-			}}
-			class="btn btn-link h-max min-h-full p-0 md:gap-[0.5vw] md:text-[1.25vw]"
-		>
-			<Arrow variant="fill" class="-rotate-90 md:size-[1.25vw]" />
-			Go Back
-		</button>
 	</div>
 	<div class="flex flex-col gap-5 md:gap-[1.5vw]">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
