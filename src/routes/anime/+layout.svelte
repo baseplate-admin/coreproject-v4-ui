@@ -245,7 +245,6 @@
 								<Search class="w-[1.25vw] text-black" />
 							</button>
 						</div>
-						<!-- {/* <coreproject-specific-search-modal></coreproject-specific-search-modal> */} -->
 
 						<VercelHover
 							glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
@@ -273,7 +272,7 @@
 										onmouseleave={handle_mouse_leave}
 										href={item_href}
 										class="{cn(
-											'btn relative h-[4vw] w-[4vw] rounded-[0.75vw] border-none p-0',
+											'btn relative size-[4vw] min-h-max rounded-[0.75vw] border-none p-0',
 											is_active
 												? 'relative !bg-accent before:absolute before:-left-[0.15vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
 												: '!bg-transparent'
