@@ -98,5 +98,8 @@
 		"vitest": "^1.6.0",
 		"xss": "^1.0.15",
 		"zod": "^3.23.8"
-	}
+	},
+	 "optionalDependencies": {
+	    "@rollup/rollup-linux-x64-gnu": "4.9.5"
+	  }
 }
