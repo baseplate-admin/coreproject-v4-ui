@@ -4,6 +4,7 @@
 	import * as _ from "lodash-es";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
+	import { onMount } from "svelte";
 
 	let { children } = $props();
 	const slider_delay = 5;
@@ -43,9 +44,7 @@
 		timer.reset();
 	});
 
-	$effect(() => {
-		if (timer.isRunning()) return;
-
+	onMount(() => {
 		get_random_anime();
 		timer.start();
 	});
