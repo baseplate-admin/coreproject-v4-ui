@@ -7,7 +7,7 @@
 import type { Config } from "tailwindcss";
 
 // Import plugins
-import forms from "@tailwindcss/aspect-forms";
+import forms from "@tailwindcss/forms";
 import typography from "@tailwindcss/typography";
 import aspectRatio from "@tailwindcss/aspect-ratio";
 import scrollbar from "tailwind-scrollbar";
