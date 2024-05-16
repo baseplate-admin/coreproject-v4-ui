@@ -1,1 +1,1 @@
-export let is_authenticated = $state<null | boolean>(null);
+export let is_authenticated = $state.frozen<null | boolean>(null);
