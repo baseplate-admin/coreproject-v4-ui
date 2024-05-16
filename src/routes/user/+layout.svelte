@@ -6,7 +6,7 @@
 	import { Timer as EasyTimer } from "easytimer.js";
 
 	let { children } = $props();
-	const slider_delay = 10;
+	const slider_delay = 5;
 
 	let animes = [
 		{ name: "Demon Slayer", cover: "/images/mock/DemonSlayer-cover.avif" },
@@ -43,11 +43,11 @@
 		timer.reset();
 	});
 
-	$effect.pre(() => {
-		if (!timer.isRunning()) {
-			get_random_anime();
-			timer.start();
-		}
+	$effect(() => {
+		if (timer.isRunning()) return;
+
+		get_random_anime();
+		timer.start();
 	});
 </script>
 
