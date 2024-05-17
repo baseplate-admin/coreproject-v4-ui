@@ -6,7 +6,7 @@
 	type Props = {
 		src: string;
 		class?: string;
-		on_color_theif: (palette: string[][]) => void;
+		on_color_theif: (palette: number[][]) => void;
 	};
 
 	let {
@@ -15,7 +15,7 @@
 		on_color_theif
 	}: Props = $props();
 
-	let color_palette = $state<string[][]>();
+	let color_palette = $state<number[][]>();
 	let canvas_element = $state<HTMLCanvasElement>();
 	let image_loaded = $state(false);
 
