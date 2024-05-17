@@ -1,11 +1,12 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
+	import Star from "$icons/shapes/star.svelte";
 	import init, { get_color_thief } from "../../../node_modules/color-thief-wasm-web";
 
 	type Props = {
 		src: string;
 		class?: string;
-		on_color_theif: (color: string) => void;
+		on_color_theif: (palette: string[][]) => void;
 	};
 
 	let {
@@ -14,14 +15,14 @@
 		on_color_theif
 	}: Props = $props();
 
-	let dominant_color = $state("");
+	let color_palette = $state<string[][]>();
 	let canvas_element = $state<HTMLCanvasElement>();
 	let image_loaded = $state(false);
 
-	$effect(() => {
-		if (!dominant_color) return;
-		on_color_theif(dominant_color);
-	});
+	// $effect(() => {
+	// 	if (!color_palette) return;
+	// 	on_color_theif(color_palette);
+	// });
 
 	$effect(() => {
 		if (image_loaded) return;
@@ -45,9 +46,8 @@
 				let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
 				if (imageData) {
-					const colors = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
-					console.log(colors);
-					dominant_color = `rgba(${colors[0][0]},${colors[0][1]},${colors[0][2]}, 0.15)`;
+					color_palette = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
+					on_color_theif(color_palette);
 					image_loaded = true;
 				}
 			});
