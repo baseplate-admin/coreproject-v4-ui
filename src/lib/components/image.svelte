@@ -19,11 +19,6 @@
 	let canvas_element = $state<HTMLCanvasElement>();
 	let image_loaded = $state(false);
 
-	// $effect(() => {
-	// 	if (!color_palette) return;
-	// 	on_color_theif(color_palette);
-	// });
-
 	$effect(() => {
 		if (image_loaded) return;
 
