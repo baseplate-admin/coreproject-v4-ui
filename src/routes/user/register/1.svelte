@@ -1,35 +1,35 @@
 <script lang="ts">
-	import Markdown from '$components/markdown.svelte';
-	import { z } from 'zod';
-	import { handle_input } from '$functions/forms/handle_input';
-	import { zxcvbn, zxcvbnOptions, type OptionsType } from '@zxcvbn-ts/core';
-	import { cn } from '$functions/classnames';
-	import { autofocus } from '$functions/forms/autofocus';
-	import Arrow from '$icons/shapes/arrow.svelte';
-	import Info from '$icons/shapes/info.svelte';
-	import Tick from '$icons/shapes/tick.svelte';
-	import ArrowUpRight from '$icons/shapes/arrow_up_right.svelte';
-	import CoreText from '$icons/text/core.svelte';
-	import type { PageProps } from './types';
+	import Markdown from "$components/markdown.svelte";
+	import { z } from "zod";
+	import { handle_input } from "$functions/forms/handle_input";
+	import { zxcvbn, zxcvbnOptions, type OptionsType } from "@zxcvbn-ts/core";
+	import { cn } from "$functions/classnames";
+	import { autofocus } from "$functions/forms/autofocus";
+	import Arrow from "$icons/shapes/arrow.svelte";
+	import Info from "$icons/shapes/info.svelte";
+	import Tick from "$icons/shapes/tick.svelte";
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import CoreText from "$icons/text/core.svelte";
+	import type { PageProps } from "./types";
 
 	let { on_submit, pages_state }: PageProps = $props();
 
 	let confirm_password_element: HTMLInputElement | null = null;
 
 	const register_languages = async () => {
-		const zxcvbnCommonPackage = await import('@zxcvbn-ts/language-common');
-		const zxcvbnEnPackage = await import('@zxcvbn-ts/language-en');
-		const zxcvbnCsPackage = await import('@zxcvbn-ts/language-cs');
-		const zxcvbnDePackage = await import('@zxcvbn-ts/language-de');
-		const zxcvbnEsEsPackage = await import('@zxcvbn-ts/language-es-es');
-		const zxcvbnFiPackage = await import('@zxcvbn-ts/language-fi');
-		const zxcvbnFrPackage = await import('@zxcvbn-ts/language-fr');
-		const zxcvbnIdPackage = await import('@zxcvbn-ts/language-id');
-		const zxcvbnItPackage = await import('@zxcvbn-ts/language-it');
-		const zxcvbnJaPackage = await import('@zxcvbn-ts/language-ja');
-		const zxcvbnNlBePackage = await import('@zxcvbn-ts/language-nl-be');
-		const zxcvbnPlPackage = await import('@zxcvbn-ts/language-pl');
-		const zxcvbnPtBrPackage = await import('@zxcvbn-ts/language-pt-br');
+		const zxcvbnCommonPackage = await import("@zxcvbn-ts/language-common");
+		const zxcvbnEnPackage = await import("@zxcvbn-ts/language-en");
+		const zxcvbnCsPackage = await import("@zxcvbn-ts/language-cs");
+		const zxcvbnDePackage = await import("@zxcvbn-ts/language-de");
+		const zxcvbnEsEsPackage = await import("@zxcvbn-ts/language-es-es");
+		const zxcvbnFiPackage = await import("@zxcvbn-ts/language-fi");
+		const zxcvbnFrPackage = await import("@zxcvbn-ts/language-fr");
+		const zxcvbnIdPackage = await import("@zxcvbn-ts/language-id");
+		const zxcvbnItPackage = await import("@zxcvbn-ts/language-it");
+		const zxcvbnJaPackage = await import("@zxcvbn-ts/language-ja");
+		const zxcvbnNlBePackage = await import("@zxcvbn-ts/language-nl-be");
+		const zxcvbnPlPackage = await import("@zxcvbn-ts/language-pl");
+		const zxcvbnPtBrPackage = await import("@zxcvbn-ts/language-pt-br");
 
 		const options: OptionsType = {
 			translations: zxcvbnEnPackage.translations,
@@ -50,7 +50,7 @@
 				...zxcvbnEnPackage.dictionary,
 
 				// Check inputs
-				userInputs: [password?.value ?? '', email?.value ?? '', confirm_password?.value ?? '']
+				userInputs: [password?.value ?? "", email?.value ?? "", confirm_password?.value ?? ""]
 			},
 			useLevenshteinDistance: true
 		};
@@ -59,12 +59,14 @@
 	};
 
 	// $effect.pre(() => {
-		// we can uncomment this when on production?
-		// tokitouq: personal preference
-		// register_languages();
+	// we can uncomment this when on production?
+	// tokitouq: personal preference
+	// register_languages();
 	// });
 
-	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
+	let combined_state: { [key: string]: string } = $derived(
+		Object.assign({}, ...Object.values(pages_state))
+	);
 
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
@@ -73,9 +75,11 @@
 		confirm_password = $state({ value: "", error: new Array<string>() });
 
 	let password_strength = $state(0);
-	let form_is_submitable = $derived.by(() => [email, password, confirm_password].every((field) => {
-		return field.value && field.error.length === 0;
-	}));
+	let form_is_submitable = $derived.by(() =>
+		[email, password, confirm_password].every((field) => {
+			return field.value && field.error.length === 0;
+		})
+	);
 
 	$effect(() => {
 		// update only if state exists on combined_state
@@ -84,26 +88,26 @@
 				value: combined_state.email,
 				error: new Array<string>()
 			};
-		};
+		}
 		if (combined_state.password) {
 			password = {
 				value: combined_state.password,
 				error: new Array<string>()
 			};
-		};
+		}
 		if (combined_state.confirm_password) {
 			confirm_password = {
 				value: combined_state.confirm_password,
 				error: new Array<string>()
 			};
-		};
+		}
 	});
 
 	const password_error_mapping: { [key: string]: string } = {
-		atleast_8: 'minimum 8 characters',
-		missing_one_special_character: 'minimum 1 special character',
-		missing_one_number: 'minimum 1 number',
-		missing_one_upper_or_lowercase: 'minimum 1 lower-case or upper-case character'
+		atleast_8: "minimum 8 characters",
+		missing_one_special_character: "minimum 1 special character",
+		missing_one_number: "minimum 1 number",
+		missing_one_upper_or_lowercase: "minimum 1 lower-case or upper-case character"
 	};
 
 	// Bindings
@@ -123,36 +127,36 @@
 
 			handle_input({
 				event: event,
-				schema: z.string().email('Please enter a valid email address'),
+				schema: z.string().email("Please enter a valid email address"),
 				error_field: email
 			});
 			// if (_.isEmpty(email?.error)) {
-				// const res = await fetch(reverse('email-validity-endpoint'), {
-				// 	method: 'POST',
-				// 	headers: {
-				// 		Accept: 'application/json',
-				// 		'Content-Type': 'application/json',
-				// 		'X-CSRFToken': get_csrf_token()
-				// 	},
-				// 	signal: AbortSignal.timeout(FETCH_TIMEOUT),
-				// 	body: JSON.stringify({
-				// 		email: email.value
-				// 	})
-				// });
-				// 302 = username found
-				// 404 = not found
-				// switch (Number(res.status)) {
-				// 	case 302:
-				// 		email.error = [
-				// 			...email.error,
-				// 			`Email **${email.value}** is already taken. Perhaps you want to **[login](${reverse('login_view')})**`
-				// 		];
-				// 		break;
-				// 	case 404:
-				// 		break;
-				// 	default:
-				// 		throw new Error('Not Implemented');
-				// }
+			// const res = await fetch(reverse('email-validity-endpoint'), {
+			// 	method: 'POST',
+			// 	headers: {
+			// 		Accept: 'application/json',
+			// 		'Content-Type': 'application/json',
+			// 		'X-CSRFToken': get_csrf_token()
+			// 	},
+			// 	signal: AbortSignal.timeout(FETCH_TIMEOUT),
+			// 	body: JSON.stringify({
+			// 		email: email.value
+			// 	})
+			// });
+			// 302 = username found
+			// 404 = not found
+			// switch (Number(res.status)) {
+			// 	case 302:
+			// 		email.error = [
+			// 			...email.error,
+			// 			`Email **${email.value}** is already taken. Perhaps you want to **[login](${reverse('login_view')})**`
+			// 		];
+			// 		break;
+			// 	case 404:
+			// 		break;
+			// 	default:
+			// 		throw new Error('Not Implemented');
+			// }
 			// }
 		},
 		handle_password_input = (event: Event) => {
@@ -163,13 +167,13 @@
 					event: event,
 					schema: z
 						.string()
-						.min(8, 'atleast_8')
+						.min(8, "atleast_8")
 						.refine(
 							(val) => /(?=.*[!@#$%^&*()_+|~\-=?;:'",.<>{}[\]\\/])/.test(val),
-							'missing_one_special_character'
+							"missing_one_special_character"
 						)
-						.refine((val) => /(?=.*\d)/.test(val), 'missing_one_number')
-						.refine((val) => /(?=.*[A-Z])|(?=.*[a-z])/.test(val), 'missing_one_upper_or_lowercase'),
+						.refine((val) => /(?=.*\d)/.test(val), "missing_one_number")
+						.refine((val) => /(?=.*[A-Z])|(?=.*[a-z])/.test(val), "missing_one_upper_or_lowercase"),
 					error_field: password
 				});
 				password_strength = zxcvbn(password.value).score;
@@ -177,7 +181,7 @@
 				password_strength = password.error.length = 0;
 			}
 			if (confirm_password.value) {
-				const event = new Event('input', {});
+				const event = new Event("input", {});
 				confirm_password_element?.dispatchEvent(event);
 			}
 		},
@@ -204,14 +208,14 @@
 		event.preventDefault();
 		handle_submit();
 	}}
-	class="flex h-full flex-col gap-10 md:gap-0 justify-between"
+	class="flex h-full flex-col justify-between gap-10 md:gap-0"
 >
-	<div class="flex flex-col gap-2 md:gap-1 items-start">
+	<div class="flex flex-col items-start gap-2 md:gap-1">
 		<a
 			href={"/anime"}
-			class="btn btn-link h-max min-h-max p-0 md:gap-[0.5vw] text-base md:text-[1.25vw]"
+			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<Arrow variant="fill" class="-rotate-90 size-4 md:size-[1.25vw]" />
+			<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
 			Home
 		</a>
 		<span
@@ -261,15 +265,15 @@
 				<div class="grid grid-cols-4 gap-[1.5vw] md:gap-[0.75vw]">
 					{#each Array(password_strength) as _, index}
 						{@const backgrounds = [
-							'bg-primary opacity-60',
-							'bg-primary opacity-70',
-							'bg-primary opacity-80',
-							'bg-primary opacity-90'
+							"bg-primary opacity-60",
+							"bg-primary opacity-70",
+							"bg-primary opacity-80",
+							"bg-primary opacity-90"
 						]}
 						<span
 							class={cn(
 								backgrounds[index],
-								'col-span-1 h-[1.75vw] w-full rounded-[0.5vw] md:h-[0.625vw] md:rounded-[0.1875vw]'
+								"col-span-1 h-[1.75vw] w-full rounded-[0.5vw] md:h-[0.625vw] md:rounded-[0.1875vw]"
 							)}
 						></span>
 					{/each}
@@ -281,7 +285,9 @@
 				</div>
 
 				<div class="mt-3 md:mt-[1.25vw]">
-					<span class="text-surface-50 text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]">
+					<span
+						class="text-surface-50 text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]"
+					>
 						must contain
 					</span>
 

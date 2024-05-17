@@ -89,17 +89,19 @@
 			event.preventDefault();
 			await handle_submit();
 		}}
-		class="flex h-full flex-col gap-10 md:gap-0 justify-between"
+		class="flex h-full flex-col justify-between gap-10 md:gap-0"
 	>
-		<div class="flex flex-col gap-2 md:gap-1 items-start">
+		<div class="flex flex-col items-start gap-2 md:gap-1">
 			<a
 				href={"/anime"}
-				class="btn btn-link h-max min-h-max p-0 md:gap-[0.5vw] text-base md:text-[1.25vw]"
+				class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<Arrow variant="fill" class="-rotate-90 size-4 md:size-[1.25vw]" />
+				<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
 				Home
 			</a>
-			<span class="flex items-center text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.5vw]">hey there! let's login
+			<span
+				class="flex items-center text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.5vw]"
+				>hey there! let's login
 			</span>
 		</div>
 
@@ -168,7 +170,7 @@
 				>
 				<a
 					href="./register"
-					class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"
+					class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"
 				>
 					Register
 				</a>

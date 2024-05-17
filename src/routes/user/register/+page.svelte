@@ -6,11 +6,7 @@
 	const form_second = import("./2.svelte");
 	const form_third = import("./3.svelte");
 
-	const pages = [
-		form_first,
-		form_second,
-		form_third
-	];
+	const pages = [form_first, form_second, form_third];
 	// current page
 	let page = $state(0);
 
@@ -26,7 +22,7 @@
 		if (page === pages.length - 1) {
 			// end of the page. do something.. Maybe seek for anime girls with stockings and leggings
 			// XD
-			console.log('ho ho ho, Wheres my anime girl?');
+			console.log("ho ho ho, Wheres my anime girl?");
 		} else {
 			// If we're not on the last page, store our data and increase a step
 			if (pages_state) {
@@ -49,12 +45,6 @@
 <!-- We do not need skeleton loader or anything, since this is not hydratable -->
 {#await current_page then Module}
 	{#if Module}
-		<svelte:component
-			this={Module.default}
-			{on_gotopage}
-			{on_submit}
-			{page}
-			{pages_state}
-		/>
+		<svelte:component this={Module.default} {on_gotopage} {on_submit} {page} {pages_state} />
 	{/if}
 {/await}
