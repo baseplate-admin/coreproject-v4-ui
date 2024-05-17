@@ -70,6 +70,7 @@
 		"marked": "^12.0.2",
 		"marked-emoji": "^1.4.0",
 		"marked-highlight": "^2.1.1",
+		"marked-katex-extension": "^5.0.1",
 		"marked-mangle": "^1.1.7",
 		"marked-smartypants": "^1.1.6",
 		"marked-xhtml": "^1.0.9",
@@ -100,8 +101,8 @@
 		"zod": "^3.23.8"
 	},
 	"optionalDependencies": {
-		"@rollup/rollup-linux-x64-gnu": "4.17.2",
 		"@rollup/rollup-darwin-arm64": "4.17.2",
+		"@rollup/rollup-linux-x64-gnu": "4.17.2",
 		"@rollup/rollup-win32-arm64-msvc": "4.17.2"
 	}
 }
