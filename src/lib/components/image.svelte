@@ -46,6 +46,7 @@
 
 				if (imageData) {
 					const colors = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
+					console.log(colors);
 					dominant_color = `rgba(${colors[0][0]},${colors[0][1]},${colors[0][2]}, 0.15)`;
 					image_loaded = true;
 				}
@@ -54,4 +55,7 @@
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={cn(klass)}></canvas>
+<canvas
+	bind:this={canvas_element}
+	class={cn(klass)}
+></canvas>
