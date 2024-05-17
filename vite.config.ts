@@ -3,9 +3,9 @@ import { defineConfig } from "vitest/config";
 import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
- 	optimizeDeps: {
+	optimizeDeps: {
 		exclude: ["color-thief-wasm-web"]
- 	},
+	},
 	plugins: [
 		sveltekit(),
 		visualizer({

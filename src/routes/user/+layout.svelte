@@ -59,7 +59,11 @@
 					<img
 						transition:blur
 						src={picked_anime.cover}
-						alt="{picked_anime.name} image"
+						alt=""
+						onerror={(event) => {
+							const target = event.currentTarget as HTMLImageElement;
+							target.alt = `${picked_anime?.name} image`;
+						}}
 						class="absolute h-full w-full object-cover transition-all"
 					/>
 				{/key}
@@ -83,15 +87,19 @@
 						>continue on animecore, mangacore and soundcore with same account.</span
 					>
 				</div>
-				<div class="hidden absolute bottom-[1.85vw] left-[2vw] top-auto md:flex flex-col gap-[0.75vw]">
-					<span class="font-semibold uppercase leading-none tracking-widest text-white/75 text-[0.75vw]">
+				<div
+					class="absolute bottom-[1.85vw] left-[2vw] top-auto hidden flex-col gap-[0.75vw] md:flex"
+				>
+					<span
+						class="text-[0.75vw] font-semibold uppercase leading-none tracking-widest text-white/75"
+					>
 						Background from anime
 					</span>
 					<div class="grid">
 						{#key picked_anime}
 							<div
 								transition:blur
-								class="col-start-1 row-start-1 font-bold uppercase leading-none tracking-widest text-warning text-[1vw] flex items-center gap-2"
+								class="col-start-1 row-start-1 flex items-center gap-2 text-[1vw] font-bold uppercase leading-none tracking-widest text-warning"
 							>
 								{picked_anime.name}
 								<button
@@ -112,17 +120,19 @@
 	</div>
 
 	<div class="absolute inset-x-0 self-end md:static md:self-auto">
-		<div class="md:hidden p-7 pb-5">
+		<div class="p-7 pb-5 md:hidden">
 			{#if picked_anime}
 				<div class="flex flex-col gap-2">
-					<span class="text-[2.25vw] font-semibold uppercase leading-none tracking-widest text-white/75">
+					<span
+						class="text-[2.25vw] font-semibold uppercase leading-none tracking-widest text-white/75"
+					>
 						Background from anime
 					</span>
 					<div class="grid">
 						{#key picked_anime}
 							<div
 								transition:blur
-								class="col-start-1 row-start-1 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning flex items-center gap-2"
+								class="col-start-1 row-start-1 flex items-center gap-2 text-[3vw] font-bold uppercase leading-none tracking-widest text-warning"
 							>
 								{picked_anime.name}
 								<button

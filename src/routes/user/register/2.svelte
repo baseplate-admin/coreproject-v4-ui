@@ -1,12 +1,12 @@
 <script lang="ts">
 	import Info from "$icons/shapes/info.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte"
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
 
 	import { z } from "zod";
 	import Markdown from "$components/markdown.svelte";
 	import { handle_input } from "$functions/forms/handle_input";
-	import _ from 'lodash-es';
+	import _ from "lodash-es";
 	import { OTP_LENGTH } from "$constants/otp";
 	// import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { autofocus } from "$functions/forms/autofocus";
@@ -14,16 +14,20 @@
 
 	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
-	let combined_state: { [key: string]: string } = $derived(Object.assign({}, ...Object.values(pages_state)));
+	let combined_state: { [key: string]: string } = $derived(
+		Object.assign({}, ...Object.values(pages_state))
+	);
 
 	// bind:value needs to be defined first to bind
 	// otherwise shows: typeerror $.get(...) is undefined
 	let username = $state({ value: "", error: new Array<string>() }),
 		otp = $state({ value: "", error: new Array<string>() });
 
-	let form_is_submitable = $derived.by(() => [username, otp].every((field) => {
-		return field.value && field.error.length === 0;
-	}));
+	let form_is_submitable = $derived.by(() =>
+		[username, otp].every((field) => {
+			return field.value && field.error.length === 0;
+		})
+	);
 
 	$effect(() => {
 		// update only if state exists on combined_state
@@ -32,13 +36,13 @@
 				value: combined_state.username,
 				error: new Array<string>()
 			};
-		};
+		}
 		if (combined_state.otp) {
 			otp = {
 				value: combined_state.otp,
 				error: new Array<string>()
 			};
-		};
+		}
 	});
 
 	const button_mapping = [
@@ -61,10 +65,10 @@
 				event: event,
 				schema: z
 					.string()
-					.min(4, '**Username** must be at least 4 characters long')
+					.min(4, "**Username** must be at least 4 characters long")
 					.refine(
 						(val) => /(?=.*^[a-zA-Z0-9_-]+#[0-9]{4}$)/.test(val),
-						'**Username** is not valid for this regex `^[a-zA-Z0-9_-]+#[0-9]{4}$`'
+						"**Username** is not valid for this regex `^[a-zA-Z0-9_-]+#[0-9]{4}$`"
 					),
 				error_field: username
 			});
@@ -101,7 +105,7 @@
 				event: event,
 				schema: z
 					.string()
-					.refine((val) => /^\d+$/.test(val), '**OTP** must be a number')
+					.refine((val) => /^\d+$/.test(val), "**OTP** must be a number")
 					.refine(
 						(val) => new RegExp(`^\\d{${OTP_LENGTH}}$`).test(val),
 						`**OTP** must contain ${OTP_LENGTH} numbers`
@@ -121,17 +125,19 @@
 <form
 	use:autofocus
 	onsubmit={handle_submit}
-	class="flex h-full flex-col gap-10 md:gap-0 justify-between"
+	class="flex h-full flex-col justify-between gap-10 md:gap-0"
 >
-	<div class="flex flex-col gap-2 md:gap-1 items-start">
+	<div class="flex flex-col items-start gap-2 md:gap-1">
 		<a
 			href={"/anime"}
-			class="btn btn-link h-max min-h-max p-0 md:gap-[0.5vw] text-base md:text-[1.25vw]"
+			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<Arrow variant="fill" class="-rotate-90 size-4 md:size-[1.25vw]" />
+			<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
 			Home
 		</a>
-		<span class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]">
+		<span
+			class="text-lg font-bold uppercase leading-none tracking-widest text-warning md:text-[1.25vw]"
+		>
 			choose your username and verify
 		</span>
 	</div>
@@ -146,7 +152,7 @@
 				name="username"
 				autocomplete="off"
 				placeholder="Username eg: sora#4444"
-				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
+				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
@@ -166,7 +172,7 @@
 				oninput={handle_otp_input}
 				name="otp"
 				placeholder="One Time Password"
-				class="border-neutral focus:border-primary w-full rounded-xl border-2 bg-transparent px-5 text-base font-medium outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 md:rounded-[0.75vw] md:border-[0.2vw] p-3.5 md:px-[1.1vw] md:py-[0.8vw] leading-none md:text-[1.1vw]"
+				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
@@ -199,7 +205,7 @@
 			</span>
 			<a
 				href={"/login"}
-				class="btn btn-link p-0 size-max min-h-full text-base leading-none md:text-[1.1vw]"
+				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"
 			>
 				Login
 			</a>
@@ -207,7 +213,7 @@
 		<button
 			type="submit"
 			class:btn-disabled={!form_is_submitable}
-			class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:py-[1vw] md:px-[1.25vw] md:text-[0.95vw]"
+			class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 		>
 			<span>Continue</span>
 			<ArrowUpRight class="w-4 rotate-45 md:w-[1vw]" />
