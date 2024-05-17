@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
-	import Star from "$icons/shapes/star.svelte";
 	import init, { get_color_thief } from "../../../node_modules/color-thief-wasm-web";
 
 	type Props = {
