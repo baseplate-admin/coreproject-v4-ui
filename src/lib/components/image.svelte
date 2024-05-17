@@ -1,24 +1,38 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
-	import init, { get_color_thief } from "color-thief-wasm-web";
+	import init, { get_color_thief } from "../../../node_modules/color-thief-wasm-web";
 
-	// Exports
+	type Props = {
+		src: string;
+		class?: string;
+		on_color_theif: (color: string) => void;
+	};
+
 	let {
 		src,
-		dominant_color,
-		class: klass
-	}: { src: string } & Partial<{ dominant_color: string; class: string }> = $props();
+		class: klass,
+		on_color_theif
+	}: Props = $props();
 
+	let dominant_color = $state("");
 	let canvas_element = $state<HTMLCanvasElement>();
-	let image_loaded = $state<boolean>(false);
+	let image_loaded = $state(false);
 
 	$effect(() => {
-		let img = document.createElement("img");
+		if (!dominant_color) return;
+		on_color_theif(dominant_color);
+	});
+
+	$effect(() => {
+		if (image_loaded) return;
+
+		let img = new Image();
 		img.crossOrigin = "anonymous";
+		img.src = src;
 		img.onload = () => {
 			init().then(() => {
 				if (!canvas_element) return;
-				let ctx = canvas_element?.getContext("2d");
+				let ctx = canvas_element.getContext("2d");
 
 				canvas_element.width = img.width;
 				canvas_element.height = img.height;
@@ -37,9 +51,7 @@
 				}
 			});
 		};
-
-		img.src = src;
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={cn(klass)}> </canvas>
+<canvas bind:this={canvas_element} class={cn(klass)}></canvas>

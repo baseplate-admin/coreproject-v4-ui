@@ -4,7 +4,7 @@ import { visualizer } from "rollup-plugin-visualizer";
 
 export default defineConfig({
 	optimizeDeps: {
-		exclude: ["color-thief-wasm-web"]
+		exclude: ["color-thief-wasm-web"],
 	},
 	plugins: [
 		sveltekit(),
