@@ -24,6 +24,7 @@
 
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
+	import { t } from "$lib/translations";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -304,7 +305,7 @@
 		<div class="hidden w-[21.5625vw] md:block">
 			<div class="flex items-center justify-between pr-[0.75vw]">
 				<div class="flex items-center gap-[0.625vw]">
-					<span class="text-[1.25vw] font-bold">Latest Episodes</span>
+					<span class="text-[1.25vw] font-bold">{$t("home.title.latest_episodes")}</span>
 					<button
 						class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 					>
@@ -396,7 +397,7 @@
 	</div>
 	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2.1875vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
-			<span class="text-lg font-bold md:text-[1.25vw]">My List</span>
+			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.title.my_list")}</span>
 			<button
 				class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
