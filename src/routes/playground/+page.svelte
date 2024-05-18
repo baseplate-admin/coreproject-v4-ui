@@ -1,9 +1,14 @@
 <script lang="ts">
 	import Image from "$components/image.svelte";
+	import { rgb_hex } from "$functions/rgb_hex";
 
 	let color_palette = $state<number[][]>([]);
+	let box_shadow_hex = $state("");
+
 	$effect(() => {
-		$inspect(color_palette);
+		if (color_palette.length === 0) return;
+		$inspect(color_palette.length);
+		box_shadow_hex = rgb_hex(color_palette[0], 1/5);
 	});
 </script>
 
@@ -11,7 +16,8 @@
 	<!-- Hide element to prevent FOUC -->
 	<div
 		class="w-1/2 transition-opacity duration-500"
-		style="box-shadow: rgba({color_palette.join(',')},10) 50 0px 1vw 11vw 0px;"
+		style="box-shadow: {box_shadow_hex} 0px 1vw 11vw 0px;"
+		class:opacity-0={!box_shadow_hex}
 	>
 		<Image
 			src="https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
