@@ -20,7 +20,7 @@ export default defineConfig({
 		},
 		chunkSizeWarningLimit: 2048,
 		emptyOutDir: true,
-		target: "es2022",
+		target: "esnext",
 		cssTarget: "es2015",
 		minify: "terser"
 	},
