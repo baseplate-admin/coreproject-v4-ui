@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
-	import init, { get_color_thief } from "../../../node_modules/color-thief-wasm-web";
+	import init, { get_color_thief } from "color-thief-wasm-web";
 
 	type Props = {
 		src: string;
@@ -8,11 +8,7 @@
 		on_color_theif: (palette: number[][]) => void;
 	};
 
-	let {
-		src,
-		class: klass,
-		on_color_theif
-	}: Props = $props();
+	let { src, class: klass, on_color_theif }: Props = $props();
 
 	let color_palette = $state<number[][]>();
 	let canvas_element = $state<HTMLCanvasElement>();
@@ -49,7 +45,4 @@
 	});
 </script>
 
-<canvas
-	bind:this={canvas_element}
-	class={cn(klass)}
-></canvas>
+<canvas bind:this={canvas_element} class={cn(klass)}></canvas>
