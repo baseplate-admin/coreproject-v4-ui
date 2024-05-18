@@ -5,7 +5,7 @@
 	let {
 		src,
 		class: klass,
-		color_palette
+		color_palette = $bindable()
 	}: {
 		src: string;
 		class?: string;
