@@ -15,10 +15,6 @@
 	let canvas_element = $state<HTMLCanvasElement>();
 	let image_loaded = $state(false);
 
-	function rgb_to_hex(r: number, g: number, b: number) {
-		return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	}
-
 	$effect(() => {
 		if (image_loaded) return;
 
