@@ -9,15 +9,15 @@
 	}: {
 		src: string;
 		class?: string;
-		color_palette: string[];
+		color_palette: number[][];
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
 	let image_loaded = $state(false);
 
 	function rgb_to_hex(r: number, g: number, b: number) {
-	    return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
-	};
+		return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
+	}
 
 	$effect(() => {
 		if (image_loaded) return;
@@ -41,8 +41,13 @@
 				let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
 				if (imageData) {
-					const colors_arr: [number, number, number][] = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
-					color_palette = colors_arr.map((color_codes) => rgb_to_hex(...color_codes));
+					const colors_arr: [number, number, number][] = get_color_thief(
+						new Uint8Array(imageData.data),
+						64 * 64,
+						10,
+						5
+					);
+					color_palette = colors_arr;
 					image_loaded = true;
 				}
 			});
