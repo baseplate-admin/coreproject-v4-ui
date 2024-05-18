@@ -19,7 +19,6 @@
 		<Image
 			src="https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
 			class="size-full"
-			bind:color_palette
 		/>
 	</div>
 </div>

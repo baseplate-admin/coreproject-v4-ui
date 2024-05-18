@@ -17,7 +17,9 @@
 	import { mangle } from "marked-mangle";
 	import { markedXhtml } from "marked-xhtml";
 	import { markedSmartypants } from "marked-smartypants";
+	import markedKatex from "marked-katex-extension";
 	import { cn } from "$functions/classnames";
+
 	import hljs from "highlight.js/lib/core";
 
 	const register = async () => {
@@ -256,6 +258,10 @@
 		markedXhtml(),
 		// Mangle plugin
 		mangle(),
+		// Katex
+		markedKatex({
+			throwOnError: false
+		}),
 		// Marked defaults
 		{
 			gfm: true
