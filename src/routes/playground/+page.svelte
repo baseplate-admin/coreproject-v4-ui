@@ -6,9 +6,10 @@
 	$effect(() => {
 		$inspect(dominant_color);
 	});
+	let color_palette = $state<number[][]>();
 </script>
 
-<div class="h-dvh w-dvw grid place-items-center">
+<div class="grid h-dvh w-dvw place-items-center">
 	<!-- Hide element to prevent FOUC -->
 	<div
 		class="w-1/2 transition-opacity duration-500"
@@ -18,7 +19,7 @@
 		<Image
 			src="https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
 			class="size-full"
-			on_color_theif={(palette) => dominant_color = get_color_from_thief(palette[0], 0.25)}
+			bind:color_palette
 		/>
 	</div>
 </div>

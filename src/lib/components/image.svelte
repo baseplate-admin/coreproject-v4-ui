@@ -2,16 +2,18 @@
 	import { cn } from "$functions/classnames";
 	import init, { get_color_thief } from "color-thief-wasm-web";
 
-	type Props = {
+	let {
+		src,
+		class: klass,
+		color_palette
+	}: {
 		src: string;
 		class?: string;
-		on_color_theif: (palette: number[][]) => void;
-	};
+		color_palette: number[][];
+	} = $props();
 
-	let { src, class: klass, on_color_theif }: Props = $props();
-
-	let color_palette = $state<number[][]>();
 	let canvas_element = $state<HTMLCanvasElement>();
+
 	let image_loaded = $state(false);
 
 	$effect(() => {
@@ -37,7 +39,6 @@
 
 				if (imageData) {
 					color_palette = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
-					on_color_theif(color_palette);
 					image_loaded = true;
 				}
 			});
