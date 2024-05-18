@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
-	import init, { get_color_thief } from "color-thief-wasm-web";
+	import init, { get_color_thief } from "../../../node_modules/color-thief-wasm-web";
 
 	type Props = {
 		src: string;
