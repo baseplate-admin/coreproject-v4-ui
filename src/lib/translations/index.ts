@@ -11,7 +11,15 @@ export const config = {
 	translations: {
 		en: { lang },
 		jp: { lang },
-	}
+	},
+	loaders: [
+		{
+			locale: "en",
+			key: "home",
+			routes: ["/anime"],
+			loader: async () => (await import("./en/home.json")).default
+		},
+	]
 } satisfies Config;
 
 export const { t, loading, locales, locale, translations, loadTranslations, addTranslations, setLocale, setRoute } = new i18n(config);
