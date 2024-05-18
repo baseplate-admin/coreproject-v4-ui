@@ -11,7 +11,7 @@ export function rgb_hex(rgb: number[], alpha: number) {
 	} else if (alpha >= 0 && alpha <= 100) {
 		alpha = Math.round(255 * alpha / 100);
 	} else {
-		throw new TypeError(`Expected alpha value (${alpha}) as a fraction or percentage`);
+		throw new TypeError(`Expected alpha value (${alpha}) as a fraction or number`);
 	};
 
 	const new_alpha = (alpha | 1 << 8).toString(16).slice(1);
