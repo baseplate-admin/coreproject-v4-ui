@@ -2,7 +2,7 @@ import i18n, { type Config } from "sveltekit-i18n";
 import { dev } from "$app/environment";
 import lang from "./lang.json";
 
-export const defaultLocale: keyof typeof lang = "bn";
+export const defaultLocale: keyof typeof lang = "en";
 
 export const config = {
 	log: {
