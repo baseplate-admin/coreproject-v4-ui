@@ -1,5 +1,4 @@
 import { locales, loadTranslations, translations, default_locale } from "$lib/translations";
-import lang from  "$lib/translations/lang.json"
 import type { ServerLoad } from "@sveltejs/kit";
 import type { Translations } from "../../node_modules/sveltekit-i18n/node_modules/@sveltekit-i18n/base";
 
