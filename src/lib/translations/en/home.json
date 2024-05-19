@@ -11,5 +11,20 @@
 	"navbar": {
 		"login": "Log in",
 		"register": "Register"
+	},
+	"latest_episodes": {
+		"title": "Latest Episodes",
+		"cta": "Full List",
+		"options": {
+			"desc": "Showing recently aired episodes from your Anime List",
+			"cta": "Change to All"
+		}
+	},
+	"my_list": {
+		"title": "My List",
+		"cta": "Full List",
+		"options": {
+			"watching": "Watching"
+		}
 	}
 }
