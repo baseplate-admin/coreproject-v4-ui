@@ -14,12 +14,15 @@
 	import Preference from "$icons/shapes/preference.svelte";
 	import CoreProjectLogo from "$icons/shapes/logo.svelte";
 	import VercelHover from "$components/vercel_hover.svelte";
+	import Chevron from "$icons/shapes/chevron.svelte";
+	import Language from "$icons/shapes/language.svelte";
 
 	import { is_authenticated } from "$stores/auth.svelte";
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
+	import lang from "$lib/translations/lang.json";
 
 	// Local
 	const icon_mapping: {
@@ -161,81 +164,99 @@
 						</div>
 					</div>
 				</div>
-				{#if is_authenticated}
-					<div class="dropdown dropdown-end flex">
-						<div tabIndex={0} role="button" class="avatar btn border-none !bg-transparent p-0">
-							<div class="w-12 rounded-lg md:w-[3vw] md:rounded-[0.5vw]">
-								<img
-									alt=""
-									src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-								/>
-							</div>
+				<div class="flex flex-row-reverse items-center md:gap-[1.5vw]">
+					<div class="dropdown dropdown-end">
+						<button class="btn !bg-transparent border-none max-h-max p-0 md:gap-[0.35vw]" aria-label="Language">
+							<Language class="md:size-[1.5vw]" />
+							<Chevron class="md:size-[1vw]" />
+						</button>
+						<div class="dropdown-content flex flex-col items-start rounded-lg bg-base-100 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.35vw] md:text-[0.9vw]">
+							{#each Object.entries(lang) as item}
+								<button class="flex items-center md:gap-[0.5vw] md:p-[0.5vw] hover:bg-primary/25 transition-colors w-full md:rounded-[0.5vw]">
+									<span class="border md:rounded-[0.5vw] font-mono font-bold tracking-widest opacity-50 md:px-[0.5vw] md:py-[0.1vw] md:text-[0.75vw]">
+										{item[0]}
+									</span>
+									<span class=" md:text-[1vw]">{item[1]}</span>
+								</button>
+							{/each}
 						</div>
-						<div
-							role="button"
-							tabIndex={0}
-							class="menu dropdown-content top-14 z-20 min-w-48 rounded-lg bg-base-100 p-4 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.5vw] md:text-[0.9vw]"
-						>
+					</div>
+					{#if is_authenticated}
+						<div class="dropdown dropdown-end flex">
+							<div tabIndex={0} role="button" class="avatar btn border-none !bg-transparent p-0">
+								<div class="w-12 rounded-lg md:w-[3vw] md:rounded-[0.5vw]">
+									<img
+										alt=""
+										src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+									/>
+								</div>
+							</div>
 							<div
-								class="flex flex-col items-start gap-2 leading-none md:gap-[0.35vw] md:p-[0.75vw] md:py-[0.5vw]"
+								role="button"
+								tabIndex={0}
+								class="menu dropdown-content top-14 z-20 min-w-48 rounded-lg bg-base-100 p-4 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.5vw] md:text-[0.9vw]"
 							>
-								<!-- {/* <span class="font-bold capitalize md:text-[1vw]">{username}</span> */} -->
-								<!-- {/* <span class="md:text-[0.75vw]">{email}</span> */} -->
+								<div
+									class="flex flex-col items-start gap-2 leading-none md:gap-[0.35vw] md:p-[0.75vw] md:py-[0.5vw]"
+								>
+									<!-- {/* <span class="font-bold capitalize md:text-[1vw]">{username}</span> */} -->
+									<!-- {/* <span class="md:text-[0.75vw]">{email}</span> */} -->
+								</div>
+								<div class="divider mb-0 mt-1 md:mb-[0.1vw]"></div>
+								<!-- Profile cods -->
 							</div>
-							<div class="divider mb-0 mt-1 md:mb-[0.1vw]"></div>
-							<!-- Profile cods -->
 						</div>
-					</div>
-				{:else}
-					<div class="hidden md:flex md:gap-[0.75vw]">
-						<a
-							href="/user/register"
-							class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
-						>
-							{$t("home.navbar.register")}
-						</a>
-						<a
-							href="/user/login"
-							class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
-						>
-							{$t("home.navbar.login")}
-						</a>
-					</div>
+					{:else}
+						<div class="hidden md:flex md:gap-[0.75vw]">
+							<a
+								href="/user/register"
+								class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
+							>
+								{$t("home.navbar.register")}
+							</a>
+							<a
+								href="/user/login"
+								class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
+							>
+								{$t("home.navbar.login")}
+							</a>
+						</div>
 
-					<div class="dropdown dropdown-end flex md:hidden">
-						<div role="button" class="avatar btn border-none !bg-transparent p-0">
-							<div class="w-12 rounded-lg md:w-[3vw] md:rounded-[0.5vw]">
-								<img
-									alt=""
-									src="https://i.pinimg.com/1200x/a8/2d/aa/a82daa4b726d8f02d8ce28f3e3b3677a.jpg"
-								/>
+						<div class="dropdown dropdown-end flex md:hidden">
+							<div role="button" class="avatar btn border-none !bg-transparent p-0">
+								<div class="w-12 rounded-lg md:w-[3vw] md:rounded-[0.5vw]">
+									<img
+										alt=""
+										src="https://i.pinimg.com/1200x/a8/2d/aa/a82daa4b726d8f02d8ce28f3e3b3677a.jpg"
+									/>
+								</div>
+							</div>
+							<div
+								role="button"
+								class="z-1 menu dropdown-content top-14 flex min-w-36 flex-col gap-3 rounded-lg bg-base-100 p-4"
+							>
+								<li>
+									<a
+										href="/user/login"
+										class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
+									>
+										<Login class="w-4 md:w-[1vw]" />
+										{$t("home.navbar.login")}
+									</a>
+								</li>
+								<li>
+									<a
+										href="/user/register"
+										class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
+									>
+										<Register class="w-4 md:w-[1vw]" />
+										{$t("home.navbar.register")}
+									</a>
+								</li>
 							</div>
 						</div>
-						<div
-							role="button"
-							class="z-1 menu dropdown-content top-14 flex min-w-36 flex-col gap-3 rounded-lg bg-base-100 p-4"
-						>
-							<li>
-								<a
-									href="/user/login"
-									class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
-								>
-									<Login class="w-4 md:w-[1vw]" />
-									{$t("home.navbar.login")}
-								</a>
-							</li>
-							<li>
-								<a
-									href="/user/register"
-									class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
-								>
-									<Register class="w-4 md:w-[1vw]" />
-									{$t("home.navbar.register")}
-								</a>
-							</li>
-						</div>
-					</div>
-				{/if}
+					{/if}
+				</div>
 			</div>
 		</header>
 		<div class="flex h-full w-full flex-auto overflow-hidden">
