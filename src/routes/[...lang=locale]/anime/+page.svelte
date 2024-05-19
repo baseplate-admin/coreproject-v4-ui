@@ -24,6 +24,7 @@
 
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
+	import { t } from "$lib/translations";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -133,7 +134,6 @@
 	<div class="flex flex-col justify-between md:flex-row">
 		<!-- LATEST ANIME SECTION-->
 
-		<!-- svelte-ignore deprecated_event_handler -->
 		<div
 			class="relative h-96 w-full md:h-[27.875vw] md:w-[42.1875vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
@@ -304,17 +304,15 @@
 		<div class="hidden w-[21.5625vw] md:block">
 			<div class="flex items-center justify-between pr-[0.75vw]">
 				<div class="flex items-center gap-[0.625vw]">
-					<span class="text-[1.25vw] font-bold">Latest Episodes</span>
-					<button
-						class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
-					>
+					<span class="text-[1.25vw] font-bold">{$t("home.latest_episodes.title")}</span>
+					<button class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]">
 						<Settings class="w-[0.9vw] opacity-75" />
 					</button>
 				</div>
 				<button
 					class="btn btn-neutral min-h-max rounded-[0.3vw] p-0 text-[0.9vw] font-semibold md:h-[2vw] md:px-[0.5vw]"
 				>
-					<span>Full List</span>
+					<span>{$t("home.latest_episodes.cta")}</span>
 					<ArrowUpRight class="w-[1vw]" />
 				</button>
 			</div>
@@ -322,13 +320,12 @@
 
 			<!-- Latest Episodes Eng Here -->
 			<div class="mt-[0.75vw] flex items-center justify-between gap-[2vw] pr-[0.75vw]">
-				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]"
-					>Showing recently aired episodes from your Anime List</span
-				>
-				<button
-					class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning"
-					>Change to All</button
-				>
+				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]">
+					{$t("home.latest_episodes.options.desc")}
+				</span>
+				<button class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning">
+					{$t("home.latest_episodes.options.cta")}
+				</button>
 			</div>
 		</div>
 		<div class="relative mt-[2.75vw] hidden h-[24.5vw] w-[16.625vw] md:block">
@@ -396,7 +393,7 @@
 	</div>
 	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2.1875vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
-			<span class="text-lg font-bold md:text-[1.25vw]">My List</span>
+			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.my_list.title")}</span>
 			<button
 				class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
@@ -404,25 +401,22 @@
 			</button>
 		</div>
 		<div class="flex items-center justify-between">
-			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold">7 anime in Watching</span
-			>
+			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold">
+				7 animes
+			</span>
 			<div class="hidden items-center gap-[1vw] md:flex">
-				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max w-[6.625vw] gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold"
-				>
-					Watching
+				<button class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 md:px-[0.5vw] text-[0.875vw] font-semibold">
+					{$t("home.my_list.options.watching")}
 					<Chevron class="w-[1vw]" />
 				</button>
-				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max w-[5.625vw] gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold"
-				>
-					Full List
+				<button class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 md:px-[0.5vw] text-[0.875vw] font-semibold">
+					{$t("home.my_list.cta")}
 					<ArrowUpRight class="w-[1vw]" />
 				</button>
 			</div>
 			<div class="md:hidden">
 				<button class="btn btn-secondary h-max min-h-max gap-2 p-0 text-sm">
-					See all
+					{$t("home.my_list.cta")}
 					<Chevron class="text-primary-400 w-4 -rotate-90" />
 				</button>
 			</div>
