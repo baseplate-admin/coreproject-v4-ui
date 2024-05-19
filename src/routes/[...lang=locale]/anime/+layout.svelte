@@ -167,14 +167,14 @@
 				<div class="flex flex-row-reverse items-center md:gap-[1.5vw]">
 					<div class="dropdown dropdown-end">
 						<button class="btn !bg-transparent border-none max-h-max p-0 md:gap-[0.35vw]" aria-label="Language">
-							<Language class="md:size-[1.5vw]" />
+							<Language class="md:size-[1.25vw]" />
 							<Chevron class="md:size-[1vw]" />
 						</button>
-						<div class="dropdown-content flex flex-col items-start rounded-lg bg-base-100 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.35vw] md:text-[0.9vw]">
+						<div class="dropdown-content flex flex-col md:gap-[0.25vw] items-start rounded-lg bg-base-100 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.35vw] md:text-[0.9vw]">
 							{#each Object.entries(lang) as item}
-								<button class="flex items-center md:gap-[0.5vw] md:p-[0.5vw] hover:bg-primary/25 transition-colors w-full md:rounded-[0.5vw]">
-									<span class="border md:rounded-[0.5vw] font-mono font-bold tracking-widest opacity-50 md:px-[0.5vw] md:py-[0.1vw] md:text-[0.75vw]">
-										{item[0]}
+								<button class="flex items-center md:gap-[0.5vw] md:p-[0.5vw] md:py-[0.35vw] hover:bg-primary/15 w-full md:rounded-[0.5vw]">
+									<span class="md:rounded-[0.5vw] font-mono font-bold tracking-widest opacity-75 md:text-[0.75vw]">
+										&lt;{item[0]}&gt;
 									</span>
 									<span class=" md:text-[1vw]">{item[1]}</span>
 								</button>
