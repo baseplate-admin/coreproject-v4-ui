@@ -2,9 +2,9 @@ import { locales } from '$lib/translations';
 import type { ParamMatcher } from '@sveltejs/kit';
 
 export const match: ParamMatcher = (param) => {
-  const definedLocales = locales.get();
-  const paths = [...definedLocales, ''];
-  const slashPaths = paths.map((l) => `${l}/`);
+  const defined_locales = locales.get();
+  const paths = [...defined_locales, ''];
+  const slash_paths = paths.map((l) => `${l}/`);
 
-  return [...paths, ...slashPaths].includes(param);
+  return [...paths, ...slash_paths].includes(param);
 }
