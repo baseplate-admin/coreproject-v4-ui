@@ -1,6 +1,15 @@
 {
-	"title": {
-		"latest_episodes": "সর্বশেষ হালনাগাদ হয়েছে",
-		"my_list": "আমার তালিকা"
+	"sidebar": {
+		"home": "হোম",
+		"explore": "অন্বেষণ",
+		"list": "তালিকা",
+		"schedule": "সময়সূচী",
+		"forum": "ফোরাম",
+		"settings": "সেটিংস",
+		"misc": "বিবিধ"
+	},
+	"navbar": {
+		"login": "লগ ইন",
+		"register": "নিবন্ধন"
 	}
 }

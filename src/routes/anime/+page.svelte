@@ -134,7 +134,6 @@
 	<div class="flex flex-col justify-between md:flex-row">
 		<!-- LATEST ANIME SECTION-->
 
-		<!-- svelte-ignore deprecated_event_handler -->
 		<div
 			class="relative h-96 w-full md:h-[27.875vw] md:w-[42.1875vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
@@ -305,7 +304,7 @@
 		<div class="hidden w-[21.5625vw] md:block">
 			<div class="flex items-center justify-between pr-[0.75vw]">
 				<div class="flex items-center gap-[0.625vw]">
-					<span class="text-[1.25vw] font-bold">{$t("home.title.latest_episodes")}</span>
+					<span class="text-[1.25vw] font-bold">Latest Episode</span>
 					<button
 						class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 					>
@@ -397,7 +396,7 @@
 	</div>
 	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2.1875vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
-			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.title.my_list")}</span>
+			<span class="text-lg font-bold md:text-[1.25vw]">My List</span>
 			<button
 				class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>

@@ -2,7 +2,7 @@ import i18n, { type Config } from "sveltekit-i18n";
 import { dev } from "$app/environment";
 import lang from "./lang.json";
 
-export const defaultLocale = "jp";
+export const defaultLocale: keyof typeof lang = "en";
 
 export const config = {
 	log: {
@@ -11,7 +11,6 @@ export const config = {
 	translations: {
 		bn: { lang },
 		en: { lang },
-		jp: { lang }
 	},
 	loaders: [
 		{
@@ -21,23 +20,11 @@ export const config = {
 			loader: async () => (await import("./en/home.json")).default
 		},
 		{
-			locale: "jp",
-			key: "home",
-			routes: ["/anime"],
-			loader: async () => (await import("./jp/home.json")).default
-		},
-		{
 			locale: "bn",
 			key: "home",
 			routes: ["/anime"],
 			loader: async () => (await import("./bn/home.json")).default
 		},
-		{
-			locale: "hi",
-			key: "home",
-			routes: ["/anime"],
-			loader: async () => (await import("./hi/home.json")).default
-		}
 	]
 } satisfies Config;
 

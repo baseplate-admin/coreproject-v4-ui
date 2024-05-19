@@ -19,6 +19,8 @@
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
+	import { t } from "$lib/translations";
+
 	// Local
 	const icon_mapping: {
 		// Top,middle,bottom
@@ -94,7 +96,7 @@
 				},
 				url: undefined
 			},
-			"misc.": {
+			misc: {
 				icon: {
 					component: Misc,
 					class: "w-[1.25vw]"
@@ -190,13 +192,13 @@
 							href="/user/register"
 							class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
 						>
-							Register
+							{$t("home.navbar.register")}
 						</a>
 						<a
 							href="/user/login"
 							class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
 						>
-							Log in
+							{$t("home.navbar.login")}
 						</a>
 					</div>
 
@@ -219,7 +221,7 @@
 									class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 								>
 									<Login class="w-4 md:w-[1vw]" />
-									Log in
+									{$t("home.navbar.login")}
 								</a>
 							</li>
 							<li>
@@ -228,7 +230,7 @@
 									class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 								>
 									<Register class="w-4 md:w-[1vw]" />
-									Register
+									{$t("home.navbar.register")}
 								</a>
 							</li>
 						</div>
@@ -297,9 +299,9 @@
 														<svelte:component this={item_icon.component} class={item_icon.class} />
 													</icon>
 
-													<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]"
-														>{item_name}</span
-													>
+													<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
+														{$t(`home.sidebar.${item_name}`)}
+													</span>
 												</div>
 											{/if}
 										</div>
@@ -319,7 +321,7 @@
 							>
 								<svelte:component this={item_icon.component} class={item_icon.class} />
 								<span class="!m-0 text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
-									{item_name}
+									{$t(`home.sidebar.${item_name}`)}
 								</span>
 							</button>
 						{/each}
