@@ -2,13 +2,6 @@
 	import Chevron from "$icons/shapes/chevron.svelte";
 	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Chat from "$icons/shapes/chat.svelte";
-	import Recent from "$icons/shapes/recent.svelte";
-	import Notification from "$icons/shapes/notifications.svelte";
-	import Language from "$icons/shapes/language.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import Moon from "$icons/shapes/moon.svelte";
-	import CoreProjectText from "$icons/text/core_project_text.svelte";
 
 	import type { LatestAnimes } from "$types/lastest_anime";
 
@@ -25,6 +18,9 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
+	import Image from "$components/image.svelte";
+	import rgbHex from "rgb-hex";
+	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -128,14 +124,58 @@
 
 		progress_value = value;
 	});
+
+	const latest_episodes: {
+		id: number;
+		cover: string;
+		banner: string;
+		title: string;
+		ep_number: number;
+		timestamp: string;
+	}[] = [
+		{
+			id: 1,
+			cover: "/images/mock/cover/one_piece.webp",
+			banner: "/images/mock/banner/one_piece.avif",
+			title: "One Piece",
+			ep_number: 20000,
+			timestamp: "1 hour ago", // TODO: format time
+		},
+		{
+			id: 2,
+			cover: "/images/mock/cover/jjk.webp",
+			banner: "/images/mock/banner/jjk.jpg",
+			title: "Jujutsu Kaisen season 2",
+			ep_number: 5,
+			timestamp: "2 hour ago", // TODO: format time
+		},
+		{
+			id: 3,
+			cover: "/images/mock/cover/demon_slayer_training.webp",
+			banner: "/images/mock/banner/demon_slayer_training.avif",
+			title: "Demon Slayer Hashira Training Arc",
+			ep_number: 2,
+			timestamp: "2 hour ago", // TODO: format time
+		},
+		{
+			id: 4,
+			cover: "/images/mock/cover/kaiju_no_8.jpg",
+			banner: "/images/mock/banner/kaiju_no_8.webp",
+			title: "Kaiju no.8",
+			ep_number: 1,
+			timestamp: "3 hour ago", // TODO: format time
+		}
+	];
+	// state for latest_episodes color palette
+	const latest_episodes_color_palette_mapping: {
+		[key: number]: [number, number, number][];
+	} = $state({});
 </script>
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
-	<div class="flex flex-col justify-between md:flex-row">
-		<!-- LATEST ANIME SECTION-->
-
+	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div
-			class="relative h-96 w-full md:h-[27.875vw] md:w-[42.1875vw]"
+			class="relative h-96 w-full md:h-[28.75vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 			onswipe={swipe_handler}
 			bind:this={main_hero_slider_element}
@@ -184,25 +224,17 @@
 							<div
 								class="flex flex-wrap items-center gap-2 py-2 text-xs font-semibold text-white/90 md:gap-[0.65vw] md:pb-0 md:pt-[0.5vw] md:text-[0.9375vw]"
 							>
-								<span class="leading-[1.125vw]">
-									{anime.type}
-								</span>
+								<span class="leading-[1.125vw]">{anime.type}</span>
 								<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
-								<span class="leading-[1.125vw]">
-									{anime.episodes} eps
-								</span>
+								<span class="leading-[1.125vw]">{anime.episodes} eps</span>
 								<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
 								<span class="leading-[1.125vw]">Completed</span>
 								<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
-								<span class="capitalize leading-[1.125vw]">
-									{formated_aired_on}
-								</span>
+								<span class="capitalize leading-[1.125vw]">{formated_aired_on}</span>
 								<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
-								<span class="leading-[1.125vw]">
-									{anime.studio}
-								</span>
+								<span class="leading-[1.125vw]">{anime.studio}</span>
 								<div>
-									<anime-genres class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
+									<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
 										{#each anime.genres as genre}
 											<span
 												class="rounded-lg bg-secondary p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
@@ -210,7 +242,7 @@
 												{genre}
 											</span>
 										{/each}
-									</anime-genres>
+									</div>
 
 									<ScrollArea
 										gradient_mask
@@ -280,7 +312,8 @@
 
 			<button
 				class="btn btn-primary absolute -left-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				onclick={() => {
+				onclick={(event) => {
+					event.preventDefault();
 					timer?.reset();
 					timer?.start();
 					minus_one_to_main_hero_slide_active_index();
@@ -299,103 +332,60 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-
-		<!-- LATEST ANIME SECTION ENDS HERE -->
-		<div class="hidden w-[21.5625vw] md:block">
-			<div class="flex items-center justify-between pr-[0.75vw]">
-				<div class="flex items-center gap-[0.625vw]">
-					<span class="text-[1.25vw] font-bold">{$t("home.latest_episodes.title")}</span>
-					<button
-						class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
-					>
-						<Settings class="w-[0.9vw] opacity-75" />
-					</button>
-				</div>
-				<button
-					class="btn btn-neutral min-h-max rounded-[0.3vw] p-0 text-[0.9vw] font-semibold md:h-[2vw] md:px-[0.5vw]"
+		<div class="flex flex-col md:gap-[1vw] md:h-[24vw]">
+			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
+			<div class="flex size-full md:gap-[0.5vw]">
+				<div
+					class="snap-y grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] scroll-smooth overflow-y-scroll md:pr-[1.5vw] [scrollbar-color:rgba(255,255,255,0.12)transparent]"
+					class:scrollbar-none={IS_CHROMIUM}
 				>
-					<span>{$t("home.latest_episodes.cta")}</span>
-					<ArrowUpRight class="w-[1vw]" />
-				</button>
-			</div>
-			<!-- Latest Episodes Start here-->
+					{#each latest_episodes as episode}
+						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
+						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
-			<!-- Latest Episodes Eng Here -->
-			<div class="mt-[0.75vw] flex items-center justify-between gap-[2vw] pr-[0.75vw]">
-				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]">
-					{$t("home.latest_episodes.options.desc")}
-				</span>
-				<button
-					class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning"
-				>
-					{$t("home.latest_episodes.options.cta")}
-				</button>
-			</div>
-		</div>
-		<div class="relative mt-[2.75vw] hidden h-[24.5vw] w-[16.625vw] md:block">
-			<div class="absolute h-full w-full rounded-[0.875vw] object-cover object-center">
-				<img
-					class="absolute h-full w-full rounded-[0.875vw] object-cover object-center"
-					src="https://i.pinimg.com/originals/b7/25/12/b725125aaebafbcbf2fb3886a55d2d6f.jpg"
-					alt=""
-					loading="lazy"
-				/>
-			</div>
-			<div class="absolute inset-0 bg-gradient-to-t from-secondary from-[1%] to-secondary/25"></div>
-			<div class="absolute inset-0 bg-gradient-to-r from-secondary/50 to-secondary/25"></div>
-			<div class="absolute inset-0 flex flex-col justify-between px-[1.875vw] pt-[2vw] text-accent">
-				<div class="flex flex-col gap-[0.2w]">
-					<span class="text-[1.5vw] font-bold leading-[1vw]">Welcome</span>
-					<span class="text-[0.875vw] font-semibold leading-[2.5vw]">Jump quickly into</span>
-				</div>
-				<div class="mt-[1vw] flex flex-col gap-[0.75vw]">
-					<div class="flex items-center gap-[1vw]">
-						<button class="btn btn-warning h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0">
-							<Chat class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<span class="text-[1vw] font-bold">Forums</span>
-					</div>
-					<div class="flex items-center gap-[1vw]">
-						<button
-							class="bg-surface-50 btn btn-warning h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0"
+						<div
+							class="snap-start w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
+							style="
+								background-image: url({episode.banner});
+								border-color: #{color_palette};
+							"
 						>
-							<Recent class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<span class="text-[1vw] font-bold">Last watched anime</span>
-					</div>
-					<div class="flex items-center gap-[1vw]">
-						<button
-							class="bg-surface-50 btn btn-warning h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0"
-						>
-							<Notification class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<span class="text-[1vw] font-bold">Notifications</span>
-					</div>
+							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+							<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
+								<img
+									src={episode.cover}
+									alt=""
+									class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
+								/>
+								<div class="flex flex-col flex-1 md:gap-[0.15vw]">
+									<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
+									<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
+										<span class="whitespace-nowrap">Ep {episode.ep_number.toString().padStart(2, "0")}</span>
+										<Circle class="md:size-[0.25vw] opacity-75" />
+										<span class="line-clamp-1">{episode.timestamp}</span>
+									</div>
+								</div>
+								<a
+									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
+									style="background-color: #{color_palette};"
+								>
+									<Play class="md:size-[1.25vw]" />
+								</a>
+							</div>
+						</div>
+						<!-- use Image component for just to get color -->
+						<Image
+							src={episode.cover} class="hidden"
+							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
+						/>
+					{/each}
 				</div>
-				<div class="mt-[0.4vw]">
-					<span class="text-[0.9vw] font-semibold leading-none">More</span>
-					<div class="mt-[0.75vw] flex gap-[0.9375vw]">
-						<button class="btn btn-accent h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0">
-							<Language class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<button class="btn btn-accent h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0">
-							<Preference class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<button class="btn btn-accent h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0">
-							<Moon class="text-surface-900 w-[1.25vw]" />
-						</button>
-						<button
-							class="bg-surface-50 btn btn-accent h-[2.5vw] min-h-max w-[2.5vw] rounded-[0.375vw] p-0"
-						>
-							<Settings class="text-surface-900 w-[1.25vw]" />
-						</button>
-					</div>
-				</div>
-				<CoreProjectText />
+				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2.1875vw] md:flex md:w-[68vw] md:p-0">
+	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
 			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.my_list.title")}</span>
 			<button
