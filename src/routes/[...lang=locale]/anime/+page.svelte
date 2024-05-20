@@ -2,13 +2,6 @@
 	import Chevron from "$icons/shapes/chevron.svelte";
 	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Chat from "$icons/shapes/chat.svelte";
-	import Recent from "$icons/shapes/recent.svelte";
-	import Notification from "$icons/shapes/notifications.svelte";
-	import Language from "$icons/shapes/language.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import Moon from "$icons/shapes/moon.svelte";
-	import CoreProjectText from "$icons/text/core_project_text.svelte";
 
 	import type { LatestAnimes } from "$types/lastest_anime";
 
@@ -25,6 +18,8 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
+	import Image from "$components/image.svelte";
+	import rgbHex from "rgb-hex";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -129,26 +124,76 @@
 		progress_value = value;
 	});
 
-	const latest_episodes = [
+	const latest_episodes: {
+		id: number;
+		cover: string;
+		banner: string;
+		title: string;
+		ep_number: number;
+		timestamp: string;
+		color_palette: [number, number, number][]
+	}[] = $state([
 		{
-			cover: "https://coreproject-v3-ui.vercel.app/images/cover/one_piece.webp",
-			banner: "https://coreproject-v3-ui.vercel.app/images/SpyxFamily.avif",
+			id: 1,
+			cover: "/images/mock/cover/one_piece.webp",
+			banner: "/images/mock/banner/one_piece.avif",
 			title: "One Piece",
 			ep_number: 7,
 			timestamp: "1 hour ago", // TODO: format time
+			color_palette: [],
 		},
 		{
-			cover: "https://coreproject-v3-ui.vercel.app/images/cover/jjk.webp",
-			banner: "https://coreproject-v3-ui.vercel.app/images/AharenSan.avif",
+			id: 2,
+			cover: "/images/mock/cover/jjk.webp",
+			banner: "/images/mock/banner/jjk.jpg",
 			title: "Jujutsu Kaisen season 2",
 			ep_number: 2,
 			timestamp: "2 hour ago", // TODO: format time
+			color_palette: [],
 		}
-	];
+	]);
 </script>
 
 {#snippet latest_episodes_card(episode: typeof latest_episodes[0])}
-	<div class="w-full h-max bg-neutral">{episode.title}</div>
+	{#if episode.color_palette.length}
+		<div
+			class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw]"
+			style="
+				background-image: url({episode.banner});
+				border-color: #{rgbHex(...episode.color_palette[0])};
+			"
+		>
+			<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+			<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
+				<img
+					src={episode.cover}
+					alt=""
+					class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
+				/>
+				<div class="flex flex-col flex-1 md:gap-[0.15vw]">
+					<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
+					<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
+						<span>Ep{episode.ep_number}</span>
+						<Circle class="md:size-[0.25vw] opacity-75" />
+						<span>{episode.timestamp}</span>
+					</div>
+				</div>
+				<a
+					href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+					class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw]"
+					style="background-color: #{rgbHex(...episode.color_palette[0])};"
+				>
+					<Play class="md:size-[1.25vw]" />
+				</a>
+			</div>
+		</div>
+	{/if}		
+	<!-- use Image component for just to get color -->
+	<Image
+		src={episode.cover}
+		class="hidden"
+		bind:color_palette={episode.color_palette}
+	/>
 {/snippet}
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
@@ -298,12 +343,12 @@
 		<div class="flex flex-col md:gap-[1vw]">
 			<span class="md:text-[1.35vw] text-accent font-bold">{$t("home.latest_episodes.title")}</span>
 			<div class="flex md:gap-[2vw] size-full">
-				<div class="w-full grid grid-cols-2 md:gap-[1.5vw]">
+				<div class="w-full grid grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
 						{@render latest_episodes_card(episode)}
 					{/each}
 				</div>
-				<div class="bg-neutral h-full md:w-[5vw]"></div>
+				<div class="bg-neutral md:rounded-[0.75vw] h-full md:w-[5vw]"></div>
 			</div>
 		</div>
 	</div>
