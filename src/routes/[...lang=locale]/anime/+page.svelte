@@ -172,6 +172,11 @@
 	} = $state({});
 </script>
 
+<svelte:window
+	onblur={() => timer.pause()}
+	onfocus={() => timer.start()}
+/>
+
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div
@@ -189,18 +194,10 @@
 						role="presentation"
 						class="absolute inset-0 md:bottom-[2vw]"
 						transition:blur
-						onmouseenter={() => {
-							timer?.pause();
-						}}
-						onmouseleave={() => {
-							timer?.start();
-						}}
-						ontouchstart={() => {
-							timer?.pause();
-						}}
-						ontouchend={() => {
-							timer?.start();
-						}}
+						onmouseenter={() => timer.pause()}
+						onmouseleave={() => timer.start()}
+						ontouchstart={() => timer.pause()}
+						ontouchend={() => timer.start()}
 					>
 						<img
 							src={anime.image}
