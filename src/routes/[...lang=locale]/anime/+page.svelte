@@ -158,7 +158,7 @@
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div
-			class="relative h-96 w-full md:h-[27.875vw]"
+			class="relative h-96 w-full md:h-[28.75vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 			onswipe={swipe_handler}
 			bind:this={main_hero_slider_element}
@@ -315,57 +315,59 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-		<div class="flex flex-col md:gap-[1vw]">
+		<div class="flex flex-col md:gap-[1vw] md:h-[24vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="flex size-full md:gap-[2vw]">
-				<div class="grid w-full grid-cols-2 md:gap-[1.25vw]">
-					{#each latest_episodes as episode}
-						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
-						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+				<div class="grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] overflow-y-scroll">
+					{#each {length: 5} as _}
+						{#each latest_episodes as episode}
+							{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
+							{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
-						<div
-							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
-							style="
-								background-image: url({episode.banner});
-								border-color: #{color_palette};
-							"
-						>
-							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
-							<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
-								<img
-									src={episode.cover}
-									alt=""
-									class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
-								/>
-								<div class="flex flex-col flex-1 md:gap-[0.15vw]">
-									<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
-									<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
-										<span class="whitespace-nowrap">Ep {episode.ep_number.toString().padStart(2, "0")}</span>
-										<Circle class="md:size-[0.25vw] opacity-75" />
-										<span class="line-clamp-1">{episode.timestamp}</span>
+							<div
+								class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
+								style="
+									background-image: url({episode.banner});
+									border-color: #{color_palette};
+								"
+							>
+								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+								<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
+									<img
+										src={episode.cover}
+										alt=""
+										class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
+									/>
+									<div class="flex flex-col flex-1 md:gap-[0.15vw]">
+										<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
+										<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
+											<span class="whitespace-nowrap">Ep {episode.ep_number.toString().padStart(2, "0")}</span>
+											<Circle class="md:size-[0.25vw] opacity-75" />
+											<span class="line-clamp-1">{episode.timestamp}</span>
+										</div>
 									</div>
+									<a
+										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+										class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
+										style="background-color: #{color_palette};"
+									>
+										<Play class="md:size-[1.25vw]" />
+									</a>
 								</div>
-								<a
-									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
-									style="background-color: #{color_palette};"
-								>
-									<Play class="md:size-[1.25vw]" />
-								</a>
 							</div>
-						</div>
-						<!-- use Image component for just to get color -->
-						<Image
-							src={episode.cover} class="hidden"
-							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
-						/>
+							<!-- use Image component for just to get color -->
+							<Image
+								src={episode.cover} class="hidden"
+								bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
+							/>
+						{/each}
 					{/each}
 				</div>
 				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2.1875vw] md:flex md:w-[68vw] md:p-0">
+	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
 			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.my_list.title")}</span>
 			<button
