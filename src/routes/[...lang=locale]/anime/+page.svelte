@@ -321,7 +321,7 @@
 				<div class="grid w-full grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
 						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
-						{@const color_palette = latest_episodes_color_palette_mapping[episode.id] && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						<div
 							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
