@@ -137,7 +137,7 @@
 			cover: "/images/mock/cover/one_piece.webp",
 			banner: "/images/mock/banner/one_piece.avif",
 			title: "One Piece",
-			ep_number: 7,
+			ep_number: 20000,
 			timestamp: "1 hour ago", // TODO: format time
 		},
 		{
@@ -145,7 +145,7 @@
 			cover: "/images/mock/cover/jjk.webp",
 			banner: "/images/mock/banner/jjk.jpg",
 			title: "Jujutsu Kaisen season 2",
-			ep_number: 2,
+			ep_number: 5,
 			timestamp: "2 hour ago", // TODO: format time
 		}
 	];
@@ -321,7 +321,7 @@
 				<div class="grid w-full grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
 						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
-						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+						{@const color_palette = latest_episodes_color_palette_mapping[episode.id] && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						<div
 							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
@@ -340,9 +340,9 @@
 								<div class="flex flex-col flex-1 md:gap-[0.15vw]">
 									<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
 									<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
-										<span>Ep{episode.ep_number}</span>
+										<span class="whitespace-nowrap">Ep {episode.ep_number.toString().padStart(2, "0")}</span>
 										<Circle class="md:size-[0.25vw] opacity-75" />
-										<span>{episode.timestamp}</span>
+										<span class="line-clamp-1">{episode.timestamp}</span>
 									</div>
 								</div>
 								<a
