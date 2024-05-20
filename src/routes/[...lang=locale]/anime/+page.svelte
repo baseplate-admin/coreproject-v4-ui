@@ -303,39 +303,37 @@
 			<div class="flex md:gap-[2vw] size-full">
 				<div class="w-full grid grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
-						{#if episode.color_palette.length}
-							<div
-								class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw]"
-								style="
-									background-image: url({episode.banner});
-									border-color: #{rgbHex(...episode.color_palette[0])};
-								"
-							>
-								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
-								<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
-									<img
-										src={episode.cover}
-										alt=""
-										class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
-									/>
-									<div class="flex flex-col flex-1 md:gap-[0.15vw]">
-										<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
-										<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
-											<span>Ep{episode.ep_number}</span>
-											<Circle class="md:size-[0.25vw] opacity-75" />
-											<span>{episode.timestamp}</span>
-										</div>
+						<div
+							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw]"
+							style="
+								background-image: url({episode.banner});
+								border-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};
+							"
+						>
+							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+							<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
+								<img
+									src={episode.cover}
+									alt=""
+									class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
+								/>
+								<div class="flex flex-col flex-1 md:gap-[0.15vw]">
+									<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
+									<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
+										<span>Ep{episode.ep_number}</span>
+										<Circle class="md:size-[0.25vw] opacity-75" />
+										<span>{episode.timestamp}</span>
 									</div>
-									<a
-										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw]"
-										style="background-color: #{rgbHex(...episode.color_palette[0])};"
-									>
-										<Play class="md:size-[1.25vw]" />
-									</a>
 								</div>
+								<a
+									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw]"
+									style="background-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};"
+								>
+									<Play class="md:size-[1.25vw]" />
+								</a>
 							</div>
-						{/if}		
+						</div>
 						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
