@@ -261,7 +261,7 @@
 									{@const item_href = item[1].url}
 
 									{@const is_active = ((item_href) => {
-										const regex = new RegExp(`^${item_href}\/?$`);
+										const regex = new RegExp(`${item_href}\/?$`);
 										if (regex.test($page.url.pathname)) {
 											return true;
 										} else {
