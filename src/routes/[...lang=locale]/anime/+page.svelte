@@ -320,7 +320,7 @@
 				<div class="grid w-full grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
 						<div
-							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw]"
+							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50"
 							style="
 								background-image: url({episode.banner});
 								border-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};
@@ -343,7 +343,7 @@
 								</div>
 								<a
 									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw]"
+									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
 									style="background-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};"
 								>
 									<Play class="md:size-[1.25vw]" />
