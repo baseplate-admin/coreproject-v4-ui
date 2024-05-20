@@ -170,6 +170,9 @@
 	const latest_episodes_color_palette_mapping: {
 		[key: number]: [number, number, number][];
 	} = $state({});
+	const latest_episodes_loaded_mapping: boolean[] = $state(
+		new Array(latest_episodes.length).fill(false)
+	);
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -337,48 +340,54 @@
 						{@const color_palette =
 							latest_episodes_color_palette_mapping[episode.id] !== undefined &&
 							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
 
-						<div
-							class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-							style="
+						{#if image_loaded}
+							<div
+								class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								style="
 								background-image: url({episode.banner});
 								border-color: #{color_palette};
 							"
-						>
-							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
-							<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
-								<img
-									src={episode.cover}
-									alt=""
-									class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
-								/>
-								<div class="flex flex-1 flex-col md:gap-[0.15vw]">
-									<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
-										>{episode.title}</span
-									>
-									<div
-										class="flex items-center font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
-									>
-										<span class="whitespace-nowrap"
-											>Ep {episode.ep_number.toString().padStart(2, "0")}</span
+							>
+								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
+									<img
+										src={episode.cover}
+										alt=""
+										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
+									/>
+									<div class="flex flex-1 flex-col md:gap-[0.15vw]">
+										<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
+											>{episode.title}</span
 										>
-										<Circle class="opacity-75 md:size-[0.25vw]" />
-										<span class="line-clamp-1">{episode.timestamp}</span>
+										<div
+											class="flex items-center font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
+										>
+											<span class="whitespace-nowrap"
+												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
+											>
+											<Circle class="opacity-75 md:size-[0.25vw]" />
+											<span class="line-clamp-1">{episode.timestamp}</span>
+										</div>
 									</div>
+									<a
+										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+										class="btn h-max min-h-max rounded-full border-none bg-warning md:mr-[0.5vw] md:p-[0.75vw]"
+										style="background-color: #{color_palette};"
+									>
+										<Play class="md:size-[1.25vw]" />
+									</a>
 								</div>
-								<a
-									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-									class="btn h-max min-h-max rounded-full border-none bg-warning md:mr-[0.5vw] md:p-[0.75vw]"
-									style="background-color: #{color_palette};"
-								>
-									<Play class="md:size-[1.25vw]" />
-								</a>
 							</div>
-						</div>
+						{:else}
+							<!-- show skeleton -->
+						{/if}
 						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
 							class="hidden"
+							bind:image_loaded={latest_episodes_loaded_mapping[episode.id]}
 							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
 						/>
 					{/each}
