@@ -320,16 +320,16 @@
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="flex size-full md:gap-[0.5vw]">
 				<div
-					class="grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] overflow-y-scroll md:pr-[1.5vw] [scrollbar-color:rgba(255,255,255,0.12)transparent]"
+					class="snap-y grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] scroll-smooth overflow-y-scroll md:pr-[1.5vw] [scrollbar-color:rgba(255,255,255,0.12)transparent]"
 					class:scrollbar-none={IS_CHROMIUM}
 				>
-					{#each {length: 5} as _}
+					{#each {length: 10} as _}
 						{#each latest_episodes as episode}
 							{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
 							{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 							<div
-								class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
+								class="snap-start w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
 								style="
 									background-image: url({episode.banner});
 									border-color: #{color_palette};
