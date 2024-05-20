@@ -5,15 +5,16 @@
 	let {
 		src,
 		class: klass,
-		color_palette = $bindable()
+		color_palette = $bindable(),
+		image_loaded = $bindable(false)
 	}: {
 		src: string;
 		class?: string;
 		color_palette: number[][];
+		image_loaded: boolean;
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
-	let image_loaded = $state(false);
 
 	$effect(() => {
 		if (image_loaded) return;
