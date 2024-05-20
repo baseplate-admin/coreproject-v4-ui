@@ -334,10 +334,9 @@
 					class:scrollbar-none={IS_CHROMIUM}
 				>
 					{#each latest_episodes as episode}
-						{@const has_color_palette =
-							latest_episodes_color_palette_mapping[episode.id] !== undefined}
 						{@const color_palette =
-							has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+							latest_episodes_color_palette_mapping[episode.id] !== undefined &&
+							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						<div
 							class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
