@@ -7,7 +7,7 @@
 
 	// Import scss
 	import "highlight.js/scss/github-dark.scss";
-	import emojis from "$data/emoji.json";
+	import emojis from "$data/emoji.json" assert { type: "json" };
 	// Import js codes
 
 	import { sanitize } from "$functions/sanitize";
