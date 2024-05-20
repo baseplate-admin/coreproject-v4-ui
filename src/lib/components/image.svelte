@@ -37,12 +37,7 @@
 				let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
 				if (imageData) {
-					color_palette = get_color_thief(
-						new Uint8Array(imageData.data),
-						64 * 64,
-						10,
-						5
-					);
+					color_palette = get_color_thief(new Uint8Array(imageData.data), 64 * 64, 10, 5);
 					image_loaded = true;
 				}
 			});

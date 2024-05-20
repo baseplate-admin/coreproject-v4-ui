@@ -2,7 +2,7 @@
 	import Image from "$components/image.svelte";
 	import rgb_hex from "rgb-hex";
 
-	let color_palette = $state<[number, number,  number][]>([]);
+	let color_palette = $state<[number, number, number][]>([]);
 	let box_shadow_hex = $state("");
 
 	$effect(() => {

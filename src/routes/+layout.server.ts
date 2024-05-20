@@ -2,8 +2,13 @@ import { locales, loadTranslations, translations, default_locale } from "$lib/tr
 import type { ServerLoad } from "@sveltejs/kit";
 import type { Translations } from "../../node_modules/sveltekit-i18n/node_modules/@sveltekit-i18n/base";
 
-export const load: ServerLoad = async ({ url, cookies, request, params }): Promise<{
-	i18n: { locale: string, route: string },
+export const load: ServerLoad = async ({
+	url,
+	cookies,
+	request,
+	params
+}): Promise<{
+	i18n: { locale: string; route: string };
 	translations: Translations.SerializedTranslations;
 }> => {
 	const { pathname } = url;
@@ -14,16 +19,17 @@ export const load: ServerLoad = async ({ url, cookies, request, params }): Promi
 	} else if (cookies.get("lang")) {
 		locale = (cookies.get("lang") || "").toLowerCase();
 	} else {
-		locale = `${`${request.headers.get("accept-language")}`.match(/[a-zA-Z]+?(?=-|_|,|;)/)}`.toLowerCase();
-	};
+		locale =
+			`${`${request.headers.get("accept-language")}`.match(/[a-zA-Z]+?(?=-|_|,|;)/)}`.toLowerCase();
+	}
 
 	// // get defined locales
-  	const supported_locales = locales.get().map((l) => l.toLowerCase());
+	const supported_locales = locales.get().map((l) => l.toLowerCase());
 
-  	// use default locale if current locale is not supported
+	// use default locale if current locale is not supported
 	if (!supported_locales.includes(locale)) {
-	    locale = default_locale;
-	};
+		locale = default_locale;
+	}
 
 	// remove locale from pathname to load translations properly
 	const route = pathname.replace(new RegExp(`^/${locale}`), "");
@@ -32,6 +38,6 @@ export const load: ServerLoad = async ({ url, cookies, request, params }): Promi
 
 	return {
 		i18n: { locale, route },
-		translations: translations.get(),
+		translations: translations.get()
 	};
 };

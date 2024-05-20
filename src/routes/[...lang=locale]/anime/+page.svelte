@@ -305,7 +305,9 @@
 			<div class="flex items-center justify-between pr-[0.75vw]">
 				<div class="flex items-center gap-[0.625vw]">
 					<span class="text-[1.25vw] font-bold">{$t("home.latest_episodes.title")}</span>
-					<button class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]">
+					<button
+						class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+					>
 						<Settings class="w-[0.9vw] opacity-75" />
 					</button>
 				</div>
@@ -323,7 +325,9 @@
 				<span class="text-[0.75vw] font-semibold md:leading-[1.25vw]">
 					{$t("home.latest_episodes.options.desc")}
 				</span>
-				<button class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning">
+				<button
+					class="btn btn-secondary h-max min-h-full p-0 text-[0.75vw] font-semibold text-warning"
+				>
 					{$t("home.latest_episodes.options.cta")}
 				</button>
 			</div>
@@ -401,15 +405,17 @@
 			</button>
 		</div>
 		<div class="flex items-center justify-between">
-			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold">
-				7 animes
-			</span>
+			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold"> 7 animes </span>
 			<div class="hidden items-center gap-[1vw] md:flex">
-				<button class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 md:px-[0.5vw] text-[0.875vw] font-semibold">
+				<button
+					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+				>
 					{$t("home.my_list.options.watching")}
 					<Chevron class="w-[1vw]" />
 				</button>
-				<button class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 md:px-[0.5vw] text-[0.875vw] font-semibold">
+				<button
+					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+				>
 					{$t("home.my_list.cta")}
 					<ArrowUpRight class="w-[1vw]" />
 				</button>
