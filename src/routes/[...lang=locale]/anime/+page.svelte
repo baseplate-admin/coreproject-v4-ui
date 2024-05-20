@@ -131,8 +131,7 @@
 		title: string;
 		ep_number: number;
 		timestamp: string;
-		color_palette: [number, number, number][];
-	}[] = $state([
+	}[] = [
 		{
 			id: 1,
 			cover: "/images/mock/cover/one_piece.webp",
@@ -140,7 +139,6 @@
 			title: "One Piece",
 			ep_number: 7,
 			timestamp: "1 hour ago", // TODO: format time
-			color_palette: []
 		},
 		{
 			id: 2,
@@ -149,9 +147,12 @@
 			title: "Jujutsu Kaisen season 2",
 			ep_number: 2,
 			timestamp: "2 hour ago", // TODO: format time
-			color_palette: []
 		}
-	]);
+	];
+	// state for latest_episodes color palette
+	const latest_episodes_color_palette_mapping: {
+		[key: number]: [number, number, number][];
+	} = $state({});
 </script>
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
@@ -319,11 +320,14 @@
 			<div class="flex size-full md:gap-[2vw]">
 				<div class="grid w-full grid-cols-2 md:gap-[1.25vw]">
 					{#each latest_episodes as episode}
+						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
+						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+
 						<div
-							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50"
+							class="w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
 							style="
 								background-image: url({episode.banner});
-								border-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};
+								border-color: #{color_palette};
 							"
 						>
 							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -344,14 +348,17 @@
 								<a
 									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
 									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
-									style="background-color: #{episode.color_palette.length && rgbHex(...episode.color_palette[0])};"
+									style="background-color: #{color_palette};"
 								>
 									<Play class="md:size-[1.25vw]" />
 								</a>
 							</div>
 						</div>
 						<!-- use Image component for just to get color -->
-						<Image src={episode.cover} class="hidden" bind:color_palette={episode.color_palette} />
+						<Image
+							src={episode.cover} class="hidden"
+							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
+						/>
 					{/each}
 				</div>
 				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
