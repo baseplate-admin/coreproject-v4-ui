@@ -20,6 +20,7 @@
 	import { t } from "$lib/translations";
 	import Image from "$components/image.svelte";
 	import rgbHex from "rgb-hex";
+	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -317,8 +318,11 @@
 		</div>
 		<div class="flex flex-col md:gap-[1vw] md:h-[24vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
-			<div class="flex size-full md:gap-[2vw]">
-				<div class="grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] overflow-y-scroll">
+			<div class="flex size-full md:gap-[0.5vw]">
+				<div
+					class="grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] overflow-y-scroll md:pr-[1.5vw] [scrollbar-color:rgba(255,255,255,0.12)transparent]"
+					class:scrollbar-none={IS_CHROMIUM}
+				>
 					{#each {length: 5} as _}
 						{#each latest_episodes as episode}
 							{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
