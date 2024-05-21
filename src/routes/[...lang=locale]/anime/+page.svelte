@@ -337,18 +337,19 @@
 					class:scrollbar-none={IS_CHROMIUM}
 				>
 					{#each latest_episodes as episode}
-						{@const color_palette =
-							latest_episodes_color_palette_mapping[episode.id] !== undefined &&
-							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
+						{@const color_palette =
+							image_loaded &&
+							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						{#if image_loaded}
 							<div
+								in:blur
 								class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
-								background-image: url({episode.banner});
-								border-color: #{color_palette};
-							"
+									background-image: url({episode.banner});
+									border-color: #{color_palette};
+								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
 								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
@@ -381,7 +382,14 @@
 								</div>
 							</div>
 						{:else}
-							<!-- show skeleton -->
+							<div class="md:h-[5vw] bg-neutral/25 md:rounded-[0.75vw] flex items-center md:gap-[1vw] md:p-[0.5vw]">
+								<div class="md:w-[2.5vw] h-full bg-neutral md:rounded-[0.5vw]"></div>
+								<div class="flex flex-1 flex-col md:gap-[0.5vw]">
+									<div class="bg-neutral md:h-[1vw] rounded-full"></div>
+									<div class="bg-neutral w-1/2 md:h-[0.5vw] rounded-full"></div>
+								</div>
+								<div class="bg-neutral rounded-full md:size-[2.75vw] md:mr-[0.5vw]"></div>
+							</div>
 						{/if}
 						<!-- use Image component for just to get color -->
 						<Image
