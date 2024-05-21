@@ -59,8 +59,10 @@
 
 			// If you want to control the brightness, control this variable here.
 			// if (ctx) ctx.filter = "brightness(25%)";
-
-			ctx?.drawImage(img, 0, 0);
+			if (ctx) {
+				ctx.imageSmoothingEnabled = false;
+				ctx.drawImage(img, 0, 0);
+			}
 
 			let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
