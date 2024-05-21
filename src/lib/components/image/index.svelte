@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from "$functions/classnames";
 	import { onMount } from "svelte";
 	import ImageWorker from "./image-worker?worker";
 	import { color_mapping } from "./store.svelte";
@@ -73,4 +72,4 @@
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={cn(klass)}></canvas>
+<canvas bind:this={canvas_element} class={klass}></canvas>
