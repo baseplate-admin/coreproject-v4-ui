@@ -361,6 +361,10 @@
 										alt=""
 										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
 									/>
+									<Image
+										src={episode.cover}
+										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
+									/>
 									<div class="flex flex-1 flex-col md:gap-[0.15vw]">
 										<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
 											>{episode.title}</span
