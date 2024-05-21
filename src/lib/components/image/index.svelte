@@ -23,6 +23,7 @@
 		const map_value = color_mapping?.get(src);
 		if (map_value) color_palette = map_value;
 	});
+
 	onMount(() => {
 		if (color_palette) return;
 
