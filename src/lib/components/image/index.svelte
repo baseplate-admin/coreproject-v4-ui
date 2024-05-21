@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { cn } from "$functions/classnames";
 	import { onMount } from "svelte";
-	import ImageWorker from "./image-worker?worker";
+	import ImageWorker from "./image-worker?worker&inline";
 
 	let {
 		src,
