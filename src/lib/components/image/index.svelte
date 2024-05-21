@@ -27,11 +27,6 @@
 	});
 
 	$effect(() => {
-		if (worker) {
-		}
-	});
-
-	$effect(() => {
 		if (image_loaded) return;
 
 		let img = new Image();
@@ -54,7 +49,6 @@
 
 			if (imageData) {
 				worker?.postMessage(imageData.data);
-
 				image_loaded = true;
 			}
 		};
