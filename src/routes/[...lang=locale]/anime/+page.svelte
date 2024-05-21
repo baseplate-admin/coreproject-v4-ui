@@ -18,7 +18,7 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
-	import Image from "$components/image.svelte";
+	import Image from "$components/image/index.svelte";
 	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 
