@@ -7,25 +7,30 @@
 	let {
 		src,
 		class: klass,
-		color_palette = $bindable()
+		color_palette = $bindable<number[][]>(),
+		image_loaded = $bindable<boolean>()
 	}: {
 		src: string;
 		class?: string;
 		color_palette: number[][];
+		image_loaded?: boolean;
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
-	let image_loaded = $state(false);
 
 	let worker = $state<Worker>();
 
 	$effect.pre(() => {
+		image_loaded = false;
 		const map_value = color_mapping?.get(src);
 		if (map_value) color_palette = map_value;
 	});
 
 	onMount(() => {
-		if (color_palette) return;
+		if (color_palette) {
+			image_loaded = true;
+			return;
+		}
 
 		worker = new ImageWorker();
 		worker.onmessage = (e) => {
