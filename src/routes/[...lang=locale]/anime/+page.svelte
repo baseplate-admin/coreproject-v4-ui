@@ -378,7 +378,7 @@
 									<a
 										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
-										class:bg-[var(--dominant-color)]={image_loaded}
+										class:!bg-[var(--dominant-color)]={image_loaded}
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
