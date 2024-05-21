@@ -343,14 +343,16 @@
 				>
 					{#each latest_episodes as episode}
 						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
-						{@const color_palette =
-							image_loaded && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+						{@const dominant_color =
+							image_loaded &&
+							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						{#if image_loaded}
 							<div
 								in:blur
-								class="relative w-full snap-start border border-[var(--border-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-								style="--background-image: url({episode.banner}); --border-color: #{color_palette};"
+								class="[background-image:var(--background-image)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								style="--background-image: url({episode.banner}); --dominant-color: #{dominant_color};"
+								class:border-[var(--dominant-color)]={image_loaded}
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
 								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
@@ -375,7 +377,8 @@
 									</div>
 									<a
 										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none bg-warning [background-color:var(--border-color)] md:mr-[0.5vw] md:p-[0.75vw]"
+										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
+										class:bg-[var(--dominant-color)]={image_loaded}
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
