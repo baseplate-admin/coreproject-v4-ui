@@ -2,6 +2,7 @@
 	import { cn } from "$functions/classnames";
 	import { onMount } from "svelte";
 	import ImageWorker from "./image-worker?worker";
+	import { color_mapping } from "./store.svelte";
 
 	let {
 		src,
@@ -19,10 +20,18 @@
 	let worker = $state<Worker>();
 
 	onMount(() => {
+		const map_value = color_mapping?.get(src);
+		if (map_value) color_palette = map_value;
+
+		if (color_palette) return;
+
 		worker = new ImageWorker();
 		worker.onmessage = (e) => {
 			color_palette = e.data;
 			image_loaded = true;
+
+			// Set cache
+			color_mapping?.set(src, color_palette);
 			worker?.terminate();
 		};
 	});
@@ -48,8 +57,8 @@
 
 			let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
-			if (imageData) {
-				worker?.postMessage(imageData.data);
+			if (imageData && worker) {
+				worker.postMessage(imageData.data);
 			}
 		};
 	});
