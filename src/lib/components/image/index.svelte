@@ -13,7 +13,7 @@
 		src: string;
 		class?: string;
 		color_palette: number[][];
-		image_loaded?: boolean;
+		image_loaded: boolean;
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
