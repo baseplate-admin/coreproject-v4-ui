@@ -1,0 +1,1 @@
+export const COLORTHIEF_MAX_ENTRIES = 1_000;

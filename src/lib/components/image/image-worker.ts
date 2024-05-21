@@ -1,6 +1,5 @@
+import { COLOR_COUNT } from "$constants/image";
 import init, { get_color_thief } from "color-thief-wasm-web";
-
-const COLOR_COUNT = 255; // Our theoritical limit is 256  = (0+255) colors
 
 onmessage = async function (event) {
 	await init();
