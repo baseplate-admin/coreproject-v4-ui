@@ -22,6 +22,7 @@
 		worker = new ImageWorker();
 		worker.onmessage = (e) => {
 			color_palette = e.data;
+			image_loaded = true;
 			worker?.terminate();
 		};
 	});
@@ -49,7 +50,6 @@
 
 			if (imageData) {
 				worker?.postMessage(imageData.data);
-				image_loaded = true;
 			}
 		};
 	});
