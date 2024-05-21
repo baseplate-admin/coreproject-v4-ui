@@ -7,6 +7,7 @@
 		"./scripts"
 	],
 	"scripts": {
+		"prepare": "svelte-kit sync",
 		"build": "vite build",
 		"build:node": "cross-env BUILD_NODE_ENV=node vite build",
 		"build:static": "cross-env BUILD_STATIC_ENV=static vite build",
