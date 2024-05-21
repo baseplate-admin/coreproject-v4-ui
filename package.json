@@ -7,6 +7,7 @@
 		"./scripts"
 	],
 	"scripts": {
+		"prepare": "svelte-kit sync",
 		"build": "vite build",
 		"build:node": "cross-env BUILD_NODE_ENV=node vite build",
 		"build:static": "cross-env BUILD_STATIC_ENV=static vite build",
@@ -25,15 +26,15 @@
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/adapter-static": "^3.0.1",
-		"@sveltejs/kit": "^2.5.8",
+		"@sveltejs/kit": "^2.5.9",
 		"@sveltejs/vite-plugin-svelte": "^3.1.0",
 		"@tailwindcss/aspect-ratio": "^0.4.2",
 		"@tailwindcss/forms": "^0.5.7",
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/eslint": "^8.56.0",
 		"@types/lodash-es": "^4.17.12",
-		"@typescript-eslint/eslint-plugin": "^7.9.0",
-		"@typescript-eslint/parser": "^7.9.0",
+		"@typescript-eslint/eslint-plugin": "^7.10.0",
+		"@typescript-eslint/parser": "^7.10.0",
 		"@vitejs/plugin-vue": "^5.0.4",
 		"@zxcvbn-ts/core": "^3.0.4",
 		"@zxcvbn-ts/language-ar": "^3.1.0",
@@ -57,7 +58,7 @@
 		"dayjs": "^1.11.11",
 		"detect-browser": "^5.3.0",
 		"easytimer.js": "^4.6.0",
-		"eslint": "^8.56.0",
+		"eslint": "^9.3.0",
 		"eslint-config-prettier": "^9.1.0",
 		"eslint-plugin-svelte": "^2.39.0",
 		"highlight.js": "^11.9.0",
@@ -94,6 +95,7 @@
 		"typescript": "^5.4.5",
 		"vite": "^5.2.11",
 		"vitest": "^1.6.0",
+		"quick-lru": "^7.0.0",
 		"xss": "^1.0.15",
 		"zod": "^3.23.8"
 	},
@@ -101,5 +103,9 @@
 		"@rollup/rollup-darwin-arm64": "4.17.2",
 		"@rollup/rollup-linux-x64-gnu": "4.17.2",
 		"@rollup/rollup-win32-arm64-msvc": "4.17.2"
+	},
+	"dependencies": {
+		"@vercel/analytics": "^1.2.2",
+		"@vercel/speed-insights": "^1.0.10"
 	}
 }

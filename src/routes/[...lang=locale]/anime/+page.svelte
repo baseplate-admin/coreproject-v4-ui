@@ -18,7 +18,7 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
-	import Image from "$components/image.svelte";
+	import Image from "$components/image/index.svelte";
 	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 
@@ -139,7 +139,7 @@
 			banner: "/images/mock/banner/one_piece.avif",
 			title: "One Piece",
 			ep_number: 20000,
-			timestamp: "1 hour ago", // TODO: format time
+			timestamp: "1 hour ago" // TODO: format time
 		},
 		{
 			id: 2,
@@ -147,7 +147,7 @@
 			banner: "/images/mock/banner/jjk.jpg",
 			title: "Jujutsu Kaisen season 2",
 			ep_number: 5,
-			timestamp: "2 hour ago", // TODO: format time
+			timestamp: "2 hour ago" // TODO: format time
 		},
 		{
 			id: 3,
@@ -155,7 +155,7 @@
 			banner: "/images/mock/banner/demon_slayer_training.avif",
 			title: "Demon Slayer Hashira Training Arc",
 			ep_number: 2,
-			timestamp: "2 hour ago", // TODO: format time
+			timestamp: "2 hour ago" // TODO: format time
 		},
 		{
 			id: 4,
@@ -163,7 +163,7 @@
 			banner: "/images/mock/banner/kaiju_no_8.webp",
 			title: "Kaiju no.8",
 			ep_number: 1,
-			timestamp: "3 hour ago", // TODO: format time
+			timestamp: "3 hour ago" // TODO: format time
 		}
 	];
 	// state for latest_episodes color palette
@@ -172,10 +172,7 @@
 	} = $state({});
 </script>
 
-<svelte:window
-	onblur={() => timer.pause()}
-	onfocus={() => timer.start()}
-/>
+<svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
@@ -329,42 +326,50 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-		<div class="flex flex-col md:gap-[1vw] md:h-[24vw]">
+		<div class="flex flex-col md:h-[24vw] md:gap-[1vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="flex size-full md:gap-[0.5vw]">
 				<div
-					class="snap-y grid w-full grid-cols-2 grid-rows-auto auto-rows-min md:gap-[1.25vw] scroll-smooth overflow-y-scroll md:pr-[1.5vw] [scrollbar-color:rgba(255,255,255,0.12)transparent]"
+					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 				>
 					{#each latest_episodes as episode}
-						{@const has_color_palette = latest_episodes_color_palette_mapping[episode.id] !== undefined}
-						{@const color_palette = has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+						{@const has_color_palette =
+							latest_episodes_color_palette_mapping[episode.id] !== undefined}
+						{@const color_palette =
+							has_color_palette && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						<div
-							class="snap-start w-full md:h-[5vw] bg-cover bg-center relative md:rounded-[0.75vw] border md:border-[0.15vw] border-accent/50 duration-300"
+							class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 							style="
 								background-image: url({episode.banner});
 								border-color: #{color_palette};
 							"
 						>
 							<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
-							<div class="relative size-full flex items-center md:p-[0.5vw] md:gap-[1vw]">
+							<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
 								<img
 									src={episode.cover}
 									alt=""
-									class="md:w-[2.5vw] h-full object-cover object-center md:rounded-[0.5vw]"
+									class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
 								/>
-								<div class="flex flex-col flex-1 md:gap-[0.15vw]">
-									<span class="text-accent md:text-[1.15vw] font-bold line-clamp-1">{episode.title}</span>
-									<div class="md:leading-none flex items-center md:gap-[0.5vw] md:text-[0.8vw] font-semibold">
-										<span class="whitespace-nowrap">Ep {episode.ep_number.toString().padStart(2, "0")}</span>
-										<Circle class="md:size-[0.25vw] opacity-75" />
+								<div class="flex flex-1 flex-col md:gap-[0.15vw]">
+									<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
+										>{episode.title}</span
+									>
+									<div
+										class="flex items-center font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
+									>
+										<span class="whitespace-nowrap"
+											>Ep {episode.ep_number.toString().padStart(2, "0")}</span
+										>
+										<Circle class="opacity-75 md:size-[0.25vw]" />
 										<span class="line-clamp-1">{episode.timestamp}</span>
 									</div>
 								</div>
 								<a
 									href="anime/mal/{episode.id}/episode/{episode.ep_number}"
-									class="rounded-full btn border-none min-h-max h-max md:p-[0.75vw] md:mr-[0.5vw] bg-warning"
+									class="btn h-max min-h-max rounded-full border-none bg-warning md:mr-[0.5vw] md:p-[0.75vw]"
 									style="background-color: #{color_palette};"
 								>
 									<Play class="md:size-[1.25vw]" />
@@ -373,7 +378,8 @@
 						</div>
 						<!-- use Image component for just to get color -->
 						<Image
-							src={episode.cover} class="hidden"
+							src={episode.cover}
+							class="hidden"
 							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
 						/>
 					{/each}
