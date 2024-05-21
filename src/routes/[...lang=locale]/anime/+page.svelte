@@ -173,6 +173,11 @@
 	const latest_episodes_loaded_mapping: boolean[] = $state(
 		new Array(latest_episodes.length).fill(false)
 	);
+
+const some_mapping = $state({
+	color_palette: {},
+	image_loaded: new Array(latest_episodes.length).fill(false)
+});
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -345,11 +350,8 @@
 						{#if image_loaded}
 							<div
 								in:blur
-								class="relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-								style="
-									background-image: url({episode.banner});
-									border-color: #{color_palette};
-								"
+								class="[background-image:var(--background-image)] border-[var(--border-color)] relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								style="--background-image: url({episode.banner}); --border-color: #{color_palette};"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
 								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
