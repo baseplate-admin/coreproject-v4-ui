@@ -18,7 +18,7 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
-	import Image from "$components/image.svelte";
+	import Image from "$components/image/index.svelte";
 	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 
@@ -174,10 +174,10 @@
 		new Array(latest_episodes.length).fill(false)
 	);
 
-const some_mapping = $state({
-	color_palette: {},
-	image_loaded: new Array(latest_episodes.length).fill(false)
-});
+	const some_mapping = $state({
+		color_palette: {},
+		image_loaded: new Array(latest_episodes.length).fill(false)
+	});
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -344,13 +344,12 @@ const some_mapping = $state({
 					{#each latest_episodes as episode}
 						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
 						{@const color_palette =
-							image_loaded &&
-							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+							image_loaded && rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
 
 						{#if image_loaded}
 							<div
 								in:blur
-								class="[background-image:var(--background-image)] border-[var(--border-color)] relative w-full snap-start border border-accent/50 bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								class="relative w-full snap-start border border-[var(--border-color)] border-accent/50 bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="--background-image: url({episode.banner}); --border-color: #{color_palette};"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -384,13 +383,15 @@ const some_mapping = $state({
 								</div>
 							</div>
 						{:else}
-							<div class="md:h-[5vw] bg-neutral/25 md:rounded-[0.75vw] flex items-center md:gap-[1vw] md:p-[0.5vw]">
-								<div class="md:w-[2.5vw] h-full bg-neutral md:rounded-[0.5vw]"></div>
+							<div
+								class="flex items-center bg-neutral/25 md:h-[5vw] md:gap-[1vw] md:rounded-[0.75vw] md:p-[0.5vw]"
+							>
+								<div class="h-full bg-neutral md:w-[2.5vw] md:rounded-[0.5vw]"></div>
 								<div class="flex flex-1 flex-col md:gap-[0.5vw]">
-									<div class="bg-neutral md:h-[1vw] rounded-full"></div>
-									<div class="bg-neutral w-1/2 md:h-[0.5vw] rounded-full"></div>
+									<div class="rounded-full bg-neutral md:h-[1vw]"></div>
+									<div class="w-1/2 rounded-full bg-neutral md:h-[0.5vw]"></div>
 								</div>
-								<div class="bg-neutral rounded-full md:size-[2.75vw] md:mr-[0.5vw]"></div>
+								<div class="rounded-full bg-neutral md:mr-[0.5vw] md:size-[2.75vw]"></div>
 							</div>
 						{/if}
 						<!-- use Image component for just to get color -->
