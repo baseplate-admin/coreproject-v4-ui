@@ -16,8 +16,6 @@
 		image_loaded: boolean;
 	} = $props();
 
-	let canvas_element = $state<HTMLCanvasElement>();
-
 	let worker = $state<Worker>();
 
 	$effect.pre(() => {
@@ -46,6 +44,7 @@
 	$effect(() => {
 		if (image_loaded) return;
 
+		let canvas_element = document.createElement("canvas");
 		let img = new Image();
 		img.crossOrigin = "anonymous";
 		img.src = src;
@@ -59,10 +58,7 @@
 
 			// If you want to control the brightness, control this variable here.
 			// if (ctx) ctx.filter = "brightness(25%)";
-			if (ctx) {
-				ctx.imageSmoothingEnabled = false;
-				ctx.drawImage(img, 0, 0);
-			}
+			ctx?.drawImage(img, 0, 0);
 
 			let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
 
@@ -73,4 +69,4 @@
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={cn(klass)}></canvas>
+<img src={src} alt="" class={cn(klass)} />

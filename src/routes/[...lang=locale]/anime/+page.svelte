@@ -396,7 +396,6 @@
 								<div class="rounded-full bg-neutral md:mr-[0.5vw] md:size-[2.75vw]"></div>
 							</div>
 						{/if}
-						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
 							class="hidden"
