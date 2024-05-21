@@ -1,5 +1,5 @@
 // @ts-nocheck
-importScripts("rlottie-wasm.js");
+import "./rlottie-wasm.js";
 
 var RLottieWasm = (function () {
 	// create a object;
@@ -77,7 +77,6 @@ function defaultReply(message) {
 function reply() {
 	if (arguments.length < 1) {
 		throw new TypeError("reply - not enough arguments");
-		return;
 	}
 	postMessage({
 		queryMethodListener: arguments[0],
