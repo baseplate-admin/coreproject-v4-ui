@@ -11,7 +11,7 @@
 	}: {
 		src: string;
 		class?: string;
-		color_palette: number[][];
+		color_palette?: number[][];
 		image_loaded?: boolean;
 	} = $props();
 
@@ -51,19 +51,22 @@
 		img.onload = async () => {
 			if (!canvas_element) return;
 
-			let ctx = canvas_element.getContext("2d");
+			const ctx = canvas_element.getContext("2d");
+			const rect = canvas_element.getBoundingClientRect();
 
-			canvas_element.width = img.width;
-			canvas_element.height = img.height;
+			console.log(canvas_element);
+
+			canvas_element.width = rect.width;
+			canvas_element.height = rect.height;
 
 			// If you want to control the brightness, control this variable here.
 			// if (ctx) ctx.filter = "brightness(25%)";
+
 			if (ctx) {
-				ctx.imageSmoothingEnabled = false;
-				ctx.drawImage(img, 0, 0);
+				ctx.drawImage(img, 0, 0, rect.width, rect.height);
 			}
 
-			let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
+			let imageData = ctx?.getImageData(0, 0, rect.width, rect.height);
 
 			if (imageData && worker) {
 				worker.postMessage(imageData.data);
