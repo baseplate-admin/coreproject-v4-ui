@@ -17,3 +17,13 @@ export const load = async ({ data }: { data: Data }) => {
 
 	return i18n;
 };
+
+// Vercel Shits. Remove when we do master production
+
+import { dev } from "$app/environment";
+import { inject } from "@vercel/analytics";
+import { injectSpeedInsights } from "@vercel/speed-insights/sveltekit";
+
+inject({ mode: dev ? "development" : "production" });
+
+injectSpeedInsights();

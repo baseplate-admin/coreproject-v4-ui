@@ -102,5 +102,9 @@
 		"@rollup/rollup-darwin-arm64": "4.17.2",
 		"@rollup/rollup-linux-x64-gnu": "4.17.2",
 		"@rollup/rollup-win32-arm64-msvc": "4.17.2"
+	},
+	"dependencies": {
+		"@vercel/analytics": "^1.2.2",
+		"@vercel/speed-insights": "^1.0.10"
 	}
 }
