@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { cn } from "$functions/classnames";
 	import { onMount } from "svelte";
 	import ImageWorker from "./image-worker?worker";
 	import { color_mapping } from "./store.svelte";
@@ -12,7 +11,7 @@
 	}: {
 		src: string;
 		class?: string;
-		color_palette: number[][];
+		color_palette?: number[][];
 		image_loaded?: boolean;
 	} = $props();
 
@@ -52,23 +51,46 @@
 		img.onload = async () => {
 			if (!canvas_element) return;
 
-			let ctx = canvas_element.getContext("2d");
+			const ctx = canvas_element.getContext("2d");
+			const rect = canvas_element.getBoundingClientRect();
 
-			canvas_element.width = img.width;
-			canvas_element.height = img.height;
+			canvas_element.width = rect.width;
+			canvas_element.height = rect.height;
 
 			// If you want to control the brightness, control this variable here.
 			// if (ctx) ctx.filter = "brightness(25%)";
 
-			ctx?.drawImage(img, 0, 0);
+			if (ctx) {
+				const img_ratio = img.width / img.height;
+				const canvas_ratio = rect.width / rect.height;
+				let draw_width,
+					draw_height,
+					offset_x,
+					offset_y;
 
-			let imageData = ctx?.getImageData(0, 0, canvas_element.width, canvas_element.height);
+				// check if iamge is wider or taller relative to canvas
+				if (img_ratio > canvas_ratio) {
+					draw_height = rect.height;
+					draw_width = img_ratio * draw_height; // get width with relative to height
+					offset_x = (rect.width - draw_width) / 2; // center iamge with remaining space
+					offset_y = 0;
+				} else {
+					draw_width = rect.width;
+					draw_height = draw_width / img_ratio;
+					offset_x = 0;
+					offset_y = (rect.height - draw_height) / 2;
+				}
 
-			if (imageData && worker) {
-				worker.postMessage(imageData.data);
+				ctx.drawImage(img, offset_x, offset_y, draw_width, draw_height);
+			}
+
+			let image_data = ctx?.getImageData(0, 0, rect.width, rect.height);
+
+			if (image_data && worker) {
+				worker.postMessage(image_data.data);
 			}
 		};
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={cn(klass)}></canvas>
+<canvas bind:this={canvas_element} class={klass}></canvas>
