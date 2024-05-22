@@ -3,528 +3,527 @@
  * Do not make direct changes to the file.
  */
 
-
 export interface paths {
-  "/api/v2/anime/": {
-    get: operations["api_v2_anime_list"];
-    post: operations["api_v2_anime_create"];
-  };
-  "/api/v2/anime/{id}/": {
-    get: operations["api_v2_anime_retrieve"];
-    put: operations["api_v2_anime_update"];
-    delete: operations["api_v2_anime_destroy"];
-    patch: operations["api_v2_anime_partial_update"];
-  };
-  "/api/v2/anime/{id}/comment": {
-    get: operations["api_v2_anime_comment_list"];
-    post: operations["api_v2_anime_comment_create"];
-  };
-  "/api/v2/anime/{id}/episode/": {
-    get: operations["api_v2_anime_episode_list"];
-    post: operations["api_v2_anime_episode_create"];
-  };
-  "/api/v2/anime/{id}/episode/{episode_number}/comment": {
-    get: operations["api_v2_anime_episode_comment_list"];
-    post: operations["api_v2_anime_episode_comment_create"];
-  };
-  "/api/v2/anime/{id}/episode/{episode_number}/timestamp": {
-    get: operations["api_v2_anime_episode_timestamp_retrieve"];
-    post: operations["api_v2_anime_episode_timestamp_create"];
-  };
-  "/api/v2/anime/genres/": {
-    get: operations["api_v2_anime_genres_list"];
-    post: operations["api_v2_anime_genres_create"];
-  };
-  "/api/v2/anime/genres/{id}/": {
-    get: operations["api_v2_anime_genres_retrieve"];
-    put: operations["api_v2_anime_genres_update"];
-    delete: operations["api_v2_anime_genres_destroy"];
-    patch: operations["api_v2_anime_genres_partial_update"];
-  };
-  "/api/v2/anime/themes/": {
-    get: operations["api_v2_anime_themes_list"];
-    post: operations["api_v2_anime_themes_create"];
-  };
-  "/api/v2/anime/themes/{id}/": {
-    get: operations["api_v2_anime_themes_retrieve"];
-    put: operations["api_v2_anime_themes_update"];
-    delete: operations["api_v2_anime_themes_destroy"];
-    patch: operations["api_v2_anime_themes_partial_update"];
-  };
-  "/api/v2/character/": {
-    get: operations["api_v2_character_list"];
-    post: operations["api_v2_character_create"];
-  };
-  "/api/v2/character/{id}/": {
-    get: operations["api_v2_character_retrieve"];
-    put: operations["api_v2_character_update"];
-    delete: operations["api_v2_character_destroy"];
-    patch: operations["api_v2_character_partial_update"];
-  };
-  "/api/v2/comment/{id}/reaction/": {
-    post: operations["api_v2_comment_reaction_create"];
-    delete: operations["api_v2_comment_reaction_destroy"];
-  };
-  "/api/v2/comments/": {
-    get: operations["api_v2_comments_list"];
-  };
-  "/api/v2/comments/{id}/": {
-    get: operations["api_v2_comments_retrieve"];
-    put: operations["api_v2_comments_update"];
-    delete: operations["api_v2_comments_destroy"];
-    patch: operations["api_v2_comments_partial_update"];
-  };
-  "/api/v2/producer/": {
-    get: operations["api_v2_producer_list"];
-    post: operations["api_v2_producer_create"];
-  };
-  "/api/v2/producer/{id}/": {
-    get: operations["api_v2_producer_retrieve"];
-    put: operations["api_v2_producer_update"];
-    delete: operations["api_v2_producer_destroy"];
-    patch: operations["api_v2_producer_partial_update"];
-  };
-  "/api/v2/schema/": {
-    /**
-     * @description OpenApi3 schema for this API. Format can be selected via content negotiation.
-     *
-     * - YAML: application/vnd.oai.openapi
-     * - JSON: application/vnd.oai.openapi+json
-     */
-    get: operations["api_v2_schema_retrieve"];
-  };
-  "/api/v2/staff/": {
-    get: operations["api_v2_staff_list"];
-    post: operations["api_v2_staff_create"];
-  };
-  "/api/v2/staff/{id}/": {
-    get: operations["api_v2_staff_retrieve"];
-    put: operations["api_v2_staff_update"];
-    delete: operations["api_v2_staff_destroy"];
-    patch: operations["api_v2_staff_partial_update"];
-  };
-  "/api/v2/upload/": {
-    post: operations["api_v2_upload_create"];
-  };
-  "/api/v2/user/login/": {
-    post: operations["api_v2_user_login_create"];
-  };
-  "/api/v2/user/logout/": {
-    post: operations["api_v2_user_logout_create"];
-  };
-  "/api/v2/user/register/": {
-    post: operations["api_v2_user_register_create"];
-  };
-  "/api/v2/user/validity/email": {
-    post: operations["api_v2_user_validity_email_create"];
-  };
-  "/api/v2/user/validity/username": {
-    post: operations["api_v2_user_validity_username_create"];
-  };
+	"/api/v2/anime/": {
+		get: operations["api_v2_anime_list"];
+		post: operations["api_v2_anime_create"];
+	};
+	"/api/v2/anime/{id}/": {
+		get: operations["api_v2_anime_retrieve"];
+		put: operations["api_v2_anime_update"];
+		delete: operations["api_v2_anime_destroy"];
+		patch: operations["api_v2_anime_partial_update"];
+	};
+	"/api/v2/anime/{id}/comment": {
+		get: operations["api_v2_anime_comment_list"];
+		post: operations["api_v2_anime_comment_create"];
+	};
+	"/api/v2/anime/{id}/episode/": {
+		get: operations["api_v2_anime_episode_list"];
+		post: operations["api_v2_anime_episode_create"];
+	};
+	"/api/v2/anime/{id}/episode/{episode_number}/comment": {
+		get: operations["api_v2_anime_episode_comment_list"];
+		post: operations["api_v2_anime_episode_comment_create"];
+	};
+	"/api/v2/anime/{id}/episode/{episode_number}/timestamp": {
+		get: operations["api_v2_anime_episode_timestamp_retrieve"];
+		post: operations["api_v2_anime_episode_timestamp_create"];
+	};
+	"/api/v2/anime/genres/": {
+		get: operations["api_v2_anime_genres_list"];
+		post: operations["api_v2_anime_genres_create"];
+	};
+	"/api/v2/anime/genres/{id}/": {
+		get: operations["api_v2_anime_genres_retrieve"];
+		put: operations["api_v2_anime_genres_update"];
+		delete: operations["api_v2_anime_genres_destroy"];
+		patch: operations["api_v2_anime_genres_partial_update"];
+	};
+	"/api/v2/anime/themes/": {
+		get: operations["api_v2_anime_themes_list"];
+		post: operations["api_v2_anime_themes_create"];
+	};
+	"/api/v2/anime/themes/{id}/": {
+		get: operations["api_v2_anime_themes_retrieve"];
+		put: operations["api_v2_anime_themes_update"];
+		delete: operations["api_v2_anime_themes_destroy"];
+		patch: operations["api_v2_anime_themes_partial_update"];
+	};
+	"/api/v2/character/": {
+		get: operations["api_v2_character_list"];
+		post: operations["api_v2_character_create"];
+	};
+	"/api/v2/character/{id}/": {
+		get: operations["api_v2_character_retrieve"];
+		put: operations["api_v2_character_update"];
+		delete: operations["api_v2_character_destroy"];
+		patch: operations["api_v2_character_partial_update"];
+	};
+	"/api/v2/comment/{id}/reaction/": {
+		post: operations["api_v2_comment_reaction_create"];
+		delete: operations["api_v2_comment_reaction_destroy"];
+	};
+	"/api/v2/comments/": {
+		get: operations["api_v2_comments_list"];
+	};
+	"/api/v2/comments/{id}/": {
+		get: operations["api_v2_comments_retrieve"];
+		put: operations["api_v2_comments_update"];
+		delete: operations["api_v2_comments_destroy"];
+		patch: operations["api_v2_comments_partial_update"];
+	};
+	"/api/v2/producer/": {
+		get: operations["api_v2_producer_list"];
+		post: operations["api_v2_producer_create"];
+	};
+	"/api/v2/producer/{id}/": {
+		get: operations["api_v2_producer_retrieve"];
+		put: operations["api_v2_producer_update"];
+		delete: operations["api_v2_producer_destroy"];
+		patch: operations["api_v2_producer_partial_update"];
+	};
+	"/api/v2/schema/": {
+		/**
+		 * @description OpenApi3 schema for this API. Format can be selected via content negotiation.
+		 *
+		 * - YAML: application/vnd.oai.openapi
+		 * - JSON: application/vnd.oai.openapi+json
+		 */
+		get: operations["api_v2_schema_retrieve"];
+	};
+	"/api/v2/staff/": {
+		get: operations["api_v2_staff_list"];
+		post: operations["api_v2_staff_create"];
+	};
+	"/api/v2/staff/{id}/": {
+		get: operations["api_v2_staff_retrieve"];
+		put: operations["api_v2_staff_update"];
+		delete: operations["api_v2_staff_destroy"];
+		patch: operations["api_v2_staff_partial_update"];
+	};
+	"/api/v2/upload/": {
+		post: operations["api_v2_upload_create"];
+	};
+	"/api/v2/user/login/": {
+		post: operations["api_v2_user_login_create"];
+	};
+	"/api/v2/user/logout/": {
+		post: operations["api_v2_user_logout_create"];
+	};
+	"/api/v2/user/register/": {
+		post: operations["api_v2_user_register_create"];
+	};
+	"/api/v2/user/validity/email": {
+		post: operations["api_v2_user_validity_email_create"];
+	};
+	"/api/v2/user/validity/username": {
+		post: operations["api_v2_user_validity_username_create"];
+	};
 }
 
 export type webhooks = Record<string, never>;
 
 export interface components {
-  schemas: {
-    AnimeGET: {
-      mal_id?: number | null;
-      anilist_id?: number | null;
-      kitsu_id?: number | null;
-      name: string;
-      name_japanese?: string;
-      name_synonyms?: string[];
-      /** Format: date-time */
-      aired_from?: string | null;
-      /** Format: date-time */
-      aired_to?: string | null;
-      /** Format: uri */
-      banner?: string | null;
-      /** Format: uri */
-      cover?: string | null;
-      banner_background_color?: string | null;
-      cover_background_color?: string | null;
-      synopsis?: string | null;
-      background?: string | null;
-      source?: string | null;
-      rating?: string;
-      genres: readonly components["schemas"]["AnimeGenre"][];
-      themes: readonly components["schemas"]["AnimeTheme"][];
-      characters: readonly components["schemas"]["Character"][];
-      studios: readonly components["schemas"]["Producer"][];
-      producers: readonly components["schemas"]["Producer"][];
-      staffs: readonly components["schemas"]["Staff"][];
-      openings?: number[];
-      endings?: number[];
-      is_locked: boolean;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      created_at: string;
-      episode_count: number;
-    };
-    AnimeGenre: {
-      mal_id: number;
-      name?: string;
-      type?: components["schemas"]["TypeEnum"];
-      description?: string | null;
-    };
-    AnimePOST: {
-      mal_id?: number | null;
-      anilist_id?: number | null;
-      kitsu_id?: number | null;
-      name: string;
-      name_japanese?: string;
-      name_synonyms?: string[];
-      /** Format: date-time */
-      aired_from?: string | null;
-      /** Format: date-time */
-      aired_to?: string | null;
-      /** Format: uri */
-      banner?: string | null;
-      /** Format: uri */
-      cover?: string | null;
-      banner_background_color?: string | null;
-      cover_background_color?: string | null;
-      synopsis?: string | null;
-      background?: string | null;
-      source?: string | null;
-      rating?: string;
-      genres?: number[];
-      themes?: number[];
-      characters?: (number | null)[];
-      studios?: (number | null)[];
-      producers?: (number | null)[];
-      staffs?: (number | null)[];
-      openings?: number[];
-      endings?: number[];
-      is_locked: boolean;
-      /** Format: date-time */
-      updated_at: string;
-      /** Format: date-time */
-      created_at: string;
-      episode_count: number;
-    };
-    AnimeTheme: {
-      mal_id: number;
-      name?: string;
-      type?: components["schemas"]["TypeEnum"];
-      description?: string | null;
-    };
-    AuthToken: {
-      username: string;
-      password: string;
-      token: string;
-    };
-    /** @enum {unknown} */
-    BlankEnum: "";
-    Character: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      anilist_id?: number | null;
-      name: string;
-      name_kanji?: string | null;
-      /** Format: uri */
-      character_image?: string | null;
-      about?: string | null;
-    };
-    Comment: {
-      pk: number;
-      /** Format: date-time */
-      created_at: string;
-      user: components["schemas"]["User"];
-      text: string;
-      path?: string;
-      childrens: number;
-      ratio: number;
-      deleted: boolean;
-      user_reaction: string | null;
-    };
-    CommentReaction: {
-      reaction: string;
-    };
-    EmailValidity: {
-      email: string;
-    };
-    Episode: {
-      /** Format: int64 */
-      episode_number?: number;
-      episode_name: string;
-      /** Format: uri */
-      episode_thumbnail?: string | null;
-      episode_summary?: string | null;
-      episode_length?: number;
-      episode_type?: components["schemas"]["EpisodeTypeEnum"] | components["schemas"]["BlankEnum"];
-      providers?: {
-        [key: string]: string | null;
-      };
-    };
-    EpisodeTimpstamp: {
-      user: string;
-      timestamp: number;
-    };
-    /**
-     * @description * `sub` - sub
-     * * `dub` - dub
-     * @enum {string}
-     */
-    EpisodeTypeEnum: "sub" | "dub";
-    PaginatedAnimeGETList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["AnimeGET"][];
-    };
-    PaginatedCharacterList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["Character"][];
-    };
-    PaginatedCommentList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["Comment"][];
-    };
-    PaginatedEpisodeList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["Episode"][];
-    };
-    PaginatedProducerList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["Producer"][];
-    };
-    PaginatedStaffList: {
-      /** @example 123 */
-      count: number;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=400&limit=100
-       */
-      next?: string | null;
-      /**
-       * Format: uri
-       * @example http://api.example.org/accounts/?offset=200&limit=100
-       */
-      previous?: string | null;
-      results: components["schemas"]["Staff"][];
-    };
-    PatchedAnimeGET: {
-      mal_id?: number | null;
-      anilist_id?: number | null;
-      kitsu_id?: number | null;
-      name?: string;
-      name_japanese?: string;
-      name_synonyms?: string[];
-      /** Format: date-time */
-      aired_from?: string | null;
-      /** Format: date-time */
-      aired_to?: string | null;
-      /** Format: uri */
-      banner?: string | null;
-      /** Format: uri */
-      cover?: string | null;
-      banner_background_color?: string | null;
-      cover_background_color?: string | null;
-      synopsis?: string | null;
-      background?: string | null;
-      source?: string | null;
-      rating?: string;
-      genres?: readonly components["schemas"]["AnimeGenre"][];
-      themes?: readonly components["schemas"]["AnimeTheme"][];
-      characters?: readonly components["schemas"]["Character"][];
-      studios?: readonly components["schemas"]["Producer"][];
-      producers?: readonly components["schemas"]["Producer"][];
-      staffs?: readonly components["schemas"]["Staff"][];
-      openings?: number[];
-      endings?: number[];
-      is_locked?: boolean;
-      /** Format: date-time */
-      updated_at?: string;
-      /** Format: date-time */
-      created_at?: string;
-      episode_count?: number;
-    };
-    PatchedAnimeGenre: {
-      mal_id?: number;
-      name?: string;
-      type?: components["schemas"]["TypeEnum"];
-      description?: string | null;
-    };
-    PatchedAnimeTheme: {
-      mal_id?: number;
-      name?: string;
-      type?: components["schemas"]["TypeEnum"];
-      description?: string | null;
-    };
-    PatchedCharacter: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      anilist_id?: number | null;
-      name?: string;
-      name_kanji?: string | null;
-      /** Format: uri */
-      character_image?: string | null;
-      about?: string | null;
-    };
-    PatchedComment: {
-      pk?: number;
-      /** Format: date-time */
-      created_at?: string;
-      user?: components["schemas"]["User"];
-      text?: string;
-      path?: string;
-      childrens?: number;
-      ratio?: number;
-      deleted?: boolean;
-      user_reaction?: string | null;
-    };
-    PatchedProducer: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      name?: string;
-      name_japanese?: string | null;
-      /** Format: date-time */
-      established?: string | null;
-      about?: string | null;
-    };
-    PatchedStaff: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      anilist_id?: number | null;
-      name?: string;
-      given_name?: string | null;
-      family_name?: string | null;
-      alternate_names?: string[];
-      /** Format: uri */
-      staff_image?: string | null;
-      about?: string | null;
-    };
-    Producer: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      name?: string;
-      name_japanese?: string | null;
-      /** Format: date-time */
-      established?: string | null;
-      about?: string | null;
-    };
-    Provider: {
-      api_key: string;
-    };
-    Register: {
-      id: number;
-      password: string;
-      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-      username: string;
-      first_name?: string;
-      last_name?: string;
-      /**
-       * Email address
-       * Format: email
-       * @description Required. A valid email with a valid domain
-       */
-      email: string;
-      /** Format: uri */
-      avatar?: string | null;
-      /** Format: uri */
-      avatar_provider?: string;
-    };
-    Staff: {
-      mal_id?: number | null;
-      kitsu_id?: number | null;
-      anilist_id?: number | null;
-      name: string;
-      given_name?: string | null;
-      family_name?: string | null;
-      alternate_names?: string[];
-      /** Format: uri */
-      staff_image?: string | null;
-      about?: string | null;
-    };
-    Token: {
-      token: string;
-    };
-    /**
-     * @description * `Anime` - anime
-     * * `Manga` - manga
-     * @enum {string}
-     */
-    TypeEnum: "Anime" | "Manga";
-    User: {
-      /** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
-      username: string;
-      first_name?: string;
-      last_name?: string;
-      /** Format: uri */
-      avatar?: string | null;
-      avatar_url: string;
-      /**
-       * Email address
-       * Format: email
-       * @description Required. A valid email with a valid domain
-       */
-      email: string;
-    };
-    UsernameValidity: {
-      username: string;
-    };
-  };
-  responses: never;
-  parameters: never;
-  requestBodies: never;
-  headers: never;
-  pathItems: never;
+	schemas: {
+		AnimeGET: {
+			mal_id?: number | null;
+			anilist_id?: number | null;
+			kitsu_id?: number | null;
+			name: string;
+			name_japanese?: string;
+			name_synonyms?: string[];
+			/** Format: date-time */
+			aired_from?: string | null;
+			/** Format: date-time */
+			aired_to?: string | null;
+			/** Format: uri */
+			banner?: string | null;
+			/** Format: uri */
+			cover?: string | null;
+			banner_background_color?: string | null;
+			cover_background_color?: string | null;
+			synopsis?: string | null;
+			background?: string | null;
+			source?: string | null;
+			rating?: string;
+			genres: readonly components["schemas"]["AnimeGenre"][];
+			themes: readonly components["schemas"]["AnimeTheme"][];
+			characters: readonly components["schemas"]["Character"][];
+			studios: readonly components["schemas"]["Producer"][];
+			producers: readonly components["schemas"]["Producer"][];
+			staffs: readonly components["schemas"]["Staff"][];
+			openings?: number[];
+			endings?: number[];
+			is_locked: boolean;
+			/** Format: date-time */
+			updated_at: string;
+			/** Format: date-time */
+			created_at: string;
+			episode_count: number;
+		};
+		AnimeGenre: {
+			mal_id: number;
+			name?: string;
+			type?: components["schemas"]["TypeEnum"];
+			description?: string | null;
+		};
+		AnimePOST: {
+			mal_id?: number | null;
+			anilist_id?: number | null;
+			kitsu_id?: number | null;
+			name: string;
+			name_japanese?: string;
+			name_synonyms?: string[];
+			/** Format: date-time */
+			aired_from?: string | null;
+			/** Format: date-time */
+			aired_to?: string | null;
+			/** Format: uri */
+			banner?: string | null;
+			/** Format: uri */
+			cover?: string | null;
+			banner_background_color?: string | null;
+			cover_background_color?: string | null;
+			synopsis?: string | null;
+			background?: string | null;
+			source?: string | null;
+			rating?: string;
+			genres?: number[];
+			themes?: number[];
+			characters?: (number | null)[];
+			studios?: (number | null)[];
+			producers?: (number | null)[];
+			staffs?: (number | null)[];
+			openings?: number[];
+			endings?: number[];
+			is_locked: boolean;
+			/** Format: date-time */
+			updated_at: string;
+			/** Format: date-time */
+			created_at: string;
+			episode_count: number;
+		};
+		AnimeTheme: {
+			mal_id: number;
+			name?: string;
+			type?: components["schemas"]["TypeEnum"];
+			description?: string | null;
+		};
+		AuthToken: {
+			username: string;
+			password: string;
+			token: string;
+		};
+		/** @enum {unknown} */
+		BlankEnum: "";
+		Character: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			anilist_id?: number | null;
+			name: string;
+			name_kanji?: string | null;
+			/** Format: uri */
+			character_image?: string | null;
+			about?: string | null;
+		};
+		Comment: {
+			pk: number;
+			/** Format: date-time */
+			created_at: string;
+			user: components["schemas"]["User"];
+			text: string;
+			path?: string;
+			childrens: number;
+			ratio: number;
+			deleted: boolean;
+			user_reaction: string | null;
+		};
+		CommentReaction: {
+			reaction: string;
+		};
+		EmailValidity: {
+			email: string;
+		};
+		Episode: {
+			/** Format: int64 */
+			episode_number?: number;
+			episode_name: string;
+			/** Format: uri */
+			episode_thumbnail?: string | null;
+			episode_summary?: string | null;
+			episode_length?: number;
+			episode_type?: components["schemas"]["EpisodeTypeEnum"] | components["schemas"]["BlankEnum"];
+			providers?: {
+				[key: string]: string | null;
+			};
+		};
+		EpisodeTimpstamp: {
+			user: string;
+			timestamp: number;
+		};
+		/**
+		 * @description * `sub` - sub
+		 * * `dub` - dub
+		 * @enum {string}
+		 */
+		EpisodeTypeEnum: "sub" | "dub";
+		PaginatedAnimeGETList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["AnimeGET"][];
+		};
+		PaginatedCharacterList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["Character"][];
+		};
+		PaginatedCommentList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["Comment"][];
+		};
+		PaginatedEpisodeList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["Episode"][];
+		};
+		PaginatedProducerList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["Producer"][];
+		};
+		PaginatedStaffList: {
+			/** @example 123 */
+			count: number;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=400&limit=100
+			 */
+			next?: string | null;
+			/**
+			 * Format: uri
+			 * @example http://api.example.org/accounts/?offset=200&limit=100
+			 */
+			previous?: string | null;
+			results: components["schemas"]["Staff"][];
+		};
+		PatchedAnimeGET: {
+			mal_id?: number | null;
+			anilist_id?: number | null;
+			kitsu_id?: number | null;
+			name?: string;
+			name_japanese?: string;
+			name_synonyms?: string[];
+			/** Format: date-time */
+			aired_from?: string | null;
+			/** Format: date-time */
+			aired_to?: string | null;
+			/** Format: uri */
+			banner?: string | null;
+			/** Format: uri */
+			cover?: string | null;
+			banner_background_color?: string | null;
+			cover_background_color?: string | null;
+			synopsis?: string | null;
+			background?: string | null;
+			source?: string | null;
+			rating?: string;
+			genres?: readonly components["schemas"]["AnimeGenre"][];
+			themes?: readonly components["schemas"]["AnimeTheme"][];
+			characters?: readonly components["schemas"]["Character"][];
+			studios?: readonly components["schemas"]["Producer"][];
+			producers?: readonly components["schemas"]["Producer"][];
+			staffs?: readonly components["schemas"]["Staff"][];
+			openings?: number[];
+			endings?: number[];
+			is_locked?: boolean;
+			/** Format: date-time */
+			updated_at?: string;
+			/** Format: date-time */
+			created_at?: string;
+			episode_count?: number;
+		};
+		PatchedAnimeGenre: {
+			mal_id?: number;
+			name?: string;
+			type?: components["schemas"]["TypeEnum"];
+			description?: string | null;
+		};
+		PatchedAnimeTheme: {
+			mal_id?: number;
+			name?: string;
+			type?: components["schemas"]["TypeEnum"];
+			description?: string | null;
+		};
+		PatchedCharacter: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			anilist_id?: number | null;
+			name?: string;
+			name_kanji?: string | null;
+			/** Format: uri */
+			character_image?: string | null;
+			about?: string | null;
+		};
+		PatchedComment: {
+			pk?: number;
+			/** Format: date-time */
+			created_at?: string;
+			user?: components["schemas"]["User"];
+			text?: string;
+			path?: string;
+			childrens?: number;
+			ratio?: number;
+			deleted?: boolean;
+			user_reaction?: string | null;
+		};
+		PatchedProducer: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			name?: string;
+			name_japanese?: string | null;
+			/** Format: date-time */
+			established?: string | null;
+			about?: string | null;
+		};
+		PatchedStaff: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			anilist_id?: number | null;
+			name?: string;
+			given_name?: string | null;
+			family_name?: string | null;
+			alternate_names?: string[];
+			/** Format: uri */
+			staff_image?: string | null;
+			about?: string | null;
+		};
+		Producer: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			name?: string;
+			name_japanese?: string | null;
+			/** Format: date-time */
+			established?: string | null;
+			about?: string | null;
+		};
+		Provider: {
+			api_key: string;
+		};
+		Register: {
+			id: number;
+			password: string;
+			/** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+			username: string;
+			first_name?: string;
+			last_name?: string;
+			/**
+			 * Email address
+			 * Format: email
+			 * @description Required. A valid email with a valid domain
+			 */
+			email: string;
+			/** Format: uri */
+			avatar?: string | null;
+			/** Format: uri */
+			avatar_provider?: string;
+		};
+		Staff: {
+			mal_id?: number | null;
+			kitsu_id?: number | null;
+			anilist_id?: number | null;
+			name: string;
+			given_name?: string | null;
+			family_name?: string | null;
+			alternate_names?: string[];
+			/** Format: uri */
+			staff_image?: string | null;
+			about?: string | null;
+		};
+		Token: {
+			token: string;
+		};
+		/**
+		 * @description * `Anime` - anime
+		 * * `Manga` - manga
+		 * @enum {string}
+		 */
+		TypeEnum: "Anime" | "Manga";
+		User: {
+			/** @description Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only. */
+			username: string;
+			first_name?: string;
+			last_name?: string;
+			/** Format: uri */
+			avatar?: string | null;
+			avatar_url: string;
+			/**
+			 * Email address
+			 * Format: email
+			 * @description Required. A valid email with a valid domain
+			 */
+			email: string;
+		};
+		UsernameValidity: {
+			username: string;
+		};
+	};
+	responses: never;
+	parameters: never;
+	requestBodies: never;
+	headers: never;
+	pathItems: never;
 }
 
 export type $defs = Record<string, never>;
@@ -532,1075 +531,1173 @@ export type $defs = Record<string, never>;
 export type external = Record<string, never>;
 
 export interface operations {
-
-  api_v2_anime_list: {
-    parameters: {
-      query?: {
-        /** @description Anilist ID Filter */
-        anilist_id?: string;
-        /** @description Character Filter */
-        characters?: string;
-        /** @description Genre Filter */
-        genre?: string;
-        /** @description Kitsu ID Filter */
-        kitsu_id?: string;
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description MyAnimeList ID Filter */
-        mal_id?: string;
-        /** @description Name Filter */
-        name?: string;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description Producer Filter */
-        producers?: string;
-        /** @description Staff Filter */
-        staffs?: string;
-        /** @description Studio Filter */
-        studios?: string;
-        /** @description Theme Filter */
-        themes?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedAnimeGETList"];
-        };
-      };
-    };
-  };
-  api_v2_anime_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimePOST"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimePOST"];
-        "multipart/form-data": components["schemas"]["AnimePOST"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["AnimePOST"];
-        };
-      };
-    };
-  };
-  api_v2_anime_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Anime. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGET"];
-        };
-      };
-    };
-  };
-  api_v2_anime_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Anime. */
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimeGET"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimeGET"];
-        "multipart/form-data": components["schemas"]["AnimeGET"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGET"];
-        };
-      };
-    };
-  };
-  api_v2_anime_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Anime. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_anime_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Anime. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedAnimeGET"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeGET"];
-        "multipart/form-data": components["schemas"]["PatchedAnimeGET"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGET"];
-        };
-      };
-    };
-  };
-  api_v2_anime_comment_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedCommentList"];
-        };
-      };
-    };
-  };
-  api_v2_anime_comment_create: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Comment"];
-        "application/x-www-form-urlencoded": components["schemas"]["Comment"];
-        "multipart/form-data": components["schemas"]["Comment"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Comment"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedEpisodeList"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_create: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Episode"];
-        "application/x-www-form-urlencoded": components["schemas"]["Episode"];
-        "multipart/form-data": components["schemas"]["Episode"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Episode"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_comment_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-      path: {
-        episode_number: number;
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedCommentList"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_comment_create: {
-    parameters: {
-      path: {
-        episode_number: number;
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Comment"];
-        "application/x-www-form-urlencoded": components["schemas"]["Comment"];
-        "multipart/form-data": components["schemas"]["Comment"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Comment"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_timestamp_retrieve: {
-    parameters: {
-      path: {
-        episode_number: number;
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["EpisodeTimpstamp"];
-        };
-      };
-    };
-  };
-  api_v2_anime_episode_timestamp_create: {
-    parameters: {
-      path: {
-        episode_number: number;
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["EpisodeTimpstamp"];
-        "application/x-www-form-urlencoded": components["schemas"]["EpisodeTimpstamp"];
-        "multipart/form-data": components["schemas"]["EpisodeTimpstamp"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["EpisodeTimpstamp"];
-        };
-      };
-    };
-  };
-  api_v2_anime_genres_list: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGenre"][];
-        };
-      };
-    };
-  };
-  api_v2_anime_genres_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimeGenre"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimeGenre"];
-        "multipart/form-data": components["schemas"]["AnimeGenre"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["AnimeGenre"];
-        };
-      };
-    };
-  };
-  api_v2_anime_genres_retrieve: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGenre"];
-        };
-      };
-    };
-  };
-  api_v2_anime_genres_update: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimeGenre"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimeGenre"];
-        "multipart/form-data": components["schemas"]["AnimeGenre"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGenre"];
-        };
-      };
-    };
-  };
-  api_v2_anime_genres_destroy: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_anime_genres_partial_update: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedAnimeGenre"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeGenre"];
-        "multipart/form-data": components["schemas"]["PatchedAnimeGenre"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeGenre"];
-        };
-      };
-    };
-  };
-  api_v2_anime_themes_list: {
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeTheme"][];
-        };
-      };
-    };
-  };
-  api_v2_anime_themes_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimeTheme"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimeTheme"];
-        "multipart/form-data": components["schemas"]["AnimeTheme"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["AnimeTheme"];
-        };
-      };
-    };
-  };
-  api_v2_anime_themes_retrieve: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeTheme"];
-        };
-      };
-    };
-  };
-  api_v2_anime_themes_update: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["AnimeTheme"];
-        "application/x-www-form-urlencoded": components["schemas"]["AnimeTheme"];
-        "multipart/form-data": components["schemas"]["AnimeTheme"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeTheme"];
-        };
-      };
-    };
-  };
-  api_v2_anime_themes_destroy: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_anime_themes_partial_update: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedAnimeTheme"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeTheme"];
-        "multipart/form-data": components["schemas"]["PatchedAnimeTheme"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AnimeTheme"];
-        };
-      };
-    };
-  };
-  api_v2_character_list: {
-    parameters: {
-      query?: {
-        /** @description Anilist ID Filter */
-        anilist_id?: string;
-        /** @description Kitsu ID Filter */
-        kitsu_id?: string;
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description MyAnimeList ID Filter */
-        mal_id?: string;
-        /** @description Name Filter */
-        name?: string;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedCharacterList"];
-        };
-      };
-    };
-  };
-  api_v2_character_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Character"];
-        "application/x-www-form-urlencoded": components["schemas"]["Character"];
-        "multipart/form-data": components["schemas"]["Character"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Character"];
-        };
-      };
-    };
-  };
-  api_v2_character_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Character. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Character"];
-        };
-      };
-    };
-  };
-  api_v2_character_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Character. */
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Character"];
-        "application/x-www-form-urlencoded": components["schemas"]["Character"];
-        "multipart/form-data": components["schemas"]["Character"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Character"];
-        };
-      };
-    };
-  };
-  api_v2_character_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Character. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_character_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Character. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedCharacter"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedCharacter"];
-        "multipart/form-data": components["schemas"]["PatchedCharacter"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Character"];
-        };
-      };
-    };
-  };
-  api_v2_comment_reaction_create: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["CommentReaction"];
-        "application/x-www-form-urlencoded": components["schemas"]["CommentReaction"];
-        "multipart/form-data": components["schemas"]["CommentReaction"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["CommentReaction"];
-        };
-      };
-    };
-  };
-  api_v2_comment_reaction_destroy: {
-    parameters: {
-      path: {
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_comments_list: {
-    parameters: {
-      query?: {
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-        /** @description Path Filter */
-        path?: string;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedCommentList"];
-        };
-      };
-    };
-  };
-  api_v2_comments_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Comment. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Comment"];
-        };
-      };
-    };
-  };
-  api_v2_comments_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Comment. */
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Comment"];
-        "application/x-www-form-urlencoded": components["schemas"]["Comment"];
-        "multipart/form-data": components["schemas"]["Comment"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Comment"];
-        };
-      };
-    };
-  };
-  api_v2_comments_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Comment. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_comments_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Comment. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedComment"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedComment"];
-        "multipart/form-data": components["schemas"]["PatchedComment"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Comment"];
-        };
-      };
-    };
-  };
-  api_v2_producer_list: {
-    parameters: {
-      query?: {
-        /** @description Kitsu ID Filter */
-        kitsu_id?: string;
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description MyAnimeList ID Filter */
-        mal_id?: string;
-        /** @description Name Filter */
-        name?: string;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedProducerList"];
-        };
-      };
-    };
-  };
-  api_v2_producer_create: {
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["Producer"];
-        "application/x-www-form-urlencoded": components["schemas"]["Producer"];
-        "multipart/form-data": components["schemas"]["Producer"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Producer"];
-        };
-      };
-    };
-  };
-  api_v2_producer_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Producer. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Producer"];
-        };
-      };
-    };
-  };
-  api_v2_producer_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Producer. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["Producer"];
-        "application/x-www-form-urlencoded": components["schemas"]["Producer"];
-        "multipart/form-data": components["schemas"]["Producer"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Producer"];
-        };
-      };
-    };
-  };
-  api_v2_producer_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Producer. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_producer_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Producer. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedProducer"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedProducer"];
-        "multipart/form-data": components["schemas"]["PatchedProducer"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Producer"];
-        };
-      };
-    };
-  };
-  /**
-   * @description OpenApi3 schema for this API. Format can be selected via content negotiation.
-   *
-   * - YAML: application/vnd.oai.openapi
-   * - JSON: application/vnd.oai.openapi+json
-   */
-  api_v2_schema_retrieve: {
-    parameters: {
-      query?: {
-        format?: "json" | "yaml";
-        lang?: "af" | "ar" | "ar-dz" | "ast" | "az" | "be" | "bg" | "bn" | "br" | "bs" | "ca" | "ckb" | "cs" | "cy" | "da" | "de" | "dsb" | "el" | "en" | "en-au" | "en-gb" | "eo" | "es" | "es-ar" | "es-co" | "es-mx" | "es-ni" | "es-ve" | "et" | "eu" | "fa" | "fi" | "fr" | "fy" | "ga" | "gd" | "gl" | "he" | "hi" | "hr" | "hsb" | "hu" | "hy" | "ia" | "id" | "ig" | "io" | "is" | "it" | "ja" | "ka" | "kab" | "kk" | "km" | "kn" | "ko" | "ky" | "lb" | "lt" | "lv" | "mk" | "ml" | "mn" | "mr" | "ms" | "my" | "nb" | "ne" | "nl" | "nn" | "os" | "pa" | "pl" | "pt" | "pt-br" | "ro" | "ru" | "sk" | "sl" | "sq" | "sr" | "sr-latn" | "sv" | "sw" | "ta" | "te" | "tg" | "th" | "tk" | "tr" | "tt" | "udm" | "ug" | "uk" | "ur" | "uz" | "vi" | "zh-hans" | "zh-hant";
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/vnd.oai.openapi": {
-            [key: string]: unknown;
-          };
-          "application/yaml": {
-            [key: string]: unknown;
-          };
-          "application/vnd.oai.openapi+json": {
-            [key: string]: unknown;
-          };
-          "application/json": {
-            [key: string]: unknown;
-          };
-        };
-      };
-    };
-  };
-  api_v2_staff_list: {
-    parameters: {
-      query?: {
-        /** @description Anilist ID Filter */
-        anilist_id?: string;
-        /** @description Kitsu ID Filter */
-        kitsu_id?: string;
-        /** @description Number of results to return per page. */
-        limit?: number;
-        /** @description MyAnimeList ID Filter */
-        mal_id?: string;
-        /** @description Name Filter */
-        name?: string;
-        /** @description The initial index from which to return the results. */
-        offset?: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["PaginatedStaffList"];
-        };
-      };
-    };
-  };
-  api_v2_staff_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Staff"];
-        "application/x-www-form-urlencoded": components["schemas"]["Staff"];
-        "multipart/form-data": components["schemas"]["Staff"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Staff"];
-        };
-      };
-    };
-  };
-  api_v2_staff_retrieve: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Staff | People. */
-        id: number;
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Staff"];
-        };
-      };
-    };
-  };
-  api_v2_staff_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Staff | People. */
-        id: number;
-      };
-    };
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Staff"];
-        "application/x-www-form-urlencoded": components["schemas"]["Staff"];
-        "multipart/form-data": components["schemas"]["Staff"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Staff"];
-        };
-      };
-    };
-  };
-  api_v2_staff_destroy: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Staff | People. */
-        id: number;
-      };
-    };
-    responses: {
-      /** @description No response body */
-      204: {
-        content: never;
-      };
-    };
-  };
-  api_v2_staff_partial_update: {
-    parameters: {
-      path: {
-        /** @description A unique integer value identifying this Staff | People. */
-        id: number;
-      };
-    };
-    requestBody?: {
-      content: {
-        "application/json": components["schemas"]["PatchedStaff"];
-        "application/x-www-form-urlencoded": components["schemas"]["PatchedStaff"];
-        "multipart/form-data": components["schemas"]["PatchedStaff"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Staff"];
-        };
-      };
-    };
-  };
-  api_v2_upload_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Provider"];
-        "application/x-www-form-urlencoded": components["schemas"]["Provider"];
-        "multipart/form-data": components["schemas"]["Provider"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Provider"];
-        };
-      };
-    };
-  };
-  api_v2_user_login_create: {
-    requestBody: {
-      content: {
-        "application/x-www-form-urlencoded": components["schemas"]["AuthToken"];
-        "multipart/form-data": components["schemas"]["AuthToken"];
-        "application/json": components["schemas"]["AuthToken"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["AuthToken"];
-        };
-      };
-    };
-  };
-  api_v2_user_logout_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Token"];
-        "application/x-www-form-urlencoded": components["schemas"]["Token"];
-        "multipart/form-data": components["schemas"]["Token"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["Token"];
-        };
-      };
-    };
-  };
-  api_v2_user_register_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["Register"];
-        "application/x-www-form-urlencoded": components["schemas"]["Register"];
-        "multipart/form-data": components["schemas"]["Register"];
-      };
-    };
-    responses: {
-      201: {
-        content: {
-          "application/json": components["schemas"]["Register"];
-        };
-      };
-    };
-  };
-  api_v2_user_validity_email_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["EmailValidity"];
-        "application/x-www-form-urlencoded": components["schemas"]["EmailValidity"];
-        "multipart/form-data": components["schemas"]["EmailValidity"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["EmailValidity"];
-        };
-      };
-    };
-  };
-  api_v2_user_validity_username_create: {
-    requestBody: {
-      content: {
-        "application/json": components["schemas"]["UsernameValidity"];
-        "application/x-www-form-urlencoded": components["schemas"]["UsernameValidity"];
-        "multipart/form-data": components["schemas"]["UsernameValidity"];
-      };
-    };
-    responses: {
-      200: {
-        content: {
-          "application/json": components["schemas"]["UsernameValidity"];
-        };
-      };
-    };
-  };
+	api_v2_anime_list: {
+		parameters: {
+			query?: {
+				/** @description Anilist ID Filter */
+				anilist_id?: string;
+				/** @description Character Filter */
+				characters?: string;
+				/** @description Genre Filter */
+				genre?: string;
+				/** @description Kitsu ID Filter */
+				kitsu_id?: string;
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description MyAnimeList ID Filter */
+				mal_id?: string;
+				/** @description Name Filter */
+				name?: string;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+				/** @description Producer Filter */
+				producers?: string;
+				/** @description Staff Filter */
+				staffs?: string;
+				/** @description Studio Filter */
+				studios?: string;
+				/** @description Theme Filter */
+				themes?: string;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedAnimeGETList"];
+				};
+			};
+		};
+	};
+	api_v2_anime_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimePOST"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimePOST"];
+				"multipart/form-data": components["schemas"]["AnimePOST"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["AnimePOST"];
+				};
+			};
+		};
+	};
+	api_v2_anime_retrieve: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Anime. */
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGET"];
+				};
+			};
+		};
+	};
+	api_v2_anime_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Anime. */
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimeGET"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimeGET"];
+				"multipart/form-data": components["schemas"]["AnimeGET"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGET"];
+				};
+			};
+		};
+	};
+	api_v2_anime_destroy: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Anime. */
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_anime_partial_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Anime. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedAnimeGET"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeGET"];
+				"multipart/form-data": components["schemas"]["PatchedAnimeGET"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGET"];
+				};
+			};
+		};
+	};
+	api_v2_anime_comment_list: {
+		parameters: {
+			query?: {
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedCommentList"];
+				};
+			};
+		};
+	};
+	api_v2_anime_comment_create: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Comment"];
+				"application/x-www-form-urlencoded": components["schemas"]["Comment"];
+				"multipart/form-data": components["schemas"]["Comment"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Comment"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_list: {
+		parameters: {
+			query?: {
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedEpisodeList"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_create: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Episode"];
+				"application/x-www-form-urlencoded": components["schemas"]["Episode"];
+				"multipart/form-data": components["schemas"]["Episode"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Episode"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_comment_list: {
+		parameters: {
+			query?: {
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+			path: {
+				episode_number: number;
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedCommentList"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_comment_create: {
+		parameters: {
+			path: {
+				episode_number: number;
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Comment"];
+				"application/x-www-form-urlencoded": components["schemas"]["Comment"];
+				"multipart/form-data": components["schemas"]["Comment"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Comment"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_timestamp_retrieve: {
+		parameters: {
+			path: {
+				episode_number: number;
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["EpisodeTimpstamp"];
+				};
+			};
+		};
+	};
+	api_v2_anime_episode_timestamp_create: {
+		parameters: {
+			path: {
+				episode_number: number;
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["EpisodeTimpstamp"];
+				"application/x-www-form-urlencoded": components["schemas"]["EpisodeTimpstamp"];
+				"multipart/form-data": components["schemas"]["EpisodeTimpstamp"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["EpisodeTimpstamp"];
+				};
+			};
+		};
+	};
+	api_v2_anime_genres_list: {
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGenre"][];
+				};
+			};
+		};
+	};
+	api_v2_anime_genres_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimeGenre"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimeGenre"];
+				"multipart/form-data": components["schemas"]["AnimeGenre"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["AnimeGenre"];
+				};
+			};
+		};
+	};
+	api_v2_anime_genres_retrieve: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGenre"];
+				};
+			};
+		};
+	};
+	api_v2_anime_genres_update: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimeGenre"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimeGenre"];
+				"multipart/form-data": components["schemas"]["AnimeGenre"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGenre"];
+				};
+			};
+		};
+	};
+	api_v2_anime_genres_destroy: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_anime_genres_partial_update: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedAnimeGenre"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeGenre"];
+				"multipart/form-data": components["schemas"]["PatchedAnimeGenre"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeGenre"];
+				};
+			};
+		};
+	};
+	api_v2_anime_themes_list: {
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeTheme"][];
+				};
+			};
+		};
+	};
+	api_v2_anime_themes_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimeTheme"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimeTheme"];
+				"multipart/form-data": components["schemas"]["AnimeTheme"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["AnimeTheme"];
+				};
+			};
+		};
+	};
+	api_v2_anime_themes_retrieve: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeTheme"];
+				};
+			};
+		};
+	};
+	api_v2_anime_themes_update: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["AnimeTheme"];
+				"application/x-www-form-urlencoded": components["schemas"]["AnimeTheme"];
+				"multipart/form-data": components["schemas"]["AnimeTheme"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeTheme"];
+				};
+			};
+		};
+	};
+	api_v2_anime_themes_destroy: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_anime_themes_partial_update: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedAnimeTheme"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedAnimeTheme"];
+				"multipart/form-data": components["schemas"]["PatchedAnimeTheme"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AnimeTheme"];
+				};
+			};
+		};
+	};
+	api_v2_character_list: {
+		parameters: {
+			query?: {
+				/** @description Anilist ID Filter */
+				anilist_id?: string;
+				/** @description Kitsu ID Filter */
+				kitsu_id?: string;
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description MyAnimeList ID Filter */
+				mal_id?: string;
+				/** @description Name Filter */
+				name?: string;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedCharacterList"];
+				};
+			};
+		};
+	};
+	api_v2_character_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Character"];
+				"application/x-www-form-urlencoded": components["schemas"]["Character"];
+				"multipart/form-data": components["schemas"]["Character"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["Character"];
+				};
+			};
+		};
+	};
+	api_v2_character_retrieve: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Character. */
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Character"];
+				};
+			};
+		};
+	};
+	api_v2_character_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Character. */
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Character"];
+				"application/x-www-form-urlencoded": components["schemas"]["Character"];
+				"multipart/form-data": components["schemas"]["Character"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Character"];
+				};
+			};
+		};
+	};
+	api_v2_character_destroy: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Character. */
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_character_partial_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Character. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedCharacter"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedCharacter"];
+				"multipart/form-data": components["schemas"]["PatchedCharacter"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Character"];
+				};
+			};
+		};
+	};
+	api_v2_comment_reaction_create: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["CommentReaction"];
+				"application/x-www-form-urlencoded": components["schemas"]["CommentReaction"];
+				"multipart/form-data": components["schemas"]["CommentReaction"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["CommentReaction"];
+				};
+			};
+		};
+	};
+	api_v2_comment_reaction_destroy: {
+		parameters: {
+			path: {
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_comments_list: {
+		parameters: {
+			query?: {
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+				/** @description Path Filter */
+				path?: string;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedCommentList"];
+				};
+			};
+		};
+	};
+	api_v2_comments_retrieve: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Comment. */
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Comment"];
+				};
+			};
+		};
+	};
+	api_v2_comments_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Comment. */
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Comment"];
+				"application/x-www-form-urlencoded": components["schemas"]["Comment"];
+				"multipart/form-data": components["schemas"]["Comment"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Comment"];
+				};
+			};
+		};
+	};
+	api_v2_comments_destroy: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Comment. */
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_comments_partial_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Comment. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedComment"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedComment"];
+				"multipart/form-data": components["schemas"]["PatchedComment"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Comment"];
+				};
+			};
+		};
+	};
+	api_v2_producer_list: {
+		parameters: {
+			query?: {
+				/** @description Kitsu ID Filter */
+				kitsu_id?: string;
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description MyAnimeList ID Filter */
+				mal_id?: string;
+				/** @description Name Filter */
+				name?: string;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedProducerList"];
+				};
+			};
+		};
+	};
+	api_v2_producer_create: {
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["Producer"];
+				"application/x-www-form-urlencoded": components["schemas"]["Producer"];
+				"multipart/form-data": components["schemas"]["Producer"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["Producer"];
+				};
+			};
+		};
+	};
+	api_v2_producer_retrieve: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Producer. */
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Producer"];
+				};
+			};
+		};
+	};
+	api_v2_producer_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Producer. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["Producer"];
+				"application/x-www-form-urlencoded": components["schemas"]["Producer"];
+				"multipart/form-data": components["schemas"]["Producer"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Producer"];
+				};
+			};
+		};
+	};
+	api_v2_producer_destroy: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Producer. */
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_producer_partial_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Producer. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedProducer"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedProducer"];
+				"multipart/form-data": components["schemas"]["PatchedProducer"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Producer"];
+				};
+			};
+		};
+	};
+	/**
+	 * @description OpenApi3 schema for this API. Format can be selected via content negotiation.
+	 *
+	 * - YAML: application/vnd.oai.openapi
+	 * - JSON: application/vnd.oai.openapi+json
+	 */
+	api_v2_schema_retrieve: {
+		parameters: {
+			query?: {
+				format?: "json" | "yaml";
+				lang?:
+					| "af"
+					| "ar"
+					| "ar-dz"
+					| "ast"
+					| "az"
+					| "be"
+					| "bg"
+					| "bn"
+					| "br"
+					| "bs"
+					| "ca"
+					| "ckb"
+					| "cs"
+					| "cy"
+					| "da"
+					| "de"
+					| "dsb"
+					| "el"
+					| "en"
+					| "en-au"
+					| "en-gb"
+					| "eo"
+					| "es"
+					| "es-ar"
+					| "es-co"
+					| "es-mx"
+					| "es-ni"
+					| "es-ve"
+					| "et"
+					| "eu"
+					| "fa"
+					| "fi"
+					| "fr"
+					| "fy"
+					| "ga"
+					| "gd"
+					| "gl"
+					| "he"
+					| "hi"
+					| "hr"
+					| "hsb"
+					| "hu"
+					| "hy"
+					| "ia"
+					| "id"
+					| "ig"
+					| "io"
+					| "is"
+					| "it"
+					| "ja"
+					| "ka"
+					| "kab"
+					| "kk"
+					| "km"
+					| "kn"
+					| "ko"
+					| "ky"
+					| "lb"
+					| "lt"
+					| "lv"
+					| "mk"
+					| "ml"
+					| "mn"
+					| "mr"
+					| "ms"
+					| "my"
+					| "nb"
+					| "ne"
+					| "nl"
+					| "nn"
+					| "os"
+					| "pa"
+					| "pl"
+					| "pt"
+					| "pt-br"
+					| "ro"
+					| "ru"
+					| "sk"
+					| "sl"
+					| "sq"
+					| "sr"
+					| "sr-latn"
+					| "sv"
+					| "sw"
+					| "ta"
+					| "te"
+					| "tg"
+					| "th"
+					| "tk"
+					| "tr"
+					| "tt"
+					| "udm"
+					| "ug"
+					| "uk"
+					| "ur"
+					| "uz"
+					| "vi"
+					| "zh-hans"
+					| "zh-hant";
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/vnd.oai.openapi": {
+						[key: string]: unknown;
+					};
+					"application/yaml": {
+						[key: string]: unknown;
+					};
+					"application/vnd.oai.openapi+json": {
+						[key: string]: unknown;
+					};
+					"application/json": {
+						[key: string]: unknown;
+					};
+				};
+			};
+		};
+	};
+	api_v2_staff_list: {
+		parameters: {
+			query?: {
+				/** @description Anilist ID Filter */
+				anilist_id?: string;
+				/** @description Kitsu ID Filter */
+				kitsu_id?: string;
+				/** @description Number of results to return per page. */
+				limit?: number;
+				/** @description MyAnimeList ID Filter */
+				mal_id?: string;
+				/** @description Name Filter */
+				name?: string;
+				/** @description The initial index from which to return the results. */
+				offset?: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["PaginatedStaffList"];
+				};
+			};
+		};
+	};
+	api_v2_staff_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Staff"];
+				"application/x-www-form-urlencoded": components["schemas"]["Staff"];
+				"multipart/form-data": components["schemas"]["Staff"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["Staff"];
+				};
+			};
+		};
+	};
+	api_v2_staff_retrieve: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Staff | People. */
+				id: number;
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Staff"];
+				};
+			};
+		};
+	};
+	api_v2_staff_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Staff | People. */
+				id: number;
+			};
+		};
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Staff"];
+				"application/x-www-form-urlencoded": components["schemas"]["Staff"];
+				"multipart/form-data": components["schemas"]["Staff"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Staff"];
+				};
+			};
+		};
+	};
+	api_v2_staff_destroy: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Staff | People. */
+				id: number;
+			};
+		};
+		responses: {
+			/** @description No response body */
+			204: {
+				content: never;
+			};
+		};
+	};
+	api_v2_staff_partial_update: {
+		parameters: {
+			path: {
+				/** @description A unique integer value identifying this Staff | People. */
+				id: number;
+			};
+		};
+		requestBody?: {
+			content: {
+				"application/json": components["schemas"]["PatchedStaff"];
+				"application/x-www-form-urlencoded": components["schemas"]["PatchedStaff"];
+				"multipart/form-data": components["schemas"]["PatchedStaff"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Staff"];
+				};
+			};
+		};
+	};
+	api_v2_upload_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Provider"];
+				"application/x-www-form-urlencoded": components["schemas"]["Provider"];
+				"multipart/form-data": components["schemas"]["Provider"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["Provider"];
+				};
+			};
+		};
+	};
+	api_v2_user_login_create: {
+		requestBody: {
+			content: {
+				"application/x-www-form-urlencoded": components["schemas"]["AuthToken"];
+				"multipart/form-data": components["schemas"]["AuthToken"];
+				"application/json": components["schemas"]["AuthToken"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["AuthToken"];
+				};
+			};
+		};
+	};
+	api_v2_user_logout_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Token"];
+				"application/x-www-form-urlencoded": components["schemas"]["Token"];
+				"multipart/form-data": components["schemas"]["Token"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["Token"];
+				};
+			};
+		};
+	};
+	api_v2_user_register_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["Register"];
+				"application/x-www-form-urlencoded": components["schemas"]["Register"];
+				"multipart/form-data": components["schemas"]["Register"];
+			};
+		};
+		responses: {
+			201: {
+				content: {
+					"application/json": components["schemas"]["Register"];
+				};
+			};
+		};
+	};
+	api_v2_user_validity_email_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["EmailValidity"];
+				"application/x-www-form-urlencoded": components["schemas"]["EmailValidity"];
+				"multipart/form-data": components["schemas"]["EmailValidity"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["EmailValidity"];
+				};
+			};
+		};
+	};
+	api_v2_user_validity_username_create: {
+		requestBody: {
+			content: {
+				"application/json": components["schemas"]["UsernameValidity"];
+				"application/x-www-form-urlencoded": components["schemas"]["UsernameValidity"];
+				"multipart/form-data": components["schemas"]["UsernameValidity"];
+			};
+		};
+		responses: {
+			200: {
+				content: {
+					"application/json": components["schemas"]["UsernameValidity"];
+				};
+			};
+		};
+	};
 }
