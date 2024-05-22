@@ -345,7 +345,7 @@
 						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
 						{@const dominant_color =
 							image_loaded &&
-							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+							rgbHex(...latest_episodes_color_palette_mapping[episode.id][1])}
 
 						{#if image_loaded}
 							<div
@@ -359,10 +359,6 @@
 									<img
 										src={episode.cover}
 										alt=""
-										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
-									/>
-									<Image
-										src={episode.cover}
 										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
 									/>
 									<div class="flex flex-1 flex-col md:gap-[0.15vw]">
@@ -382,7 +378,7 @@
 									<a
 										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
-										class:bg-[var(--dominant-color)]={image_loaded}
+										class:!bg-[var(--dominant-color)]={image_loaded}
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
