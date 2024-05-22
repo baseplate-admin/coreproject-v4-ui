@@ -12,6 +12,8 @@
 	import Play from "$icons/shapes/play.svelte";
 	import Info from "$icons/shapes/info.svelte";
 	import Edit from "$icons/shapes/edit.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
+	import Dice from "$icons/shapes/dice.svelte";
 
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
@@ -36,6 +38,7 @@
 			{ background: "bg-error", border: "border-error" }
 		];
 
+	// Mock data mappings
 	let latest_animes = [
 		{
 			id: 1,
@@ -108,6 +111,29 @@
 			title: "Kaiju no.8",
 			ep_number: 1,
 			timestamp: "3 hour ago" // TODO: format time
+		}
+	];
+
+	const sidebar_animes = [
+		{
+			id: 1,
+			title: "Jujutsu Kaisen season 2",
+			cover: "/images/mock/cover/jjk.webp",
+		},
+		{
+			id: 2,
+			title: "One Piece",
+			cover: "/images/mock/cover/one_piece.webp",
+		},
+		{
+			id: 3,
+			title: "Kaiju no.8",
+			cover: "/images/mock/cover/kaiju_no_8.jpg",
+		},
+		{
+			id: 4,
+			title: "Demon Slayer Hashira Training Arc",
+			cover: "/images/mock/cover/demon_slayer_training.webp",
 		}
 	];
 
@@ -392,7 +418,33 @@
 						/>
 					{/each}
 				</div>
-				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
+				<div class="h-full flex flex-col items-center md:p-[0.35vw] md:gap-[0.5vw] bg-accent/90 md:w-[4vw] md:rounded-[0.75vw]">
+					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+						<Preference class="md:size-[1.25vw]" />
+					</button>
+					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+						<Dice class="md:size-[1.25vw]" />
+					</button>
+					<div class="w-1/2 md:h-[0.15vw] bg-secondary rounded-full"></div>
+					<ScrollArea
+						gradient_mask
+						parent_class="snap-y md:rounded-[0.65vw]"
+						class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw]"
+					>
+						{#each sidebar_animes as anime}
+							<a href="anime/mal/{anime.id}">
+								<img
+									src={anime.cover}
+									class="w-full h-auto md:rounded-[0.65vw] snap-start"
+									alt=""
+								/>
+							</a>
+						{/each}
+					</ScrollArea>
+					<button class="grid place-items-center md:h-[1.25vw] md:w-[3vw] p-0 md:rounded-[0.5vw] btn btn-secondary min-h-max text-accent">
+						<Chevron class="md:size-[1vw]" />
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
