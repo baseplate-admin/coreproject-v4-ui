@@ -116,18 +116,22 @@
 
 	const sidebar_animes = [
 		{
+			id: 1,
 			title: "Jujutsu Kaisen season 2",
 			cover: "/images/mock/cover/jjk.webp",
 		},
 		{
+			id: 2,
 			title: "One Piece",
 			cover: "/images/mock/cover/one_piece.webp",
 		},
 		{
+			id: 3,
 			title: "Kaiju no.8",
 			cover: "/images/mock/cover/kaiju_no_8.jpg",
 		},
 		{
+			id: 4,
 			title: "Demon Slayer Hashira Training Arc",
 			cover: "/images/mock/cover/demon_slayer_training.webp",
 		}
@@ -428,7 +432,7 @@
 						class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw]"
 					>
 						{#each sidebar_animes as anime}
-							<a href="/">
+							<a href="anime/mal/{anime.id}">
 								<img
 									src={anime.cover}
 									class="w-full h-auto md:rounded-[0.65vw] snap-start"
