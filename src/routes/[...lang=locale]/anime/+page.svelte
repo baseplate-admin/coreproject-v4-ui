@@ -345,7 +345,7 @@
 						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
 						{@const dominant_color =
 							image_loaded &&
-							rgbHex(...latest_episodes_color_palette_mapping[episode.id][0])}
+							rgbHex(...latest_episodes_color_palette_mapping[episode.id][1])}
 
 						{#if image_loaded}
 							<div
@@ -399,7 +399,7 @@
 						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
-							class="hidden"
+							class="absolute -z-10"
 							bind:image_loaded={latest_episodes_loaded_mapping[episode.id]}
 							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
 						/>
