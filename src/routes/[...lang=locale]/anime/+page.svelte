@@ -3,9 +3,6 @@
 	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 
-	import type { LatestEpisode } from "$types/episode";
-	import type { LatestAnime } from "$types/anime";
-
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
@@ -39,7 +36,7 @@
 			{ background: "bg-error", border: "border-error" }
 		];
 
-	let latest_animes: LatestAnime[] = [
+	let latest_animes = [
 		{
 			id: 1,
 			name: "Jujutsu Kaisen",
@@ -79,7 +76,7 @@
 		}
 	];
 
-	const latest_episodes: LatestEpisode[] = [
+	const latest_episodes = [
 		{
 			id: 1,
 			cover: "/images/mock/cover/one_piece.webp",
