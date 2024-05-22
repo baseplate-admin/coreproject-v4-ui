@@ -12,6 +12,8 @@
 	import Play from "$icons/shapes/play.svelte";
 	import Info from "$icons/shapes/info.svelte";
 	import Edit from "$icons/shapes/edit.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
+	import Dice from "$icons/shapes/dice.svelte";
 
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
@@ -392,7 +394,24 @@
 						/>
 					{/each}
 				</div>
-				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
+				<div class="h-full flex flex-col items-center md:p-[0.35vw] md:gap-[0.5vw] bg-accent/90 md:w-[4vw] md:rounded-[0.75vw]">
+					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+						<Preference class="md:size-[1.25vw]" />
+					</button>
+					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+						<Dice class="md:size-[1.25vw]" />
+					</button>
+					<div class="w-1/2 md:h-[0.15vw] bg-secondary rounded-full"></div>
+					<div class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw] snap-y overflow-y-scroll md:rounded-[0.65vw] [scrollbar-width:none]">
+						{#each {length: 10} as _}
+							<img
+								src="/images/mock/cover/demon_slayer_training.webp"
+								alt=""
+								class="w-full h-auto md:rounded-[0.65vw] snap-start"
+							/>
+						{/each}
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
