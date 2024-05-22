@@ -422,7 +422,11 @@
 						<Dice class="md:size-[1.25vw]" />
 					</button>
 					<div class="w-1/2 md:h-[0.15vw] bg-secondary rounded-full"></div>
-					<div class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw] snap-y overflow-y-scroll md:rounded-[0.65vw] [scrollbar-width:none]">
+					<ScrollArea
+						gradient_mask
+						parent_class="snap-y md:rounded-[0.65vw]"
+						class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw]"
+					>
 						{#each sidebar_animes as anime}
 							<a href="/">
 								<img
@@ -432,7 +436,7 @@
 								/>
 							</a>
 						{/each}
-					</div>
+					</ScrollArea>
 					<button class="grid place-items-center md:h-[1.25vw] md:w-[3vw] p-0 md:rounded-[0.5vw] btn btn-secondary min-h-max text-accent">
 						<Chevron class="md:size-[1vw]" />
 					</button>
