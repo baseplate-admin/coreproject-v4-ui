@@ -1,4 +1,4 @@
-export type LatestAnimes = {
+export type LatestAnime = {
 	id: number;
 	name: string;
 	type: string;
