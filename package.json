@@ -22,7 +22,7 @@
 		"test:unit": "vitest"
 	},
 	"devDependencies": {
-		"@lottiefiles/svelte-lottie-player": "^0.3.1",
+		"@lottiefiles/dotlottie-svelte": "^0.1.9",
 		"@playwright/test": "^1.44.0",
 		"@sveltejs/adapter-auto": "^3.0.0",
 		"@sveltejs/adapter-node": "^5.0.1",

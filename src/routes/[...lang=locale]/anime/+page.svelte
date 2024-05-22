@@ -2,6 +2,7 @@
 	import Chevron from "$icons/shapes/chevron.svelte";
 	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import { DotLottieSvelte } from "@lottiefiles/dotlottie-svelte";
 
 	import type { LatestAnimes } from "$types/lastest_anime";
 
@@ -21,6 +22,7 @@
 	import Image from "$components/image/index.svelte";
 	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
+	import NotificationLottie from "$lotties/notification.lottie.json?url" assert { type: "json" };
 
 	const slider_delay = 10,
 		timer = new EasyTimer({
@@ -384,7 +386,13 @@
 						/>
 					{/each}
 				</div>
-				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]"></div>
+				<div class="h-full bg-neutral md:w-[5vw] md:rounded-[0.75vw]">
+					<div class="grid-col-1 grid h-full p-[0.2vw]">
+						<div class="btn">
+							<DotLottieSvelte src={NotificationLottie} loop autoplay></DotLottieSvelte>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
