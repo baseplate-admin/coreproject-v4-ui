@@ -244,7 +244,7 @@
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
 					<span class="text-error">
-						<Markdown markdown={email.error[0]} unsafe={true}></Markdown>
+						<Markdown markdown={email.error.join(",")} unsafe={true}></Markdown>
 					</span>
 				{/if}
 			</div>
@@ -328,7 +328,7 @@
 				{:else}
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 
-					<Markdown class="text-error" markdown={confirm_password.error[0]} />
+					<Markdown class="text-error" markdown={confirm_password.error.join(",")} />
 				{/if}
 			</div>
 		</div>
