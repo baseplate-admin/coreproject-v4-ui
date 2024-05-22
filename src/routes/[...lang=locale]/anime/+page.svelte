@@ -38,6 +38,7 @@
 			{ background: "bg-error", border: "border-error" }
 		];
 
+	// Mock data mappings
 	let latest_animes = [
 		{
 			id: 1,
@@ -110,6 +111,25 @@
 			title: "Kaiju no.8",
 			ep_number: 1,
 			timestamp: "3 hour ago" // TODO: format time
+		}
+	];
+
+	const sidebar_animes = [
+		{
+			title: "Jujutsu Kaisen season 2",
+			cover: "/images/mock/cover/jjk.webp",
+		},
+		{
+			title: "One Piece",
+			cover: "/images/mock/cover/one_piece.webp",
+		},
+		{
+			title: "Kaiju no.8",
+			cover: "/images/mock/cover/kaiju_no_8.jpg",
+		},
+		{
+			title: "Demon Slayer Hashira Training Arc",
+			cover: "/images/mock/cover/demon_slayer_training.webp",
 		}
 	];
 
@@ -403,14 +423,19 @@
 					</button>
 					<div class="w-1/2 md:h-[0.15vw] bg-secondary rounded-full"></div>
 					<div class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw] snap-y overflow-y-scroll md:rounded-[0.65vw] [scrollbar-width:none]">
-						{#each {length: 10} as _}
-							<img
-								src="/images/mock/cover/demon_slayer_training.webp"
-								alt=""
-								class="w-full h-auto md:rounded-[0.65vw] snap-start"
-							/>
+						{#each sidebar_animes as anime}
+							<a href="/">
+								<img
+									src={anime.cover}
+									class="w-full h-auto md:rounded-[0.65vw] snap-start"
+									alt=""
+								/>
+							</a>
 						{/each}
 					</div>
+					<button class="grid place-items-center md:h-[1.25vw] md:w-[3vw] p-0 md:rounded-[0.5vw] btn btn-secondary min-h-max text-accent">
+						<Chevron class="md:size-[1vw]" />
+					</button>
 				</div>
 			</div>
 		</div>
