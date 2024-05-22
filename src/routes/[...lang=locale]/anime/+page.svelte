@@ -3,8 +3,6 @@
 	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 
-	import type { LatestAnimes } from "$types/lastest_anime";
-
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
@@ -38,7 +36,7 @@
 			{ background: "bg-error", border: "border-error" }
 		];
 
-	let latest_animes: LatestAnimes[] = [
+	let latest_animes = [
 		{
 			id: 1,
 			name: "Jujutsu Kaisen",
@@ -78,61 +76,7 @@
 		}
 	];
 
-	let main_hero_slider_element: HTMLElement,
-		main_hero_slide_active_index = $state<number>(0);
-
-	const add_one_to_main_hero_slide_active_index = () => {
-			if (main_hero_slide_active_index + 1 === latest_animes.length) {
-				main_hero_slide_active_index = 0;
-				return;
-			}
-			main_hero_slide_active_index += 1;
-		},
-		minus_one_to_main_hero_slide_active_index = () => {
-			if (main_hero_slide_active_index === 0) {
-				main_hero_slide_active_index = latest_animes.length - 1;
-				return;
-			}
-			main_hero_slide_active_index -= 1;
-		},
-		swipe_handler = (event: CustomEvent) => {
-			const direction = event.detail.direction;
-			timer.reset();
-
-			if (direction === "left") {
-				add_one_to_main_hero_slide_active_index();
-			} else if (direction === "right") {
-				minus_one_to_main_hero_slide_active_index();
-			}
-		};
-	let progress_value = $state<number>(0),
-		tweened_progress_value = $state<Tweened<number>>(tweened<number>());
-	$effect(() => {
-		tweened_progress_value.set(progress_value);
-	});
-
-	timer.start();
-	timer.on("targetAchieved", () => {
-		// change slider
-		add_one_to_main_hero_slide_active_index();
-		timer.reset();
-	});
-
-	timer.on("secondTenthsUpdated", () => {
-		const time = timer.getTotalTimeValues().secondTenths,
-			value = (100 / slider_delay) * (time / 10);
-
-		progress_value = value;
-	});
-
-	const latest_episodes: {
-		id: number;
-		cover: string;
-		banner: string;
-		title: string;
-		ep_number: number;
-		timestamp: string;
-	}[] = [
+	const latest_episodes = [
 		{
 			id: 1,
 			cover: "/images/mock/cover/one_piece.webp",
@@ -167,6 +111,53 @@
 		}
 	];
 
+	let main_hero_slide_active_index = $state<number>(0);
+
+	const add_one_to_main_hero_slide_active_index = () => {
+			if (main_hero_slide_active_index + 1 === latest_animes.length) {
+				main_hero_slide_active_index = 0;
+				return;
+			}
+			main_hero_slide_active_index += 1;
+		},
+		minus_one_to_main_hero_slide_active_index = () => {
+			if (main_hero_slide_active_index === 0) {
+				main_hero_slide_active_index = latest_animes.length - 1;
+				return;
+			}
+			main_hero_slide_active_index -= 1;
+		},
+		swipe_handler = (event: CustomEvent) => {
+			const direction = event.detail.direction;
+			timer.reset();
+
+			if (direction === "left") {
+				add_one_to_main_hero_slide_active_index();
+			} else if (direction === "right") {
+				minus_one_to_main_hero_slide_active_index();
+			}
+		};
+
+	let progress_value = $state<number>(0),
+		tweened_progress_value = $state<Tweened<number>>(tweened<number>());
+	$effect(() => {
+		tweened_progress_value.set(progress_value);
+	});
+
+	timer.start();
+	timer.on("targetAchieved", () => {
+		// change slider
+		add_one_to_main_hero_slide_active_index();
+		timer.reset();
+	});
+
+	timer.on("secondTenthsUpdated", () => {
+		const time = timer.getTotalTimeValues().secondTenths,
+			value = (100 / slider_delay) * (time / 10);
+
+		progress_value = value;
+	});
+
 	// state for latest_episodes color palette
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
@@ -185,7 +176,6 @@
 			class="relative h-96 w-full md:h-[28.75vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 			onswipe={swipe_handler}
-			bind:this={main_hero_slider_element}
 		>
 			{#each latest_animes as anime, index}
 				{@const active = index === main_hero_slide_active_index}
