@@ -166,18 +166,15 @@
 			timestamp: "3 hour ago" // TODO: format time
 		}
 	];
-	// state for latest_episodes color palette
-	const latest_episodes_color_palette_mapping: {
-		[key: number]: [number, number, number][];
-	} = $state({});
-	const latest_episodes_loaded_mapping: boolean[] = $state(
-		new Array(latest_episodes.length).fill(false)
-	);
 
-	const some_mapping = $state({
-		color_palette: {},
-		image_loaded: new Array(latest_episodes.length).fill(false)
-	});
+	// state for latest_episodes color palette
+	const latest_episodes_mapping: {
+		color_palette: [number, number, number][] | undefined;
+		loaded: boolean;
+	}[] = $state(latest_episodes.map(() => ({
+		color_palette: undefined,
+		loaded: false
+	})));
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -341,11 +338,11 @@
 					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 				>
-					{#each latest_episodes as episode}
-						{@const image_loaded = latest_episodes_loaded_mapping[episode.id]}
+					{#each latest_episodes as episode, index}
+						{@const image_loaded = latest_episodes_mapping[index].loaded}
 						{@const dominant_color =
 							image_loaded &&
-							rgbHex(...latest_episodes_color_palette_mapping[episode.id][1])}
+							rgbHex(...latest_episodes_mapping[index].color_palette![1])}
 
 						{#if image_loaded}
 							<div
@@ -376,7 +373,7 @@
 										</div>
 									</div>
 									<a
-										href="anime/mal/{episode.id}/episode/{episode.ep_number}"
+										href="anime/mal/{index}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
 										class:!bg-[var(--dominant-color)]={image_loaded}
 									>
@@ -400,8 +397,8 @@
 						<Image
 							src={episode.cover}
 							class="absolute -z-10"
-							bind:image_loaded={latest_episodes_loaded_mapping[episode.id]}
-							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
+							bind:image_loaded={latest_episodes_mapping[index].loaded}
+							bind:color_palette={latest_episodes_mapping[index].color_palette}
 						/>
 					{/each}
 				</div>
