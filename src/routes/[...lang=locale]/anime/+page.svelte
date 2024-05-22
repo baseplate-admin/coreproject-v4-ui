@@ -135,7 +135,7 @@
 	}[] = [
 		{
 			id: 1,
-			cover: "https://avatars.githubusercontent.com/u/114811070?s=48&v=4",
+			cover: "/images/mock/cover/one_piece.webp",
 			banner: "/images/mock/banner/one_piece.avif",
 			title: "One Piece",
 			ep_number: 20000,
@@ -403,6 +403,7 @@
 						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
+							class="absolute -z-10"
 							bind:image_loaded={latest_episodes_loaded_mapping[episode.id]}
 							bind:color_palette={latest_episodes_color_palette_mapping[episode.id]}
 						/>

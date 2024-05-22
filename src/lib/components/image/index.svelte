@@ -84,10 +84,10 @@
 				ctx.drawImage(img, offset_x, offset_y, draw_width, draw_height);
 			}
 
-			let imageData = ctx?.getImageData(0, 0, rect.width, rect.height);
+			let image_data = ctx?.getImageData(0, 0, rect.width, rect.height);
 
-			if (imageData && worker) {
-				worker.postMessage(imageData.data);
+			if (image_data && worker) {
+				worker.postMessage(image_data.data);
 			}
 		};
 	});
