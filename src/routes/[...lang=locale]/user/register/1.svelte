@@ -14,7 +14,7 @@
 
 	let { on_submit, pages_state }: PageProps = $props();
 
-	let confirm_password_element: HTMLInputElement | null = null;
+	let confirm_password_element = $state<HTMLInputElement>();
 
 	const register_languages = async () => {
 		const zxcvbnCommonPackage = await import("@zxcvbn-ts/language-common");
