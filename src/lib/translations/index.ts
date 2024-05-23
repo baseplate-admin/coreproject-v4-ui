@@ -5,9 +5,7 @@ import lang from "./lang.json" assert { type: "json" };
 export const default_locale: keyof typeof lang = "en";
 
 export const config = {
-	log: {
-		level: dev ? "warn" : "error"
-	},
+	log: { level: dev ? "warn" : "error" },
 	translations: {
 		bn: { lang },
 		en: { lang },
@@ -46,5 +44,3 @@ export const {
 	setLocale,
 	setRoute
 } = new i18n(config);
-
-loading.subscribe(($loading) => $loading && console.log("Loading translations..."));

@@ -26,100 +26,100 @@
 
 	// Mock data mappings
 	const latest_animes = [
-		{
-			id: 1,
-			name: "Jujutsu Kaisen",
-			type: "TV",
-			episodes: 24,
-			status: "Completed",
-			release_date: "Autumn 2014",
-			studio: "mappa",
-			genres: ["sci-fi", "action", "echhi"],
-			synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
-			image: "https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
-		},
-		{
-			id: 2,
-			name: "One Piece",
-			type: "TV",
-			episodes: 12,
-			status: "Completed",
-			release_date: "Spring 2014",
-			studio: "tokito",
-			genres: ["hentai", "action", "romance", "smooth"],
-			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-			image: "https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png"
-		},
-		{
-			id: 3,
-			name: "Demon Slayer",
-			type: "TV",
-			episodes: 12,
-			status: "Completed",
-			release_date: "Winter 2014",
-			studio: "sheldon",
-			genres: ["hentai", "action", "romance", "smooth"],
-			synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-			image:
-				"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
-		}
-	],
-	latest_episodes = [
-		{
-			id: 1,
-			cover: "/images/mock/cover/one_piece.webp",
-			banner: "/images/mock/banner/one_piece.avif",
-			title: "One Piece",
-			ep_number: 20000,
-			timestamp: "1 hour ago" // TODO: format time
-		},
-		{
-			id: 2,
-			cover: "/images/mock/cover/jjk.webp",
-			banner: "/images/mock/banner/jjk.jpg",
-			title: "Jujutsu Kaisen season 2",
-			ep_number: 5,
-			timestamp: "2 hour ago" // TODO: format time
-		},
-		{
-			id: 3,
-			cover: "/images/mock/cover/demon_slayer_training.webp",
-			banner: "/images/mock/banner/demon_slayer_training.avif",
-			title: "Demon Slayer Hashira Training Arc",
-			ep_number: 2,
-			timestamp: "2 hour ago" // TODO: format time
-		},
-		{
-			id: 4,
-			cover: "/images/mock/cover/kaiju_no_8.jpg",
-			banner: "/images/mock/banner/kaiju_no_8.webp",
-			title: "Kaiju no.8",
-			ep_number: 1,
-			timestamp: "3 hour ago" // TODO: format time
-		}
-	],
-	sidebar_animes = [
-		{
-			id: 1,
-			title: "Jujutsu Kaisen season 2",
-			cover: "/images/mock/cover/jjk.webp",
-		},
-		{
-			id: 2,
-			title: "One Piece",
-			cover: "/images/mock/cover/one_piece.webp",
-		},
-		{
-			id: 3,
-			title: "Kaiju no.8",
-			cover: "/images/mock/cover/kaiju_no_8.jpg",
-		},
-		{
-			id: 4,
-			title: "Demon Slayer Hashira Training Arc",
-			cover: "/images/mock/cover/demon_slayer_training.webp",
-		}
-	];
+			{
+				id: 1,
+				name: "Jujutsu Kaisen",
+				type: "TV",
+				episodes: 24,
+				status: "Completed",
+				release_date: "Autumn 2014",
+				studio: "mappa",
+				genres: ["sci-fi", "action", "echhi"],
+				synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
+				image: "https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
+			},
+			{
+				id: 2,
+				name: "One Piece",
+				type: "TV",
+				episodes: 12,
+				status: "Completed",
+				release_date: "Spring 2014",
+				studio: "tokito",
+				genres: ["hentai", "action", "romance", "smooth"],
+				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				image: "https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png"
+			},
+			{
+				id: 3,
+				name: "Demon Slayer",
+				type: "TV",
+				episodes: 12,
+				status: "Completed",
+				release_date: "Winter 2014",
+				studio: "sheldon",
+				genres: ["hentai", "action", "romance", "smooth"],
+				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				image:
+					"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
+			}
+		],
+		latest_episodes = [
+			{
+				id: 1,
+				cover: "/images/mock/cover/one_piece.webp",
+				banner: "/images/mock/banner/one_piece.avif",
+				title: "One Piece",
+				ep_number: 20000,
+				timestamp: "1 hour ago" // TODO: format time
+			},
+			{
+				id: 2,
+				cover: "/images/mock/cover/jjk.webp",
+				banner: "/images/mock/banner/jjk.jpg",
+				title: "Jujutsu Kaisen season 2",
+				ep_number: 5,
+				timestamp: "2 hour ago" // TODO: format time
+			},
+			{
+				id: 3,
+				cover: "/images/mock/cover/demon_slayer_training.webp",
+				banner: "/images/mock/banner/demon_slayer_training.avif",
+				title: "Demon Slayer Hashira Training Arc",
+				ep_number: 2,
+				timestamp: "2 hour ago" // TODO: format time
+			},
+			{
+				id: 4,
+				cover: "/images/mock/cover/kaiju_no_8.jpg",
+				banner: "/images/mock/banner/kaiju_no_8.webp",
+				title: "Kaiju no.8",
+				ep_number: 1,
+				timestamp: "3 hour ago" // TODO: format time
+			}
+		],
+		sidebar_animes = [
+			{
+				id: 1,
+				title: "Jujutsu Kaisen season 2",
+				cover: "/images/mock/cover/jjk.webp"
+			},
+			{
+				id: 2,
+				title: "One Piece",
+				cover: "/images/mock/cover/one_piece.webp"
+			},
+			{
+				id: 3,
+				title: "Kaiju no.8",
+				cover: "/images/mock/cover/kaiju_no_8.jpg"
+			},
+			{
+				id: 4,
+				title: "Demon Slayer Hashira Training Arc",
+				cover: "/images/mock/cover/demon_slayer_training.webp"
+			}
+		];
 
 	const timer = new EasyTimer({
 			target: {
@@ -193,10 +193,12 @@
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
 		loaded: boolean;
-	}[] = $state(latest_episodes.map(() => ({
-		color_palette: undefined,
-		loaded: false
-	})));
+	}[] = $state(
+		latest_episodes.map(() => ({
+			color_palette: undefined,
+			loaded: false
+		}))
+	);
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -349,11 +351,15 @@
 						{#if image_loaded}
 							<div
 								in:blur
-								class="[background-image:var(--background-image)] border-[var(--dominant-color)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
-									--dominant-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten().hex() : dominant_color};
-									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten(2).hex() : dominant_color}
+									--dominant-color: {chroma(dominant_color).get('lab.l') < 40
+									? chroma(dominant_color).brighten().hex()
+									: dominant_color};
+									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40
+									? chroma(dominant_color).brighten(2).hex()
+									: dominant_color}
 								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -379,7 +385,7 @@
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw] !bg-[var(--dominant-foreground-color)]"
+										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] md:mr-[0.5vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
@@ -406,30 +412,38 @@
 						/>
 					{/each}
 				</div>
-				<div class="h-full flex flex-col items-center md:p-[0.35vw] md:gap-[0.5vw] bg-accent/90 md:w-[4vw] md:rounded-[0.75vw]">
-					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+				<div
+					class="flex h-full flex-col items-center bg-accent/90 md:w-[4vw] md:gap-[0.5vw] md:rounded-[0.75vw] md:p-[0.35vw]"
+				>
+					<button
+						class="btn btn-secondary min-h-max p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
+					>
 						<Preference class="md:size-[1.25vw]" />
 					</button>
-					<button class="btn btn-secondary text-accent md:rounded-[0.65vw] md:size-[3vw] min-h-max p-0">
+					<button
+						class="btn btn-secondary min-h-max p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
+					>
 						<Dice class="md:size-[1.25vw]" />
 					</button>
-					<div class="w-1/2 md:h-[0.15vw] bg-secondary rounded-full"></div>
+					<div class="w-1/2 rounded-full bg-secondary md:h-[0.15vw]"></div>
 					<ScrollArea
 						gradient_mask
 						parent_class="snap-y md:rounded-[0.65vw]"
-						class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw]"
+						class="flex flex-1 flex-col md:w-[3vw] md:gap-[0.5vw]"
 					>
 						{#each sidebar_animes as anime}
 							<a href="/anime/mal/{anime.id}">
 								<img
 									src={anime.cover}
-									class="w-full h-auto md:rounded-[0.65vw] snap-start"
+									class="h-auto w-full snap-start md:rounded-[0.65vw]"
 									alt=""
 								/>
 							</a>
 						{/each}
 					</ScrollArea>
-					<button class="grid place-items-center md:h-[1.25vw] md:w-[3vw] p-0 md:rounded-[0.5vw] btn btn-secondary min-h-max text-accent">
+					<button
+						class="btn btn-secondary grid min-h-max place-items-center p-0 text-accent md:h-[1.25vw] md:w-[3vw] md:rounded-[0.5vw]"
+					>
 						<Chevron class="md:size-[1vw]" />
 					</button>
 				</div>
