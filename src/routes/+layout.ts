@@ -4,8 +4,8 @@ export const load: Load = async ({ url }) => {
 	const { pathname, searchParams } = url;
 	let locale = "";
 
-	if (searchParams.has("lang")) {
-		locale = searchParams.get("lang") || "";
+	if (searchParams && searchParams.has("lang")) {
+		locale = (searchParams.get("lang") || "").toLowerCase();
 	} else if (typeof localStorage !== "undefined" && localStorage.getItem("lang")) {
 		locale = (localStorage.getItem("lang") || "").toLowerCase();
 	}
@@ -16,10 +16,9 @@ export const load: Load = async ({ url }) => {
 	if (!supported_locales.includes(locale)) {
 		locale =
 			navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || default_locale;
-		if (typeof localStorage !== "undefined") {
-			localStorage.setItem("lang", locale);
-		}
 	}
+	// save current locale on localStorage
+	if (typeof localStorage !== "undefined") localStorage.setItem("lang", locale);
 
 	await setRoute(pathname);
 	await setLocale(locale);
