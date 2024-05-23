@@ -6,6 +6,8 @@
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
+	import chroma from "chroma-js";
+
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
 	import Circle from "$icons/shapes/circle.svelte";
@@ -19,7 +21,6 @@
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
 	import Image from "$components/image/index.svelte";
-	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
 
@@ -357,15 +358,18 @@
 					{#each latest_episodes as episode, index}
 						{@const image_loaded = latest_episodes_mapping[index].loaded}
 						{@const dominant_color =
-							image_loaded &&
-							rgbHex(...latest_episodes_mapping[index].color_palette![0])}
+							image_loaded ?
+							chroma(...latest_episodes_mapping[index].color_palette![0]).hex() : ""}
 
 						{#if image_loaded}
 							<div
 								in:blur
-								class="[background-image:var(--background-image)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-								style="--background-image: url({episode.banner}); --dominant-color: #{dominant_color};"
-								class:border-[var(--dominant-color)]={image_loaded}
+								class="[background-image:var(--background-image)] border-[var(--dominant-color)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								style="
+									--background-image: url({episode.banner});
+									--dominant-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten().hex() : dominant_color};
+									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten(2).hex() : dominant_color}
+								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
 								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
@@ -390,8 +394,7 @@
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
-										class:!bg-[var(--dominant-color)]={image_loaded}
+										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw] !bg-[var(--dominant-foreground-color)]"
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
