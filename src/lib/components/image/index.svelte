@@ -84,7 +84,7 @@
 				ctx.drawImage(img, offset_x, offset_y, draw_width, draw_height);
 			}
 
-			let image_data = ctx?.getImageData(0, 0, rect.width, rect.height);
+			let image_data = ctx?.getImageData(0, 0, img.width, img.height);
 
 			if (image_data && worker) {
 				worker.postMessage(image_data.data);

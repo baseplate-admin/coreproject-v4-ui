@@ -358,7 +358,7 @@
 						{@const image_loaded = latest_episodes_mapping[index].loaded}
 						{@const dominant_color =
 							image_loaded &&
-							rgbHex(...latest_episodes_mapping[index].color_palette![1])}
+							rgbHex(...latest_episodes_mapping[index].color_palette![0])}
 
 						{#if image_loaded}
 							<div
