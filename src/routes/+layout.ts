@@ -1,26 +1,35 @@
-import { addTranslations, setLocale, setRoute } from "$lib/translations";
-import type { Translations } from "../../node_modules/sveltekit-i18n/node_modules/@sveltekit-i18n/base";
+import { default_locale, locales, setLocale, setRoute, translations } from "$lib/translations";
 
-interface Data {
-	i18n: { locale: string; route: string };
-	translations: Translations.SerializedTranslations;
-}
+export const load: Load = async ({ url }) => {
+	const { pathname } = url;
+	let locale;
 
-export const load = async ({ data }: { data: Data }) => {
-	const { i18n, translations } = data;
-	const { locale, route } = i18n;
+	if (typeof localStorage !== "undefined" && localStorage.getItem("lang")) {
+		locale = (localStorage.getItem("lang") || "").toLowerCase();
+	} else {
+		locale = navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || "";
+	}
 
-	addTranslations(translations);
+	const supported_locales = locales.get().map((l) => l.toLowerCase());
 
-	await setRoute(route);
+	// use default locale if current locale is not supported
+	if (!supported_locales.includes(locale)) {
+		locale = default_locale;
+		if (typeof localStorage !== "undefined") {
+			localStorage.setItem("lang", locale);
+		}
+	}
+
+	await setRoute(pathname);
 	await setLocale(locale);
 
-	return i18n;
+	return { pathname, locale };
 };
 
 // Vercel Shits. Remove when we do master production
 
 import { dev } from "$app/environment";
+import type { Load } from "@sveltejs/kit";
 
 if (!dev) {
 	const { injectSpeedInsights } = await import("@vercel/speed-insights/sveltekit");
