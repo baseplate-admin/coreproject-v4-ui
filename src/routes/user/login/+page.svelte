@@ -10,16 +10,20 @@
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
 
-	let form_is_submitable: boolean | null = null;
+	let username_or_email = $state({
+			value: "",
+			error: new Array<string>()
+		}),
+		password = $state({
+			value: "",
+			error: new Array<string>()
+		});
 
-	let username_or_email = {
-			value: "",
-			error: new Array<string>()
-		},
-		password = {
-			value: "",
-			error: new Array<string>()
-		};
+	let form_is_submitable = $derived.by(() =>
+		[username_or_email, password].every((field) => {
+			return field.value && field.error.length === 0;
+		})
+	);
 
 	const handle_username_input = (event: Event) => {
 			handle_input({
@@ -36,29 +40,8 @@
 			});
 		};
 
-	const check_if_form_is_submittable = () => {
-		form_is_submitable = [username_or_email, password].every((field) => {
-			return field.value && _.isEmpty(field.error);
-		});
-	};
-
 	const handle_submit = async () => {
-		// const form_data = await object_to_form_data({
-		// 	username: username_or_email.value,
-		// 	password: password.value
-		// });
-		// const res = await fetch(reverse('login-endpoint'), {
-		// 	method: 'POST',
-		// 	body: form_data,
-		// 	headers: {
-		// 		'X-CSRFToken': get_csrf_token()
-		// 	}
-		// });
-		// if (res.ok) {
-		// 	user_authenticated.set(true);
-		// } else {
-		// 	throw new Error('Login failed');
-		// }
+		console.log("submit form!");
 	};
 </script>
 
@@ -87,7 +70,7 @@
 		use:autofocus
 		onsubmit={async (event) => {
 			event.preventDefault();
-			await handle_submit();
+			handle_submit();
 		}}
 		class="flex h-full flex-col justify-between gap-10 md:gap-0"
 	>
@@ -112,10 +95,7 @@
 				</label>
 				<input
 					bind:value={username_or_email.value}
-					oninput={(event) => {
-						handle_username_input(event);
-						check_if_form_is_submittable();
-					}}
+					oninput={(event) => handle_username_input(event)}
 					placeholder="sora_amamiya@coreproject.moe / soraamamiya#0001"
 					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 				/>
@@ -123,10 +103,10 @@
 					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
-					{#if _.isEmpty(username_or_email.error)}
-						<span>we’ll send you a verification email, so please ensure it’s active</span>
-					{:else}
+					{#if username_or_email.error.length}
 						<Markdown class="text-error" markdown={username_or_email.error.join("")} />
+					{:else}
+						<span>we’ll send you a verification email, so please ensure it’s active</span>
 					{/if}
 				</div>
 			</div>
@@ -137,10 +117,7 @@
 				<div class="relative flex flex-col">
 					<input
 						bind:value={password.value}
-						oninput={(event) => {
-							handle_password_input(event);
-							check_if_form_is_submittable();
-						}}
+						oninput={(event) => handle_password_input(event)}
 						placeholder="enter your existing password"
 						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 					/>
@@ -149,10 +126,10 @@
 					class="text-surface-300 flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
-					{#if _.isEmpty(password.error)}
-						<span>enter password of your account</span>
-					{:else}
+					{#if password.error.length}
 						<Markdown class="text-error" markdown={password.error.join("")} />
+					{:else}
+						<span>enter password of your account</span>
 					{/if}
 				</div>
 			</div>
@@ -177,10 +154,8 @@
 			</div>
 			<button
 				type="submit"
-				class={cn(
-					form_is_submitable || "btn-disabled",
-					`btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]`
-				)}
+				class:btn-disabled={!form_is_submitable}
+				class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 			>
 				<span>Continue</span>
 				<ArrowUpRight class="w-4 rotate-45 md:w-[1vw]" />

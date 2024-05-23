@@ -60,16 +60,11 @@
 						transition:blur
 						src={picked_anime.cover}
 						alt=""
-						onerror={(event) => {
-							const target = event.currentTarget as HTMLImageElement;
-							target.alt = `${picked_anime?.name} image`;
-						}}
 						class="absolute h-full w-full object-cover transition-all"
 					/>
 				{/key}
 				<div class="absolute inset-0 bg-gradient-to-r from-secondary/75 to-secondary/50"></div>
 				<backdrop class="absolute inset-0 bg-transparent duration-300"></backdrop>
-
 				<div
 					class="absolute inset-0 bottom-[6vw] hidden flex-col items-center justify-center text-center text-white md:flex"
 				>
