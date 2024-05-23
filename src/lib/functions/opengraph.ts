@@ -1,4 +1,4 @@
-import { encode } from "html-entities";
+import { encode } from "html-entities/src/index";
 
 type ISiteName = "CoreProject" | "AnimeCore" | "MangaCore";
 
