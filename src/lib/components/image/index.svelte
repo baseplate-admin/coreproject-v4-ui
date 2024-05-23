@@ -63,10 +63,7 @@
 			if (ctx) {
 				const img_ratio = img.width / img.height;
 				const canvas_ratio = rect.width / rect.height;
-				let draw_width,
-					draw_height,
-					offset_x,
-					offset_y;
+				let draw_width, draw_height, offset_x, offset_y;
 
 				// check if iamge is wider or taller relative to canvas
 				if (img_ratio > canvas_ratio) {
