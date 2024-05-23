@@ -389,7 +389,7 @@
 										</div>
 									</div>
 									<a
-										href="anime/mal/{index}/episode/{episode.ep_number}"
+										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
 										class:!bg-[var(--dominant-color)]={image_loaded}
 									>
@@ -432,7 +432,7 @@
 						class="flex flex-col md:gap-[0.5vw] flex-1 md:w-[3vw]"
 					>
 						{#each sidebar_animes as anime}
-							<a href="anime/mal/{anime.id}">
+							<a href="/anime/mal/{anime.id}">
 								<img
 									src={anime.cover}
 									class="w-full h-auto md:rounded-[0.65vw] snap-start"
