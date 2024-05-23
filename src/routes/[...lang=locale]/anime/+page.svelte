@@ -21,11 +21,11 @@
 	import Image from "$components/image/index.svelte";
 	import rgbHex from "rgb-hex";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
+	import { TIMER_DELAY } from "$constants/timer";
 
-	const slider_delay = 10,
-		timer = new EasyTimer({
+	const timer = new EasyTimer({
 			target: {
-				seconds: slider_delay
+				seconds: TIMER_DELAY
 			},
 			precision: "secondTenths"
 		}),
@@ -179,7 +179,7 @@
 
 	timer.on("secondTenthsUpdated", () => {
 		const time = timer.getTotalTimeValues().secondTenths,
-			value = (100 / slider_delay) * (time / 10);
+			value = (100 / TIMER_DELAY) * (time / 10);
 
 		progress_value = value;
 	});
