@@ -24,23 +24,8 @@
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
 
-	const timer = new EasyTimer({
-			target: {
-				seconds: TIMER_DELAY
-			},
-			precision: "secondTenths"
-		}),
-		slide_buttons = [
-			{ background: "bg-accent", border: "border-accent" },
-			{ background: "bg-info", border: "border-info" },
-			{ background: "bg-warning", border: "border-warning" },
-			{ background: "bg-white", border: "border-white" },
-			{ background: "bg-primary", border: "border-primary" },
-			{ background: "bg-error", border: "border-error" }
-		];
-
 	// Mock data mappings
-	let latest_animes = [
+	const latest_animes = [
 		{
 			id: 1,
 			name: "Jujutsu Kaisen",
@@ -78,9 +63,8 @@
 			image:
 				"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
 		}
-	];
-
-	const latest_episodes = [
+	],
+	latest_episodes = [
 		{
 			id: 1,
 			cover: "/images/mock/cover/one_piece.webp",
@@ -113,9 +97,8 @@
 			ep_number: 1,
 			timestamp: "3 hour ago" // TODO: format time
 		}
-	];
-
-	const sidebar_animes = [
+	],
+	sidebar_animes = [
 		{
 			id: 1,
 			title: "Jujutsu Kaisen season 2",
@@ -138,9 +121,25 @@
 		}
 	];
 
+	const timer = new EasyTimer({
+			target: {
+				seconds: TIMER_DELAY
+			},
+			precision: "secondTenths"
+		}),
+		slide_buttons = [
+			{ background: "bg-accent", border: "border-accent" },
+			{ background: "bg-info", border: "border-info" },
+			{ background: "bg-warning", border: "border-warning" },
+			{ background: "bg-white", border: "border-white" },
+			{ background: "bg-primary", border: "border-primary" },
+			{ background: "bg-error", border: "border-error" }
+		];
+
 	let main_hero_slide_active_index = $state<number>(0);
 
 	const add_one_to_main_hero_slide_active_index = () => {
+			timer.reset();
 			if (main_hero_slide_active_index + 1 === latest_animes.length) {
 				main_hero_slide_active_index = 0;
 				return;
@@ -148,11 +147,16 @@
 			main_hero_slide_active_index += 1;
 		},
 		minus_one_to_main_hero_slide_active_index = () => {
+			timer.reset();
 			if (main_hero_slide_active_index === 0) {
 				main_hero_slide_active_index = latest_animes.length - 1;
 				return;
 			}
 			main_hero_slide_active_index -= 1;
+		},
+		change_main_hero_slide_active_index = (idx: number) => {
+			timer.reset();
+			main_hero_slide_active_index = idx;
 		},
 		swipe_handler = (event: CustomEvent) => {
 			const direction = event.detail.direction;
@@ -204,8 +208,8 @@
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 			onswipe={swipe_handler}
 		>
-			{#each latest_animes as anime, index}
-				{@const active = index === main_hero_slide_active_index}
+			{#each latest_animes as anime, idx}
+				{@const active = idx === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
 
 				{#if active}
@@ -223,14 +227,12 @@
 							alt=""
 							class="absolute h-full w-full object-cover object-center md:rounded-t-[0.875vw]"
 						/>
-
 						<div
 							class="md:to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
 						></div>
 						<div
 							class="from-surface-900 to-surface-900/25 md:from-surface-900/50 absolute inset-0 hidden bg-gradient-to-r md:flex"
 						></div>
-
 						<div
 							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:px-[3.75vw] md:py-[2.625vw]"
 						>
@@ -259,7 +261,6 @@
 											</span>
 										{/each}
 									</div>
-
 									<ScrollArea
 										gradient_mask
 										offset_scrollbar
@@ -299,51 +300,35 @@
 					</div>
 				{/if}
 			{/each}
-
 			<div class="absolute bottom-0 flex w-full flex-col">
 				<div
 					class="h-[0.2rem] bg-warning md:h-[0.145vw] {slide_buttons[main_hero_slide_active_index]
 						.background}"
 					style="width: {$tweened_progress_value}%;"
 				></div>
-
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
-					{#each latest_animes as _, index}
+					{#each latest_animes as _, idx}
 						<button
 							class={cn(
 								"col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]",
-								slide_buttons[index].border,
+								slide_buttons[idx].border,
 								"hover:border-surface-50/50 transition duration-300",
-								index === main_hero_slide_active_index && slide_buttons[index].background
+								idx === main_hero_slide_active_index && slide_buttons[idx].background
 							)}
-							onclick={() => {
-								timer?.reset();
-								timer?.start();
-								main_hero_slide_active_index = index;
-							}}
+							onclick={() => change_main_hero_slide_active_index(idx)}
 						></button>
 					{/each}
 				</div>
 			</div>
-
 			<button
 				class="btn btn-primary absolute -left-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				onclick={(event) => {
-					event.preventDefault();
-					timer?.reset();
-					timer?.start();
-					minus_one_to_main_hero_slide_active_index();
-				}}
+				onclick={minus_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] rotate-90" />
 			</button>
 			<button
 				class="bg-secondary-800 btn btn-primary absolute -right-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				onclick={async () => {
-					timer?.reset();
-					timer?.start();
-					add_one_to_main_hero_slide_active_index();
-				}}
+				onclick={add_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
@@ -355,11 +340,11 @@
 					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 				>
-					{#each latest_episodes as episode, index}
-						{@const image_loaded = latest_episodes_mapping[index].loaded}
+					{#each latest_episodes as episode, idx}
+						{@const image_loaded = latest_episodes_mapping[idx].loaded}
 						{@const dominant_color =
 							image_loaded ?
-							chroma(...latest_episodes_mapping[index].color_palette![0]).hex() : ""}
+							chroma(...latest_episodes_mapping[idx].color_palette![0]).hex() : ""}
 
 						{#if image_loaded}
 							<div
@@ -416,8 +401,8 @@
 						<Image
 							src={episode.cover}
 							class="absolute -z-10"
-							bind:image_loaded={latest_episodes_mapping[index].loaded}
-							bind:color_palette={latest_episodes_mapping[index].color_palette}
+							bind:image_loaded={latest_episodes_mapping[idx].loaded}
+							bind:color_palette={latest_episodes_mapping[idx].color_palette}
 						/>
 					{/each}
 				</div>
