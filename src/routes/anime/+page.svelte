@@ -194,10 +194,6 @@
 		color_palette: undefined,
 		loaded: false
 	})));
-
-	// test
-	const color = "#a4acc4";
-	console.log(chroma(color).get("lab.l") < 70 ? chroma(color).brighten().hex() : chroma(color).darken().hex())
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -369,12 +365,11 @@
 						{#if image_loaded}
 							<div
 								in:blur
-								class="[background-image:var(--background-image)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-								class:border-[var(--dominant-color)]={image_loaded}
+								class="[background-image:var(--background-image)] border-[var(--dominant-color)] relative w-full snap-start bg-cover bg-center duration-300 md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
-									--dominant-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(color).brighten(-1).hex() : chroma(dominant_color).hex()};
-									--accent-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(color).brighten().hex() : chroma(dominant_color).hex()}
+									--dominant-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten().hex() : dominant_color};
+									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40 ? chroma(dominant_color).brighten(2).hex() : dominant_color}
 								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -400,8 +395,7 @@
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw]"
-										class:!bg-[var(--accent-color)]={image_loaded}
+										class="btn h-max min-h-max rounded-full border-none md:mr-[0.5vw] md:p-[0.75vw] !bg-[var(--dominant-foreground-color)]"
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
