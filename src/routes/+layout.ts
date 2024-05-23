@@ -2,21 +2,19 @@ import { default_locale, locales, setLocale, setRoute, translations } from "$lib
 
 export const load: Load = async ({ url }) => {
 	const { pathname, searchParams } = url;
-	let locale;
+	let locale = "";
 
 	if (searchParams.has("lang")) {
 		locale = searchParams.get("lang") || "";
 	} else if (typeof localStorage !== "undefined" && localStorage.getItem("lang")) {
 		locale = (localStorage.getItem("lang") || "").toLowerCase();
-	} else {
-		locale = navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || "";
-	}
+	};
 
 	const supported_locales = locales.get().map((l) => l.toLowerCase());
 
 	// use default locale if current locale is not supported
 	if (!supported_locales.includes(locale)) {
-		locale = default_locale;
+		locale = navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || default_locale;
 		if (typeof localStorage !== "undefined") {
 			localStorage.setItem("lang", locale);
 		}
