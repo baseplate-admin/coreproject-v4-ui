@@ -1,10 +1,12 @@
 import { default_locale, locales, setLocale, setRoute, translations } from "$lib/translations";
 
 export const load: Load = async ({ url }) => {
-	const { pathname } = url;
+	const { pathname, searchParams } = url;
 	let locale;
 
-	if (typeof localStorage !== "undefined" && localStorage.getItem("lang")) {
+	if (searchParams.has("lang")) {
+		locale = searchParams.get("lang") || "";
+	} else if (typeof localStorage !== "undefined" && localStorage.getItem("lang")) {
 		locale = (localStorage.getItem("lang") || "").toLowerCase();
 	} else {
 		locale = navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || "";
