@@ -73,32 +73,7 @@
 				error_field: username
 			});
 
-			// if (username.value && _.isEmpty(username.error)) {
-			// 	const res = await fetch(reverse('username-validity-endpoint'), {
-			// 		method: 'POST',
-			// 		headers: {
-			// 			Accept: 'application/json',
-			// 			'Content-Type': 'application/json',
-			// 		},
-			// 		signal: AbortSignal.timeout(FETCH_TIMEOUT),
-			// 		body: JSON.stringify({
-			// 			username: username.value
-			// 		})
-			// 	});
-
-			// 	// 302 = username found
-			// 	// 404 = not found
-
-			// 	switch (Number(res.status)) {
-			// 		case 302:
-			// 			username.error = [...username.error, `Username **${username.value}** is already taken`];
-			// 			break;
-			// 		case 404:
-			// 			break;
-			// 		default:
-			// 			throw new Error('Not Implemented');
-			// 	}
-			// }
+			// check username availablity
 		},
 		handle_otp_input = (event: Event) => {
 			handle_input({
