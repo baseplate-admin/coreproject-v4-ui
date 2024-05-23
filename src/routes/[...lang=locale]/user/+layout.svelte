@@ -4,9 +4,9 @@
 	import * as _ from "lodash-es";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
+	import { TIMER_DELAY } from "$constants/timer";
 
 	let { children } = $props();
-	const slider_delay = 5;
 
 	let animes = [
 		{ name: "Demon Slayer", cover: "/images/mock/DemonSlayer-cover.avif" },
@@ -33,7 +33,7 @@
 
 	let timer = new EasyTimer({
 		target: {
-			seconds: slider_delay
+			seconds: TIMER_DELAY
 		},
 		precision: "secondTenths"
 	});
