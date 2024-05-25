@@ -15,7 +15,8 @@ export const load: Load = async ({ url }) => {
 	// use default locale if current locale is not supported
 	if (browser) {
 		if (!supported_locales.includes(locale)) {
-			locale = navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || default_locale;
+			locale =
+				navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || default_locale;
 		}
 		// save current locale on localStorage
 		if (typeof localStorage !== "undefined") localStorage.setItem("lang", locale);
