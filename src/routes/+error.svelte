@@ -6,8 +6,8 @@
 	import Info from '$icons/shapes/info.svelte';
 </script>
 
-<main class="h-dvh flex items-center justify-center md:gap-[5vw]">
-	<div class="relative flex flex-col md:gap-[2vw]">
+<main class="h-dvh md:w-[60%] md:mx-auto relative flex items-center justify-between md:gap-[2vw]">
+	<div class="flex flex-col md:gap-[2vw]">
 		<h2 class="md:text-[5vw] font-bold text-accent">{$page.status}</h2>
 		{#if $page.status === 404}
 			<div class="flex flex-col md:gap-[1vw]">
@@ -42,7 +42,7 @@
 				<a href="/help">/help</a>
 			</div>
 		</div>
-		<span class="absolute md:-bottom-[8vw] left-0 md:text-[1vw] text-accent">© coreproject 2024. Few rights reserved.</span>
+		<span class="absolute md:bottom-[2vw] left-0 md:text-[1vw]">© coreproject 2024. Few rights reserved.</span>
 	</div>
 	<div class="flex flex-col items-center md:gap-[2vw]">
 		<img
