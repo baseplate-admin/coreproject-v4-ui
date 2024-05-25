@@ -6,7 +6,6 @@
 	import { z } from "zod";
 	import Markdown from "$components/markdown.svelte";
 	import { handle_input } from "$functions/forms/handle_input";
-	import _ from "lodash-es";
 	import { OTP_LENGTH } from "$constants/otp";
 	// import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { autofocus } from "$functions/forms/autofocus";
