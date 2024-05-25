@@ -15,7 +15,7 @@
 				<p class="md:text-[1.1vw]">This page may have been moved, deleted, or perhaps <br> never existed at all.</p>
 			</div>
 		{/if}
-		<div class="flex items-center md:gap-[1vw]">
+		<div class="flex items-center md:gap-[2vw]">
 			<a href="/" target="_blank" class="btn !bg-transparent min-h-max h-max p-0">
 				<Reddit class="md:size-[1.75vw] text-warning" />
 			</a>
