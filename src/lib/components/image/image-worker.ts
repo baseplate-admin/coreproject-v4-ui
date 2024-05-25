@@ -1,4 +1,5 @@
 import { COLOR_COUNT } from "$constants/image";
+import { dedupe } from "$functions/array/dedupe";
 import init, { get_color_thief } from "color-thief-wasm-web";
 
 onmessage = async function (event) {
@@ -9,5 +10,6 @@ onmessage = async function (event) {
 		10,
 		COLOR_COUNT
 	);
-	postMessage(color_palette);
+
+	postMessage(dedupe(color_palette));
 };
