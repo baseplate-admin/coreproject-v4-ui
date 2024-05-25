@@ -1,17 +1,31 @@
 <script lang="ts">
 	import { page } from '$app/stores';
+	import Discord from '$icons/logos/discord.svelte';
+	import Github from '$icons/logos/github.svelte';
+	import Reddit from '$icons/logos/reddit.svelte';
 	import Info from '$icons/shapes/info.svelte';
 </script>
 
 <main class="h-dvh relative flex items-center justify-center md:gap-[5vw]">
 	<div class="flex flex-col md:gap-[2vw]">
-		<h2 class="md:text-[6vw] font-bold text-accent">{$page.status}</h2>
+		<h2 class="md:text-[5vw] font-bold text-accent">{$page.status}</h2>
 		{#if $page.status === 404}
 			<div class="flex flex-col md:gap-[1vw]">
-				<h4 class="text-accent md:text-[1.75vw] font-bold">Page not found</h4>
-				<p class="md:text-[1.25vw]">This page may have been moved, deleted, or perhaps <br> never existed at all.</p>
+				<h4 class="text-accent md:text-[1.5vw] font-bold">Page not found</h4>
+				<p class="md:text-[1.1vw]">This page may have been moved, deleted, or perhaps <br> never existed at all.</p>
 			</div>
 		{/if}
+		<div class="flex items-center md:gap-[1vw]">
+			<a href="/" target="_blank" class="btn !bg-transparent min-h-max h-max p-0">
+				<Reddit class="md:size-[1.75vw] text-warning" />
+			</a>
+			<a href="/" target="_blank" class="btn !bg-transparent min-h-max h-max p-0">
+				<Discord class="md:size-[1.75vw] text-warning" />
+			</a>
+			<a href="/" target="_blank" class="btn !bg-transparent min-h-max h-max p-0">
+				<Github class="md:size-[1.75vw] text-warning" />
+			</a>
+		</div>
 		<div class="flex flex-col md:gap-[1vw]">
 			<div class="flex items-center md:gap-[0.5vw]">
 				<span class="text-accent md:text-[1.25vw] font-semibold">Quick Links</span>
