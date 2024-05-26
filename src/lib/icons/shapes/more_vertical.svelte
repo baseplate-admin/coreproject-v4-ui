@@ -1,10 +1,18 @@
 <script lang="ts">
-	import type { SVGAttributes } from "svelte/elements";
+	import type { SVGParams } from "$types/svg";
 
-	type $$Props = SVGAttributes<SVGElement>;
+	let { class: klass, style, width, height }: SVGParams = $props();
 </script>
 
-<svg {...$$props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 26" fill="none">
+<svg
+	class={klass}
+	{style}
+	{width}
+	{height}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 20 26"
+	fill="none"
+>
 	<g filter="url(#filter0_d_1011_798)">
 		<path
 			d="M9.99984 10.8332C10.4601 10.8332 10.8332 10.4601 10.8332 9.99984C10.8332 9.5396 10.4601 9.1665 9.99984 9.1665C9.5396 9.1665 9.1665 9.5396 9.1665 9.99984C9.1665 10.4601 9.5396 10.8332 9.99984 10.8332Z"
