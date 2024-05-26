@@ -21,7 +21,7 @@
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
 	import Image from "$components/image/index.svelte";
-	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
+	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
 
 	// Mock data mappings

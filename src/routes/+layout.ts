@@ -1,5 +1,6 @@
 import { default_locale, locales, setLocale, setRoute, translations } from "$lib/translations";
 import { browser } from "$app/environment";
+
 export const load: Load = async ({ url }) => {
 	const { pathname, searchParams } = url;
 	let locale = "";
@@ -19,7 +20,7 @@ export const load: Load = async ({ url }) => {
 				navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() || default_locale;
 		}
 		// save current locale on localStorage
-		if (typeof localStorage !== "undefined") localStorage.setItem("lang", locale);
+		localStorage.setItem("lang", locale);
 	}
 
 	await setRoute(pathname);
