@@ -21,7 +21,7 @@
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
-	import NotificationLottie from "$lotties/notification.lottie.json?url" assert { type: "json" };
+	import NotificationLottie from "$lotties/sample.json?url";
 
 	// Local
 	const icon_mapping: {
@@ -165,7 +165,7 @@
 				</div>
 				{#if is_authenticated}
 					<div class="flex items-center md:gap-[1vw] ">
-						<button class="btn btn-accent md:size-[3vw] md:rounded-[0.5vw] min-h-max p-0">
+						<button class="btn btn-accent md:size-[3vw] md:rounded-[0.5vw] min-h-max md:p-[0.75vw]">
 							<DotLottieSvelte src={NotificationLottie} loop autoplay></DotLottieSvelte>
 						</button>
 						<div class="dropdown dropdown-end">
