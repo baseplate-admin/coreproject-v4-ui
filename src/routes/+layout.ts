@@ -1,4 +1,4 @@
-import { default_locale, locales, setLocale, setRoute, translations } from "$lib/translations";
+import { default_locale, loadTranslations, locales, setLocale, setRoute, translations } from "$lib/translations";
 import { browser } from "$app/environment";
 
 export const load: Load = async ({ url }) => {
@@ -25,6 +25,8 @@ export const load: Load = async ({ url }) => {
 
 	await setRoute(pathname);
 	await setLocale(locale);
+	// load translations before return
+	await loadTranslations(locale, pathname);
 
 	return { pathname, locale };
 };
