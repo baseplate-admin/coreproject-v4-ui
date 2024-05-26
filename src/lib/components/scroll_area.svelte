@@ -1,8 +1,8 @@
 <script lang="ts">
-	import IntersectionObserver from "svelte-intersection-observer";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { cn } from "$functions/classnames";
 	import type { Snippet } from "svelte";
+	import IntersectionObserver from "./intersection_observer.svelte";
 
 	let {
 		children,
@@ -11,8 +11,7 @@
 		remove_gradient_on_mouse_enter = false,
 		parent_class = "",
 		gradient_mask = false
-	}: Partial<{
-		children: Snippet;
+	}: { children: Snippet } & Partial<{
 		class: string;
 		remove_gradient_on_mouse_enter: boolean;
 		parent_class: string;
@@ -21,8 +20,8 @@
 	}> = $props();
 
 	let scroll_area = $state<HTMLElement>();
-	let add_mask_bottom = $state<boolean>(),
-		expanded = false;
+	let add_mask_bottom = $state<boolean>(true),
+		expanded = false; // we might need this later
 
 	let first_element_intersecting = $state<boolean>(),
 		end_element_intersecting = $state<boolean>(),
@@ -30,12 +29,15 @@
 		end_element = $state<HTMLElement>();
 
 	$effect(() => {
-		add_mask_bottom = scroll_area ? scroll_area?.scrollHeight > scroll_area.clientHeight : false;
+		add_mask_bottom = scroll_area ? scroll_area.scrollHeight > scroll_area.clientHeight : false;
 	});
+
 	const handle_scroll = async (event: Event) => {
+			if (remove_gradient_on_mouse_enter) return;
+
 			const target = event.target as HTMLElement;
 			const { scrollHeight, clientHeight, scrollTop } = target;
-			add_mask_bottom = clientHeight + scrollTop === scrollHeight ? false : true;
+			add_mask_bottom = clientHeight + scrollTop !== scrollHeight;
 		},
 		handle_mouseenter = () => {
 			expanded = true;
@@ -43,30 +45,20 @@
 			if (remove_gradient_on_mouse_enter) {
 				add_mask_bottom = false;
 			} else {
-				scroll_area?.addEventListener("transitionend", () => {
-					if (first_element_intersecting && end_element_intersecting) {
-						add_mask_bottom = false;
-					}
-				});
+				if (first_element_intersecting && end_element_intersecting) {
+					add_mask_bottom = false;
+				}
 			}
 		},
 		handle_mouseleave = () => {
-			if (!expanded) {
-				if (remove_gradient_on_mouse_enter) {
-					scroll_area?.addEventListener("transitionend", () => {
-						add_mask_bottom = true;
-					});
-				} else {
-					scroll_area?.addEventListener("transitionend", () => {
-						if (first_element_intersecting && end_element_intersecting) {
-							add_mask_bottom = true;
-						}
-					});
+			if (remove_gradient_on_mouse_enter && !end_element_intersecting) {
+				add_mask_bottom = true;
+			} else {
+				if (first_element_intersecting && end_element_intersecting) {
+					add_mask_bottom = true;
 				}
-				expanded = false;
 			}
 		};
-	// TODO: Do AOT ( Ahead of Time ) calculations on `transitionrun` to  prevent flicker
 </script>
 
 <div
@@ -109,7 +101,7 @@
 		</IntersectionObserver>
 
 		<div class={cn(klass)}>
-			{@render children?.()}
+			{@render children()}
 		</div>
 
 		<IntersectionObserver
