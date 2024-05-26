@@ -1,10 +1,11 @@
 <script lang="ts">
 	import Refresh from "$icons/shapes/refresh.svelte";
 	import CoreProject from "$icons/text/core_project.svelte";
-	import * as _ from "lodash-es";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { TIMER_DELAY } from "$constants/timer";
+	import { without } from "$functions/array/without";
+	import { sample } from "$functions/array/sample";
 
 	let { children } = $props();
 
@@ -21,13 +22,13 @@
 
 	const get_random_anime = () => {
 		const array_without_element =
-			picked_anime === undefined ? animes : _.without(animes, picked_anime);
-		const sample = _.sample(array_without_element);
+			picked_anime === undefined ? animes : without(animes, picked_anime);
+		const _sample = sample(array_without_element);
 
-		if (sample === undefined) {
+		if (_sample === undefined) {
 			get_random_anime();
 		} else {
-			picked_anime = sample;
+			picked_anime = _sample;
 		}
 	};
 

@@ -1,7 +1,5 @@
 <script lang="ts">
 	import { z } from "zod";
-	import * as _ from "lodash-es";
-	import { cn } from "$functions/classnames";
 	import { handle_input } from "$functions/forms/handle_input";
 	import { autofocus } from "$functions/forms/autofocus";
 	import { is_authenticated } from "$stores/auth.svelte";
