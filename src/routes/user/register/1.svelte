@@ -14,7 +14,7 @@
 
 	let { on_submit, pages_state }: PageProps = $props();
 
-	let confirm_password_element: HTMLInputElement | null = null;
+	let confirm_password_element = $state<HTMLInputElement>();
 
 	const register_languages = async () => {
 		const zxcvbnCommonPackage = await import("@zxcvbn-ts/language-common");
@@ -58,11 +58,9 @@
 		zxcvbnOptions.setOptions(options);
 	};
 
-	// $effect.pre(() => {
-	// we can uncomment this when on production?
-	// tokitouq: personal preference
-	// register_languages();
-	// });
+	$effect.pre(() => {
+		register_languages();
+	});
 
 	let combined_state: { [key: string]: string } = $derived(
 		Object.assign({}, ...Object.values(pages_state))
@@ -246,7 +244,7 @@
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
 					<span class="text-error">
-						<Markdown markdown={email.error[0]} unsafe={true}></Markdown>
+						<Markdown markdown={email.error.join(",")} unsafe={true}></Markdown>
 					</span>
 				{/if}
 			</div>
@@ -330,7 +328,7 @@
 				{:else}
 					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
 
-					<Markdown class="text-error" markdown={confirm_password.error[0]} />
+					<Markdown class="text-error" markdown={confirm_password.error.join(",")} />
 				{/if}
 			</div>
 		</div>

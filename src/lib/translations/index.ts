@@ -5,12 +5,11 @@ import lang from "./lang.json" assert { type: "json" };
 export const default_locale: keyof typeof lang = "en";
 
 export const config = {
-	log: {
-		level: dev ? "warn" : "error"
-	},
+	log: { level: dev ? "warn" : "error" },
 	translations: {
 		bn: { lang },
-		en: { lang }
+		en: { lang },
+		es: { lang }
 	},
 	loaders: [
 		{
@@ -24,6 +23,12 @@ export const config = {
 			key: "home",
 			routes: ["/anime"],
 			loader: async () => (await import("./bn/home.json")).default
+		},
+		{
+			locale: "es",
+			key: "home",
+			routes: ["/anime"],
+			loader: async () => (await import("./es/home.json")).default
 		}
 	]
 } satisfies Config;
@@ -39,5 +44,3 @@ export const {
 	setLocale,
 	setRoute
 } = new i18n(config);
-
-loading.subscribe(($loading) => $loading && console.log("Loading translations..."));

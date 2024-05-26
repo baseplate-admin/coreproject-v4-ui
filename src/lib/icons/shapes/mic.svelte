@@ -1,10 +1,10 @@
 <script lang="ts">
-	import type { SVGAttributes } from "svelte/elements";
+	import type { SVGParams } from "$types/svg";
 
-	type $$Props = SVGAttributes<SVGElement>;
+	let { class: klass, style, width, height }: SVGParams = $props();
 </script>
 
-<svg {...$$props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 24">
+<svg class={klass} {style} {width} {height} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 24">
 	<path
 		fill="currentColor"
 		d="M8.4 16.8a4.805 4.805 0 0 0 4.8-4.8V4.8a4.8 4.8 0 1 0-9.6 0V12a4.805 4.805 0 0 0 4.8 4.8z"

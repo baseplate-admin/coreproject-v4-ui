@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Refresh from "$icons/shapes/refresh.svelte";
 	import CoreProject from "$icons/text/core_project.svelte";
-	import * as _ from "lodash-es";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
+	import { TIMER_DELAY } from "$constants/timer";
+	import { without } from "$functions/array/without";
+	import { sample } from "$functions/array/sample";
 
 	let { children } = $props();
-	const slider_delay = 5;
 
 	let animes = [
 		{ name: "Demon Slayer", cover: "/images/mock/DemonSlayer-cover.avif" },
@@ -21,19 +22,19 @@
 
 	const get_random_anime = () => {
 		const array_without_element =
-			picked_anime === undefined ? animes : _.without(animes, picked_anime);
-		const sample = _.sample(array_without_element);
+			picked_anime === undefined ? animes : without(animes, picked_anime);
+		const _sample = sample(array_without_element);
 
-		if (sample === undefined) {
+		if (_sample === undefined) {
 			get_random_anime();
 		} else {
-			picked_anime = sample;
+			picked_anime = _sample;
 		}
 	};
 
 	let timer = new EasyTimer({
 		target: {
-			seconds: slider_delay
+			seconds: TIMER_DELAY
 		},
 		precision: "secondTenths"
 	});
@@ -60,16 +61,11 @@
 						transition:blur
 						src={picked_anime.cover}
 						alt=""
-						onerror={(event) => {
-							const target = event.currentTarget as HTMLImageElement;
-							target.alt = `${picked_anime?.name} image`;
-						}}
 						class="absolute h-full w-full object-cover transition-all"
 					/>
 				{/key}
 				<div class="absolute inset-0 bg-gradient-to-r from-secondary/75 to-secondary/50"></div>
 				<backdrop class="absolute inset-0 bg-transparent duration-300"></backdrop>
-
 				<div
 					class="absolute inset-0 bottom-[6vw] hidden flex-col items-center justify-center text-center text-white md:flex"
 				>
