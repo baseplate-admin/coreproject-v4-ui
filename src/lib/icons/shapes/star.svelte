@@ -1,21 +1,30 @@
 <script lang="ts">
-	import type { SVGAttributes } from "svelte/elements";
+	import type { SVGParams } from "$types/svg";
 
-	interface $$Props extends SVGAttributes<SVGElement> {
+	interface StarSVGParams extends SVGParams {
 		variant: "full" | "half" | "empty";
 		fill_color: string;
 	}
-	const { variant, fill_color, ...props } = $$props as $$Props;
+
+	let {
+		class: klass,
+		style,
+		width = 30,
+		height = 30,
+		variant,
+		fill_color
+	}: StarSVGParams = $props();
 </script>
 
 {#if variant === "empty"}
 	<svg
-		width="30"
-		height="30"
+		class={klass}
+		{style}
+		{width}
+		{height}
 		viewBox="0 0 30 30"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
-		{...props}
 	>
 		<path
 			d="M15 2.5L18.8625 10.325L27.5 11.5875L21.25 17.675L22.725 26.275L15 22.2125L7.275 26.275L8.75 17.675L2.5 11.5875L11.1375 10.325L15 2.5Z"
@@ -27,12 +36,13 @@
 	</svg>
 {:else if variant === "half"}
 	<svg
-		width="30"
-		height="30"
+		class={klass}
+		{style}
+		{width}
+		{height}
 		viewBox="0 0 30 30"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
-		{...props}
 	>
 		<defs>
 			<linearGradient id="grad">
@@ -51,12 +61,13 @@
 	</svg>
 {:else if variant === "full"}
 	<svg
-		width="30"
-		height="30"
+		class={klass}
+		{style}
+		{width}
+		{height}
 		viewBox="0 0 30 30"
 		fill={fill_color}
 		xmlns="http://www.w3.org/2000/svg"
-		{...props}
 	>
 		<path
 			d="M15 2.5L18.8625 10.325L27.5 11.5875L21.25 17.675L22.725 26.275L15 22.2125L7.275 26.275L8.75 17.675L2.5 11.5875L11.1375 10.325L15 2.5Z"
