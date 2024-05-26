@@ -1,18 +1,33 @@
 <script lang="ts">
-	import { tick, afterUpdate, onMount } from "svelte";
+	import { tick, type Snippet } from "svelte";
 
-	export let element;
-	export let once = false;
-	export let intersecting = false;
-	export let root;
-	export let rootMargin = "0px";
-	export let threshold = 0;
-	export let entry;
-	export let observer;
+	let {
+		children,
+		element,
+		once,
+		intersecting = $bindable(),
+		root,
+		rootMargin,
+		threshold,
+		entry,
+		observer,
+		observe,
+		intersect
+	}: { children: Snippet } & Partial<{
+		element: HTMLElement;
+		once: boolean;
+		intersecting: boolean;
+		root: HTMLElement;
+		rootMargin: string;
+		threshold: number | number[];
+		entry: IntersectionObserverEntry;
+		observer: IntersectionObserver;
+		observe: (entry: IntersectionObserverEntry) => void;
+		intersect: (entry: IntersectionObserverEntry) => void;
+	}> = $props();
 
-	let prevRootMargin;
-
-	let prevElement;
+	let prevRootMargin = $state<string>(),
+		prevElement = $state<HTMLElement>();
 
 	const initialize = () => {
 		observer = new IntersectionObserver(
@@ -26,45 +41,44 @@
 		);
 	};
 
-	onMount(() => {
-		initialize();
+	const cleanup = $effect.root(() => {
+		$effect(() => initialize());
 
 		return () => {
 			if (observer) {
 				observer.disconnect();
-				observer = null;
+				observer = undefined;
 			}
 		};
-	});
+	})
 
-	afterUpdate(async () => {
-		if (entry !== null) {
-			dispatch("observe", entry);
+	$effect(() => {
+		if (entry !== undefined) {
+			if (observe) observe(entry);
 
 			if (entry.isIntersecting) {
-				dispatch("intersect", entry);
-
+				if(intersect) intersect(entry);
 				if (element && once) observer?.unobserve(element);
 			}
 		}
 
-		await tick();
+		tick().then(() => {
+			if (element !== undefined && element !== prevElement) {
+				observer?.observe(element);
 
-		if (element !== null && element !== prevElement) {
-			observer?.observe(element);
+				if (prevElement !== undefined) observer?.unobserve(prevElement);
+				prevElement = element;
+			}
 
-			if (prevElement !== null) observer?.unobserve(prevElement);
-			prevElement = element;
-		}
-
-		if (prevRootMargin && rootMargin !== prevRootMargin) {
-			observer?.disconnect();
-			prevElement = null;
-			initialize();
-		}
+			if (prevRootMargin && rootMargin !== prevRootMargin) {
+				observer?.disconnect();
+				prevElement = undefined;
+				initialize();
+			}
+		});
 
 		prevRootMargin = rootMargin;
 	});
 </script>
 
-<slot {intersecting} {entry} {observer} />
+{@render children()}
