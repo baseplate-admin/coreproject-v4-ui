@@ -37,7 +37,7 @@
 
 			const target = event.target as HTMLElement;
 			const { scrollHeight, clientHeight, scrollTop } = target;
-			add_mask_bottom = clientHeight + scrollTop === scrollHeight ? false : true;
+			add_mask_bottom = clientHeight + scrollTop !== scrollHeight;
 		},
 		handle_mouseenter = () => {
 			expanded = true;
@@ -51,7 +51,7 @@
 			}
 		},
 		handle_mouseleave = () => {
-			if (remove_gradient_on_mouse_enter) {
+			if (remove_gradient_on_mouse_enter && !end_element_intersecting) {
 				add_mask_bottom = true;
 			} else {
 				if (first_element_intersecting && end_element_intersecting) {
