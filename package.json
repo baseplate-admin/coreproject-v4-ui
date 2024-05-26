@@ -85,6 +85,7 @@
 		"svelte": "^5.0.0-next.141",
 		"svelte-check": "^3.7.1",
 		"svelte-gestures": "^4.0.0",
+		"svelte-intersection-observer": "^1.0.0",
 		"sveltekit-i18n": "^2.4.2",
 		"tailwind-merge": "^2.3.0",
 		"tailwind-scrollbar": "^3.1.0",

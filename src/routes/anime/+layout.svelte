@@ -21,8 +21,6 @@
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
 
-	let { children } = $props();
-
 	// Local
 	const icon_mapping: {
 		// Top,middle,bottom
@@ -323,7 +321,7 @@
 				</div>
 			</aside>
 			<div id="page" class="flex flex-1 flex-col overflow-x-hidden" style="scrollbar-gutter:auto">
-				{@render children()}
+				<slot />
 			</div>
 		</div>
 
