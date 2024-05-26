@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { page } from "$app/stores";
+	import { DISCORD_LINK, REDDIT_LINK, GITHUB_LINK } from "$constants/social";
 	import Discord from "$icons/logos/discord.svelte";
 	import Github from "$icons/logos/github.svelte";
 	import Reddit from "$icons/logos/reddit.svelte";
@@ -7,7 +8,7 @@
 </script>
 
 <main
-	class="relative flex h-dvh flex-col flex-col-reverse items-center justify-center gap-10 p-5 md:mx-auto md:w-[60%] md:flex-row md:justify-between md:gap-[2vw] md:p-0"
+	class="relative flex h-dvh flex-col-reverse items-center justify-center gap-10 p-5 md:mx-auto md:w-[60%] md:flex-row md:justify-between md:gap-[2vw] md:p-0"
 >
 	<div class="flex flex-col gap-7 md:gap-[2vw]">
 		<h2 class="text-6xl font-bold text-accent md:text-[5vw]">{$page.status}</h2>
@@ -20,13 +21,13 @@
 			</div>
 		{/if}
 		<div class="flex items-center gap-3 md:gap-[2vw]">
-			<a href="/" target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
+			<a href={REDDIT_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
 				<Reddit class="size-6 text-warning md:size-[1.75vw]" />
 			</a>
-			<a href="/" target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
+			<a href={DISCORD_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
 				<Discord class="size-6 text-warning md:size-[1.75vw]" />
 			</a>
-			<a href="/" target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
+			<a href={GITHUB_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
 				<Github class="size-6 text-warning md:size-[1.75vw]" />
 			</a>
 		</div>
