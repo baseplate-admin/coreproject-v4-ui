@@ -1,5 +1,4 @@
 <script lang="ts">
-	import IntersectionObserver from "svelte-intersection-observer";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { cn } from "$functions/classnames";
 	import type { Snippet } from "svelte";
@@ -21,13 +20,8 @@
 	}> = $props();
 
 	let scroll_area = $state<HTMLElement>();
-	let add_mask_bottom = $state<boolean>(),
-		expanded = false;
-
-	let first_element_intersecting = $state<boolean>(),
-		end_element_intersecting = $state<boolean>(),
-		first_element = $state<HTMLElement>(),
-		end_element = $state<HTMLElement>();
+	let add_mask_bottom = $state<boolean>(true),
+		expanded = false; // we might need this later
 
 	let first_element_intersecting = $state<boolean>(),
 		end_element_intersecting = $state<boolean>(),
@@ -37,7 +31,10 @@
 	$effect(() => {
 		add_mask_bottom = scroll_area ? scroll_area.scrollHeight > scroll_area.clientHeight : false;
 	});
+
 	const handle_scroll = async (event: Event) => {
+			if (remove_gradient_on_mouse_enter) return;
+
 			const target = event.target as HTMLElement;
 			const { scrollHeight, clientHeight, scrollTop } = target;
 			add_mask_bottom = clientHeight + scrollTop === scrollHeight ? false : true;
@@ -48,11 +45,9 @@
 			if (remove_gradient_on_mouse_enter) {
 				add_mask_bottom = false;
 			} else {
-				scroll_area?.addEventListener("transitionend", () => {
-					if (first_element_intersecting && end_element_intersecting) {
-						add_mask_bottom = false;
-					}
-				});
+				if (first_element_intersecting && end_element_intersecting) {
+					add_mask_bottom = false;
+				}
 			}
 		},
 		handle_mouseleave = () => {
