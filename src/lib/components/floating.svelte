@@ -28,7 +28,9 @@
 		onOpenChange: (v) => (open = v),
 		placement: 'left',
 		get middleware() {
-			return [offset(15), flip()];
+			return [offset(({ rects }) => {
+				return rects.reference.width * 0.3;
+			}), flip()];
 		},
 	})
 
