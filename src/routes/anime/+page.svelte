@@ -23,7 +23,6 @@
 	import Image from "$components/image/index.svelte";
 	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
-	import Floating from "$components/floating.svelte";
 	import { autoUpdate, flip, offset, useFloating, useHover, useInteractions, useRole } from "@skeletonlabs/floating-ui-svelte";
 	import { portal } from "svelte-portal";
 
