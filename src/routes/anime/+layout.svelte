@@ -21,7 +21,7 @@
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
-	import NotificationLottie from "$lotties/sample.json?url";
+	import NotificationLottie from "$lotties/notification.json?url";
 
 	// Local
 	const icon_mapping: {
