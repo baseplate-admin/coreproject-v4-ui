@@ -1,4 +1,11 @@
-import { default_locale, loadTranslations, locales, setLocale, setRoute, translations } from "$lib/translations";
+import {
+	default_locale,
+	loadTranslations,
+	locales,
+	setLocale,
+	setRoute,
+	translations
+} from "$lib/translations";
 import { browser } from "$app/environment";
 
 export const load: Load = async ({ url }) => {
