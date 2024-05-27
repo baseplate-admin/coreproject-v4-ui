@@ -7,6 +7,17 @@
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
 	import chroma from "chroma-js";
+	import { portal } from "svelte-portal";
+	import {
+		useFloating,
+		offset,
+		flip,
+		autoUpdate,
+		useRole,
+		useHover,
+		useInteractions,
+		useDismiss,
+	} from "@skeletonlabs/floating-ui-svelte";
 
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
@@ -199,6 +210,30 @@
 			loaded: false
 		}))
 	);
+
+	// state for floating ui elements
+	let open = $state(sidebar_animes.map(() => false));
+
+	let floating_elements = $state(sidebar_animes.map((_, idx) => useFloating({
+		whileElementsMounted: autoUpdate,
+		get open() {
+			return open[idx];
+		},
+		onOpenChange: (v) => (open[idx] = v),
+		placement: 'left',
+		get middleware() {
+			return [offset(10), flip()];
+		},
+	})));
+
+	let floating_props = $state(sidebar_animes.map((_, idx) => ({
+		role: useRole(floating_elements[idx].context, { role: "tooltip" }),
+		hover: useHover(floating_elements[idx].context, { move: false }),
+		dismiss: useDismiss(floating_elements[idx].context),
+	})));
+
+	let floating_interactions = $state(sidebar_animes.map((_, idx) => 
+		useInteractions([floating_props[idx].role, floating_props[idx].hover, floating_props[idx].dismiss])));
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -431,14 +466,30 @@
 						parent_class="snap-y md:rounded-[0.65vw]"
 						class="flex flex-1 flex-col md:w-[3vw] md:gap-[0.5vw]"
 					>
-						{#each sidebar_animes as anime}
-							<a href="/anime/mal/{anime.id}">
+						{#each sidebar_animes as anime, idx}
+							<a
+								bind:this={floating_elements[idx].elements.reference}
+								{...floating_interactions[idx].getReferenceProps()}
+								href="/anime/mal/{anime.id}"
+							>
 								<img
 									src={anime.cover}
 									class="h-auto w-full snap-start md:rounded-[0.65vw]"
 									alt=""
 								/>
 							</a>
+							{#if open[idx]}
+								<div
+									use:portal={"body"}
+									bind:this={floating_elements[idx].elements.floating}
+									style={floating_elements[idx].floatingStyles}
+									{...floating_interactions[idx].getFloatingProps()}
+									transition:blur
+									class="bg-warning text-secondary md:text-[1.1vw] md:py-[0.25vw] md:px-[0.75vw] md:rounded-[0.5vw]"
+								>
+									Demon Slayer
+								</div>
+							{/if}
 						{/each}
 					</ScrollArea>
 					<button
