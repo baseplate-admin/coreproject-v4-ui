@@ -23,7 +23,15 @@
 	import Image from "$components/image/index.svelte";
 	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
-	import { autoUpdate, flip, offset, useFloating, useHover, useInteractions, useRole } from "@skeletonlabs/floating-ui-svelte";
+	import {
+		autoUpdate,
+		flip,
+		offset,
+		useFloating,
+		useHover,
+		useInteractions,
+		useRole
+	} from "@skeletonlabs/floating-ui-svelte";
 	import { portal } from "svelte-portal";
 
 	// Mock data mappings
@@ -445,9 +453,12 @@
 								onOpenChange: (v) => (sidebar_tooltips_open[idx] = v),
 								placement: "left",
 								get middleware() {
-									return [offset(({ rects }) => {
-										return rects.reference.width * 0.3;
-									}), flip()];
+									return [
+										offset(({ rects }) => {
+											return rects.reference.width * 0.3;
+										}),
+										flip()
+									];
 								}
 							})}
 
@@ -474,7 +485,7 @@
 									{...intersections.getFloatingProps()}
 									style={floating.floatingStyles}
 									transition:blur={{ duration: 300 }}
-									class="bg-warning text-secondary md:text-[1.1vw] md:py-[0.25vw] md:px-[0.75vw] md:rounded-[0.5vw]"
+									class="bg-warning text-secondary md:rounded-[0.5vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[1.1vw]"
 								>
 									{anime.title}
 								</div>
