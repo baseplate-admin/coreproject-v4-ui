@@ -6,7 +6,7 @@
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
-	import chroma from "chroma-js";
+	import type { Color } from "chroma-js";
 
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
@@ -23,6 +23,7 @@
 	import Image from "$components/image/index.svelte";
 	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
+	import ChromaWorker from "$lib/workers/chroma?worker";
 	import {
 		autoUpdate,
 		flip,
@@ -33,6 +34,7 @@
 		useRole
 	} from "@skeletonlabs/floating-ui-svelte";
 	import { portal } from "svelte-portal";
+	import { onMount } from "svelte";
 
 	// Mock data mappings
 	const latest_animes = [
@@ -202,10 +204,12 @@
 	// state for latest_episodes color palette
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
+		color: Color | undefined;
 		loaded: boolean;
 	}[] = $state(
 		latest_episodes.map(() => ({
 			color_palette: undefined,
+			color: undefined,
 			loaded: false
 		}))
 	);
@@ -356,54 +360,70 @@
 					class:scrollbar-none={IS_CHROMIUM}
 				>
 					{#each latest_episodes as episode, idx}
-						{@const image_loaded = latest_episodes_mapping[idx].loaded}
-						{@const dominant_color =
-							image_loaded ?
-							chroma(...latest_episodes_mapping[idx].color_palette![0]).hex() : ""}
+						{@const is_loaded = latest_episodes_mapping[idx].loaded}
+						{@const worker = (() => {
+							const chroma_worker = new ChromaWorker();
+							chroma_worker.onmessage = (e) => {
+								// latest_episodes_mapping[idx].color = e.data.color;
+								console.log(e.data.color);
+								chroma_worker.terminate();
+							};
+							return chroma_worker;
+						})}
 
-						{#if image_loaded}
-							<div
-								in:blur
-								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
-								style="
-									--background-image: url({episode.banner});
-									--dominant-color: {chroma(dominant_color).get('lab.l') < 40
-									? chroma(dominant_color).brighten().hex()
-									: dominant_color};
-									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40
-									? chroma(dominant_color).brighten(2).hex()
-									: dominant_color}
-								"
-							>
-								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
-								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
-									<img
-										src={episode.cover}
-										alt=""
-										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
-									/>
-									<div class="flex flex-1 flex-col md:gap-[0.15vw]">
-										<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
-											>{episode.title}</span
-										>
-										<div
-											class="flex items-center font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
-										>
-											<span class="whitespace-nowrap"
-												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
+						{#if is_loaded}
+							{@const color = (() => {
+								worker().postMessage({
+									color: latest_episodes_mapping[idx].color,
+									index: idx
+								});
+								return latest_episodes_mapping[idx].color;
+							})()}
+
+							{#if color}
+								<div
+									in:blur
+									class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+									style="
+										--background-image: url({episode.banner});
+										--dominant-color: {color.get('lab.l') < 40
+										? color.brighten().hex()
+										: color.hex()};
+										--dominant-foreground-color: {color.get('lab.l') < 40
+										? color.brighten(2).hex()
+										: color.hex()}
+									"
+								>
+									<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+									<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
+										<img
+											src={episode.cover}
+											alt=""
+											class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
+										/>
+										<div class="flex flex-1 flex-col md:gap-[0.15vw]">
+											<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
+												>{episode.title}</span
 											>
-											<Circle class="opacity-75 md:size-[0.25vw]" />
-											<span class="line-clamp-1">{episode.timestamp}</span>
+											<div
+												class="flex items-center font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
+											>
+												<span class="whitespace-nowrap"
+													>Ep {episode.ep_number.toString().padStart(2, "0")}</span
+												>
+												<Circle class="opacity-75 md:size-[0.25vw]" />
+												<span class="line-clamp-1">{episode.timestamp}</span>
+											</div>
 										</div>
+										<a
+											href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
+											class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] md:mr-[0.5vw] md:p-[0.75vw]"
+										>
+											<Play class="md:size-[1.25vw]" />
+										</a>
 									</div>
-									<a
-										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] md:mr-[0.5vw] md:p-[0.75vw]"
-									>
-										<Play class="md:size-[1.25vw]" />
-									</a>
 								</div>
-							</div>
+							{/if}
 						{:else}
 							<div
 								class="flex items-center bg-neutral/25 md:h-[5vw] md:gap-[1vw] md:rounded-[0.75vw] md:p-[0.5vw]"
