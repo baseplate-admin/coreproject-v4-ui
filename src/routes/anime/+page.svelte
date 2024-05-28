@@ -23,7 +23,16 @@
 	import Image from "$components/image/index.svelte";
 	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
-	import Floating from "$components/floating.svelte";
+	import {
+		autoUpdate,
+		flip,
+		offset,
+		useFloating,
+		useHover,
+		useInteractions,
+		useRole
+	} from "@skeletonlabs/floating-ui-svelte";
+	import { portal } from "svelte-portal";
 
 	// Mock data mappings
 	const latest_animes = [
@@ -200,6 +209,9 @@
 			loaded: false
 		}))
 	);
+
+	// open state for sidebar tooltips
+	const sidebar_tooltips_open = $state(sidebar_animes.map(() => false));
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -433,20 +445,51 @@
 						class="flex flex-1 flex-col md:w-[3vw] md:gap-[0.5vw]"
 					>
 						{#each sidebar_animes as anime, idx}
-							<Floating>
-								{#snippet floating()}
-									<div class="bg-warning text-secondary md:text-[1.1vw] md:py-[0.25vw] md:px-[0.75vw] md:rounded-[0.5vw]">
-										{anime.title}
-									</div>
-								{/snippet}
-								<a href="/anime/mal/{anime.id}">
-									<img
-										src={anime.cover}
-										class="h-auto w-full snap-start md:rounded-[0.65vw]"
-										alt=""
-									/>
-								</a>
-							</Floating>
+							{@const floating = useFloating({
+								whileElementsMounted: autoUpdate,
+								get open() {
+									return sidebar_tooltips_open[idx];
+								},
+								onOpenChange: (v) => (sidebar_tooltips_open[idx] = v),
+								placement: "left",
+								get middleware() {
+									return [
+										offset(({ rects }) => {
+											return rects.reference.width * 0.3;
+										}),
+										flip()
+									];
+								}
+							})}
+
+							{@const role = useRole(floating.context, { role: "tooltip" })}
+							{@const hover = useHover(floating.context)}
+							{@const intersections = useInteractions([role, hover])}
+
+							<a
+								bind:this={floating.elements.reference}
+								{...intersections.getReferenceProps()}
+								href="/anime/mal/{anime.id}"
+							>
+								<img
+									src={anime.cover}
+									class="h-auto w-full snap-start md:rounded-[0.65vw]"
+									alt=""
+								/>
+							</a>
+
+							{#if sidebar_tooltips_open[idx]}
+								<div
+									use:portal={"body"}
+									bind:this={floating.elements.floating}
+									{...intersections.getFloatingProps()}
+									style={floating.floatingStyles}
+									transition:blur={{ duration: 300 }}
+									class="bg-warning text-secondary md:rounded-[0.5vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[1.1vw]"
+								>
+									{anime.title}
+								</div>
+							{/if}
 						{/each}
 					</ScrollArea>
 					<button
