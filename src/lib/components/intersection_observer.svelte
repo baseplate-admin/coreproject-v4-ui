@@ -50,14 +50,14 @@
 				observer = undefined;
 			}
 		};
-	})
+	});
 
 	$effect(() => {
 		if (entry !== undefined) {
 			if (observe) observe(entry);
 
 			if (entry.isIntersecting) {
-				if(intersect) intersect(entry);
+				if (intersect) intersect(entry);
 				if (element && once) observer?.unobserve(element);
 			}
 		}
