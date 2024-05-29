@@ -9,7 +9,8 @@ export const config = {
 	translations: {
 		bn: { lang },
 		en: { lang },
-		es: { lang }
+		es: { lang },
+		de: { lang }
 	},
 	loaders: [
 		{
@@ -29,6 +30,12 @@ export const config = {
 			key: "home",
 			routes: ["/anime"],
 			loader: async () => (await import("./es/home.json")).default
+		},
+		{
+			locale: "de",
+			key: "home",
+			routes: ["/anime"],
+			loader: async () => (await import("./de/home.json")).default
 		}
 	]
 } satisfies Config;
