@@ -112,22 +112,26 @@
 			{
 				id: 1,
 				title: "Jujutsu Kaisen season 2",
-				cover: "/images/mock/cover/jjk.webp"
+				cover: "/images/mock/cover/jjk.webp",
+				ep_number: 2
 			},
 			{
 				id: 2,
 				title: "One Piece",
-				cover: "/images/mock/cover/one_piece.webp"
+				cover: "/images/mock/cover/one_piece.webp",
+				ep_number: 20
 			},
 			{
 				id: 3,
 				title: "Kaiju no.8",
-				cover: "/images/mock/cover/kaiju_no_8.jpg"
+				cover: "/images/mock/cover/kaiju_no_8.jpg",
+				ep_number: 9
 			},
 			{
 				id: 4,
 				title: "Demon Slayer Hashira Training Arc",
-				cover: "/images/mock/cover/demon_slayer_training.webp"
+				cover: "/images/mock/cover/demon_slayer_training.webp",
+				ep_number: 10
 			}
 		];
 
@@ -215,7 +219,10 @@
 	);
 
 	// open state for sidebar tooltips
-	const sidebar_tooltips_open = $state(sidebar_animes.map(() => false));
+	const sidebar_mapping = $state(sidebar_animes.map(() => ({
+		open: false,
+		color: undefined,
+	})));
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -448,9 +455,9 @@
 							{@const floating = useFloating({
 								whileElementsMounted: autoUpdate,
 								get open() {
-									return sidebar_tooltips_open[idx];
+									return sidebar_mapping[idx].open;
 								},
-								onOpenChange: (v) => (sidebar_tooltips_open[idx] = v),
+								onOpenChange: (v) => (sidebar_mapping[idx].open = v),
 								placement: "left",
 								get middleware() {
 									return [
@@ -469,25 +476,25 @@
 							<a
 								bind:this={floating.elements.reference}
 								{...intersections.getReferenceProps()}
-								href="/anime/mal/{anime.id}"
+								href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
 							>
-								<img
+								<Image
 									src={anime.cover}
-									class="h-auto w-full snap-start md:rounded-[0.65vw]"
-									alt=""
+									class="md:h-[5vw] w-full snap-start md:rounded-[0.65vw]"
+									bind:dominant_foreground_color={sidebar_mapping[idx].color}
 								/>
 							</a>
 
-							{#if sidebar_tooltips_open[idx]}
+							{#if sidebar_mapping[idx].open}
 								<div
 									use:portal={"body"}
 									bind:this={floating.elements.floating}
 									{...intersections.getFloatingProps()}
-									style={floating.floatingStyles}
-									transition:blur={{ duration: 300 }}
-									class="bg-warning text-secondary md:rounded-[0.5vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[1.1vw]"
+									style="{floating.floatingStyles}; --dominant-color: {sidebar_mapping[idx].color}; --dominant-color-opacity: {sidebar_mapping[idx].color}50"
+									transition:blur={{ duration: 250 }}
+									class="!bg-[var(--dominant-color)] drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] bg-warning text-secondary md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
 								>
-									{anime.title}
+									continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number.toString().padStart(2, "0")}
 								</div>
 							{/if}
 						{/each}
