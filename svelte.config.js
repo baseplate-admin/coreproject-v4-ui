@@ -39,7 +39,9 @@ const config = {
 			$functions: path.resolve("./src/lib/functions"),
 			$modals: path.resolve("./src/lib/components/modals"),
 			$skeletons: path.resolve("./src/lib/skeletons"),
-			$types: path.resolve("./src/lib/types")
+			$types: path.resolve("./src/lib/types"),
+			$lotties: path.resolve("./src/lib/lotties"),
+			$clients: path.resolve("./src/lib/clients")
 		}
 	}
 };

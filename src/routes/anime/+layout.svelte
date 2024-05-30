@@ -14,12 +14,14 @@
 	import Preference from "$icons/shapes/preference.svelte";
 	import CoreProjectLogo from "$icons/shapes/logo.svelte";
 	import VercelHover from "$components/vercel_hover.svelte";
+	import { DotLottieSvelte } from "@lottiefiles/dotlottie-svelte";
 
 	import { is_authenticated } from "$stores/auth.svelte";
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
+	import NotificationLottie from "$lotties/notification.json?url";
 
 	// Local
 	const icon_mapping: {
@@ -162,20 +164,25 @@
 					</div>
 				</div>
 				{#if is_authenticated}
-					<div class="dropdown dropdown-end">
-						<div tabIndex={0} role="button" class="btn border-none !bg-transparent p-0">
-							<img
-								alt=""
-								src="https://github.com/AKindWorld.png"
-								class="size-12 rounded-lg md:size-[3vw] md:rounded-[0.5vw]"
-							/>
-						</div>
-						<div
-							role="button"
-							tabIndex={0}
-							class="menu dropdown-content top-14 z-20 min-w-48 rounded-lg bg-neutral p-4 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.5vw] md:text-[0.9vw]"
-						>
-							<!-- profile dropdown card -->
+					<div class="flex items-center md:gap-[1vw]">
+						<button class="btn btn-accent min-h-max md:size-[3vw] md:rounded-[0.5vw] md:p-[0.75vw]">
+							<DotLottieSvelte src={NotificationLottie} loop autoplay></DotLottieSvelte>
+						</button>
+						<div class="dropdown dropdown-end">
+							<div tabIndex={0} role="button" class="btn border-none !bg-transparent p-0">
+								<img
+									alt=""
+									src="https://github.com/AKindWorld.png"
+									class="size-12 rounded-lg md:size-[3vw] md:rounded-[0.5vw]"
+								/>
+							</div>
+							<div
+								role="button"
+								tabIndex={0}
+								class="menu dropdown-content top-14 z-20 min-w-48 rounded-lg bg-neutral p-4 md:top-[4vw] md:min-w-[12vw] md:rounded-[0.75vw] md:p-[0.5vw] md:text-[0.9vw]"
+							>
+								<!-- profile dropdown card -->
+							</div>
 						</div>
 					</div>
 				{:else}

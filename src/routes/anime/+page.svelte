@@ -6,7 +6,6 @@
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
-	import chroma from "chroma-js";
 
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
