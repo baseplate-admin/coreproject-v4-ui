@@ -164,8 +164,8 @@
 					</div>
 				</div>
 				{#if is_authenticated}
-					<div class="flex items-center md:gap-[1vw] ">
-						<button class="btn btn-accent md:size-[3vw] md:rounded-[0.5vw] min-h-max md:p-[0.75vw]">
+					<div class="flex items-center md:gap-[1vw]">
+						<button class="btn btn-accent min-h-max md:size-[3vw] md:rounded-[0.5vw] md:p-[0.75vw]">
 							<DotLottieSvelte src={NotificationLottie} loop autoplay></DotLottieSvelte>
 						</button>
 						<div class="dropdown dropdown-end">
