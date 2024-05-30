@@ -375,14 +375,14 @@
 				</div>
 			</div>
 			<button
-				class="btn btn-primary border-none absolute -left-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
+				class="btn btn-primary border-none absolute -left-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
 				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};"
 				onclick={minus_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] rotate-90" />
 			</button>
 			<button
-				class="btn btn-primary border-none absolute -right-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
+				class="btn btn-primary border-none absolute -right-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
 				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};"
 				onclick={add_one_to_main_hero_slide_active_index}
 			>
