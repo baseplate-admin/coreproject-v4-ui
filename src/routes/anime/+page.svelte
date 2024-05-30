@@ -57,7 +57,7 @@
 				studio: "tokito",
 				genres: ["hentai", "action", "romance", "smooth"],
 				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-				image: "https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png"
+				banner: "/images/mock/banner/one_piece.avif",
 			},
 			{
 				id: 3,
@@ -139,14 +139,15 @@
 				seconds: TIMER_DELAY
 			},
 			precision: "secondTenths"
-		}),
-		slide_buttons = [
-			{ background: "bg-accent", border: "border-accent" },
-			{ background: "bg-info", border: "border-info" },
-			{ background: "bg-warning", border: "border-warning" },
-			{ background: "bg-white", border: "border-white" },
-			{ background: "bg-primary", border: "border-primary" },
-			{ background: "bg-error", border: "border-error" }
+		})
+
+	const slide_buttons = [
+			"#FFF7F8",
+			"#DCD9F7",
+			"#EDD68D",
+			"#fff",
+			"#7569E1",
+			"#EB5757",
 		];
 
 	let main_hero_slide_active_index = $state<number>(0);
@@ -356,12 +357,9 @@
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
 					{#each latest_animes as _, idx}
 						<button
-							class={cn(
-								"col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]",
-								slide_buttons[idx].border,
-								"hover:border-surface-50/50 transition duration-300",
-								idx === main_hero_slide_active_index && slide_buttons[idx].background
-							)}
+							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
+							class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
+							style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? slide_buttons[idx]};"
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						></button>
 					{/each}
