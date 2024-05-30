@@ -255,7 +255,7 @@
 						onmouseleave={() => timer.start()}
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
-						class="absolute z-20 inset-0 md:bottom-[2vw] md:rounded-t-[0.875vw] overflow-hidden"
+						class="absolute z-20 inset-0 md:bottom-[2vw] md:rounded-t-[0.875vw] overflow-hidden duration-1000"
 						class:drop-shadow-[0_0_5vw_var(--dominant-color-opacity)]={color_loaded}
 						style="
 							--dominant-color: {latest_animes_mapping[idx].dominant_color};
