@@ -267,7 +267,7 @@
 						onmouseleave={() => timer.start()}
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
-						class="absolute z-20 inset-0 md:bottom-[2vw] md:rounded-t-[0.875vw] overflow-hidden duration-1000"
+						class="absolute z-20 inset-0 md:bottom-[2vw] duration-1000"
 						class:drop-shadow-[0_0vw_5vw_var(--dominant-color-opacity)]={color_loaded}
 						style="
 							--dominant-color-opacity: {latest_animes_mapping[idx].dominant_color}25;
@@ -276,7 +276,7 @@
 					>
 						<Image
 							src={anime.image}
-							class="absolute h-full w-full object-cover object-center"
+							class="absolute h-full w-full object-cover object-center md:rounded-[1vw]"
 							bind:dominant_color={latest_animes_mapping[idx].dominant_color}
 							bind:dominant_foreground_color={latest_animes_mapping[idx].dominant_foreground_color}
 						/>
@@ -355,7 +355,7 @@
 					</div>
 				{/if}
 			{/each}
-			<div class="absolute bottom-0 flex w-full flex-col">
+			<div class="absolute -bottom-[1vw] flex w-full flex-col">
 				<div
 					class="h-[0.2rem] bg-warning md:h-[0.145vw]"
 					style="
