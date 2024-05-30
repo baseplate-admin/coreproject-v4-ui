@@ -45,7 +45,7 @@
 				studio: "mappa",
 				genres: ["sci-fi", "action", "echhi"],
 				synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
-				image: "https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
+				image: "/images/mock/cover/jjk.webp"
 			},
 			{
 				id: 2,
@@ -57,7 +57,7 @@
 				studio: "tokito",
 				genres: ["hentai", "action", "romance", "smooth"],
 				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-				image: "/images/mock/banner/one_piece.avif",
+				image: "/images/mock/cover/one_piece.webp",
 			},
 			{
 				id: 3,
@@ -69,8 +69,19 @@
 				studio: "sheldon",
 				genres: ["hentai", "action", "romance", "smooth"],
 				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-				image:
-					"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
+				image: "/images/mock/cover/demon_slayer_training.webp"
+			},
+			{
+				id: 4,
+				name: "Kaiju no.8",
+				type: "TV",
+				episodes: 8,
+				status: "Airing",
+				release_date: "Summer 2024",
+				studio: "sheldon",
+				genres: ["action", "romance", "fantasy"],
+				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				image: "/images/mock/cover/kaiju_no_8.jpg",
 			}
 		],
 		latest_episodes = [
@@ -142,12 +153,12 @@
 		})
 
 	const slide_buttons = [
-			"#FFF7F8",
-			"#DCD9F7",
-			"#EDD68D",
-			"#fff",
-			"#7569E1",
-			"#EB5757",
+			"#FFF7F850",
+			"#DCD9F750",
+			"#EDD68D50",
+			"#ffffff50",
+			"#7569E150",
+			"#EB575750",
 		];
 
 	let main_hero_slide_active_index = $state<number>(0);
@@ -257,9 +268,8 @@
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
 						class="absolute z-20 inset-0 md:bottom-[2vw] md:rounded-t-[0.875vw] overflow-hidden duration-1000"
-						class:drop-shadow-[0_0_5vw_var(--dominant-color-opacity)]={color_loaded}
+						class:drop-shadow-[0_0vw_5vw_var(--dominant-color-opacity)]={color_loaded}
 						style="
-							--dominant-color: {latest_animes_mapping[idx].dominant_color};
 							--dominant-color-opacity: {latest_animes_mapping[idx].dominant_color}25;
 							--dominant-foreground-color: {latest_animes_mapping[idx].dominant_foreground_color};
 						"
@@ -319,7 +329,6 @@
 											href="mal/{anime.id}/episode/1"
 											class="btn btn-accent border-none flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
 											class:!bg-[var(--dominant-foreground-color)]={color_loaded}
-											class:hover:!bg-[var(--dominant-color)]={color_loaded}
 										>
 											<Play class="text-surface-900 w-4 md:w-[1vw]" />
 											<span>Ep 1</span>
@@ -351,7 +360,7 @@
 					class="h-[0.2rem] bg-warning md:h-[0.145vw]"
 					style="
 						width: {$tweened_progress_value}%;
-						background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};
+						background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};
 					"
 				></div>
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
@@ -359,7 +368,7 @@
 						<button
 							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
 							class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
-							style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? slide_buttons[idx]};"
+							style="--dominant-color: {latest_animes_mapping[idx].dominant_foreground_color ?? slide_buttons[idx]};"
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						></button>
 					{/each}
