@@ -347,9 +347,11 @@
 			{/each}
 			<div class="absolute bottom-0 flex w-full flex-col">
 				<div
-					class="h-[0.2rem] bg-warning md:h-[0.145vw] {slide_buttons[main_hero_slide_active_index]
-						.background}"
-					style="width: {$tweened_progress_value}%;"
+					class="h-[0.2rem] bg-warning md:h-[0.145vw]"
+					style="
+						width: {$tweened_progress_value}%;
+						background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};
+					"
 				></div>
 				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
 					{#each latest_animes as _, idx}
