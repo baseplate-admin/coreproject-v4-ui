@@ -20,7 +20,7 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
-	import Image from "$components/image/index.svelte";
+	import Image from "$components/dominant_color/index.svelte";
 	import { IS_CHROMIUM } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
 	import {
@@ -203,9 +203,13 @@
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
 		loaded: boolean;
+		dominant_color: string | undefined;
+		dominant_foreground_color: string | undefined;
 	}[] = $state(
 		latest_episodes.map(() => ({
 			color_palette: undefined,
+			dominant_color: undefined,
+			dominant_foreground_color: undefined,
 			loaded: false
 		}))
 	);
@@ -357,9 +361,6 @@
 				>
 					{#each latest_episodes as episode, idx}
 						{@const image_loaded = latest_episodes_mapping[idx].loaded}
-						{@const dominant_color =
-							image_loaded ?
-							chroma(...latest_episodes_mapping[idx].color_palette![0]).hex() : ""}
 
 						{#if image_loaded}
 							<div
@@ -367,12 +368,8 @@
 								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
-									--dominant-color: {chroma(dominant_color).get('lab.l') < 40
-									? chroma(dominant_color).brighten().hex()
-									: dominant_color};
-									--dominant-foreground-color: {chroma(dominant_color).get('lab.l') < 40
-									? chroma(dominant_color).brighten(2).hex()
-									: dominant_color}
+									--dominant-color: {latest_episodes_mapping[idx].dominant_color};
+									--dominant-foreground-color: {latest_episodes_mapping[idx].dominant_foreground_color}
 								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -422,6 +419,9 @@
 							class="absolute -z-10"
 							bind:image_loaded={latest_episodes_mapping[idx].loaded}
 							bind:color_palette={latest_episodes_mapping[idx].color_palette}
+							bind:dominant_color={latest_episodes_mapping[idx].dominant_color}
+							bind:dominant_foreground_color={latest_episodes_mapping[idx]
+								.dominant_foreground_color}
 						/>
 					{/each}
 				</div>

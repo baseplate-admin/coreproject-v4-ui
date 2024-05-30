@@ -6,13 +6,17 @@
 	let {
 		src,
 		class: klass,
+		image_loaded = $bindable<boolean>(),
 		color_palette = $bindable<number[][]>(),
-		image_loaded = $bindable<boolean>()
+		dominant_color = $bindable<string>(),
+		dominant_foreground_color = $bindable<string>()
 	}: {
 		src: string;
 		class?: string;
 		color_palette?: number[][];
 		image_loaded?: boolean;
+		dominant_color?: string;
+		dominant_foreground_color?: string;
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
@@ -22,7 +26,11 @@
 	$effect.pre(() => {
 		image_loaded = false;
 		const map_value = color_mapping?.get(src);
-		if (map_value) color_palette = map_value;
+		if (map_value) {
+			color_palette = map_value.color_palette;
+			dominant_color = map_value.dominant_color;
+			dominant_foreground_color = map_value.dominant_foreground_color;
+		}
 	});
 
 	onMount(() => {
@@ -33,11 +41,20 @@
 
 		worker = new ImageWorker();
 		worker.onmessage = (e) => {
-			color_palette = e.data;
+			const data: {
+				color_palette: number[][];
+				dominant_color: string;
+				dominant_foreground_color: string;
+			} = e.data;
+
+			color_palette = data.color_palette;
+			dominant_color = data.dominant_color;
+			dominant_foreground_color = data.dominant_foreground_color;
+
 			image_loaded = true;
 
 			// Set cache
-			color_mapping?.set(src, color_palette);
+			color_mapping?.set(src, data);
 			worker?.terminate();
 		};
 	});
