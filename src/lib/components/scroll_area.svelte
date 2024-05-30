@@ -26,6 +26,8 @@
 		add_mask_bottom = scroll_area ? scroll_area?.scrollHeight > scroll_area.clientHeight : false;
 	});
 
+	$effect(() => {});
+
 	const handle_scroll = async (event: Event) => {
 			if (remove_gradient_on_mouse_enter) return;
 
@@ -43,15 +45,14 @@
 				add_mask_bottom = true;
 			}
 		};
-	// TODO: Do AOT ( Ahead of Time ) calculations on `transitionrun` to  prevent flicker
 </script>
 
 <div
 	role="contentinfo"
 	bind:this={scroll_area}
-	onscroll={(event) => handle_scroll(event)}
-	onmouseenter={(event) => handle_mouseenter()}
-	onmouseleave={(event) => handle_mouseleave()}
+	onscroll={handle_scroll}
+	onmouseenter={handle_mouseenter}
+	onmouseleave={handle_mouseleave}
 	class={cn(
 		parent_class,
 		offset_scrollbar &&
