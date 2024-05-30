@@ -219,10 +219,12 @@
 	);
 
 	// open state for sidebar tooltips
-	const sidebar_mapping = $state(sidebar_animes.map(() => ({
-		open: false,
-		color: undefined,
-	})));
+	const sidebar_mapping = $state(
+		sidebar_animes.map(() => ({
+			open: false,
+			color: undefined
+		}))
+	);
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -480,7 +482,7 @@
 							>
 								<Image
 									src={anime.cover}
-									class="md:h-[5vw] w-full snap-start md:rounded-[0.65vw]"
+									class="w-full snap-start md:h-[5vw] md:rounded-[0.65vw]"
 									bind:dominant_foreground_color={sidebar_mapping[idx].color}
 								/>
 							</a>
@@ -490,11 +492,17 @@
 									use:portal={"body"}
 									bind:this={floating.elements.floating}
 									{...intersections.getFloatingProps()}
-									style="{floating.floatingStyles}; --dominant-color: {sidebar_mapping[idx].color}; --dominant-color-opacity: {sidebar_mapping[idx].color}50"
+									style="
+										{floating.floatingStyles};
+										--dominant-color: {sidebar_mapping[idx].color};
+										--dominant-color-opacity: {sidebar_mapping[idx].color}50
+									"
 									transition:blur={{ duration: 250 }}
-									class="!bg-[var(--dominant-color)] drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] bg-warning text-secondary md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
+									class="!bg-[var(--dominant-color)] bg-warning text-secondary drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
 								>
-									continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number.toString().padStart(2, "0")}
+									continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number
+										.toString()
+										.padStart(2, "0")}
 								</div>
 							{/if}
 						{/each}
