@@ -202,7 +202,8 @@
 		progress_value = value;
 	});
 
-	// state for latest_episodes color palette
+	// states
+
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
 		loaded: boolean;
@@ -217,11 +218,17 @@
 		}))
 	);
 
-	// open state for sidebar tooltips
 	const sidebar_mapping = $state(
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined
+		}))
+	);
+
+	const latest_animes_mapping = $state(
+		latest_animes.map(() => ({
+			dominant_color: undefined,
+			dominant_foreground_color: undefined
 		}))
 	);
 </script>
@@ -238,21 +245,29 @@
 			{#each latest_animes as anime, idx}
 				{@const active = idx === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
+				{@const color_loaded = latest_animes_mapping[idx].dominant_color}
 
 				{#if active}
 					<div
 						role="presentation"
-						class="absolute inset-0 md:bottom-[2vw]"
 						transition:blur
 						onmouseenter={() => timer.pause()}
 						onmouseleave={() => timer.start()}
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
+						class="absolute z-20 inset-0 md:bottom-[2vw] md:rounded-t-[0.875vw] overflow-hidden"
+						class:drop-shadow-[0_0_5vw_var(--dominant-color-opacity)]={color_loaded}
+						style="
+							--dominant-color: {latest_animes_mapping[idx].dominant_color};
+							--dominant-color-opacity: {latest_animes_mapping[idx].dominant_color}25;
+							--dominant-foreground-color: {latest_animes_mapping[idx].dominant_foreground_color};
+						"
 					>
-						<img
+						<Image
 							src={anime.image}
-							alt=""
-							class="absolute h-full w-full object-cover object-center md:rounded-t-[0.875vw]"
+							class="absolute h-full w-full object-cover object-center"
+							bind:dominant_color={latest_animes_mapping[idx].dominant_color}
+							bind:dominant_foreground_color={latest_animes_mapping[idx].dominant_foreground_color}
 						/>
 						<div
 							class="md:to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
@@ -282,7 +297,8 @@
 									<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
 										{#each anime.genres as genre}
 											<span
-												class="rounded-lg bg-secondary p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
+												class="bg-accent duration-300 text-secondary rounded-lg p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
+												class:bg-[var(--dominant-foreground-color)]={color_loaded}
 											>
 												{genre}
 											</span>
@@ -300,7 +316,9 @@
 									<div class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]">
 										<a
 											href="mal/{anime.id}/episode/1"
-											class="btn btn-warning flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
+											class="btn btn-accent border-none flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
+											class:!bg-[var(--dominant-foreground-color)]={color_loaded}
+											class:hover:!bg-[var(--dominant-color)]={color_loaded}
 										>
 											<Play class="text-surface-900 w-4 md:w-[1vw]" />
 											<span>Ep 1</span>
@@ -500,9 +518,7 @@
 									transition:blur={{ duration: 250 }}
 									class="!bg-[var(--dominant-color)] bg-warning text-secondary drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
 								>
-									continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number
-										.toString()
-										.padStart(2, "0")}
+									Ep {anime.ep_number.toString().padStart(2, "0")} of <span class="md:text-[0.9vw]">{anime.title}</span>
 								</div>
 							{/if}
 						{/each}
