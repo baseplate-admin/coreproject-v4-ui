@@ -36,7 +36,7 @@
 		"@types/eslint": "^8.56.0",
 		"@typescript-eslint/eslint-plugin": "^7.11.0",
 		"@typescript-eslint/parser": "^7.11.0",
-		"@vitejs/plugin-vue": "^5.0.4",
+		"@vitejs/plugin-vue": "^5.0.5",
 		"@zxcvbn-ts/core": "^3.0.4",
 		"@zxcvbn-ts/language-ar": "^3.1.0",
 		"@zxcvbn-ts/language-common": "^3.0.4",
