@@ -15,17 +15,20 @@
 	import Chat from "$icons/shapes/chat.svelte";
 	import TrendingArrow from "$icons/shapes/trending_up.svelte";
 	import Rating from "$icons/shapes/rating.svelte";
+
 	// Components
 	import HoverExpand from "$components/hover_expand.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
+	import DominantColor from "$components/dominant_color/index.svelte";
 
-	let anime_name = "";
+	let anime_name = "1",
+		anime_japanese_name = "四月は君の嘘",
+		anime_synopsis =
+			"Kousei Arima is a child prodigy known as the \"Human Metronome\" for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.\r\n\r\nNowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.",
+		anime_image = "/images/YourLieInApril-bg.avif";
+
 	let dominant_color = "";
-	let image_loaded = false;
 	let anime_episodes_count = 0;
-	let image = "";
-	let anime_japanese_name = "";
-	let anime_synopsis = "";
 
 	// Internal logics
 	const second_mapping = [
@@ -64,14 +67,10 @@
 							class="pointer-events-none absolute inset-0 z-10 h-[150%] w-[125%] -translate-x-8 -translate-y-28 [background-image:radial-gradient(circle_at_center,var(--color)0%,transparent_100%)] [mask-image:linear-gradient(to_bottom,rgba(7,5,25,0.95)80%,rgba(0,0,0,0)100%)] md:hidden"
 							style:--color={dominant_color}
 						></div>
-						<img
-							crossorigin="anonymous"
-							alt=""
-							src={image}
-							class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw] {image_loaded
-								? 'visible'
-								: 'invisible'}"
-						/>
+						<DominantColor
+							src={anime_image}
+							class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw]"
+						></DominantColor>
 						<div
 							class="gradient to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/75 md:hidden"
 						></div>
@@ -160,10 +159,7 @@
 									aria-label={button?.label}
 									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.25vw]"
 								>
-									<svelte:component
-										this={button?.icon}
-										class="w-4 md:w-[1.125vw]"
-									/>
+									<svelte:component this={button?.icon} class="w-4 md:w-[1.125vw]" />
 								</button>
 							{/each}
 						</div>
