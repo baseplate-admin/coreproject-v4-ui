@@ -204,39 +204,27 @@
 	});
 
 	// state for latest_episodes color palette
-	// Why is this not doable without having a map?
-	// https://github.com/sveltejs/svelte/issues/5721
-	let latest_episodes_mapping = $state(
-		new Array<{
-			color_palette: [number, number, number][] | undefined;
-			loaded: boolean;
-			dominant_color: string | undefined;
-			dominant_foreground_color: string | undefined;
-		}>()
-	);
-	$effect(() => {
-		// When we fetch we change this to do it dynamically
-		latest_episodes_mapping = latest_episodes.map(() => ({
+	const latest_episodes_mapping: {
+		color_palette: [number, number, number][] | undefined;
+		loaded: boolean;
+		dominant_color: string | undefined;
+		dominant_foreground_color: string | undefined;
+	}[] = $state(
+		latest_episodes.map(() => ({
 			color_palette: undefined,
 			dominant_color: undefined,
 			dominant_foreground_color: undefined,
 			loaded: false
-		}));
-	});
+		}))
+	);
 
 	// open state for sidebar tooltips
-	let sidebar_mapping = $state(
-		new Array<{
-			open: boolean;
-			color: undefined;
-		}>()
-	);
-	$effect(() => {
+	const sidebar_mapping = $state(
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined
-		}));
-	});
+		}))
+	);
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
