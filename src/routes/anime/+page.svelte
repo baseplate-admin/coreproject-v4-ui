@@ -6,7 +6,6 @@
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
-	import chroma from "chroma-js";
 
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
@@ -204,18 +203,13 @@
 	});
 
 	// state for latest_episodes color palette
-	const latest_episodes_mapping: {
-		color_palette: [number, number, number][] | undefined;
-		loaded: boolean;
-		dominant_color: string | undefined;
-		dominant_foreground_color: string | undefined;
-	}[] = $state(
-		latest_episodes.map(() => ({
-			color_palette: undefined,
-			dominant_color: undefined,
-			dominant_foreground_color: undefined,
-			loaded: false
-		}))
+	const latest_episodes_mapping = $state(
+		new Array<{
+			color_palette: [number, number, number][] | undefined;
+			loaded: boolean;
+			dominant_color: string | undefined;
+			dominant_foreground_color: string | undefined;
+		}>()
 	);
 
 	// open state for sidebar tooltips
