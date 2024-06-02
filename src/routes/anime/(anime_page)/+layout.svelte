@@ -26,6 +26,7 @@
 	let image = "";
 	let anime_japanese_name = "";
 	let anime_synopsis = "";
+
 	// Internal logics
 	const second_mapping = [
 		// anime.source
@@ -40,7 +41,6 @@
 		{ item: `Kuschio animation` }
 	];
 	const button_mapping = [
-		{ icon: Edit, label: "edit", variant: "with_underline_around_pencil" },
 		{ icon: Download, label: "download" },
 		{ icon: Share, label: "share" }
 	];
@@ -147,6 +147,13 @@
                             >
                                 <coreproject-icon-record class="w-4 md:w-[1.125vw]"></coreproject-icon-record>
                             </button> -->
+							<button
+								type="button"
+								aria-label="edit"
+								class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.25vw]"
+							>
+								<Edit class="w-4 md:w-[1.125vw]" variant="with_underline_around_pencil" />
+							</button>
 							{#each button_mapping as button}
 								<button
 									type="button"
@@ -155,7 +162,6 @@
 								>
 									<svelte:component
 										this={button?.icon}
-										variant={button.variant}
 										class="w-4 md:w-[1.125vw]"
 									/>
 								</button>
