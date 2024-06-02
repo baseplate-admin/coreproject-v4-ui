@@ -15,6 +15,7 @@
 	import Chat from "$icons/shapes/chat.svelte";
 	import TrendingArrow from "$icons/shapes/trending_up.svelte";
 	import Rating from "$icons/shapes/rating.svelte";
+	import Hyperlink from "$icons/shapes/hyperlink.svelte";
 
 	// Components
 	import HoverExpand from "$components/hover_expand.svelte";
@@ -437,7 +438,7 @@
 							class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
 						>
 							<div class="text-base font-semibold md:text-[1.25vw] md:leading-[1.5vw]">
-								Forum div
+								Forum Posts
 							</div>
 							<button
 								class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
@@ -573,7 +574,7 @@
 					class="btn flex h-min min-h-full w-max items-center gap-[0.5vw] border-none !bg-transparent p-0 md:text-[0.8vw]"
 				>
 					Add a review
-					<!-- <Edit class="w-[0.8vw]" variant=""></Edit> -->
+					<Hyperlink class="w-[0.8vw]"></Hyperlink>
 				</button>
 			</div>
 			<div class="flex gap-[0.75vw] md:mt-[6vw]">
