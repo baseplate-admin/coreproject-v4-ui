@@ -225,12 +225,18 @@
 	});
 
 	// open state for sidebar tooltips
-	const sidebar_mapping = $state(
+	let sidebar_mapping = $state(
+		new Array<{
+			open: boolean;
+			color: undefined;
+		}>()
+	);
+	$effect(() => {
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined
-		}))
-	);
+		}));
+	});
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
