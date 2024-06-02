@@ -26,7 +26,36 @@
 		anime_japanese_name = "四月は君の嘘",
 		anime_synopsis =
 			"Kousei Arima is a child prodigy known as the \"Human Metronome\" for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.\r\n\r\nNowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.",
-		anime_image = "/images/YourLieInApril-bg.avif";
+		anime_image = "/images/YourLieInApril-bg.avif",
+		anime_episode_mapping = [
+			{
+				banner: "https://theglorioblog.files.wordpress.com/2014/11/april4b.png",
+				name: "The Revival of the Long-established Classic Literature Club. The Descendants of the Classic Literature Club",
+				japanese_name:
+					"老舗古典部復活 カッコいいですよね 栄光の古典文学クラブの昔 古典文学部の活動",
+				duration: "20:54",
+				formats: ["sub", "dub"],
+				resolutions: ["sd", "hd", "fhd"]
+			},
+			{
+				banner: "https://theglorioblog.files.wordpress.com/2014/11/april4b.png",
+				name: "The Revival of the Long-established Classic Literature Club. The Descendants of the Classic Literature Club",
+				japanese_name:
+					"老舗古典部復活 カッコいいですよね 栄光の古典文学クラブの昔 古典文学部の活動",
+				duration: "20:54",
+				formats: ["sub", "dub"],
+				resolutions: ["sd", "hd", "fhd"]
+			},
+			{
+				banner: "https://theglorioblog.files.wordpress.com/2014/11/april4b.png",
+				name: "The Revival of the Long-established Classic Literature Club. The Descendants of the Classic Literature Club",
+				japanese_name:
+					"老舗古典部復活 カッコいいですよね 栄光の古典文学クラブの昔 古典文学部の活動",
+				duration: "20:54",
+				formats: ["sub", "dub"],
+				resolutions: ["sd", "hd", "fhd"]
+			}
+		];
 
 	let dominant_color = "";
 	let anime_episodes_count = 0;
@@ -314,7 +343,7 @@
 					</div>
 				</div>
 				<div class="mt-4 grid grid-cols-12 gap-5 md:mt-[2.5vw] md:gap-[2.5vw]">
-					<!-- {#each parse_anime_episode() as episode}
+					{#each anime_episode_mapping as episode}
 						<a
 							href="/anime/mal/1/episode/1"
 							class="relative col-span-12 grid grid-cols-12 gap-4 md:col-span-4"
@@ -396,7 +425,7 @@
 								</div>
 							</div>
 						</a>
-					{/each} -->
+					{/each}
 				</div>
 				<div class="mt-10 flex grid-cols-5 flex-col gap-10 md:mt-[3vw] md:grid md:gap-[4.375vw]">
 					<div class="md:col-span-3">
