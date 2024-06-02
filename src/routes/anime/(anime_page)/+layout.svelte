@@ -52,7 +52,7 @@
 		class="absolute hidden h-full w-full select-none rounded-tl-[1.5vw] object-cover object-center md:flex"
 		alt={anime_name}
 	/>
-	<div class="gradient absolute inset-0 bg-gradient-to-t from-secondary to-secondary/80" />
+	<div class="gradient absolute inset-0 bg-gradient-to-t from-secondary to-secondary/80"></div>
 	<div class="absolute inset-0 grid grid-cols-12 items-start p-5 pt-10 md:p-[5vw]">
 		<div class="col-span-12 md:col-span-10 md:pr-[4vw]">
 			<div class="grid grid-cols-12 items-end justify-between">
@@ -63,7 +63,7 @@
 						<div
 							class="pointer-events-none absolute inset-0 z-10 h-[150%] w-[125%] -translate-x-8 -translate-y-28 [background-image:radial-gradient(circle_at_center,var(--color)0%,transparent_100%)] [mask-image:linear-gradient(to_bottom,rgba(7,5,25,0.95)80%,rgba(0,0,0,0)100%)] md:hidden"
 							style:--color={dominant_color}
-						/>
+						></div>
 						<img
 							crossorigin="anonymous"
 							alt=""
