@@ -69,6 +69,7 @@
 							style:--color={dominant_color}
 						></div>
 						<DominantColor
+							bind:dominant_color
 							src={anime_image}
 							class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw]"
 						></DominantColor>
