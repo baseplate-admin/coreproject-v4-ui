@@ -362,7 +362,7 @@
 		</div>
 		<div class="flex flex-col md:h-[24vw] md:gap-[1vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
-			<div class="flex size-full md:gap-[0.5vw]">
+			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
 					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
