@@ -98,17 +98,17 @@
 	});
 </script>
 
-<svelte:window on:keyup={(event) => dialog_element?.open && handle_global_input(event)} />
+<svelte:window onkeyup={(event) => dialog_element?.open && handle_global_input(event)} />
 
 <dialog
-	class="modal modal-bottom bg-secondary/50 backdrop-blur"
+	class="modal bg-secondary/50 backdrop-blur"
 	bind:this={dialog_element}
 	onclose={handle_close}
 >
-	<div class="modal-box mx-auto flex max-h-max w-max flex-col items-center bg-secondary md:p-[2vw]">
-		<form class="relative flex w-[40vw] items-center">
+	<div class="modal-box max-w-max max-h-max flex flex-col items-center bg-secondary md:border-[0.1vw] md:rounded-[1vw] scale-[98%] border-neutral md:py-[1vw] md:px-[2vw]">
+		<form class="relative flex w-[40vw] h-[3.5vw] items-center">
 			<button
-				class="btn absolute left-[1.25vw] min-h-max border-none !bg-transparent p-0"
+				class="btn absolute left-[1.25vw] min-h-max h-max border-none !bg-transparent p-0"
 				aria-label="Search"
 			>
 				<Search style="width: 1.25vw;" />
@@ -120,7 +120,7 @@
 				onkeypress={handle_search_key_press}
 				type="text"
 				placeholder="Search for animes, mangas and musics"
-				class="w-full rounded-[0.625vw] border-none bg-neutral p-[1vw] pl-[3.50vw] text-[1.1vw] font-semibold text-white shadow-lg outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
+				class="size-full md:rounded-[0.625vw] border-none bg-neutral md:p-[1vw] md:pl-[3.50vw] md:text-[1.1vw] font-semibold text-white shadow-lg outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
 			/>
 
 			<button
