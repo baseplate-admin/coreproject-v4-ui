@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import ImageWorker from "./image-worker?worker";
 	import { color_mapping } from "./store.svelte";
+	import IntersectionObserver from "$components/intersection_observer.svelte";
 
 	let {
 		src,
@@ -20,8 +21,8 @@
 	} = $props();
 
 	let canvas_element = $state<HTMLCanvasElement>();
-
 	let worker = $state<Worker>();
+	let is_intersecting = $state<boolean>();
 
 	$effect.pre(() => {
 		image_loaded = false;
@@ -61,6 +62,7 @@
 
 	$effect(() => {
 		if (image_loaded) return;
+		if (!is_intersecting) return;
 
 		let img = new Image();
 		img.crossOrigin = "anonymous";
@@ -107,4 +109,6 @@
 	});
 </script>
 
-<canvas bind:this={canvas_element} class={klass}></canvas>
+<IntersectionObserver bind:intersecting={is_intersecting} element={canvas_element} threshold={0.1}>
+	<canvas bind:this={canvas_element} class={klass}></canvas>
+</IntersectionObserver>
