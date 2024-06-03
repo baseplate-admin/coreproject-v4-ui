@@ -7,8 +7,19 @@ import {
 	translations
 } from "$lib/translations";
 import { browser } from "$app/environment";
+import { dev } from "$app/environment";
+import type { Load } from "@sveltejs/kit";
 
 export const load: Load = async ({ url }) => {
+	// Vercel Shits. Remove when we do master production
+
+	if (!dev) {
+		const { injectSpeedInsights } = await import("@vercel/speed-insights/sveltekit");
+		const { inject } = await import("@vercel/analytics");
+		injectSpeedInsights();
+		inject({ mode: "production" });
+	}
+
 	const { pathname, searchParams } = url;
 	let locale = "";
 
@@ -34,18 +45,5 @@ export const load: Load = async ({ url }) => {
 	await setLocale(locale);
 	// load translations before return
 	await loadTranslations(locale, pathname);
-
 	return { pathname, locale };
 };
-
-// Vercel Shits. Remove when we do master production
-
-import { dev } from "$app/environment";
-import type { Load } from "@sveltejs/kit";
-
-if (!dev) {
-	const { injectSpeedInsights } = await import("@vercel/speed-insights/sveltekit");
-	const { inject } = await import("@vercel/analytics");
-	injectSpeedInsights();
-	inject({ mode: "production" });
-}

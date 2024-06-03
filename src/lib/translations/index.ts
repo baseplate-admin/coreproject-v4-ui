@@ -16,25 +16,25 @@ export const config = {
 		{
 			locale: "en",
 			key: "home",
-			routes: ["/anime"],
+			routes: [/^\/anime(?:\/[^\/]+\/\d+)*(?:\/episode\/\d+)?$/],
 			loader: async () => (await import("./en/home.json")).default
 		},
 		{
 			locale: "bn",
 			key: "home",
-			routes: ["/anime"],
+			routes: [/^\/anime(?:\/[^\/]+\/\d+)*(?:\/episode\/\d+)?$/],
 			loader: async () => (await import("./bn/home.json")).default
 		},
 		{
 			locale: "es",
 			key: "home",
-			routes: ["/anime"],
+			routes: [/^\/anime(?:\/[^\/]+\/\d+)*(?:\/episode\/\d+)?$/],
 			loader: async () => (await import("./es/home.json")).default
 		},
 		{
 			locale: "de",
 			key: "home",
-			routes: ["/anime"],
+			routes: [/^\/anime(?:\/[^\/]+\/\d+)*(?:\/episode\/\d+)?$/],
 			loader: async () => (await import("./de/home.json")).default
 		}
 	]
