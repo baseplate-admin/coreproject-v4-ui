@@ -10,9 +10,9 @@
 	import Cross from "$icons/shapes/cross.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
 
-	let active_index = 0,
-		active_core: "anime" | "manga" | "sound" = "anime",
-		search_query = "";
+	let active_index = $state(0),
+		active_core = $state<"anime" | "manga" | "sound">("anime"),
+		search_query = $state("");
 
 	// Bindings
 	let dialog_element: HTMLDialogElement | null = null,
@@ -91,10 +91,16 @@
 	// 		search_modal_state.set(false);
 	// 	}
 	// });
-	modal_store.subscribe((item) => {
-		if (item.search) {
-			dialog_element?.showModal();
-		}
+	const cleanup = $effect.root(() => {
+		const unsubscribe = modal_store.subscribe((item) => {
+			if (item.search) {
+				dialog_element?.showModal();
+			}
+		});
+
+		return () => {
+			unsubscribe();
+		};
 	});
 </script>
 
