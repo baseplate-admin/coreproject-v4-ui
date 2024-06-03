@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FormatDate } from "$functions/format_date";
-	import { modal_store } from "$stores/modals.svelte";
+	import { modal_store, close_modal } from "$stores/modals.svelte";
 
 	// Icon imports
 
@@ -31,6 +31,9 @@
 		},
 		handle_input = async () => {
 			// search_promise = search_query === "" ? null : get_anime_with_serach_parameters();
+		},
+		handle_close = async () => {
+			close_modal("search");
 		},
 		handle_global_input = async (e: KeyboardEvent) => {
 			// const search_results = await search_promise;
@@ -96,7 +99,12 @@
 </script>
 
 <svelte:window on:keyup={(event) => dialog_element?.open && handle_global_input(event)} />
-<dialog class="modal modal-bottom bg-secondary/50 backdrop-blur" bind:this={dialog_element}>
+
+<dialog
+	class="modal modal-bottom bg-secondary/50 backdrop-blur"
+	bind:this={dialog_element}
+	on:close={handle_close}
+>
 	<div class="modal-box mx-auto flex max-h-max w-max flex-col items-center bg-secondary md:p-[2vw]">
 		<form on:submit|preventDefault class="relative flex w-[40vw] items-center">
 			<button

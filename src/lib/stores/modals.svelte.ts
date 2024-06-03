@@ -12,3 +12,9 @@ export function open_modal(name: IModals) {
 	obj[name] = true;
 	modal_store.set(obj);
 }
+
+export function close_modal(name: IModals) {
+	const obj = get(modal_store);
+	obj[name] = false;
+	modal_store.set(obj);
+}
