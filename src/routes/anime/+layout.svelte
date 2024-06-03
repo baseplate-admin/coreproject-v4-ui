@@ -13,14 +13,16 @@
 	import User from "$icons/shapes/user.svelte";
 	import Preference from "$icons/shapes/preference.svelte";
 	import CoreProjectLogo from "$icons/shapes/logo.svelte";
-	import VercelHover from "$components/vercel_hover.svelte";
 
+	import VercelHover from "$components/vercel_hover.svelte";
 	import { is_authenticated } from "$stores/auth.svelte";
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
-
+	import { modal_maps } from "$stores/modals.svelte";
+	import Modals from "$modals/index.svelte";
+	import { set_all_to_value } from "$functions/map/set_all_to_value";
 	// Local
 	const icon_mapping: {
 		// Top,middle,bottom
@@ -130,6 +132,8 @@
 	};
 </script>
 
+<Modals />
+
 <div class="relative h-dvh bg-secondary">
 	<div class="flex h-full w-full flex-col overflow-hidden">
 		<header class="z-10 flex-none">
@@ -235,7 +239,13 @@
 				<div class="hidden h-full w-[6.25vw] flex-col justify-between py-[2vw] md:flex">
 					<div>
 						<div class="flex flex-col items-center">
-							<button class="btn btn-warning size-[3vw] min-h-full rounded-[0.5vw] p-0">
+							<button
+								class="btn btn-warning size-[3vw] min-h-full rounded-[0.5vw] p-0"
+								onclick={() => {
+									set_all_to_value(modal_maps, false);
+									modal_maps.set("search_modal", true);
+								}}
+							>
 								<Search class="w-[1.25vw] text-black" />
 							</button>
 						</div>
