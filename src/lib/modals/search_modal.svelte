@@ -120,7 +120,7 @@
 				onkeypress={handle_search_key_press}
 				type="text"
 				placeholder="Search for animes, mangas and musics"
-				class="size-full md:rounded-[0.625vw] border-none bg-neutral md:p-[1vw] md:pl-[3.50vw] md:text-[1.1vw] font-semibold text-white shadow-lg outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
+				class="size-full md:rounded-[0.625vw] border-none bg-neutral md:p-[1vw] md:pl-[3.50vw] md:text-[1.1vw] font-semibold text-white outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
 			/>
 
 			<button
@@ -135,7 +135,7 @@
 
 		<div class="mt-[1.5vw] flex gap-[4vw]">
 			<div>
-				<span class="text-surface-50 text-[1.2vw] font-semibold">anime</span>
+				<span class="text-info text-[1.2vw] font-semibold">anime</span>
 				<ScrollArea
 					offset_scrollbar
 					gradient_mask
@@ -230,16 +230,16 @@
 							<span class="font-semibold leading-none">"Find Your Anime Bliss"</span>
 						</div>
 					{/if} -->
-					<div class="flex h-full flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
-						<span class="font-medium leading-none">Search Away</span>
+					<div class="flex h-full text-accent flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
+						<span class="font-medium leading-none text-warning">Search Away</span>
 						<span class="font-semibold leading-none">"Find Your Anime Bliss"</span>
 					</div>
 				</ScrollArea>
 			</div>
 
 			<div>
-				<span class="text-surface-50 text-[1.2vw] font-semibold">manga</span>
-				<div class="bg-surface-400 mt-[0.2vw] h-[30vw] w-[21.875vw] rounded-[0.75vw] shadow-lg">
+				<span class="text-[1.2vw] font-semibold">manga</span>
+				<div class="bg-surface-400 mt-[0.2vw] h-[30vw] w-[21.875vw] rounded-[0.75vw]">
 					<div class="flex h-full flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
 						<span class="font-medium leading-none">mangacore integration</span>
 						<span class="font-semibold leading-none">coming soon</span>
@@ -248,8 +248,8 @@
 			</div>
 
 			<div>
-				<span class="text-surface-50 text-[1.2vw] font-semibold">music</span>
-				<div class="bg-surface-400 mt-[0.2vw] h-[30vw] w-[21.875vw] rounded-[0.75vw] shadow-lg">
+				<span class="text-[1.2vw] font-semibold">music</span>
+				<div class="bg-surface-400 mt-[0.2vw] h-[30vw] w-[21.875vw] rounded-[0.75vw]">
 					<div class="flex h-full flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
 						<span class="font-medium leading-none">soundcore integration</span>
 						<span class="font-semibold leading-none">coming soon</span>
