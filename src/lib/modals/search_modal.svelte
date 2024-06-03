@@ -106,7 +106,7 @@
 	on:close={handle_close}
 >
 	<div class="modal-box mx-auto flex max-h-max w-max flex-col items-center bg-secondary md:p-[2vw]">
-		<form on:submit|preventDefault class="relative flex w-[40vw] items-center">
+		<form class="relative flex w-[40vw] items-center">
 			<button
 				class="btn absolute left-[1.25vw] min-h-max border-none !bg-transparent p-0"
 				aria-label="Search"
@@ -115,9 +115,9 @@
 			</button>
 			<input
 				bind:value={search_query}
-				on:input={handle_input}
-				on:keydown={handle_search_key_down}
-				on:keypress={handle_search_key_press}
+				oninput={handle_input}
+				onkeydown={handle_search_key_down}
+				onkeypress={handle_search_key_press}
 				type="text"
 				placeholder="Search for animes, mangas and musics"
 				class="w-full rounded-[0.625vw] border-none bg-neutral p-[1vw] pl-[3.50vw] text-[1.1vw] font-semibold text-white shadow-lg outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
@@ -127,7 +127,7 @@
 				type="button"
 				aria-label="Clear"
 				class="btn absolute right-[1.25vw] min-h-max border-none !bg-transparent p-0"
-				on:click={() => (search_query = "")}
+				onclick={() => (search_query = "")}
 			>
 				<Cross style="width: 1.5vw; opacity: 0.7;" />
 			</button>
