@@ -1,19 +1,14 @@
+import { get, writable } from "svelte/store";
 
-export function createModalStore() {
-	const modals = ["search"] as const;
-	type IModals = (typeof modals)[number];
+const modals = ["search"] as const;
+type IModals = (typeof modals)[number];
 
-	let state = $state(new Map<IModals, boolean>(modals.map((item) => [item, false])));
+export let modal_store = writable(Object.fromEntries(modals.map((item) => [item, false])));
 
-	return {
-		get state() {
-			return state;
-		},
-		get_modal_state(name: IModals) {
-			return state.get(name);
-		},
-		open_modal(name: IModals) {
-			state.set(name, true);
-		}
-	};
+export function open_modal(name: IModals) {
+	const obj = get(modal_store);
+	// Close all other modals
+	Object.keys(obj).forEach((v) => (obj[v] = false));
+	obj[name] = true;
+	modal_store.set(obj);
 }

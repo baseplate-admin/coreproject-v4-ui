@@ -21,9 +21,7 @@
 	import { blur } from "svelte/transition";
 	import { t } from "$lib/translations";
 	import Modals from "$modals/index.svelte";
-	import { createModalStore } from "$stores/modals.svelte";
-
-	const modal_store = createModalStore();
+	import { modal_store, open_modal } from "$stores/modals.svelte";
 
 	// Local
 	const icon_mapping: {
@@ -243,7 +241,7 @@
 							<button
 								class="btn btn-warning size-[3vw] min-h-full rounded-[0.5vw] p-0"
 								onclick={() => {
-									modal_store.open_modal("search");
+									open_modal("search");
 								}}
 							>
 								<Search class="w-[1.25vw] text-black" />
