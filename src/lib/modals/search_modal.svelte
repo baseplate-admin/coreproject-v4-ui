@@ -103,7 +103,7 @@
 <dialog
 	class="modal modal-bottom bg-secondary/50 backdrop-blur"
 	bind:this={dialog_element}
-	on:close={handle_close}
+	onclose={handle_close}
 >
 	<div class="modal-box mx-auto flex max-h-max w-max flex-col items-center bg-secondary md:p-[2vw]">
 		<form class="relative flex w-[40vw] items-center">
