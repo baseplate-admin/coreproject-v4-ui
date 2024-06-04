@@ -4,22 +4,22 @@ import { set_all_to_value } from "$functions/map/set_all_to_value";
 const modals = ["search"] as const;
 type IModals = (typeof modals)[number];
 
-const state = $state.frozen(new Map<IModals, boolean>(modals.map((item) => [item, false])));
+var state_map = $state(new Map<IModals, boolean>(modals.map((item) => [item, false])));
 
 export function createModalStore() {
 	return {
-		get state() {
-			return state;
+		get state_map() {
+			return state_map;
 		},
 		open_modal(name: IModals) {
-			if (!state.has(name)) throw Error(`Add ${name} to ${modals}`);
+			if (!state_map.has(name)) throw Error(`Add ${name} to ${modals}`);
 
 			/* Close all other modals */
-			set_all_to_value(state, false);
-			state.set(name, true);
+			set_all_to_value(state_map, false);
+			state_map.set(name, true);
 		},
 		close_modal(name: IModals) {
-			state.set(name, false);
+			state_map.set(name, false);
 		}
 	};
 }

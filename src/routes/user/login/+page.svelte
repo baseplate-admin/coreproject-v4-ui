@@ -2,11 +2,13 @@
 	import { z } from "zod";
 	import { handle_input } from "$functions/forms/handle_input";
 	import { autofocus } from "$functions/forms/autofocus";
-	import { is_authenticated } from "$stores/auth.svelte";
+	import { createAuthStore } from "$stores/auth.svelte";
 	import Info from "$icons/shapes/info.svelte";
 	import Markdown from "$components/markdown.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
+
+	const auth_store = createAuthStore();
 
 	let username_or_email = $state({
 			value: "",
@@ -43,7 +45,7 @@
 	};
 </script>
 
-{#if is_authenticated}
+{#if auth_store.state}
 	<div class="flex h-full flex-col items-start justify-center gap-[2vw]">
 		<div
 			class="flex items-center text-base font-bold uppercase leading-none tracking-widest text-white md:text-[1.5vw]"

@@ -15,7 +15,7 @@
 	import CoreProjectLogo from "$icons/shapes/logo.svelte";
 
 	import VercelHover from "$components/vercel_hover.svelte";
-	import { is_authenticated } from "$stores/auth.svelte";
+	import { createAuthStore } from "$stores/auth.svelte";
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 	import { blur } from "svelte/transition";
@@ -23,7 +23,9 @@
 	import Modals from "$modals/index.svelte";
 	import { createModalStore } from "$stores/modals.svelte";
 
-	const modal_store = createModalStore();
+	const modal_store = createModalStore(),
+		auth_store = createAuthStore();
+
 	// Local
 	const icon_mapping: {
 		// Top,middle,bottom
@@ -165,7 +167,7 @@
 						</div>
 					</div>
 				</div>
-				{#if is_authenticated}
+				{#if auth_store.state}
 					<div class="dropdown dropdown-end">
 						<div tabIndex={0} role="button" class="btn border-none !bg-transparent p-0">
 							<img
