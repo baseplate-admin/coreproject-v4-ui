@@ -346,26 +346,42 @@
 					</div>
 				{/if}
 			{/each}
-			<div class="absolute -bottom-[1vw] flex w-full flex-col">
-				<div
-					class="h-[0.2rem] bg-warning md:h-[0.145vw]"
-					style="
-						width: {$tweened_progress_value}%;
-						background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};
-					"
-				></div>
-				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
-					{#each latest_animes as _, idx}
-						<button
-							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
-							class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
-							style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? "#ffffff50"};"
-							onclick={() => change_main_hero_slide_active_index(idx)}
-						></button>
-					{/each}
+			<div class="absolute -bottom-[1vw] hidden inset-x-0 md:flex items-center gap-[0.9375vw] md:mt-[1.25vw]">
+				<button
+					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
+					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
+					onclick={minus_one_to_main_hero_slide_active_index}
+				>
+					<Chevron class="w-[1.25vw] rotate-90" />
+				</button>
+				<div class="flex flex-col flex-1 h-full md:gap-[0.75vw]">
+					<div
+						class="h-[0.2rem] bg-warning md:h-[0.145vw] z-20"
+						style="
+							width: {$tweened_progress_value}%;
+							background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};
+						"
+					></div>
+					<div class="flex items-center md:gap-[1vw]">
+						{#each latest_animes as _, idx}
+							<button
+								class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
+								class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
+								style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? "#ffffff50"};"
+								onclick={() => change_main_hero_slide_active_index(idx)}
+							></button>
+						{/each}
+					</div>
 				</div>
+				<button
+					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
+					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
+					onclick={add_one_to_main_hero_slide_active_index}
+				>
+					<Chevron class="w-[1.25vw] -rotate-90" />
+				</button>
 			</div>
-			<button
+			<!-- <button
 				class="btn btn-primary border-none absolute -left-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 md:flex"
 				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
 				onclick={minus_one_to_main_hero_slide_active_index}
@@ -378,7 +394,7 @@
 				onclick={add_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] -rotate-90" />
-			</button>
+			</button> -->
 		</div>
 		<div class="flex flex-col md:h-[24vw] md:gap-[1vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
