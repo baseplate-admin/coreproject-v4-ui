@@ -5,8 +5,8 @@ export function createAuthStore() {
 		get state() {
 			return state;
 		},
-		toggle_auth() {
-			state != state;
+		set state(value:null|boolean) {
+			state = value;
 		}
 	};
 }
