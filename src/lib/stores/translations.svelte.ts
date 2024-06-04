@@ -7,7 +7,8 @@ let state = $state<ILang>(default_locale);
 const supported_locales = locales.get().map((l) => l.toLowerCase());
 
 if (browser) {
-	if (localStorage.getItem("lang")) {
+	const local_storage_locale = localStorage.getItem("lang");
+	if (local_storage_locale && supported_locales.includes(local_storage_locale)) {
 		state = (localStorage.getItem("lang") || "").toLowerCase() as ILang;
 	} else {
 		localStorage.setItem("lang", state);
