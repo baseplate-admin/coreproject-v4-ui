@@ -221,7 +221,8 @@
 	const sidebar_mapping = $state(
 		sidebar_animes.map(() => ({
 			open: false,
-			color: undefined
+			color: undefined,
+			loaded: false,
 		}))
 	);
 </script>
@@ -454,6 +455,8 @@
 						class="flex flex-1 flex-col md:w-[3vw] md:gap-[0.5vw]"
 					>
 						{#each sidebar_animes as anime, idx}
+							{@const loaded = sidebar_mapping[idx].loaded}
+
 							{@const floating = useFloating({
 								whileElementsMounted: autoUpdate,
 								get open() {
@@ -475,36 +478,48 @@
 							{@const hover = useHover(floating.context)}
 							{@const intersections = useInteractions([role, hover])}
 
-							<a
-								bind:this={floating.elements.reference}
-								{...intersections.getReferenceProps()}
-								href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
-							>
-								<Image
-									src={anime.cover}
-									class="w-full snap-start md:h-[5vw] md:rounded-[0.65vw]"
-									bind:dominant_foreground_color={sidebar_mapping[idx].color}
-								/>
-							</a>
-
-							{#if sidebar_mapping[idx].open}
-								<div
-									use:portal={"body"}
-									bind:this={floating.elements.floating}
-									{...intersections.getFloatingProps()}
-									style="
-										{floating.floatingStyles};
-										--dominant-color: {sidebar_mapping[idx].color};
-										--dominant-color-opacity: {sidebar_mapping[idx].color}50
-									"
-									transition:blur={{ duration: 250 }}
-									class="!bg-[var(--dominant-color)] bg-warning text-secondary drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
+							{#if loaded}
+								<a
+									bind:this={floating.elements.reference}
+									{...intersections.getReferenceProps()}
+									href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
+									in:blur
 								>
-									continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number
-										.toString()
-										.padStart(2, "0")}
-								</div>
+									<img
+										src={anime.cover}
+										class="w-full snap-start md:h-[5vw] md:rounded-[0.65vw]"
+										alt=""
+									/>
+								</a>
+
+								{#if sidebar_mapping[idx].open}
+									<div
+										use:portal={"body"}
+										bind:this={floating.elements.floating}
+										{...intersections.getFloatingProps()}
+										style="
+											{floating.floatingStyles};
+											--dominant-color: {sidebar_mapping[idx].color};
+											--dominant-color-opacity: {sidebar_mapping[idx].color}50
+										"
+										transition:blur={{ duration: 250 }}
+										class="!bg-[var(--dominant-color)] bg-warning text-secondary drop-shadow-[0.25vw_0.5vw_0.5vw_var(--dominant-color-opacity)] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.25vw] md:text-[0.8vw]"
+									>
+										continue watching <span class="md:text-[0.9vw]">{anime.title}</span> Ep {anime.ep_number
+											.toString()
+											.padStart(2, "0")}
+									</div>
+								{/if}
+							{:else}
+								<div class="w-full md:h-[5vw] bg-neutral/25 md:rounded-[0.65vw]"></div>
 							{/if}
+							<!-- use Image component for just to get color -->
+							<Image
+								src={anime.cover}
+								class="absolute -z-20 invisible"
+								bind:image_loaded={sidebar_mapping[idx].loaded}
+								bind:dominant_foreground_color={sidebar_mapping[idx].color}
+							/>
 						{/each}
 					</ScrollArea>
 					<button
