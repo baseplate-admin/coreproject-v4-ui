@@ -1,11 +1,29 @@
 <script lang="ts">
+	import { createAdblockerStore } from "$stores/adblocker.svelte";
 	import "../styles/index.postcss";
+
+	const adblocker_store = createAdblockerStore();
+	const SENSITIVE_ADVERSIEMENT_URL =
+		"https://widgets.outbrain.com/images/widgetIcons/ob_logo_16x16.png?advertiser=1";
 
 	const { children } = $props();
 </script>
 
 <div class="bg-secondary">
 	{@render children()}
+</div>
+
+<div class="invisible">
+	<img
+		src={SENSITIVE_ADVERSIEMENT_URL}
+		alt="advertisement"
+		onload={() => {
+			adblocker_store.state = false;
+		}}
+		onerror={() => {
+			adblocker_store.state = true;
+		}}
+	/>
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
