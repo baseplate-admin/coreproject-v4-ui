@@ -366,7 +366,7 @@
 			>
 			<div class="flex size-full gap-2 md:gap-[0.5vw]">
 				<div
-					class="grid-rows-auto grid w-full snap-y auto-rows-min gap-3 overflow-y-scroll scroll-smooth pr-3 [scrollbar-color:rgba(255,255,255,0.12)transparent] md:grid-cols-2 md:gap-[1.25vw] md:pr-[1.5vw]"
+					class="grid-rows-auto grid w-full md:snap-y auto-rows-min gap-3 overflow-y-scroll scroll-smooth pr-3 [scrollbar-color:rgba(255,255,255,0.12)transparent] md:grid-cols-2 md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 					class:scrollbar-thin={IS_FIREFOX}
 				>
