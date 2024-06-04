@@ -1,9 +1,9 @@
 const modals = ["search"] as const;
 type IModals = (typeof modals)[number];
 
-export function createModalStore() {
-	let state = $state(Object.fromEntries(modals.map((item) => [item, false])));
+let state = $state(Object.fromEntries(modals.map((item) => [item, false])));
 
+export function createModalStore() {
 	return {
 		get state() {
 			return state as Record<IModals, boolean>;
