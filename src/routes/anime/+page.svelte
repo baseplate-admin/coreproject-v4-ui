@@ -278,7 +278,7 @@
 							class="from-surface-900 to-surface-900/25 md:from-surface-900/50 absolute inset-0 hidden bg-gradient-to-r md:flex"
 						></div>
 						<div
-							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:px-[3.75vw] md:py-[2.625vw]"
+							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:p-[3vw]"
 						>
 							<span class="text-3xl font-bold text-white md:text-[2vw] md:leading-[2.375vw]"
 								>{anime.name}</span
