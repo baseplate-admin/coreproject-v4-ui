@@ -360,11 +360,13 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-		<div class="flex flex-col p-4 md:p-0 gap-2 h-[22rem] md:h-[24vw] md:gap-[1vw]">
-			<span class="font-bold text-accent text-lg md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
-			<div class="flex gap-2 size-full md:gap-[0.5vw]">
+		<div class="flex h-[22rem] flex-col gap-2 p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
+			<span class="text-lg font-bold text-accent md:text-[1.35vw]"
+				>{$t("home.latest_episodes.title")}</span
+			>
+			<div class="flex size-full gap-2 md:gap-[0.5vw]">
 				<div
-					class="grid-rows-auto grid w-full snap-y auto-rows-min md:grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] gap-3 md:gap-[1.25vw] pr-3 md:pr-[1.5vw]"
+					class="grid-rows-auto grid w-full snap-y auto-rows-min gap-3 overflow-y-scroll scroll-smooth pr-3 [scrollbar-color:rgba(255,255,255,0.12)transparent] md:grid-cols-2 md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 					class:scrollbar-thin={IS_FIREFOX}
 				>
@@ -374,37 +376,39 @@
 						{#if image_loaded}
 							<div
 								in:blur
-								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] h-20 md:h-[5vw] rounded-xl md:rounded-[0.75vw] border-2 md:border-[0.15vw]"
+								class="relative h-20 w-full snap-start rounded-xl border-2 border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
 									--dominant-color: {latest_episodes_mapping[idx].dominant_color};
 									--dominant-foreground-color: {latest_episodes_mapping[idx].dominant_foreground_color}
 								"
 							>
-								<div class="absolute inset-0 bg-secondary/75 rounded-xl md:rounded-[0.75vw]"></div>
-								<div class="relative flex size-full items-center gap-3 md:gap-[1vw] p-3 md:p-[0.5vw]">
+								<div class="absolute inset-0 rounded-xl bg-secondary/75 md:rounded-[0.75vw]"></div>
+								<div
+									class="relative flex size-full items-center gap-3 p-3 md:gap-[1vw] md:p-[0.5vw]"
+								>
 									<img
 										src={episode.cover}
 										alt=""
-										class="h-full object-cover object-center w-10 md:w-[2.5vw] rounded-md md:rounded-[0.5vw]"
+										class="h-full w-10 rounded-md object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
 									/>
 									<div class="flex flex-1 flex-col gap-0.5 md:gap-[0.15vw]">
-										<span class="line-clamp-1 font-bold text-accent text-base md:text-[1.15vw]"
+										<span class="line-clamp-1 text-base font-bold text-accent md:text-[1.15vw]"
 											>{episode.title}</span
 										>
 										<div
-											class="flex items-center font-semibold gap-1.5 md:gap-[0.5vw] text-xs md:text-[0.8vw] md:leading-none"
+											class="flex items-center gap-1.5 text-xs font-semibold md:gap-[0.5vw] md:text-[0.8vw] md:leading-none"
 										>
 											<span class="whitespace-nowrap"
 												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
 											>
-											<Circle class="opacity-75 size-1 md:size-[0.25vw]" />
+											<Circle class="size-1 opacity-75 md:size-[0.25vw]" />
 											<span class="line-clamp-1">{episode.timestamp}</span>
 										</div>
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] md:mr-[0.5vw] p-3 md:p-[0.75vw]"
+										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] p-3 md:mr-[0.5vw] md:p-[0.75vw]"
 									>
 										<Play class="size-5 md:size-[1.25vw]" />
 									</a>
@@ -435,23 +439,23 @@
 					{/each}
 				</div>
 				<div
-					class="flex h-full flex-col items-center bg-accent/90 w-16 md:w-[4vw] gap-2.5 md:gap-[0.5vw] rounded-xl md:rounded-[0.75vw] p-2 md:p-[0.35vw]"
+					class="flex h-full w-16 flex-col items-center gap-2.5 rounded-xl bg-accent/90 p-2 md:w-[4vw] md:gap-[0.5vw] md:rounded-[0.75vw] md:p-[0.35vw]"
 				>
 					<button
-						class="btn btn-secondary min-h-max p-0 text-accent size-10 md:size-[3vw] rounded-lg md:rounded-[0.65vw]"
+						class="btn btn-secondary size-10 min-h-max rounded-lg p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
 					>
 						<Preference class="size-5 md:size-[1.25vw]" />
 					</button>
 					<button
-						class="btn btn-secondary min-h-max p-0 text-accent size-10 md:size-[3vw] rounded-lg md:rounded-[0.65vw]"
+						class="btn btn-secondary size-10 min-h-max rounded-lg p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
 					>
 						<Dice class="size-5 md:size-[1.25vw]" />
 					</button>
-					<div class="w-2/3 md:w-1/2 rounded-full bg-secondary h-1 md:h-[0.15vw]"></div>
+					<div class="h-1 w-2/3 rounded-full bg-secondary md:h-[0.15vw] md:w-1/2"></div>
 					<ScrollArea
 						gradient_mask
 						parent_class="snap-y md:rounded-[0.65vw]"
-						class="flex flex-1 flex-col w-10 gap-3 md:w-[3vw] md:gap-[0.5vw]"
+						class="flex w-10 flex-1 flex-col gap-3 md:w-[3vw] md:gap-[0.5vw]"
 					>
 						{#each sidebar_animes as anime, idx}
 							{@const floating = useFloating({
@@ -482,7 +486,7 @@
 							>
 								<Image
 									src={anime.cover}
-									class="w-full snap-start h-16 md:h-[5vw] rounded-lg md:rounded-[0.65vw]"
+									class="h-16 w-full snap-start rounded-lg md:h-[5vw] md:rounded-[0.65vw]"
 									bind:dominant_foreground_color={sidebar_mapping[idx].color}
 								/>
 							</a>
@@ -508,7 +512,7 @@
 						{/each}
 					</ScrollArea>
 					<button
-						class="btn btn-secondary grid min-h-max place-items-center p-0 text-accent w-10 h-5 rounded-lg md:h-[1.25vw] md:w-[3vw] md:rounded-[0.5vw]"
+						class="btn btn-secondary grid h-5 min-h-max w-10 place-items-center rounded-lg p-0 text-accent md:h-[1.25vw] md:w-[3vw] md:rounded-[0.5vw]"
 					>
 						<Chevron class="size-4 md:size-[1vw]" />
 					</button>
