@@ -1,10 +1,10 @@
-import { set_all_to_value } from "$functions/map/set_all_to_value";
 import { Map } from "svelte/reactivity";
+import { set_all_to_value } from "$functions/map/set_all_to_value";
 
 const modals = ["search"] as const;
 type IModals = (typeof modals)[number];
 
-let state = $state(new Map<IModals, boolean>(modals.map((item) => [item, false])));
+const state = $state.frozen(new Map<IModals, boolean>(modals.map((item) => [item, false])));
 
 export function createModalStore() {
 	return {
@@ -12,7 +12,9 @@ export function createModalStore() {
 			return state;
 		},
 		open_modal(name: IModals) {
-			// Close all other modals
+			if (!state.has(name)) throw Error(`Add ${name} to ${modals}`);
+
+			/* Close all other modals */
 			set_all_to_value(state, false);
 			state.set(name, true);
 		},
