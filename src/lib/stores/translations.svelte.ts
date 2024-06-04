@@ -6,7 +6,7 @@ type ILang = keyof typeof lang;
 
 const supported_locales = locales.get().map((l) => l.toLowerCase());
 
-let state = $state<ILang>(detect_language() satisfies ILang);
+let state = $state(detect_language() satisfies ILang);
 
 function detect_language() {
 	if (!browser) return default_locale;
