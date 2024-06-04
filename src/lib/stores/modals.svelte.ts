@@ -8,7 +8,7 @@ var state_map = $state(new Map<IModals, boolean>(modals.map((item) => [item, fal
 
 export function createModalStore() {
 	return {
-		get state_map() {
+		get state() {
 			return state_map;
 		},
 		open_modal(name: IModals) {
