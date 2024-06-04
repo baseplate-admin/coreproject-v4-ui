@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { FormatDate } from "$functions/format_date";
-	import { modal_store, close_modal } from "$stores/modals.svelte";
+	import { createModalStore } from "$stores/modals.svelte";
 
 	// Icon imports
 
@@ -9,6 +9,8 @@
 	import Search from "$icons/shapes/search.svelte";
 	import Cross from "$icons/shapes/cross.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
+
+	const modal_store = createModalStore();
 
 	let active_index = $state(0),
 		active_core = $state<"anime" | "manga" | "sound">("anime"),
@@ -33,7 +35,7 @@
 			// search_promise = search_query === "" ? null : get_anime_with_serach_parameters();
 		},
 		handle_close = async () => {
-			close_modal("search");
+			modal_store.close_modal("search");
 		},
 		handle_global_input = async (e: KeyboardEvent) => {
 			// const search_results = await search_promise;
@@ -85,16 +87,10 @@
 	};
 	// let search_promise: Promise<Anime[]> | null = null;
 
-	$effect.root(() => {
-		const unsubscribe = modal_store.subscribe((item) => {
-			if (item.search) {
-				dialog_element?.showModal();
-			}
-		});
-
-		return () => {
-			unsubscribe();
-		};
+	$effect(() => {
+		if (modal_store.state.search) {
+			dialog_element?.showModal();
+		}
 	});
 </script>
 
