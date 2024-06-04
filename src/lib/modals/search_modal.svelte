@@ -85,13 +85,7 @@
 	};
 	// let search_promise: Promise<Anime[]> | null = null;
 
-	// search_modal_state.subscribe((val) => {
-	// 	if (val) {
-	// 		dialog_element?.showModal();
-	// 		search_modal_state.set(false);
-	// 	}
-	// });
-	const cleanup = $effect.root(() => {
+	$effect.root(() => {
 		const unsubscribe = modal_store.subscribe((item) => {
 			if (item.search) {
 				dialog_element?.showModal();
@@ -111,10 +105,12 @@
 	bind:this={dialog_element}
 	onclose={handle_close}
 >
-	<div class="modal-box max-w-max max-h-max flex flex-col items-center bg-secondary md:border-[0.1vw] md:rounded-[1vw] scale-[98%] border-neutral md:py-[1vw] md:px-[2vw]">
-		<form class="relative flex w-[40vw] h-[3.5vw] items-center">
+	<div
+		class="modal-box flex max-h-max max-w-max scale-[98%] flex-col items-center border-neutral bg-secondary md:rounded-[1vw] md:border-[0.1vw] md:px-[2vw] md:py-[1vw]"
+	>
+		<form class="relative flex h-[3.5vw] w-[40vw] items-center">
 			<button
-				class="btn absolute left-[1.25vw] min-h-max h-max border-none !bg-transparent p-0"
+				class="btn absolute left-[1.25vw] h-max min-h-max border-none !bg-transparent p-0"
 				aria-label="Search"
 			>
 				<Search style="width: 1.25vw;" />
@@ -126,7 +122,7 @@
 				onkeypress={handle_search_key_press}
 				type="text"
 				placeholder="Search for animes, mangas and musics"
-				class="size-full md:rounded-[0.625vw] border-none bg-neutral md:p-[1vw] md:pl-[3.50vw] md:text-[1.1vw] font-semibold text-white outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75"
+				class="size-full border-none bg-neutral font-semibold text-white outline-none !ring-0 placeholder:font-medium placeholder:text-accent/75 md:rounded-[0.625vw] md:p-[1vw] md:pl-[3.50vw] md:text-[1.1vw]"
 			/>
 
 			<button
@@ -141,7 +137,7 @@
 
 		<div class="mt-[1.5vw] flex gap-[4vw]">
 			<div>
-				<span class="text-info text-[1.2vw] font-semibold">anime</span>
+				<span class="text-[1.2vw] font-semibold text-info">anime</span>
 				<ScrollArea
 					offset_scrollbar
 					gradient_mask
@@ -236,7 +232,9 @@
 							<span class="font-semibold leading-none">"Find Your Anime Bliss"</span>
 						</div>
 					{/if} -->
-					<div class="flex h-full text-accent flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
+					<div
+						class="flex h-full flex-col items-center justify-center gap-[0.2vw] text-[1.1vw] text-accent"
+					>
 						<span class="font-medium leading-none text-warning">Search Away</span>
 						<span class="font-semibold leading-none">"Find Your Anime Bliss"</span>
 					</div>
