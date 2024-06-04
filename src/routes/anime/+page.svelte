@@ -152,15 +152,6 @@
 			precision: "secondTenths"
 		})
 
-	const slide_buttons = [
-			"#FFF7F850",
-			"#DCD9F750",
-			"#EDD68D50",
-			"#ffffff50",
-			"#7569E150",
-			"#EB575750",
-		];
-
 	let main_hero_slide_active_index = $state<number>(0);
 
 	const add_one_to_main_hero_slide_active_index = () => {
@@ -368,7 +359,7 @@
 						<button
 							class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
 							class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
-							style="--dominant-color: {latest_animes_mapping[idx].dominant_foreground_color ?? slide_buttons[idx]};"
+							style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? "#ffffff50"};"
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						></button>
 					{/each}
@@ -376,14 +367,12 @@
 			</div>
 			<button
 				class="btn btn-primary border-none absolute -left-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};"
 				onclick={minus_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] rotate-90" />
 			</button>
 			<button
 				class="btn btn-primary border-none absolute -right-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
-				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_color};"
 				onclick={add_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] -rotate-90" />
