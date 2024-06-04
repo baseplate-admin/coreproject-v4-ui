@@ -360,7 +360,7 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-		<div class="flex flex-col md:h-[24vw] md:gap-[1vw]">
+		<div class="flex p-4 md:p-0 flex-col md:h-[24vw] md:gap-[1vw]">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
