@@ -40,7 +40,7 @@ const config = {
 			$modals: path.resolve("./src/lib/components/modals"),
 			$skeletons: path.resolve("./src/lib/skeletons"),
 			$types: path.resolve("./src/lib/types"),
-			$modals: path.resolve("./src/lib/modals")
+			$modals : path.resolve('./src/lib/modals')
 		}
 	}
 };
