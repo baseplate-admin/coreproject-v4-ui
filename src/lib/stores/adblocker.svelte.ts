@@ -1,11 +1,11 @@
 let state = $state.frozen<null | boolean>(null);
 
-export function createAuthStore() {
+export function createAdblockerStore() {
 	return {
 		get state() {
 			return state;
 		},
-		set state(value:null|boolean) {
+		set state(value: boolean | null) {
 			state = value;
 		}
 	};
