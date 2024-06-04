@@ -15,24 +15,28 @@ if (browser) {
 	}
 }
 
+function validate_locale(locale: string) {
+	if (supported_locales.includes(locale)) {
+		state = locale as ILang;
+	}
+	if (browser) {
+		if (!supported_locales.includes(state)) {
+			state = ((navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() ?? default_locale) as ILang);
+		}
+		// save locale to localstorage
+		if (state !== localStorage.getItem("lang")) {
+			localStorage.setItem("lang", state);
+		}
+	}
+};
+
 export function createLocaleStore() {
 	return {
 		get state() {
 			return state;
 		},
 		set_locale(locale: string) {
-			if (supported_locales.includes(locale)) {
-				state = locale as ILang;
-			}
-			if (browser) {
-				if (!supported_locales.includes(state)) {
-					state = ((navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() ?? default_locale) as ILang);
-				}
-				// save locale to localstorage
-				if (state !== localStorage.getItem("lang")) {
-					localStorage.setItem("lang", state);
-				}
-			}
+			validate_locale(locale);
 		}
 	};
 };
