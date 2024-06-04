@@ -28,7 +28,7 @@ export function createLocaleStore() {
 		set_locale(locale: string) {
 			if (supported_locales.includes(locale)) {
 				state = locale as ILang;
-				localStorage.setItem("lang", state);
+				if (browser) localStorage.setItem("lang", state);
 			} else {
 				throw new Error(`${locale} is not part of ${supported_locales}`);
 			}
