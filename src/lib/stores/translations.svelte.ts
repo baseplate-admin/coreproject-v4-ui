@@ -3,16 +3,21 @@ import { default_locale, locales } from "$lib/translations";
 import lang from "$lib/translations/lang.json";
 
 type ILang = keyof typeof lang;
-let state = $state<ILang>(default_locale);
+
 const supported_locales = locales.get().map((l) => l.toLowerCase());
 
-if (browser) {
-	const local_storage_locale = localStorage.getItem("lang");
-	if (local_storage_locale && supported_locales.includes(local_storage_locale)) {
-		state = (localStorage.getItem("lang") || "").toLowerCase() as ILang;
-	} else {
-		localStorage.setItem("lang", state);
-	}
+let state = $state<ILang>(detect_language());
+
+function detect_language() {
+	if (!browser) return default_locale;
+
+	const localstorage_value = localStorage.getItem("lang");
+	if (localstorage_value) return localstorage_value as ILang;
+
+	const browser_lang = navigator.language.split("-")[0] as ILang;
+	if (browser_lang) return browser_lang as ILang;
+
+	return default_locale;
 }
 
 export function createLocaleStore() {
@@ -23,16 +28,10 @@ export function createLocaleStore() {
 		set_locale(locale: string) {
 			if (supported_locales.includes(locale)) {
 				state = locale as ILang;
-			}
-			if (browser) {
-				if (!supported_locales.includes(state)) {
-					state = ((navigator.language?.match(/[a-zA-Z]+?(?=-|_|,|;)/)?.[0].toLowerCase() ?? default_locale) as ILang);
-				}
-				// save locale to localstorage
-				if (state !== localStorage.getItem("lang")) {
-					localStorage.setItem("lang", state);
-				}
+				localStorage.setItem("lang", state);
+			} else {
+				throw new Error(`${locale} is not part of ${supported_locales}`);
 			}
 		}
 	};
-};
+}
