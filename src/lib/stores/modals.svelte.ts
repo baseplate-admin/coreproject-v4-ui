@@ -12,7 +12,6 @@ export function createModalStore() {
 			// Close all other modals
 			Object.keys(state).forEach((v) => (state[v] = false));
 			state[name] = true;
-			console.log(state);
 		},
 		close_modal(name: IModals) {
 			state[name] = false;
