@@ -222,7 +222,7 @@
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined,
-			loaded: false,
+			loaded: false
 		}))
 	);
 </script>
@@ -361,7 +361,7 @@
 				<Chevron class="w-[1.25vw] -rotate-90" />
 			</button>
 		</div>
-		<div class="flex p-4 md:p-0 flex-col md:h-[24vw] md:gap-[1vw]">
+		<div class="flex flex-col p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
@@ -511,12 +511,12 @@
 									</div>
 								{/if}
 							{:else}
-								<div class="w-full md:h-[5vw] bg-neutral/25 md:rounded-[0.65vw]"></div>
+								<div class="w-full bg-neutral/25 md:h-[5vw] md:rounded-[0.65vw]"></div>
 							{/if}
 							<!-- use Image component for just to get color -->
 							<Image
 								src={anime.cover}
-								class="absolute -z-20 invisible"
+								class="invisible absolute -z-20"
 								bind:image_loaded={sidebar_mapping[idx].loaded}
 								bind:dominant_foreground_color={sidebar_mapping[idx].color}
 							/>
