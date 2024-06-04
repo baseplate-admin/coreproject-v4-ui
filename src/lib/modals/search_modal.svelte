@@ -88,7 +88,7 @@
 	// let search_promise: Promise<Anime[]> | null = null;
 
 	$effect(() => {
-		if (modal_store.state.search) {
+		if (modal_store.state.get("search")) {
 			dialog_element?.showModal();
 		}
 	});
