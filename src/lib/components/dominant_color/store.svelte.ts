@@ -1,7 +1,7 @@
 import { COLORTHIEF_MAX_ENTRIES } from "$constants/lru";
 import QuickLRU from "quick-lru";
 
-export let color_mapping = $state(
+export const color_mapping = $state(
 	new QuickLRU<
 		String,
 		{

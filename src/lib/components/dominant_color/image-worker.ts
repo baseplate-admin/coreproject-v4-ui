@@ -5,6 +5,7 @@ import chroma from "chroma-js";
 
 onmessage = async function (event) {
 	await init();
+
 	const color_palette = get_color_thief(new Uint8Array(event.data), 64 * 64, 10, COLOR_COUNT),
 		dominant_color =
 			chroma(color_palette[0]).get("lab.l") < 40
