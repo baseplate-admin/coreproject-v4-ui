@@ -20,7 +20,7 @@
 	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
 	import Image from "$components/dominant_color/index.svelte";
-	import { IS_CHROMIUM } from "$constants/browser";
+	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
 	import {
 		autoUpdate,
@@ -366,6 +366,7 @@
 				<div
 					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
+					class:scrollbar-thin={IS_FIREFOX}
 				>
 					{#each latest_episodes as episode, idx}
 						{@const image_loaded = latest_episodes_mapping[idx].loaded}
