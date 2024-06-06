@@ -1,7 +1,7 @@
 // @ts-nocheck
 import "./rlottie-wasm.js";
 
-var RLottieWasm = (function () {
+export default RLottieWasm = (function () {
 	// create a object;
 	var obj = {};
 
