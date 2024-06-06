@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { onMount } from "svelte";
 	import RLottieWasm from "./rlottie-worker";
 
 	let { src, speed }: {
@@ -7,12 +8,25 @@
 	} = $props();
 
     let canvasEl = $state<HTMLCanvasElement>();
-    let context = $derived(canvasEl?.getContext("2d"));
+    let context = $state<CanvasRenderingContext2D>();
     let lottieHandle: any = $state(RLottieWasm);
-    let totalFrame = $state(lottieHandle.frames());
+    let totalFrame = $state<number>();
     let curFrame = $state(0);
 
-	function render(speed: number) {
+    onMount(() => {
+		context = canvasEl?.getContext("2d") as CanvasRenderingContext2D;
+		totalFrame = lottieHandle.frames();
+	});
+
+	$effect(() => {
+		lottieHandle.load(src);
+		totalFrame = lottieHandle.frames();
+		curFrame = 0;
+
+		render();
+	});
+
+	function render() {
 		if (canvasEl?.width == 0 || canvasEl?.height == 0) return;
 	    var buffer = lottieHandle.render(curFrame, canvasEl?.width, canvasEl?.height);
 	    curFrame = Number(curFrame + speed);
@@ -20,14 +34,6 @@
 	    var imageData = new ImageData(result, canvasEl!.width, canvasEl!.height);
 	    context?.putImageData(imageData, 0, 0);
 	};
-
-	$effect(() => {
-		lottieHandle.load(src);
-		totalFrame = lottieHandle.frames();
-		curFrame = 0;
-
-		render(1);
-	});
 </script>
 
 <canvas bind:this={canvasEl}></canvas>
