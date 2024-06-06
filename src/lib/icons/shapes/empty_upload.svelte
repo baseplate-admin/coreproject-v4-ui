@@ -1,10 +1,17 @@
 <script lang="ts">
-	import type { SVGAttributes } from "svelte/elements";
+	import type { SVGParams } from "$types/svg";
 
-	type $$Props = SVGAttributes<SVGElement>;
+	let { class: klass, style, width, height }: SVGParams = $props();
 </script>
 
-<svg {...$$props} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 153 171.25">
+<svg
+	class={klass}
+	{style}
+	{width}
+	{height}
+	xmlns="http://www.w3.org/2000/svg"
+	viewBox="0 0 153 171.25"
+>
 	<g>
 		<g transform="translate(-469.000000, -399.000000)">
 			<g transform="translate(469.000000, 399.000000)">

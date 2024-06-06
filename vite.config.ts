@@ -7,7 +7,8 @@ export default defineConfig({
 		exclude: ["color-thief-wasm-web"]
 	},
 	esbuild: {
-		// target: "esnext"
+		target: "esnext",
+		legalComments: "external"
 	},
 	css: {
 		devSourcemap: true,
@@ -21,9 +22,13 @@ export default defineConfig({
 		chunkSizeWarningLimit: 2048,
 		emptyOutDir: true,
 		target: "esnext",
-		cssTarget: "es2015",
-		minify: "terser"
+		cssTarget: "esnext"
+		// minify: "terser"
 	},
+	worker: {
+		format: "es"
+	},
+
 	plugins: [
 		sveltekit(),
 		visualizer({

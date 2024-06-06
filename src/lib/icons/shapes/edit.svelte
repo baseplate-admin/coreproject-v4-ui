@@ -1,14 +1,23 @@
 <script lang="ts">
-	import type { SVGAttributes } from "svelte/elements";
+	import type { SVGParams } from "$types/svg";
 
-	interface $$Props extends SVGAttributes<SVGElement> {
+	interface EditSVGParams extends SVGParams {
 		variant: "with_underline_around_pencil" | "without_underline_around_pencil";
 	}
-	const { variant, ...props } = $$props as $$Props;
+
+	let { class: klass, style, width, height, variant }: EditSVGParams = $props();
 </script>
 
 {#if variant === "with_underline_around_pencil"}
-	<svg viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+	<svg
+		class={klass}
+		{style}
+		{width}
+		{height}
+		viewBox="0 0 18 18"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
 		<path
 			d="M9 15H15.75"
 			stroke="currentColor"
@@ -25,7 +34,15 @@
 		/>
 	</svg>
 {:else if variant === "without_underline_around_pencil"}
-	<svg {...props} viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+	<svg
+		class={klass}
+		{style}
+		{width}
+		{height}
+		viewBox="0 0 12 12"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
 		<g clip-path="url(#clip0_1917_2501)">
 			<path
 				d="M8.5 1.50015C8.63132 1.36883 8.78722 1.26466 8.9588 1.19359C9.13038 1.12252 9.31428 1.08594 9.5 1.08594C9.68572 1.08594 9.86962 1.12252 10.0412 1.19359C10.2128 1.26466 10.3687 1.36883 10.5 1.50015C10.6313 1.63147 10.7355 1.78737 10.8066 1.95895C10.8776 2.13054 10.9142 2.31443 10.9142 2.50015C10.9142 2.68587 10.8776 2.86977 10.8066 3.04135C10.7355 3.21293 10.6313 3.36883 10.5 3.50015L3.75 10.2502L1 11.0002L1.75 8.25015L8.5 1.50015Z"
