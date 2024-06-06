@@ -1,45 +1,32 @@
 <script lang="ts">
 	import RLottieWasm from "./rlottie-worker";
 
-	let { src }: {
+	let { src, speed }: {
 		src: string;
+		speed: number;
 	} = $props();
 
     let canvasEl = $state<HTMLCanvasElement>();
+    let context = $derived(canvasEl?.getContext("2d"));
+    let lottieHandle: any = $state(RLottieWasm);
+    let totalFrame = $state(lottieHandle.frames());
+    let curFrame = $state(0);
 
-    class RLottieModule {
-    	canvas: HTMLCanvasElement;
-    	context: CanvasRenderingContext2D;
-    	lottieHandle: any;
-    	totalFrame: number;
-    	curFrame: number;
-
-		constructor() {
-		    this.canvas = canvasEl as HTMLCanvasElement;
-		    this.context = this.canvas.getContext("2d") as CanvasRenderingContext2D;
-		    this.lottieHandle = RLottieWasm;
-		    this.totalFrame = this.lottieHandle.frames();
-		    this.curFrame = 0;
-		}
-
-		render(speed: number) {
-		    if(this.canvas.width == 0 || this.canvas.height == 0) return;
-		    var buffer = this.lottieHandle.render(this.curFrame, this.canvas.width, this.canvas.height);
-		    this.curFrame = Number(this.curFrame + speed);
-		    var result = Uint8ClampedArray.from(buffer);
-		    var imageData = new ImageData(result, this.canvas.width, this.canvas.height);
-		    this.context.putImageData(imageData, 0, 0);
-		}
-	}
-
-	const rm = new RLottieModule();
+	function render(speed: number) {
+		if (canvasEl?.width == 0 || canvasEl?.height == 0) return;
+	    var buffer = lottieHandle.render(curFrame, canvasEl?.width, canvasEl?.height);
+	    curFrame = Number(curFrame + speed);
+	    var result = Uint8ClampedArray.from(buffer);
+	    var imageData = new ImageData(result, canvasEl!.width, canvasEl!.height);
+	    context?.putImageData(imageData, 0, 0);
+	};
 
 	$effect(() => {
-		rm.lottieHandle.load(src);
-		rm.totalFrame = rm.lottieHandle.frames();
-		rm.curFrame = 0;
+		lottieHandle.load(src);
+		totalFrame = lottieHandle.frames();
+		curFrame = 0;
 
-		rm.render(1);
+		render(1);
 	});
 </script>
 
