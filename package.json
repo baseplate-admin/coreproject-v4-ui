@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.44.1",
-		"@skeletonlabs/floating-ui-svelte": "^0.2.0",
+		"@skeletonlabs/floating-ui-svelte": "^0.3.0",
 		"@sveltejs/adapter-auto": "^3.2.1",
 		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/adapter-static": "^3.0.1",
