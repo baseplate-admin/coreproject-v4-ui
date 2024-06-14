@@ -73,7 +73,7 @@
 		"marked-katex-extension": "^5.0.1",
 		"marked-mangle": "^1.1.7",
 		"marked-smartypants": "^1.1.6",
-		"marked-xhtml": "^1.0.9",
+		"marked-xhtml": "^1.0.10",
 		"openapi-fetch": "^0.9.7",
 		"postcss": "^8.4.38",
 		"postcss-load-config": "^6.0.1",
