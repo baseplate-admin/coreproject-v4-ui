@@ -83,7 +83,7 @@
 		"quick-lru": "^7.0.0",
 		"rollup-plugin-visualizer": "^5.12.0",
 		"sass": "^1.77.5",
-		"svelte": "^5.0.0-next.151",
+		"svelte": "^5.0.0-next.155",
 		"svelte-check": "^3.8.0",
 		"svelte-gestures": "^5.0.1",
 		"svelte-intersection-observer": "^1.0.0",
