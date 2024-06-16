@@ -137,7 +137,7 @@
 
 <Modals />
 <div class="relative h-dvh bg-secondary">
-	<div class="flex h-full w-full flex-col overflow-hidden">
+	<div class="flex h-full w-full flex-col">
 		<header class="z-10 flex-none">
 			<div
 				class="absolute top-0 flex h-[4.5rem] w-full items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[10vh] md:bg-secondary md:py-[0.9375vw] md:pl-[2.1vw] md:pr-[3.75vw]"
@@ -236,7 +236,7 @@
 				{/if}
 			</div>
 		</header>
-		<div class="flex h-full w-full flex-auto overflow-hidden">
+		<div class="flex h-full w-full flex-auto">
 			<aside class="w-auto flex-none overflow-y-auto overflow-x-hidden">
 				<div class="hidden h-full w-[6.25vw] flex-col justify-between py-[2vw] md:flex">
 					<div>
@@ -331,11 +331,9 @@
 					</div>
 				</div>
 			</aside>
-			<div id="page" class="flex flex-1 flex-col overflow-x-hidden" style="scrollbar-gutter:auto">
+			<div id="page" class="flex flex-1 flex-col">
 				<slot />
 			</div>
 		</div>
-
-		<!-- {/* <coreproject-specific-bottom-navigation></coreproject-specific-bottom-navigation> */} -->
 	</div>
 </div>

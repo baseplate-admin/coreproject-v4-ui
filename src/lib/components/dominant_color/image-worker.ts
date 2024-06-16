@@ -10,10 +10,10 @@ onmessage = async function (event) {
 		dominant_color =
 			chroma(color_palette[0]).get("lab.l") < 40
 				? chroma(color_palette[0]).brighten().hex()
-				: chroma(color_palette[0]).hex(),
+				: chroma(color_palette[0]).darken(2).hex(),
 		dominant_foreground_color =
 			chroma(color_palette[0]).get("lab.l") < 40
-				? chroma(color_palette[0]).brighten(2).hex()
+				? chroma(color_palette[0]).brighten(3).hex()
 				: chroma(color_palette[0]).hex();
 
 	postMessage({

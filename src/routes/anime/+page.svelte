@@ -45,7 +45,7 @@
 				studio: "mappa",
 				genres: ["sci-fi", "action", "echhi"],
 				synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
-				image: "https://staticg.sportskeeda.com/editor/2023/04/95453-16812287437122-1920.jpg?w=840"
+				image: "/images/mock/cover/jjk.webp"
 			},
 			{
 				id: 2,
@@ -57,7 +57,7 @@
 				studio: "tokito",
 				genres: ["hentai", "action", "romance", "smooth"],
 				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-				image: "https://bg-so-1.zippyimage.com/2021/05/29/bcb474d59354a3d20036490aa807fc77.png"
+				image: "/images/mock/cover/one_piece.webp",
 			},
 			{
 				id: 3,
@@ -69,8 +69,19 @@
 				studio: "sheldon",
 				genres: ["hentai", "action", "romance", "smooth"],
 				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
-				image:
-					"https://static1.cbrimages.com/wordpress/wp-content/uploads/2021/03/demon-slayer-banner.jpg"
+				image: "/images/mock/cover/demon_slayer_training.webp"
+			},
+			{
+				id: 4,
+				name: "Kaiju no.8",
+				type: "TV",
+				episodes: 8,
+				status: "Airing",
+				release_date: "Summer 2024",
+				studio: "sheldon",
+				genres: ["action", "romance", "fantasy"],
+				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				image: "/images/mock/cover/kaiju_no_8.jpg",
 			}
 		],
 		latest_episodes = [
@@ -139,15 +150,7 @@
 				seconds: TIMER_DELAY
 			},
 			precision: "secondTenths"
-		}),
-		slide_buttons = [
-			{ background: "bg-accent", border: "border-accent" },
-			{ background: "bg-info", border: "border-info" },
-			{ background: "bg-warning", border: "border-warning" },
-			{ background: "bg-white", border: "border-white" },
-			{ background: "bg-primary", border: "border-primary" },
-			{ background: "bg-error", border: "border-error" }
-		];
+		})
 
 	let main_hero_slide_active_index = $state<number>(0);
 
@@ -202,7 +205,8 @@
 		progress_value = value;
 	});
 
-	// state for latest_episodes color palette
+	// states
+
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
 		loaded: boolean;
@@ -217,12 +221,18 @@
 		}))
 	);
 
-	// open state for sidebar tooltips
 	const sidebar_mapping = $state(
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined,
 			loaded: false
+		}))
+	);
+
+	const latest_animes_mapping = $state(
+		latest_animes.map(() => ({
+			dominant_color: undefined,
+			dominant_foreground_color: undefined
 		}))
 	);
 </script>
@@ -239,21 +249,28 @@
 			{#each latest_animes as anime, idx}
 				{@const active = idx === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
+				{@const color_loaded = latest_animes_mapping[idx].dominant_color}
 
 				{#if active}
 					<div
 						role="presentation"
-						class="absolute inset-0 md:bottom-[2vw]"
 						transition:blur
 						onmouseenter={() => timer.pause()}
 						onmouseleave={() => timer.start()}
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
+						class="absolute z-20 inset-0 md:bottom-[2vw] duration-1000"
+						class:drop-shadow-[0_0vw_5vw_var(--dominant-color-opacity)]={color_loaded}
+						style="
+							--dominant-color-opacity: {latest_animes_mapping[idx].dominant_color}25;
+							--dominant-foreground-color: {latest_animes_mapping[idx].dominant_foreground_color};
+						"
 					>
-						<img
+						<Image
 							src={anime.image}
-							alt=""
-							class="absolute h-full w-full object-cover object-center md:rounded-t-[0.875vw]"
+							class="absolute h-full w-full object-cover object-center md:rounded-[1vw]"
+							bind:dominant_color={latest_animes_mapping[idx].dominant_color}
+							bind:dominant_foreground_color={latest_animes_mapping[idx].dominant_foreground_color}
 						/>
 						<div
 							class="md:to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
@@ -262,7 +279,7 @@
 							class="from-surface-900 to-surface-900/25 md:from-surface-900/50 absolute inset-0 hidden bg-gradient-to-r md:flex"
 						></div>
 						<div
-							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:px-[3.75vw] md:py-[2.625vw]"
+							class="absolute bottom-0 flex flex-col p-4 md:left-0 md:p-[3vw]"
 						>
 							<span class="text-3xl font-bold text-white md:text-[2vw] md:leading-[2.375vw]"
 								>{anime.name}</span
@@ -283,7 +300,8 @@
 									<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
 										{#each anime.genres as genre}
 											<span
-												class="rounded-lg bg-secondary p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
+												class="bg-accent duration-300 text-secondary rounded-lg p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
+												class:bg-[var(--dominant-foreground-color)]={color_loaded}
 											>
 												{genre}
 											</span>
@@ -301,7 +319,8 @@
 									<div class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]">
 										<a
 											href="mal/{anime.id}/episode/1"
-											class="btn btn-warning flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
+											class="btn btn-accent border-none flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
+											class:!bg-[var(--dominant-foreground-color)]={color_loaded}
 										>
 											<Play class="text-surface-900 w-4 md:w-[1vw]" />
 											<span>Ep 1</span>
@@ -328,38 +347,55 @@
 					</div>
 				{/if}
 			{/each}
-			<div class="absolute bottom-0 flex w-full flex-col">
-				<div
-					class="h-[0.2rem] bg-warning md:h-[0.145vw] {slide_buttons[main_hero_slide_active_index]
-						.background}"
-					style="width: {$tweened_progress_value}%;"
-				></div>
-				<div class="hidden w-full grid-cols-6 gap-[0.9375vw] md:mt-[1.25vw] md:grid">
-					{#each latest_animes as _, idx}
-						<button
-							class={cn(
-								"col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw]",
-								slide_buttons[idx].border,
-								"hover:border-surface-50/50 transition duration-300",
-								idx === main_hero_slide_active_index && slide_buttons[idx].background
-							)}
-							onclick={() => change_main_hero_slide_active_index(idx)}
-						></button>
-					{/each}
+			<div class="absolute -bottom-[1vw] hidden inset-x-0 md:flex items-center gap-[0.9375vw] md:mt-[1.25vw]">
+				<button
+					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
+					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
+					onclick={minus_one_to_main_hero_slide_active_index}
+				>
+					<Chevron class="w-[1.25vw] rotate-90" />
+				</button>
+				<div class="flex flex-col flex-1 h-full md:gap-[0.75vw]">
+					<div
+						class="h-[0.2rem] bg-warning md:h-[0.145vw] z-20"
+						style="
+							width: {$tweened_progress_value}%;
+							background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};
+						"
+					></div>
+					<div class="flex items-center md:gap-[1vw]">
+						{#each latest_animes as _, idx}
+							<button
+								class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
+								class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
+								style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? "#ffffff50"};"
+								onclick={() => change_main_hero_slide_active_index(idx)}
+							></button>
+						{/each}
+					</div>
 				</div>
+				<button
+					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
+					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
+					onclick={add_one_to_main_hero_slide_active_index}
+				>
+					<Chevron class="w-[1.25vw] -rotate-90" />
+				</button>
 			</div>
-			<button
-				class="btn btn-primary absolute -left-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
+			<!-- <button
+				class="btn btn-primary border-none absolute -left-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 md:flex"
+				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
 				onclick={minus_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] rotate-90" />
 			</button>
 			<button
-				class="bg-secondary-800 btn btn-primary absolute -right-[1vw] top-[12vw] z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 text-accent md:flex"
+				class="btn btn-primary border-none absolute -right-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 md:flex"
+				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
 				onclick={add_one_to_main_hero_slide_active_index}
 			>
 				<Chevron class="w-[1.25vw] -rotate-90" />
-			</button>
+			</button> -->
 		</div>
 		<div class="flex flex-col p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
