@@ -5,7 +5,7 @@ export function createAuthStore() {
 		get state() {
 			return state;
 		},
-		set state(value:null|boolean) {
+		set state(value: null | boolean) {
 			state = value;
 		}
 	};
