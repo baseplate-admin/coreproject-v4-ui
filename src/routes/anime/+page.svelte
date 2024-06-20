@@ -300,7 +300,7 @@
 										>
 											<a
 												href="mal/{anime.id}/episode/1"
-												class="btn btn-primary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
+												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
 											>
 												<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
 												<span>Ep 1</span>
