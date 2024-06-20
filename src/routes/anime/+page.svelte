@@ -17,7 +17,6 @@
 	import Dice from "$icons/shapes/dice.svelte";
 
 	import ScrollArea from "$components/scroll_area.svelte";
-	import { cn } from "$functions/classnames";
 	import { t } from "$lib/translations";
 	import Image from "$components/dominant_color/index.svelte";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
@@ -228,13 +227,6 @@
 			loaded: false
 		}))
 	);
-
-	const latest_animes_mapping = $state(
-		latest_animes.map(() => ({
-			dominant_color: undefined,
-			dominant_foreground_color: undefined
-		}))
-	);
 </script>
 
 <svelte:window onblur={() => timer.pause()} onfocus={() => timer.start()} />
@@ -242,14 +234,13 @@
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div
-			class="relative h-96 w-full md:h-[28.75vw]"
+			class="relative h-96 w-full md:h-[28vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 			onswipe={swipe_handler}
 		>
 			{#each latest_animes as anime, idx}
 				{@const active = idx === main_hero_slide_active_index}
 				{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
-				{@const color_loaded = latest_animes_mapping[idx].dominant_color}
 
 				{#if active}
 					<div
@@ -259,19 +250,9 @@
 						onmouseleave={() => timer.start()}
 						ontouchstart={() => timer.pause()}
 						ontouchend={() => timer.start()}
-						class="absolute z-20 inset-0 md:bottom-[2vw] duration-1000"
-						class:drop-shadow-[0_0vw_5vw_var(--dominant-color-opacity)]={color_loaded}
-						style="
-							--dominant-color-opacity: {latest_animes_mapping[idx].dominant_color}25;
-							--dominant-foreground-color: {latest_animes_mapping[idx].dominant_foreground_color};
-						"
+						class="absolute inset-0 md:rounded-[1vw] bg-cover bg-center"
+						style="background-image: url({anime.image});"
 					>
-						<Image
-							src={anime.image}
-							class="absolute h-full w-full object-cover object-center md:rounded-[1vw]"
-							bind:dominant_color={latest_animes_mapping[idx].dominant_color}
-							bind:dominant_foreground_color={latest_animes_mapping[idx].dominant_foreground_color}
-						/>
 						<div
 							class="md:to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
 						></div>
@@ -300,8 +281,7 @@
 									<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
 										{#each anime.genres as genre}
 											<span
-												class="bg-accent duration-300 text-secondary rounded-lg p-2 px-3 text-xs capitalize leading-none md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.4vw] md:text-[0.75vw] md:font-semibold"
-												class:bg-[var(--dominant-foreground-color)]={color_loaded}
+												class="bg-secondary/80 duration-300 text-accent rounded-lg p-2 px-3 text-xs capitalize leading-none md:rounded-[0.5vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[0.75vw] md:font-semibold"
 											>
 												{genre}
 											</span>
@@ -319,21 +299,20 @@
 									<div class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]">
 										<a
 											href="mal/{anime.id}/episode/1"
-											class="btn btn-accent border-none flex h-max min-h-max justify-center gap-2 rounded-xl px-6 py-4 text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.625vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw]"
-											class:!bg-[var(--dominant-foreground-color)]={color_loaded}
+											class="btn btn-info border-none flex flex-nowrap px-[1.5vw] h-[3.5vw] min-h-max justify-center gap-2 rounded-xl text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
 										>
-											<Play class="text-surface-900 w-4 md:w-[1vw]" />
+											<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
 											<span>Ep 1</span>
 										</a>
 										<a
 											href="mal/{anime.id}"
-											class="btn btn-secondary flex h-max min-h-max items-center justify-center rounded-xl px-6 py-4 text-base font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.5vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.875vw] md:font-bold"
+											class="btn btn-secondary text-info border-none flex flex-nowrap px-[1.5vw] h-[3.5vw] min-h-max justify-center gap-2 rounded-xl text-base font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
 										>
-											<Info class="text-surface-50 w-5 md:w-[1.25vw]" />
+											<Info class="w-5 md:w-[1.35vw]" />
 											<span>Details</span>
 										</a>
 										<button
-											class="bg-surface-900 text-surface-50s btn btn-secondary h-max min-h-max rounded-xl p-4 text-[3vw] font-bold leading-none md:rounded-[0.5vw] md:p-[0.9vw] md:text-[0.875vw]"
+											class="btn btn-secondary border-none flex flex-nowrap size-[3.5vw] min-h-max justify-center gap-2 rounded-xl text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[0.75vw]"
 										>
 											<Edit
 												variant="without_underline_around_pencil"
@@ -347,10 +326,9 @@
 					</div>
 				{/if}
 			{/each}
-			<div class="absolute -bottom-[1vw] hidden inset-x-0 md:flex items-center gap-[0.9375vw] md:mt-[1.25vw]">
+			<div class="absolute -bottom-[1vw] !hidden inset-x-0 md:flex items-center gap-[0.9375vw] md:mt-[1.25vw]">
 				<button
 					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
-					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
 					<Chevron class="w-[1.25vw] rotate-90" />
@@ -358,17 +336,12 @@
 				<div class="flex flex-col flex-1 h-full md:gap-[0.75vw]">
 					<div
 						class="h-[0.2rem] bg-warning md:h-[0.145vw] z-20"
-						style="
-							width: {$tweened_progress_value}%;
-							background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};
-						"
+						style="width: {$tweened_progress_value}%;"
 					></div>
 					<div class="flex items-center md:gap-[1vw]">
 						{#each latest_animes as _, idx}
 							<button
 								class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
-								class:bg-[var(--dominant-color)]={idx === main_hero_slide_active_index}
-								style="--dominant-color: {latest_animes_mapping[idx].dominant_color ?? "#ffffff50"};"
 								onclick={() => change_main_hero_slide_active_index(idx)}
 							></button>
 						{/each}
@@ -376,26 +349,11 @@
 				</div>
 				<button
 					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
-					style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
 					onclick={add_one_to_main_hero_slide_active_index}
 				>
 					<Chevron class="w-[1.25vw] -rotate-90" />
 				</button>
 			</div>
-			<!-- <button
-				class="btn btn-primary border-none absolute -left-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 md:flex"
-				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
-				onclick={minus_one_to_main_hero_slide_active_index}
-			>
-				<Chevron class="w-[1.25vw] rotate-90" />
-			</button>
-			<button
-				class="btn btn-primary border-none absolute -right-[1vw] top-1/2 z-20 hidden h-[2.25vw] min-h-max w-[2.25vw] rounded-[0.375vw] p-0 md:flex"
-				style="background-color: {latest_animes_mapping[main_hero_slide_active_index].dominant_foreground_color};"
-				onclick={add_one_to_main_hero_slide_active_index}
-			>
-				<Chevron class="w-[1.25vw] -rotate-90" />
-			</button> -->
 		</div>
 		<div class="flex flex-col p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
