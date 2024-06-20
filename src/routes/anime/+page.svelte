@@ -233,6 +233,7 @@
 
 <div class="mt-16 block md:mt-0 md:p-[1.25vw] md:pr-[3.75vw]">
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
+		<div class="flex flex-col md:gap-[1vw]">
 		<div
 			class="relative h-96 w-full md:h-[28vw]"
 			use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
@@ -299,7 +300,7 @@
 									<div class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]">
 										<a
 											href="mal/{anime.id}/episode/1"
-											class="btn btn-info border-none flex flex-nowrap px-[1.5vw] h-[3.5vw] min-h-max justify-center gap-2 rounded-xl text-base font-bold leading-none text-secondary md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
+											class="btn btn-primary border-none flex flex-nowrap px-[1.5vw] h-[3.5vw] min-h-max justify-center gap-2 rounded-xl text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
 										>
 											<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
 											<span>Ep 1</span>
@@ -326,34 +327,36 @@
 					</div>
 				{/if}
 			{/each}
-			<div class="absolute -bottom-[1vw] !hidden inset-x-0 md:flex items-center gap-[0.9375vw] md:mt-[1.25vw]">
-				<button
-					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
-					onclick={minus_one_to_main_hero_slide_active_index}
-				>
-					<Chevron class="w-[1.25vw] rotate-90" />
-				</button>
-				<div class="flex flex-col flex-1 h-full md:gap-[0.75vw]">
+		</div>
+		<div class="w-full flex items-center md:gap-[1vw]">
+			<button
+				class="btn btn-primary md:rounded-[0.75vw] p-0 md:size-[2vw] min-h-max"
+				onclick={minus_one_to_main_hero_slide_active_index}
+			>
+				<Chevron class="md:size-[1.25vw] rotate-90" />
+			</button>
+			<div class="flex items-center md:gap-[1vw] w-full">
+				{#each latest_animes as _, idx}
 					<div
-						class="h-[0.2rem] bg-warning md:h-[0.145vw] z-20"
-						style="width: {$tweened_progress_value}%;"
-					></div>
-					<div class="flex items-center md:gap-[1vw]">
-						{#each latest_animes as _, idx}
-							<button
-								class="col-span-1 h-[0.625vw] w-full rounded-[0.1875vw] border-[0.15vw] border-[var(--dominant-color)] transition duration-300"
-								onclick={() => change_main_hero_slide_active_index(idx)}
-							></button>
-						{/each}
+						class="md:w-[5vw] bg-neutral overflow-hidden md:h-[0.5vw] md:rounded-[1vw] duration-300 ease-out"
+						class:!w-full={main_hero_slide_active_index === idx}
+					>
+						<div
+							hidden={main_hero_slide_active_index !== idx}
+							class="bg-primary h-full"
+							style="width: {$tweened_progress_value}%;"
+						>
+						</div>
 					</div>
-				</div>
-				<button
-					class="btn btn-primary border-none hidden min-h-max size-[2vw] rounded-[0.375vw] p-0 md:flex"
-					onclick={add_one_to_main_hero_slide_active_index}
-				>
-					<Chevron class="w-[1.25vw] -rotate-90" />
-				</button>
+				{/each}
 			</div>
+			<button
+				class="btn btn-primary md:rounded-[0.75vw] p-0 md:size-[2vw] min-h-max"
+				onclick={add_one_to_main_hero_slide_active_index}
+			>
+				<Chevron class="md:size-[1.25vw] -rotate-90" />
+			</button>
+		</div>
 		</div>
 		<div class="flex flex-col p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
