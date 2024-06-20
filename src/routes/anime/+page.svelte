@@ -246,7 +246,7 @@
 					{#if active}
 						<div
 							role="presentation"
-							transition:blur
+							transition:blur={{ duration: 300 }}
 							onmouseenter={() => timer.pause()}
 							onmouseleave={() => timer.start()}
 							ontouchstart={() => timer.pause()}
@@ -338,7 +338,9 @@
 				<div class="flex w-full items-center md:gap-[1vw]">
 					{#each latest_animes as _, idx}
 						<div
-							class="overflow-hidden bg-neutral duration-300 ease-out md:h-[0.5vw] md:w-[5vw] md:rounded-[1vw] cursor-pointer hover:md:w-[7vw]"
+							role="button"
+							tabindex="0"
+							class="cursor-pointer overflow-hidden bg-neutral duration-300 ease-out md:h-[0.5vw] md:w-[5vw] md:rounded-[1vw]"
 							class:!w-full={main_hero_slide_active_index === idx}
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						>
