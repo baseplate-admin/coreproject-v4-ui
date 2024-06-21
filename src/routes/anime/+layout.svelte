@@ -188,13 +188,13 @@
 					<div class="hidden md:flex md:gap-[0.75vw]">
 						<a
 							href="/user/register"
-							class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
+							class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.75vw] md:p-[0.9vw] md:text-[1vw]"
 						>
 							{$t("home.navbar.register")}
 						</a>
 						<a
 							href="/user/login"
-							class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.5vw] md:p-[0.9vw] md:text-[1vw]"
+							class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.75vw] md:p-[0.9vw] md:text-[1vw]"
 						>
 							{$t("home.navbar.login")}
 						</a>
@@ -242,7 +242,7 @@
 					<div>
 						<div class="flex flex-col items-center">
 							<button
-								class="btn btn-warning size-[3vw] min-h-full rounded-[0.5vw] p-0"
+								class="btn btn-warning size-[3vw] min-h-full rounded-[0.75vw] p-0"
 								onclick={() => {
 									modal_store.open_modal("search");
 								}}
@@ -253,7 +253,7 @@
 
 						<VercelHover
 							glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
-							active_element_class="rounded-[0.75vw] bg-white/10"
+							active_element_class="rounded-[1vw] bg-white/10"
 							direction="vertical"
 							GLIDER_TRANSITION_DURATION={200}
 						>
@@ -277,7 +277,7 @@
 										onmouseleave={handle_mouse_leave}
 										href={item_href}
 										class="{cn(
-											'btn relative size-[4vw] min-h-max rounded-[0.75vw] border-none p-0',
+											'btn relative size-[4vw] min-h-max rounded-[1vw] border-none p-0',
 											is_active
 												? 'relative !bg-accent before:absolute before:-left-[0.15vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
 												: '!bg-transparent'

@@ -260,7 +260,7 @@
 							onmouseleave={() => timer.start()}
 							ontouchstart={() => timer.pause()}
 							ontouchend={() => timer.start()}
-							class="absolute inset-0 bg-cover bg-center md:rounded-[1vw]"
+							class="absolute inset-0 bg-cover bg-center md:rounded-[1.5vw]"
 							style="background-image: url({anime.image});"
 						>
 							<div
