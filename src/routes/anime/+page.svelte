@@ -252,7 +252,7 @@
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div class="flex flex-col md:gap-[1vw]">
 			<div
-				class="relative h-96 w-full md:h-[28vw] overflow-hidden"
+				class="relative h-96 w-full overflow-hidden md:h-[28vw]"
 				use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 				onswipe={swipe_handler}
 			>
@@ -401,7 +401,7 @@
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
-					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1vw] md:pr-[1.5vw] relative overflow-x-hidden"
+					class="grid-rows-auto relative grid w-full snap-y auto-rows-min grid-cols-2 overflow-x-hidden overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 					class:scrollbar-thin={IS_FIREFOX}
 				>
@@ -489,7 +489,7 @@
 					<ScrollArea
 						gradient_mask
 						parent_class="snap-y md:rounded-[0.65vw]"
-						class="relative overflow-hidden flex flex-1 flex-col md:w-[3vw] md:gap-[0.5vw]"
+						class="relative flex flex-1 flex-col overflow-hidden md:w-[3vw] md:gap-[0.5vw]"
 					>
 						{#each sidebar_animes as anime, idx}
 							{@const loaded = sidebar_mapping[idx].loaded}
