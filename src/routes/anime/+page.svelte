@@ -216,10 +216,12 @@
 
 	// states
 
- 	const latest_animes_mapping = $state(latest_animes.map(() => ({
-		dominant_color: undefined,
-		loaded: false
-	})))
+	const latest_animes_mapping = $state(
+		latest_animes.map(() => ({
+			dominant_color: undefined,
+			loaded: false
+		}))
+	);
 
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
@@ -319,7 +321,9 @@
 												href="mal/{anime.id}/episode/1"
 												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
-												style="--dominant-color: {chroma.contrast("#03020C", dominant_color) > 4.5 ? dominant_color : chroma(dominant_color).brighten(2)}"
+												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
+													? dominant_color
+													: chroma(dominant_color).brighten(2)}"
 											>
 												<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
 												<span>Ep 1</span>
@@ -370,15 +374,17 @@
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						>
 							{#if item.loaded && item.dominant_color}
-							<div
-								hidden={main_hero_slide_active_index !== idx}
-								class="h-full bg-primary"
-								class:!bg-[var(--dominant-color)]={item.loaded}
-								style="
+								<div
+									hidden={main_hero_slide_active_index !== idx}
+									class="h-full bg-primary"
+									class:!bg-[var(--dominant-color)]={item.loaded}
+									style="
 									   width: {$tweened_progress_value}%;
-									   --dominant-color: {chroma.contrast("#1E2036", item.dominant_color) > 4.5 ? item.dominant_color : chroma(item.dominant_color).brighten(2)};
+									   --dominant-color: {chroma.contrast('#1E2036', item.dominant_color) > 4.5
+										? item.dominant_color
+										: chroma(item.dominant_color).brighten(2)};
 								"
-							></div>
+								></div>
 							{/if}
 						</div>
 					{/each}
