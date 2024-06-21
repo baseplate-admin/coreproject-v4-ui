@@ -216,6 +216,13 @@
 
 	// states
 
+	const latest_animes_mapping = $state(
+		latest_animes.map(() => ({
+			dominant_color: undefined,
+			loaded: false
+		}))
+	);
+
 	const latest_episodes_mapping: {
 		color_palette: [number, number, number][] | undefined;
 		loaded: boolean;
@@ -252,8 +259,10 @@
 				{#each latest_animes as anime, idx}
 					{@const active = idx === main_hero_slide_active_index}
 					{@const formated_aired_on = new FormatDate(anime.release_date).format_to_season}
+					{@const loaded = latest_animes_mapping[idx].loaded}
+					{@const dominant_color = latest_animes_mapping[idx].dominant_color}
 
-					{#if active}
+					{#if active && loaded && dominant_color}
 						<div
 							role="presentation"
 							transition:blur={{ duration: 300 }}
@@ -311,6 +320,10 @@
 											<a
 												href="mal/{anime.id}/episode/1"
 												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
+												class:!bg-[var(--dominant-color)]={dominant_color}
+												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
+													? dominant_color
+													: chroma(dominant_color).brighten(2)}"
 											>
 												<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
 												<span>Ep 1</span>
@@ -336,17 +349,23 @@
 							</div>
 						</div>
 					{/if}
+					<Image
+						src={anime.image}
+						class="invisible size-0"
+						bind:image_loaded={latest_animes_mapping[idx].loaded}
+						bind:dominant_color={latest_animes_mapping[idx].dominant_color}
+					/>
 				{/each}
 			</div>
 			<div class="flex w-full items-center md:gap-[1vw]">
 				<button
-					class="btn btn-primary min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
+					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
 					<Chevron class="rotate-90 md:size-[1.25vw]" />
 				</button>
 				<div class="flex w-full items-center md:gap-[1vw]">
-					{#each latest_animes as _, idx}
+					{#each latest_animes_mapping as item, idx}
 						<div
 							role="button"
 							tabindex="0"
@@ -354,16 +373,24 @@
 							class:!w-full={main_hero_slide_active_index === idx}
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						>
-							<div
-								hidden={main_hero_slide_active_index !== idx}
-								class="h-full bg-primary"
-								style="width: {$tweened_progress_value}%;"
-							></div>
+							{#if item.loaded && item.dominant_color}
+								<div
+									hidden={main_hero_slide_active_index !== idx}
+									class="h-full bg-primary"
+									class:!bg-[var(--dominant-color)]={item.loaded}
+									style="
+									   width: {$tweened_progress_value}%;
+									   --dominant-color: {chroma.contrast('#1E2036', item.dominant_color) > 4.5
+										? item.dominant_color
+										: chroma(item.dominant_color).brighten(2)};
+								"
+								></div>
+							{/if}
 						</div>
 					{/each}
 				</div>
 				<button
-					class="btn btn-primary min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
+					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={add_one_to_main_hero_slide_active_index}
 				>
 					<Chevron class="-rotate-90 md:size-[1.25vw]" />
