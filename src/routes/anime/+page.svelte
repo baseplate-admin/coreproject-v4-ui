@@ -154,7 +154,7 @@
 	let main_hero_slide_active_index = $state<number>(0);
 
 	const add_one_to_main_hero_slide_active_index = () => {
-			timer.reset();
+			handle_timer_reset();
 			if (main_hero_slide_active_index + 1 === latest_animes.length) {
 				main_hero_slide_active_index = 0;
 				return;
@@ -162,7 +162,7 @@
 			main_hero_slide_active_index += 1;
 		},
 		minus_one_to_main_hero_slide_active_index = () => {
-			timer.reset();
+			handle_timer_reset();
 			if (main_hero_slide_active_index === 0) {
 				main_hero_slide_active_index = latest_animes.length - 1;
 				return;
@@ -170,12 +170,12 @@
 			main_hero_slide_active_index -= 1;
 		},
 		change_main_hero_slide_active_index = (idx: number) => {
-			timer.reset();
+			handle_timer_reset();
 			main_hero_slide_active_index = idx;
 		},
 		swipe_handler = (event: CustomEvent) => {
 			const direction = event.detail.direction;
-			timer.reset();
+			handle_timer_reset();
 
 			if (direction === "left") {
 				add_one_to_main_hero_slide_active_index();
@@ -187,14 +187,18 @@
 	let progress_value = $state<number>(0),
 		tweened_progress_value = $state<Tweened<number>>(tweened<number>());
 	$effect(() => {
-		tweened_progress_value.set(progress_value);
+		if (progress_value === 100) {
+			tweened_progress_value.set(0, { duration: 0 });
+		} else {
+			tweened_progress_value.set(progress_value);
+		}
 	});
 
 	timer.start();
 	timer.on("targetAchieved", () => {
 		// change slider
-		add_one_to_main_hero_slide_active_index();
 		timer.reset();
+		add_one_to_main_hero_slide_active_index();
 	});
 
 	timer.on("secondTenthsUpdated", () => {
@@ -203,6 +207,11 @@
 
 		progress_value = value;
 	});
+
+	function handle_timer_reset() {
+		timer.reset();
+		tweened_progress_value.set(0, { duration: 0 });
+	}
 
 	// states
 
