@@ -31,6 +31,7 @@
 		useRole
 	} from "@skeletonlabs/floating-ui-svelte";
 	import { portal } from "svelte-portal";
+	import chroma from "chroma-js";
 
 	// Mock data mappings
 	const latest_animes = [
@@ -373,21 +374,24 @@
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
-					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1.25vw] md:pr-[1.5vw]"
+					class="grid-rows-auto grid w-full snap-y auto-rows-min grid-cols-2 overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1vw] md:pr-[1.5vw]"
 					class:scrollbar-none={IS_CHROMIUM}
 					class:scrollbar-thin={IS_FIREFOX}
 				>
 					{#each latest_episodes as episode, idx}
 						{@const image_loaded = latest_episodes_mapping[idx].loaded}
+						{@const dominant_color = latest_episodes_mapping[idx].dominant_color}
 
-						{#if image_loaded}
+						{#if image_loaded && dominant_color}
 							<div
 								in:blur
 								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
-									--dominant-color: {latest_episodes_mapping[idx].dominant_color};
-									--dominant-foreground-color: {latest_episodes_mapping[idx].dominant_foreground_color}
+									--dominant-color: {dominant_color};
+									--dominant-fg-color: {chroma.contrast('#03020C', dominant_color) > 4.5
+									? dominant_color
+									: chroma(dominant_color).brighten(2)};
 								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
@@ -413,7 +417,7 @@
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-foreground-color)] md:mr-[0.5vw] md:p-[0.75vw]"
+										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
@@ -438,8 +442,6 @@
 							bind:image_loaded={latest_episodes_mapping[idx].loaded}
 							bind:color_palette={latest_episodes_mapping[idx].color_palette}
 							bind:dominant_color={latest_episodes_mapping[idx].dominant_color}
-							bind:dominant_foreground_color={latest_episodes_mapping[idx]
-								.dominant_foreground_color}
 						/>
 					{/each}
 				</div>
