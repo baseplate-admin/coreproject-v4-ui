@@ -340,7 +340,7 @@
 						<div
 							role="button"
 							tabindex="0"
-							class="cursor-pointer overflow-hidden bg-neutral duration-300 ease-out md:h-[0.5vw] md:w-[5vw] md:rounded-[1vw]"
+							class="cursor-pointer overflow-hidden bg-neutral duration-300 ease-out md:h-[0.5vw] md:w-[50%] md:rounded-[1vw]"
 							class:!w-full={main_hero_slide_active_index === idx}
 							onclick={() => change_main_hero_slide_active_index(idx)}
 						>
