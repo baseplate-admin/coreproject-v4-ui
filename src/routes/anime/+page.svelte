@@ -465,7 +465,7 @@
 						<!-- use Image component for just to get color -->
 						<Image
 							src={episode.cover}
-							class="absolute -z-10"
+							class="invisible absolute size-0"
 							bind:image_loaded={latest_episodes_mapping[idx].loaded}
 							bind:color_palette={latest_episodes_mapping[idx].color_palette}
 							bind:dominant_color={latest_episodes_mapping[idx].dominant_color}
@@ -553,7 +553,7 @@
 							<!-- use Image component for just to get color -->
 							<Image
 								src={anime.cover}
-								class="invisible absolute -z-20"
+								class="invisible absolute size-0"
 								bind:image_loaded={sidebar_mapping[idx].loaded}
 								bind:dominant_foreground_color={sidebar_mapping[idx].color}
 							/>
