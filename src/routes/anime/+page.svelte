@@ -31,7 +31,7 @@
 		useRole
 	} from "@skeletonlabs/floating-ui-svelte";
 	import { portal } from "svelte-portal";
- 	import chroma from "chroma-js";
+	import chroma from "chroma-js";
 
 	// Mock data mappings
 	const latest_animes = [
@@ -389,7 +389,9 @@
 								style="
 									--background-image: url({episode.banner});
 									--dominant-color: {dominant_color};
-									--dominant-fg-color: {chroma.contrast("#03020C", dominant_color) > 4.5 ? dominant_color : chroma(dominant_color).brighten(2)};
+									--dominant-fg-color: {chroma.contrast('#03020C', dominant_color) > 4.5
+									? dominant_color
+									: chroma(dominant_color).brighten(2)};
 								"
 							>
 								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
