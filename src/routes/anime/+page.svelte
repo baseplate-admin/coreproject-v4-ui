@@ -364,30 +364,40 @@
 				>
 					<Chevron class="rotate-90 md:size-[1.25vw]" />
 				</button>
-				<div class="flex w-full items-center md:gap-[1vw]">
+				<div class="flex w-full flex-col md:gap-[0.75vw]">
 					{#each latest_animes_mapping as item, idx}
-						<div
-							role="button"
-							tabindex="0"
-							class="cursor-pointer overflow-hidden bg-neutral duration-300 ease-out md:h-[0.5vw] md:w-[50%] md:rounded-[1vw]"
-							class:!w-full={main_hero_slide_active_index === idx}
-							onclick={() => change_main_hero_slide_active_index(idx)}
-						>
-							{#if item.loaded && item.dominant_color}
-								<div
-									hidden={main_hero_slide_active_index !== idx}
-									class="h-full bg-primary"
-									class:!bg-[var(--dominant-color)]={item.loaded}
-									style="
+						{#if item.dominant_color && item.loaded}
+							<div
+								hidden={main_hero_slide_active_index !== idx}
+								class="rounded-full bg-primary md:h-[0.25vw]"
+								class:!bg-[var(--dominant-color)]={item.loaded}
+								style="
 									   width: {$tweened_progress_value}%;
 									   --dominant-color: {chroma.contrast('#1E2036', item.dominant_color) > 4.5
-										? item.dominant_color
-										: chroma(item.dominant_color).brighten(2)};
+									? item.dominant_color
+									: chroma(item.dominant_color).brighten(2)};
 								"
-								></div>
-							{/if}
-						</div>
+							></div>
+						{:else}
+							<div hidden={idx !== 0} class="w-full rounded-full bg-neutral md:h-[0.25vw]"></div>
+						{/if}
 					{/each}
+					<div class="flex w-full items-center md:gap-[1vw]">
+						{#each latest_animes_mapping as item, idx}
+							{#if item.loaded}
+								<div
+									role="button"
+									tabindex="0"
+									class="w-full cursor-pointer overflow-hidden border-[var(--item-color)] duration-300 ease-out md:h-[0.75vw] md:rounded-[0.25vw] md:border-[0.2vw]"
+									class:bg-[var(--item-color)]={main_hero_slide_active_index === idx}
+									style="--item-color: {item.dominant_color};"
+									onclick={() => change_main_hero_slide_active_index(idx)}
+								></div>
+							{:else}
+								<div class="w-full bg-neutral md:h-[0.7vw] md:rounded-[0.25vw]"></div>
+							{/if}
+						{/each}
+					</div>
 				</div>
 				<button
 					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
@@ -473,7 +483,7 @@
 					{/each}
 				</div>
 				<div
-					class="flex h-full flex-col items-center bg-accent/75 md:w-[4vw] md:gap-[0.75vw] md:rounded-[1vw] md:p-[0.5vw]"
+					class="flex h-full flex-col items-center bg-info md:w-[4vw] md:gap-[0.75vw] md:rounded-[1vw] md:p-[0.5vw]"
 				>
 					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
 						<Preference class="md:size-[1.25vw]" />
@@ -481,9 +491,9 @@
 					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
 						<Dice class="md:size-[1.5vw]" />
 					</button>
-					<div class="w-2/3 rounded-full bg-secondary md:h-[0.2vw]"></div>
+					<div class="rounded-full bg-secondary md:h-[0.2vw] md:w-1/2"></div>
 					<ScrollArea
-						parent_class="snap-y md:rounded-[0.65vw] !scrollbar-none"
+						parent_class="snap-y md:rounded-[0.65vw] !scrollbar-none md:w-[3vw]"
 						class="relative flex flex-1 flex-col overflow-hidden md:w-full md:gap-[0.75vw]"
 					>
 						{#each sidebar_animes as anime, idx}
@@ -555,7 +565,7 @@
 						{/each}
 					</ScrollArea>
 					<button
-						class="btn btn-secondary grid min-h-max place-items-center p-0 text-accent md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
+						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
 						<Chevron class="md:size-[1vw]" />
 					</button>
