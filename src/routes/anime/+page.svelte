@@ -252,7 +252,7 @@
 	<div class="grid md:grid-cols-2 md:gap-[3vw]">
 		<div class="flex flex-col md:gap-[1vw]">
 			<div
-				class="relative h-96 w-full overflow-hidden md:h-[28vw]"
+				class="relative h-96 w-full bg-neutral/50 md:h-[28vw] md:rounded-[1.5vw]"
 				use:swipe={{ timeframe: 300, minSwipeDistance: 100, touchAction: "pan-y" }}
 				onswipe={swipe_handler}
 			>
@@ -319,7 +319,7 @@
 										>
 											<a
 												href="mal/{anime.id}/episode/1"
-												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
+												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
 													? dominant_color
@@ -330,13 +330,13 @@
 											</a>
 											<a
 												href="mal/{anime.id}"
-												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[0.75vw] md:text-[1vw]"
+												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
 												<Info class="w-5 md:w-[1.35vw]" />
 												<span>Details</span>
 											</a>
 											<button
-												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[0.75vw]"
+												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
 											>
 												<Edit
 													variant="without_underline_around_pencil"
@@ -397,7 +397,7 @@
 				</button>
 			</div>
 		</div>
-		<div class="flex flex-col p-4 md:h-[24vw] md:gap-[1vw] md:p-0">
+		<div class="flex flex-col p-4 md:h-[28vw] md:gap-[1vw] md:p-0">
 			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
@@ -412,7 +412,7 @@
 						{#if image_loaded && dominant_color}
 							<div
 								in:blur
-								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[0.75vw] md:border-[0.15vw]"
+								class="relative w-full snap-start border-[var(--dominant-color)] bg-cover bg-center duration-300 [background-image:var(--background-image)] md:h-[5vw] md:rounded-[1vw] md:border-[0.15vw]"
 								style="
 									--background-image: url({episode.banner});
 									--dominant-color: {dominant_color};
@@ -421,12 +421,12 @@
 									: chroma(dominant_color).brighten(2)};
 								"
 							>
-								<div class="absolute inset-0 bg-secondary/75 md:rounded-[0.75vw]"></div>
+								<div class="absolute inset-0 bg-secondary/75 md:rounded-[1vw]"></div>
 								<div class="relative flex size-full items-center md:gap-[1vw] md:p-[0.5vw]">
 									<img
 										src={episode.cover}
 										alt=""
-										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.5vw]"
+										class="h-full object-cover object-center md:w-[2.5vw] md:rounded-[0.75vw]"
 									/>
 									<div class="flex flex-1 flex-col md:gap-[0.15vw]">
 										<span class="line-clamp-1 font-bold text-accent md:text-[1.15vw]"
@@ -444,7 +444,7 @@
 									</div>
 									<a
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
-										class="btn h-max min-h-max rounded-full border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:p-[0.75vw]"
+										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
 									</a>
@@ -473,23 +473,18 @@
 					{/each}
 				</div>
 				<div
-					class="flex h-full flex-col items-center bg-accent/90 md:w-[4vw] md:gap-[0.5vw] md:rounded-[0.75vw] md:p-[0.35vw]"
+					class="flex h-full flex-col items-center bg-accent/75 md:w-[4vw] md:gap-[0.75vw] md:rounded-[1vw] md:p-[0.5vw]"
 				>
-					<button
-						class="btn btn-secondary min-h-max p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
-					>
+					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
 						<Preference class="md:size-[1.25vw]" />
 					</button>
-					<button
-						class="btn btn-secondary min-h-max p-0 text-accent md:size-[3vw] md:rounded-[0.65vw]"
-					>
-						<Dice class="md:size-[1.25vw]" />
+					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
+						<Dice class="md:size-[1.5vw]" />
 					</button>
-					<div class="w-1/2 rounded-full bg-secondary md:h-[0.15vw]"></div>
+					<div class="w-2/3 rounded-full bg-secondary md:h-[0.2vw]"></div>
 					<ScrollArea
-						gradient_mask
-						parent_class="snap-y md:rounded-[0.65vw]"
-						class="relative flex flex-1 flex-col overflow-hidden md:w-[3vw] md:gap-[0.5vw]"
+						parent_class="snap-y md:rounded-[0.65vw] !scrollbar-none"
+						class="relative flex flex-1 flex-col overflow-hidden md:w-full md:gap-[0.75vw]"
 					>
 						{#each sidebar_animes as anime, idx}
 							{@const loaded = sidebar_mapping[idx].loaded}
@@ -524,7 +519,7 @@
 								>
 									<img
 										src={anime.cover}
-										class="w-full snap-start md:h-[5vw] md:rounded-[0.65vw]"
+										class="w-full snap-start md:h-[4.5vw] md:rounded-[0.75vw]"
 										alt=""
 									/>
 								</a>
@@ -548,7 +543,7 @@
 									</div>
 								{/if}
 							{:else}
-								<div class="w-full bg-neutral/25 md:h-[5vw] md:rounded-[0.65vw]"></div>
+								<div class="w-full bg-secondary/50 md:h-[5vw] md:rounded-[0.65vw]"></div>
 							{/if}
 							<!-- use Image component for just to get color -->
 							<Image
@@ -560,7 +555,7 @@
 						{/each}
 					</ScrollArea>
 					<button
-						class="btn btn-secondary grid min-h-max place-items-center p-0 text-accent md:h-[1.25vw] md:w-[3vw] md:rounded-[0.5vw]"
+						class="btn btn-secondary grid min-h-max place-items-center p-0 text-accent md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
 						<Chevron class="md:size-[1vw]" />
 					</button>
@@ -572,7 +567,7 @@
 		<div class="flex items-center gap-[0.625vw]">
 			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.my_list.title")}</span>
 			<button
-				class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+				class="btn btn-neutral hidden min-h-full rounded-[0.5vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
 				<Settings class="w-[0.9vw] opacity-75" />
 			</button>
@@ -581,13 +576,13 @@
 			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold"> 7 animes </span>
 			<div class="hidden items-center gap-[1vw] md:flex">
 				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.options.watching")}
 					<Chevron class="w-[1vw]" />
 				</button>
 				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.375vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.cta")}
 					<ArrowUpRight class="w-[1vw]" />
