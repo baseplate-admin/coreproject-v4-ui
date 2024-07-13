@@ -4,7 +4,7 @@ const modals = ["search"] as const;
 type IModals = (typeof modals)[number];
 
 let state_map = $state(new Map<IModals, boolean>(modals.map((item) => [item, false])));
-// test (nvm)
+
 export function createModalStore() {
 	return {
 		get state() {
