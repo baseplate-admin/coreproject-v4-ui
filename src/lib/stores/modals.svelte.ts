@@ -1,3 +1,4 @@
+import { Map } from "svelte/reactivity";
 import { set_all_to_value } from "$functions/map/set_all_to_value";
 
 const modals = ["search"] as const;
