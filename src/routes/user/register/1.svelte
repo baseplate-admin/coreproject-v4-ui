@@ -5,12 +5,10 @@
 	import { zxcvbn, zxcvbnOptions, type OptionsType } from "@zxcvbn-ts/core";
 	import { cn } from "$functions/classnames";
 	import { autofocus } from "$functions/forms/autofocus";
-	import Arrow from "$icons/shapes/arrow.svelte";
-	import Info from "$icons/shapes/info.svelte";
-	import Tick from "$icons/shapes/tick.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
+
+	import { Arrow, Info, Tick, ArrowUpRight } from "$icons/shapes";
+	import { CoreText } from "$icons/text";
 
 	let { on_submit, pages_state }: PageProps = $props();
 

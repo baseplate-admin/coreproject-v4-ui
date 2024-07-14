@@ -1,8 +1,4 @@
 <script lang="ts">
-	import Info from "$icons/shapes/info.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Arrow from "$icons/shapes/arrow.svelte";
-
 	import { z } from "zod";
 	import Markdown from "$components/markdown.svelte";
 	import { handle_input } from "$functions/forms/handle_input";
@@ -10,6 +6,8 @@
 	// import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { autofocus } from "$functions/forms/autofocus";
 	import type { PageProps } from "./types";
+
+	import { Arrow, Info, ArrowUpRight } from "$icons/shapes";
 
 	let { on_gotopage, on_submit, pages_state }: PageProps = $props();
 
