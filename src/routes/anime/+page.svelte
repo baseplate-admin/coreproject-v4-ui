@@ -1,26 +1,26 @@
 <script lang="ts">
-	import {
-		ArrowUpRight,
-		Chevron,
-		Circle,
-		Dice,
-		Edit,
-		Info,
-		Play,
-		Preference,
-		Settings
-	} from "$icons/shapes";
+	import Chevron from "$icons/shapes/chevron.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
+	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 
-	import { Timer as EasyTimer } from "easytimer.js";
 	import { swipe } from "svelte-gestures";
+	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
+
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
-	import Image from "$components/dominant_color/index.svelte";
+	import Circle from "$icons/shapes/circle.svelte";
+	import Play from "$icons/shapes/play.svelte";
+	import Info from "$icons/shapes/info.svelte";
+	import Edit from "$icons/shapes/edit.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
+	import Dice from "$icons/shapes/dice.svelte";
+
 	import ScrollArea from "$components/scroll_area.svelte";
+	import { t } from "$lib/translations";
+	import Image from "$components/dominant_color/index.svelte";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
-	import { t } from "$lib/translations";
 	import {
 		autoUpdate,
 		flip,
@@ -30,8 +30,8 @@
 		useInteractions,
 		useRole
 	} from "@skeletonlabs/floating-ui-svelte";
-	import chroma from "chroma-js";
 	import { portal } from "svelte-portal";
+	import chroma from "chroma-js";
 
 	// Mock data mappings
 	const latest_animes = [
