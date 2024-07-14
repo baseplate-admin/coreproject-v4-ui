@@ -270,7 +270,7 @@
 
 	let html = $state();
 	$effect(() => {
-		html = unsafe ? marked.parse(markdown) ?? "" : sanitize(marked.parse(markdown) ?? "");
+		html = unsafe ? (marked.parse(markdown) ?? "") : sanitize(marked.parse(markdown) ?? "");
 	});
 </script>
 

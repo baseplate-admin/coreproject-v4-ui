@@ -1,7 +1,7 @@
 <script lang="ts">
-	import CoreText from "$icons/text/core.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Arrow from "$icons/shapes/arrow.svelte";
+	import { Arrow, ArrowUpRight } from "$icons/shapes";
+	import { CoreText } from "$icons/text";
+
 	import type { PageProps } from "./types";
 
 	let { on_gotopage, pages_state }: PageProps = $props();
