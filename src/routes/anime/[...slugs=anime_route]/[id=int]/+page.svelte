@@ -1,21 +1,23 @@
 <script lang="ts">
 	// Icons
-	import Dot from "$icons/shapes/dot.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Book from "$icons/shapes/book_open.svelte";
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Headphone from "$icons/shapes/headphone.svelte";
-	import Edit from "$icons/shapes/edit.svelte";
-	import Download from "$icons/shapes/download.svelte";
-	import Share from "$icons/shapes/share.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Search from "$icons/shapes/search.svelte";
-	import Filter from "$icons/shapes/filter.svelte";
-	import Cross from "$icons/shapes/cross.svelte";
-	import Chat from "$icons/shapes/chat.svelte";
-	import TrendingArrow from "$icons/shapes/trending_up.svelte";
-	import Rating from "$icons/shapes/rating.svelte";
-	import Hyperlink from "$icons/shapes/hyperlink.svelte";
+	import {
+		Book,
+		Chat,
+		Chevron,
+		Cross,
+		Dot,
+		Download,
+		Edit,
+		Filter,
+		Headphone,
+		Hyperlink,
+		Play,
+		Rating,
+		Search,
+		Settings,
+		Share,
+		TrendingArrow
+	} from "$icons/shapes";
 
 	// Components
 	import HoverExpand from "$components/hover_expand.svelte";
