@@ -11,7 +11,7 @@
 	const { children } = $props();
 </script>
 
-<div class="bg-secondary">
+<div>
 	{@render children()}
 </div>
 

@@ -138,7 +138,7 @@
 </script>
 
 <Modals />
-<div class="relative h-dvh bg-secondary">
+<div class="relative">
 	<div class="flex h-full w-full flex-col">
 		<header class="z-10 flex-none">
 			<div
@@ -239,8 +239,8 @@
 			</div>
 		</header>
 		<div class="flex h-full w-full flex-auto">
-			<aside class="w-auto flex-none overflow-y-auto overflow-x-hidden">
-				<div class="hidden h-full w-[6.25vw] flex-col justify-between py-[2vw] md:flex">
+			<aside class="fixed flex-none overflow-y-auto overflow-x-hidden w-20">
+				<div class="hidden h-full flex-col justify-between py-[2vw] md:flex">
 					<div>
 						<div class="flex flex-col items-center">
 							<button
@@ -333,7 +333,7 @@
 					</div>
 				</div>
 			</aside>
-			<div id="page" class="flex flex-1 flex-col">
+			<div id="page" class="flex flex-1 flex-col ml-20">
 				<slot />
 			</div>
 		</div>

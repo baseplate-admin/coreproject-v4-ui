@@ -13,26 +13,29 @@
 	import { page } from "$app/stores";
 	import { cn } from "$functions/classnames";
 
-	let activeEps = Number($page.params.id);
+	$: activeEps = Number($page.params.id);
 	function extractIdFromUrl(url: string): string | null {
 		const matches = url.match(/\/anime\/(\d+)\/episodes/);
 		return matches ? matches[1] : null;
 	}
 
-	const animeID = extractIdFromUrl($page.url.pathname);
+	$: animeID = extractIdFromUrl($page.url.pathname);
 </script>
 
-<div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
+<div
+	class="relative mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]"
+>
 	<div class="grid grid-cols-12 md:gap-[5vw]">
 		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
 			<div
-				class="relative h-64 w-full rounded-lg border border-primary/30 bg-black md:z-30 md:h-[35vw]"
+				class="relative h-64 w-full overflow-hidden rounded-lg border border-primary/30 bg-black md:z-30 md:h-[35vw]"
 			>
 				<div
-					class="-translate-y-1/ absolute left-1/2 top-1/2 h-1 w-28 -translate-x-1/2 overflow-hidden rounded-md bg-primary/40"
-				>
-					<div class="h-1 w-full origin-[0%_50%] animate-indeterminate bg-primary"></div>
-				</div>
+					class="h-full w-full select-none bg-[url(https://coreproject.vercel.app/images/DemonSlayer-episode.webp)] bg-cover object-cover opacity-45 blur"
+				></div>
+				<progress
+					class="progress absolute left-1/2 top-1/2 h-1 w-32 -translate-x-1/2 -translate-y-1/2 bg-primary"
+				></progress>
 			</div>
 			<div
 				class="flex flex-col gap-2 px-5 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
@@ -65,19 +68,25 @@
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<a href="/anime/mal/1/episode/1">
+						<button class="transition-opacity hover:opacity-50">
 							<Download class="w-4 md:w-[1.4vw]" />
-						</a>
+						</button>
 						{#if activeEps == 1}
 							<button class="disabled opacity-40" disabled>
 								<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
 							</button>
 						{:else}
-							<a href={`/anime/${animeID}/episodes/${activeEps - 1}`}>
+							<a
+								href={`/anime/${animeID}/episodes/${activeEps - 1}`}
+								class="transition-opacity hover:opacity-50"
+							>
 								<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
 							</a>
 						{/if}
-						<a href={`/anime/${animeID}/episodes/${activeEps + 1}`}>
+						<a
+							href={`/anime/${animeID}/episodes/${activeEps + 1}`}
+							class="transition-opacity hover:opacity-50"
+						>
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
 						</a>
 					</div>
