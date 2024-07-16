@@ -20,25 +20,25 @@ export const config = {
 		{
 			locale: "en",
 			key: "home",
-			routes: [route_table["anime"]],
+			// routes: [route_table["anime"],"/anime/explore"],
 			loader: async () => (await import("./en/home.json")).default
 		},
 		{
 			locale: "bn",
 			key: "home",
-			routes: [route_table["anime"]],
+			// routes: [route_table["anime"],"/anime/explore"],
 			loader: async () => (await import("./bn/home.json")).default
 		},
 		{
 			locale: "es",
 			key: "home",
-			routes: [route_table["anime"]],
+			// routes: [route_table["anime"]],
 			loader: async () => (await import("./es/home.json")).default
 		},
 		{
 			locale: "de",
 			key: "home",
-			routes: [route_table["anime"]],
+			// routes: [route_table["anime"]],
 			loader: async () => (await import("./de/home.json")).default
 		}
 	]

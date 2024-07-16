@@ -19,6 +19,16 @@ export default {
 		extend: {
 			fontFamily: {
 				sans: ["Kokoro", "sans-serif"]
+			},
+			animation: {
+				indeterminate: "indeterminate 1.5s infinite linear"
+			},
+			keyframes: {
+				indeterminate: {
+					"0% ": { transform: " translateX(0) scaleX(0)" },
+					"40%": { transform: " translateX(0) scaleX(0.4)" },
+					"100%": { transform: "translateX(100%) scaleX(0.5)" }
+				}
 			}
 		}
 	},

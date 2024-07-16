@@ -313,7 +313,7 @@
 											gradient_mask
 											offset_scrollbar
 											parent_class="max-h-16 md:max-h-[6vw] hidden md:flex md:mt-[0.75vw]"
-											class="text-surface-200 text-xs font-medium leading-4 md:text-[0.85vw] md:leading-[1.1vw]"
+											class="text-surface-200 text-xs max-w-[66.6%] font-medium leading-4 md:text-[0.85vw] md:leading-[1.1vw]"
 										>
 											{anime.synopsis}
 										</ScrollArea>
@@ -323,7 +323,7 @@
 										>
 											<a
 												href="anime/{anime.id}/episodes/1"
-												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
+												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none p-4 md:p-1 text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
 													? dominant_color
@@ -334,7 +334,7 @@
 											</a>
 											<a
 												href="anime/{anime.id}"
-												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
+												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center p-4 gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
 												<Info class="w-5 md:w-[1.35vw]" />
 												<span>Details</span>
