@@ -10,19 +10,28 @@
 		Filter,
 		Chat
 	} from "$icons/shapes";
+	import { page } from "$app/stores";
+	import { cn } from "$functions/classnames";
+
+	let activeEps = Number($page.params.id);
+	function extractIdFromUrl(url: string): string | null {
+		const matches = url.match(/\/anime\/(\d+)\/episodes/);
+		return matches ? matches[1] : null;
+	}
+
+	const animeID = extractIdFromUrl($page.url.pathname);
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
 	<div class="grid grid-cols-12 md:gap-[5vw]">
 		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
-			<div class="relative h-64 w-full md:z-30 md:h-[35vw]">
-				<div class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]">
-					<img
-						class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]"
-						src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
-						alt="Episode"
-						loading="lazy"
-					/>
+			<div
+				class="relative h-64 w-full rounded-lg border border-primary/30 bg-black md:z-30 md:h-[35vw]"
+			>
+				<div
+					class="-translate-y-1/ absolute left-1/2 top-1/2 h-1 w-28 -translate-x-1/2 overflow-hidden rounded-md bg-primary/40"
+				>
+					<div class="h-1 w-full origin-[0%_50%] animate-indeterminate bg-primary"></div>
 				</div>
 			</div>
 			<div
@@ -59,10 +68,16 @@
 						<a href="/anime/mal/1/episode/1">
 							<Download class="w-4 md:w-[1.4vw]" />
 						</a>
-						<a href="/anime/mal/1/episode/1">
-							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
-						</a>
-						<a href="/anime/mal/1/episode/1">
+						{#if activeEps == 1}
+							<button class="disabled opacity-40" disabled>
+								<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+							</button>
+						{:else}
+							<a href={`/anime/${animeID}/episodes/${activeEps - 1}`}>
+								<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+							</a>
+						{/if}
+						<a href={`/anime/${animeID}/episodes/${activeEps + 1}`}>
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
 						</a>
 					</div>
@@ -83,8 +98,11 @@
 				{#each { length: 60 } as _, index}
 					{@const idx_number = index + 1}
 					<a
-						href="../{idx_number}"
-						class="btn btn-neutral min-h-full rounded text-sm font-semibold leading-none text-accent md:h-[2.5vw] md:rounded-[0.35vw] md:text-[1.2vw]"
+						href="../episodes/{idx_number}"
+						class={cn(
+							"btn btn-neutral min-h-full rounded text-sm font-semibold leading-none text-accent md:h-[2.5vw] md:rounded-[0.35vw] md:text-[1.2vw]",
+							activeEps == idx_number && "bg-primary hover:bg-primary/50"
+						)}
 					>
 						{idx_number}
 					</a>
