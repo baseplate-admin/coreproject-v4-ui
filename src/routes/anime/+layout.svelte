@@ -142,7 +142,7 @@
 	<div class="flex h-full w-full flex-col">
 		<header class="z-10 flex-none">
 			<div
-				class="absolute top-0 flex h-[4.5rem] w-full items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[10vh] md:bg-secondary md:py-[0.9375vw] md:pl-[2.1vw] md:pr-[3.75vw]"
+				class="flex py-1 w-full items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:bg-secondary md:pl-[2.1vw] md:pr-[3.75vw]"
 			>
 				<a href="/">
 					<CoreProjectLogo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]" />
@@ -257,7 +257,7 @@
 							glider_container_class="mt-[2.8125vw] flex flex-col items-center gap-[0.75vw]"
 							active_element_class="rounded-[1vw] bg-white/10"
 							direction="vertical"
-							GLIDER_TRANSITION_DURATION={200}
+							GLIDER_TRANSITION_DURATION={100}
 						>
 							{#snippet children(handle_mouse_enter, handle_mouse_leave)}
 								{#each Object.entries(icon_mapping.middle) as item}
