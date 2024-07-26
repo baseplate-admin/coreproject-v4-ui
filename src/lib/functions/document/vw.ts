@@ -1,3 +1,1 @@
-export function vw(vw: number) {
-	return (vw * globalThis.window?.innerWidth) / 100;
-}
+export const vw = (vw: number) => (vw * globalThis.window?.innerWidth) / 100;
