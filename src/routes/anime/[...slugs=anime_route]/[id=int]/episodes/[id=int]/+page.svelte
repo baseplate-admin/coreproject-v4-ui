@@ -1,15 +1,16 @@
 <script lang="ts">
-	import {
-		Chevron,
-		Download,
-		DoubleArrow,
-		Share,
-		Play,
-		Settings,
-		Cross,
-		Filter,
-		Chat
-	} from "$icons/shapes";
+	import Chat from "$icons/shapes/chat.svelte";
+	import Chevron from "$icons/shapes/chevron.svelte";
+	import Cross from "$icons/shapes/cross.svelte";
+	import DoubleArrow from "$icons/shapes/double_arrow.svelte";
+	import Download from "$icons/shapes/download.svelte";
+	import Filter from "$icons/shapes/filter.svelte";
+	import Play from "$icons/shapes/play.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
+	import Share from "$icons/shapes/share.svelte";
+
+	// import CommentBox from "$components/specific/CommentBox/Index.svelte";
+	// import Comment from "$components/minor/Comment/Index.svelte";
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">

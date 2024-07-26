@@ -1,8 +1,10 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import { DISCORD_LINK, REDDIT_LINK, GITHUB_LINK } from "$constants/social";
-	import { Reddit, Discord, Github } from "$icons/logos";
-	import { Info } from "$icons/shapes";
+	import Discord from "$icons/logos/discord.svelte";
+	import Github from "$icons/logos/github.svelte";
+	import Reddit from "$icons/logos/reddit.svelte";
+	import Info from "$icons/shapes/info.svelte";
 </script>
 
 <main
