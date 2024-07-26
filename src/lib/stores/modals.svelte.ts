@@ -4,7 +4,7 @@ import { set_all_to_value } from "$functions/map/set_all_to_value";
 const modals = ["search"] as const;
 type IModals = (typeof modals)[number];
 
-var state_map = $state(new SvelteMap<IModals, boolean>(modals.map((item) => [item, false])));
+let state_map = $state(new SvelteMap<IModals, boolean>(modals.map((item) => [item, false])));
 
 export function createModalStore() {
 	return {

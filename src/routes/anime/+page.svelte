@@ -1,26 +1,26 @@
 <script lang="ts">
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import {
+		ArrowUpRight,
+		Chevron,
+		Circle,
+		Dice,
+		Edit,
+		Info,
+		Play,
+		Preference,
+		Settings
+	} from "$icons/shapes";
 
-	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
+	import { swipe } from "svelte-gestures";
 	import { tweened, type Tweened } from "svelte/motion";
-
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
-	import Circle from "$icons/shapes/circle.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Info from "$icons/shapes/info.svelte";
-	import Edit from "$icons/shapes/edit.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import Dice from "$icons/shapes/dice.svelte";
-
-	import ScrollArea from "$components/scroll_area.svelte";
-	import { t } from "$lib/translations";
 	import Image from "$components/dominant_color/index.svelte";
+	import ScrollArea from "$components/scroll_area.svelte";
 	import { IS_CHROMIUM, IS_FIREFOX } from "$constants/browser";
 	import { TIMER_DELAY } from "$constants/timer";
+	import { t } from "$lib/translations";
 	import {
 		autoUpdate,
 		flip,
@@ -30,13 +30,13 @@
 		useInteractions,
 		useRole
 	} from "@skeletonlabs/floating-ui-svelte";
-	import { portal } from "svelte-portal";
 	import chroma from "chroma-js";
+	import { portal } from "svelte-portal";
 
 	// Mock data mappings
 	const latest_animes = [
 			{
-				id: 1,
+				id: 91139073,
 				name: "Jujutsu Kaisen",
 				type: "TV",
 				episodes: 24,
@@ -44,11 +44,12 @@
 				release_date: "Autumn 2014",
 				studio: "mappa",
 				genres: ["sci-fi", "action", "echhi"],
-				synopsis: `Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.`,
+				synopsis:
+					'Idly indulging in baseless paranormal activities with the Occult Club, high schooler Yuuji Itadori spends his days at either the clubroom or the hospital, where he visits his bedridden grandfather. However, this leisurely lifestyle soon takes a turn for the strange when he unknowingly encounters a cursed item. Triggering a chain of supernatural occurrences, Yuuji finds himself suddenly thrust into the world of Curses—dreadful beings formed from human malice and negativity—after swallowing the said item, revealed to be a finger belonging to the demon Sukuna Ryoumen, the "King of Curses.',
 				image: "/images/mock/cover/jjk.webp"
 			},
 			{
-				id: 2,
+				id: 401982288,
 				name: "One Piece",
 				type: "TV",
 				episodes: 12,
@@ -56,11 +57,12 @@
 				release_date: "Spring 2014",
 				studio: "tokito",
 				genres: ["hentai", "action", "romance", "smooth"],
-				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				synopsis:
+					"Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. ",
 				image: "/images/mock/cover/one_piece.webp"
 			},
 			{
-				id: 3,
+				id: 485491639,
 				name: "Demon Slayer",
 				type: "TV",
 				episodes: 12,
@@ -68,11 +70,12 @@
 				release_date: "Winter 2014",
 				studio: "sheldon",
 				genres: ["hentai", "action", "romance", "smooth"],
-				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				synopsis:
+					"Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. ",
 				image: "/images/mock/cover/demon_slayer_training.webp"
 			},
 			{
-				id: 4,
+				id: 356704981,
 				name: "Kaiju no.8",
 				type: "TV",
 				episodes: 8,
@@ -80,7 +83,8 @@
 				release_date: "Summer 2024",
 				studio: "sheldon",
 				genres: ["action", "romance", "fantasy"],
-				synopsis: `Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. `,
+				synopsis:
+					"Since the premiere of the anime adaptation of Eiichiro Oda's One Piece manga in 1999, Toei Animation has produced 15 feature films based on the franchise traditionally released during the Japanese school spring break since 2000.[1] Four of the films were originally shown as double features alongside other Toei film productions and thus have a running time below feature length (between 30 and 56 minutes). The first three films were shown at the Toei Anime Fair (東映アニメフェア, Toei Anime Fea) and the eleventh was released as part of Jump Heroes Film. The films generally use original storylines, but some adapt story arcs from the manga directly. With the release of films ten, twelve, thirteen, and fourteen, tie-in story arcs of the TV series were aired concurrently. ",
 				image: "/images/mock/cover/kaiju_no_8.jpg"
 			}
 		],
@@ -318,7 +322,7 @@
 											class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]"
 										>
 											<a
-												href="mal/{anime.id}/episode/1"
+												href="anime/{anime.id}/episodes/1"
 												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
@@ -329,7 +333,7 @@
 												<span>Ep 1</span>
 											</a>
 											<a
-												href="mal/{anime.id}"
+												href="anime/{anime.id}"
 												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
 												<Info class="w-5 md:w-[1.35vw]" />
@@ -385,14 +389,13 @@
 					<div class="flex w-full items-center md:gap-[1vw]">
 						{#each latest_animes_mapping as item, idx}
 							{#if item.loaded}
-								<div
-									role="button"
+								<button
 									tabindex="0"
-									class="w-full cursor-pointer overflow-hidden border-[var(--item-color)] duration-300 ease-out md:h-[0.75vw] md:rounded-[0.25vw] md:border-[0.2vw]"
+									class=" w-full cursor-pointer overflow-hidden border-[var(--item-color)] duration-300 ease-out md:h-[0.75vw] md:rounded-[0.25vw] md:border-[0.2vw]"
 									class:bg-[var(--item-color)]={main_hero_slide_active_index === idx}
 									style="--item-color: {item.dominant_color};"
 									onclick={() => change_main_hero_slide_active_index(idx)}
-								></div>
+								></button>
 							{:else}
 								<div class="w-full bg-neutral md:h-[0.7vw] md:rounded-[0.25vw]"></div>
 							{/if}
@@ -453,7 +456,7 @@
 										</div>
 									</div>
 									<a
-										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
+										href="/anime/{episode.id}/episodes/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
@@ -524,7 +527,7 @@
 								<a
 									bind:this={floating.elements.reference}
 									{...intersections.getReferenceProps()}
-									href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
+									href="/anime/{anime.id}/episodes/{anime.ep_number}"
 									in:blur
 								>
 									<img
