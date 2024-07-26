@@ -26,6 +26,15 @@
 	const modal_store = createModalStore(),
 		auth_store = createAuthStore();
 
+	const is_url_active = (item_href: string | undefined) => {
+		const regex = new RegExp(`${item_href}\/?$`);
+		if (regex.test($page.url.pathname)) {
+			return true;
+		} else {
+			return false;
+		}
+	};
+
 	// Local
 	const icon_mapping: {
 		// Top,middle,bottom
@@ -260,17 +269,10 @@
 							{#snippet children(handle_mouse_enter, handle_mouse_leave)}
 								{#each Object.entries(icon_mapping.middle) as item}
 									{@const item_name = item[0]}
-									{@const item_icon = item[1].icon}
-									{@const item_href = item[1].url}
+									{@const item_icon = item[1]?.icon}
+									{@const item_href = item[1]?.url}
 
-									{@const is_active = ((item_href) => {
-										const regex = new RegExp(`${item_href}\/?$`);
-										if (regex.test($page.url.pathname)) {
-											return true;
-										} else {
-											return false;
-										}
-									})(item_href)}
+									{@const is_active = is_url_active(item_href)}
 
 									<a
 										onmouseenter={handle_mouse_enter}

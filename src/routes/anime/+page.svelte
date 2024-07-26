@@ -160,7 +160,7 @@
 
 	const add_one_to_main_hero_slide_active_index = () => {
 			handle_timer_reset();
-			if (main_hero_slide_active_index + 1 === latest_animes.length) {
+			if (main_hero_slide_active_index + 1 === latest_animes?.length) {
 				main_hero_slide_active_index = 0;
 				return;
 			}
@@ -169,7 +169,7 @@
 		minus_one_to_main_hero_slide_active_index = () => {
 			handle_timer_reset();
 			if (main_hero_slide_active_index === 0) {
-				main_hero_slide_active_index = latest_animes.length - 1;
+				main_hero_slide_active_index = latest_animes?.length - 1;
 				return;
 			}
 			main_hero_slide_active_index -= 1;
