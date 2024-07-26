@@ -8,7 +8,6 @@
 	import Arrow from "$icons/shapes/arrow.svelte";
 	import Info from "$icons/shapes/info.svelte";
 	import Tick from "$icons/shapes/tick.svelte";
-	import Eye from "$icons/shapes/eye.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
@@ -16,8 +15,6 @@
 	let { on_submit, pages_state }: PageProps = $props();
 
 	let confirm_password_element = $state<HTMLInputElement>();
-
-	let password_input_type = $state<"password" | "text">("password");
 
 	const register_languages = async () => {
 		const zxcvbnCommonPackage = await import("@zxcvbn-ts/language-common");
@@ -256,31 +253,12 @@
 			<label for="password" class="text-lg font-semibold leading-none md:text-[1.1vw]">
 				Password:
 			</label>
-			<div class="relative flex items-center">
-				<input
-					bind:value={password.value}
-					type={password_input_type}
-					oninput={handle_password_input}
-					placeholder="Password"
-					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
-				/>
-				<button
-					class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
-					onclick={() => {
-						if (password_input_type === "password") {
-							password_input_type = "text";
-						} else {
-							password_input_type = "password";
-						}
-					}}
-				>
-					{#if password_input_type === "password"}
-						<Eye variant="open" class="md:size-[1.75vw]" />
-					{:else}
-						<Eye variant="close" class="md:size-[1.5vw]" />
-					{/if}
-				</button>
-			</div>
+			<input
+				bind:value={password.value}
+				oninput={handle_password_input}
+				placeholder="Password"
+				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
+			/>
 			<div class="flex flex-col">
 				<div class="grid grid-cols-4 gap-[1.5vw] md:gap-[0.75vw]">
 					{#each Array(password_strength) as _, index}
@@ -339,7 +317,6 @@
 			<input
 				bind:value={confirm_password.value}
 				bind:this={confirm_password_element}
-				type={password_input_type}
 				oninput={handle_confirm_password}
 				placeholder="Confirm Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
