@@ -1,19 +1,18 @@
 <script lang="ts">
-	import {
-		Search,
-		Home,
-		Explore,
-		List,
-		Schedule,
-		Forum,
-		Settings,
-		Misc,
-		User,
-		Preference,
-		Login,
-		Register,
-		CoreProjectLogo
-	} from "$icons/shapes";
+	import Search from "$icons/shapes/search.svelte";
+	import Home from "$icons/shapes/home.svelte";
+	import Explore from "$icons/shapes/explore.svelte";
+	import Misc from "$icons/shapes/misc.svelte";
+	import List from "$icons/shapes/list.svelte";
+	import Schedule from "$icons/shapes/schedule.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
+	import Forum from "$icons/shapes/forum.svelte";
+	import AnimeCoreIcon from "$icons/logos/anime_core.svelte";
+	import Register from "$icons/shapes/register.svelte";
+	import Login from "$icons/shapes/login.svelte";
+	import User from "$icons/shapes/user.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
+	import CoreProjectLogo from "$icons/shapes/logo.svelte";
 
 	import VercelHover from "$components/vercel_hover.svelte";
 	import { createAuthStore } from "$stores/auth.svelte";
@@ -23,10 +22,18 @@
 	import { t } from "$lib/translations";
 	import Modals from "$modals/index.svelte";
 	import { createModalStore } from "$stores/modals.svelte";
-	import { AnimeCoreIcon } from "$icons/logos";
 
 	const modal_store = createModalStore(),
 		auth_store = createAuthStore();
+
+	const is_url_active = (item_href: string | undefined) => {
+		const regex = new RegExp(`${item_href}\/?$`);
+		if (regex.test($page.url.pathname)) {
+			return true;
+		} else {
+			return false;
+		}
+	};
 
 	// Local
 	const icon_mapping: {
@@ -262,17 +269,10 @@
 							{#snippet children(handle_mouse_enter, handle_mouse_leave)}
 								{#each Object.entries(icon_mapping.middle) as item}
 									{@const item_name = item[0]}
-									{@const item_icon = item[1].icon}
-									{@const item_href = item[1].url}
+									{@const item_icon = item[1]?.icon}
+									{@const item_href = item[1]?.url}
 
-									{@const is_active = ((item_href) => {
-										const regex = new RegExp(`${item_href}\/?$`);
-										if (regex.test($page.url.pathname)) {
-											return true;
-										} else {
-											return false;
-										}
-									})(item_href)}
+									{@const is_active = is_url_active(item_href)}
 
 									<a
 										onmouseenter={handle_mouse_enter}

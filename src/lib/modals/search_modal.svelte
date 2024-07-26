@@ -1,6 +1,12 @@
 <script lang="ts">
-	import { Search, Cross, Circle, Chevron } from "$icons/shapes";
 	import { createModalStore } from "$stores/modals.svelte";
+
+	// Icon imports
+
+	import Search from "$icons/shapes/search.svelte";
+	import Cross from "$icons/shapes/cross.svelte";
+	import Circle from "$icons/shapes/circle.svelte";
+	import Chevron from "$icons/shapes/chevron.svelte";
 
 	const modal_store = createModalStore();
 
