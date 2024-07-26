@@ -123,7 +123,7 @@
 						type={password_input_type}
 						oninput={(event) => handle_password_input(event)}
 						placeholder="enter your existing password"
-						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
+						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:py-[0.8vw] md:pl-[1.1vw] md:pr-[3.5vw] md:text-[1.1vw]"
 					/>
 					<button
 						class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
