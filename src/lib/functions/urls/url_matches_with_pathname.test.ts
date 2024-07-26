@@ -1,7 +1,7 @@
 import { url_matches_with_pathname } from "$functions/urls/url_matches_with_pathname";
 import { test, expect } from "vitest";
 
-test("remove trailing slash", () => {
+test("url matches pathname", () => {
 	expect(url_matches_with_pathname({ url: "/anime", pathname: "/hello/anime" })).toBe(true);
 	expect(
 		url_matches_with_pathname({
