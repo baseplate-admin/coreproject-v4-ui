@@ -22,18 +22,10 @@
 	import { t } from "$lib/translations";
 	import Modals from "$modals/index.svelte";
 	import { createModalStore } from "$stores/modals.svelte";
+	import { url_matches_with_pathname } from "$functions/urls/url_matches_with_pathname";
 
 	const modal_store = createModalStore(),
 		auth_store = createAuthStore();
-
-	const is_url_active = (item_href: string | undefined) => {
-		const regex = new RegExp(`${item_href}\/?$`);
-		if (regex.test($page.url.pathname)) {
-			return true;
-		} else {
-			return false;
-		}
-	};
 
 	// Local
 	const icon_mapping: {
@@ -272,7 +264,10 @@
 									{@const item_icon = item[1]?.icon}
 									{@const item_href = item[1]?.url}
 
-									{@const is_active = is_url_active(item_href)}
+									{@const is_active = url_matches_with_pathname({
+										url: item_href,
+										pathname: $page.url.pathname
+									})}
 
 									<a
 										onmouseenter={handle_mouse_enter}
