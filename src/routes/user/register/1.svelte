@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { blur } from "svelte/transition";
 	import Markdown from "$components/markdown.svelte";
 	import { z } from "zod";
 	import { handle_input } from "$functions/forms/handle_input";
@@ -264,22 +265,25 @@
 					placeholder="Password"
 					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 				/>
-				<button
-					class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
-					onclick={() => {
-						if (password_input_type === "password") {
-							password_input_type = "text";
-						} else {
-							password_input_type = "password";
-						}
-					}}
-				>
-					{#if password_input_type === "password"}
-						<Eye variant="open" class="md:size-[1.75vw]" />
-					{:else}
-						<Eye variant="close" class="md:size-[1.5vw]" />
-					{/if}
-				</button>
+				{#if password.value}
+					<button
+						transition:blur={{ duration: 200 }}
+						class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
+						onclick={() => {
+							if (password_input_type === "password") {
+								password_input_type = "text";
+							} else {
+								password_input_type = "password";
+							}
+						}}
+					>
+						{#if password_input_type === "password"}
+							<Eye variant="open" class="md:size-[1.75vw]" />
+						{:else}
+							<Eye variant="close" class="md:size-[1.5vw]" />
+						{/if}
+					</button>
+				{/if}
 			</div>
 			<div class="flex flex-col">
 				<div class="grid grid-cols-4 gap-[1.5vw] md:gap-[0.75vw]">
