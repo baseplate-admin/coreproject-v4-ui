@@ -3,7 +3,7 @@
 
 	const API_URL = new URL($page.url.hostname + "/api/colorthief");
 
-	let { url }: { url: string } = $props();
+	let { url, dominant_color = $bindable() }: { url: string; dominant_color: number[] } = $props();
 
 	API_URL.searchParams.append("url", url);
 
@@ -12,6 +12,8 @@
 		if (res.status != 200) throw new Error("Image is not loadable from server");
 
 		const data = (await res.json()) as { colors: number[]; image: Uint8Array };
+		dominant_color = data.colors;
+
 		const arrayBufferView = new Uint8Array(data.image);
 		const blob = new Blob([arrayBufferView], { type: "image/jpeg" });
 		const image = URL.createObjectURL(blob);
