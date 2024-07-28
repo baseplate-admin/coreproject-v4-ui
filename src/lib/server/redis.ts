@@ -1,15 +1,12 @@
-import { createClient } from 'redis'
-import { env } from '$env/dynamic/private';
+import { createClient } from "redis";
+import { env } from "$env/dynamic/private";
 
 export const redis_client = createClient({
-    url: env.REDIS_URL,
-    socket: {
-        tls: true,
-    },
-})
+	url: env.REDIS_URL
+});
 
 redis_client.on("error", function (err) {
-    return new Response(JSON.stringify({ err }))
-})
+	throw new Error(err);
+});
 
-await redis_client.connect()
+await redis_client.connect();
