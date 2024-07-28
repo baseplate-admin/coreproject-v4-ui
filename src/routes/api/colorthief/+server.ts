@@ -10,7 +10,7 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		"Content-Type": "application/json"
 	});
 
-	
+
 	if (redis_client) {
 		const value = await redis_client.get(url.pathname);
 
@@ -37,7 +37,6 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		if (redis_client) {
 			await redis_client.set(url.pathname, JSON.stringify(data));
 		}
-
 		return new Response(JSON.stringify(data));
 	} catch (e) {
 		error(400, String(e));
