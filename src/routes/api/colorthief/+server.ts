@@ -2,6 +2,7 @@ import { error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { get_color_thief } from "color-thief-wasm";
 import undici from "undici";
+import sharp from "sharp";
 
 export const GET: RequestHandler = async ({ url, setHeaders }) => {
 	try {
@@ -14,10 +15,12 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		const image_buffer = new Uint8Array(await body.arrayBuffer());
 		const colors = get_color_thief(image_buffer, 64 * 64, 10, 5) as Array<number>;
 
+		const avif_image_buffer = await sharp(image_buffer).avif({ effort: 9 }).toBuffer();
+
 		setHeaders({
 			"Content-Type": "application/json"
 		});
-		return new Response(JSON.stringify({ colors: colors, image: image_buffer }));
+		return new Response(JSON.stringify({ colors: colors, image: avif_image_buffer }));
 	} catch (e) {
 		error(400, String(e));
 	}

@@ -15,7 +15,7 @@
 		dominant_color = data.colors;
 
 		const arrayBufferView = new Uint8Array(data.image);
-		const blob = new Blob([arrayBufferView], { type: "image/jpeg" });
+		const blob = new Blob([arrayBufferView], { type: "image/avif" });
 		const image = URL.createObjectURL(blob);
 		return image;
 	};

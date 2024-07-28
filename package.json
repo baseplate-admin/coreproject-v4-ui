@@ -7,7 +7,7 @@
 		"./scripts"
 	],
 	"scripts": {
-		"prepare": "svelte-kit sync",
+
 		"build": "vite build",
 		"build:node": "cross-env BUILD_NODE_ENV=node vite build",
 		"build:static": "cross-env BUILD_STATIC_ENV=static vite build",
@@ -34,6 +34,7 @@
 		"@tailwindcss/typography": "^0.5.13",
 		"@types/chroma-js": "^2.4.4",
 		"@types/eslint": "^9.6.0",
+		"@types/node": "^20.14.12",
 		"@typescript-eslint/eslint-plugin": "^7.17.0",
 		"@typescript-eslint/parser": "^7.17.0",
 		"@vitejs/plugin-vue": "^5.1.0",
@@ -87,6 +88,7 @@
 		"svelte-check": "^3.8.4",
 		"svelte-gestures": "^5.0.4",
 		"svelte-intersection-observer": "^1.0.0",
+		"svelte-portal": "^2.2.1",
 		"sveltekit-i18n": "^2.4.2",
 		"tailwind-merge": "^2.4.0",
 		"tailwind-scrollbar": "^3.1.0",
@@ -106,11 +108,10 @@
 		"@rollup/rollup-win32-arm64-msvc": "4.19.0"
 	},
 	"dependencies": {
-		"@types/node": "^20.14.12",
 		"@vercel/analytics": "^1.3.1",
 		"@vercel/speed-insights": "^1.0.12",
 		"color-thief-wasm": "^1.0.11",
-		"svelte-portal": "^2.2.1",
+		"sharp": "^0.33.4",
 		"undici": "^6.19.4"
 	}
 }
