@@ -25,9 +25,9 @@ export const GET: RequestHandler = async ({ url, setHeaders }) => {
 		const image_buffer = new Uint8Array(await body.arrayBuffer());
 		const colors = get_color_thief(image_buffer, 64 * 64, 10, 5) as Array<number>;
 
-		const avif_image_buffer = await sharp(image_buffer).avif({ effort: 9 }).toBuffer();
+		//const avif_image_buffer = await sharp(image_buffer).avif({ effort: 9 }).toBuffer();
 
-		const data = { colors: colors, image: avif_image_buffer};
+		const data = { colors: colors, image: image_buffer};
 
 		if(redis_client){
 			await redis_client.set(url.pathname,JSON.stringify(data));
