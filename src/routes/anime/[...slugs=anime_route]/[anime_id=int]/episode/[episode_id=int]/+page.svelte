@@ -114,7 +114,7 @@
 			<div class="flex items-center justify-between">
 				<div>
 					<a
-						href="/anime/mal/{$page.params.mal_id}"
+						href="/anime/mal/{$page.params.anime_id}"
 						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.25vw] md:text-[1.1vw]"
 					>
 						<span class="font-semibold uppercase">Demon Slayer S1</span>
