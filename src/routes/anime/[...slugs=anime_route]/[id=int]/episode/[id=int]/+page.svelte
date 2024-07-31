@@ -9,18 +9,17 @@
 	import Settings from "$icons/shapes/settings.svelte";
 	import Share from "$icons/shapes/share.svelte";
 
-	// import CommentBox from "$components/specific/CommentBox/Index.svelte";
-	// import Comment from "$components/minor/Comment/Index.svelte";
+	import { page } from "$app/stores";
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
 	<div class="grid grid-cols-12 md:gap-[5vw]">
-		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
+		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]">
 			<div class="relative h-64 w-full md:z-30 md:h-[35vw]">
 				<div class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]">
 					<img
 						class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]"
-						src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
+						src="/images/mock/banner/one_piece.avif"
 						alt="Episode"
 						loading="lazy"
 					/>
@@ -33,14 +32,14 @@
 					<div class="hidden items-center gap-[0.75vw] md:flex">
 						<span class="text-[1vw] font-semibold uppercase">sub/dub:</span>
 						<button
-							class="btn flex min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent px-[0.75vw] py-[0.5vw] text-[1vw] leading-none"
+							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none"
 						>
 							Vidstreaming (sub)
 							<Chevron class="w-[1vw]" />
 						</button>
 					</div>
 					<button
-						class="btn hidden min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
+						class="btn hidden h-max min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
 					>
 						<span>Lights:</span>
 						<div class="text-primary-300 font-semibold">Off</div>
@@ -57,13 +56,13 @@
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<a href="/anime/mal/1/episode/1">
+						<a href="javasript:void(0)">
 							<Download class="w-4 md:w-[1.4vw]" />
 						</a>
-						<a href="/anime/mal/1/episode/1">
+						<a href="/anime/mal/1/episode/{Number($page.params.id) - 1}">
 							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
 						</a>
-						<a href="/anime/mal/1/episode/1">
+						<a href="/anime/mal/1/episode/{Number($page.params.id) + 1}">
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
 						</a>
 					</div>
