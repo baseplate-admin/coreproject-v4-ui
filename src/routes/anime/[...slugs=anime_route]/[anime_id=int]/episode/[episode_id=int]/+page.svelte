@@ -79,8 +79,8 @@
 					<Chevron class="w-3 md:w-[1vw]" />
 				</button>
 			</header>
-			<div class="grid flex-1 grid-cols-7 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
-				{#each { length: 50 } as _, index}
+			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
+				{#each { length: 34 } as _, index}
 					{@const idx_number = index + 1}
 					{@const is_active = Number($page.params.episode_id) === idx_number}
 					<a
@@ -106,11 +106,38 @@
 				>
 					<DoubleArrow class="w-4 md:w-[1.4vw]" />
 				</a>
+				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
+					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
+					<a href="/anime/mal/1/episode/1/2" class="flex md:gap-[1.5vw]">
+						<div class="relative">
+							<img
+								class="md:w-[12vw] md:rounded-[1vw]"
+								src="/images/mock/banner/jjk.jpg"
+								alt=""
+								loading="lazy"
+							/>
+							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
+								<div class="rounded-full bg-warning md:p-[1vw]">
+									<Play class="text-accent md:w-[1.25vw]" />
+								</div>
+							</overlay>
+						</div>
+						<div
+							class="flex h-max flex-col justify-between self-center leading-none md:gap-[0.5vw]"
+						>
+							<span class="font-semibold text-warning md:text-[1.1vw]">Finally they met</span>
+							<span class="md:text-[1vw]"
+								>Episode - <strong>{Number($page.params.episode_id) + 1}</strong></span
+							>
+							<span class="text-surface-50 md:text-[1vw]">23 min</span>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="grid grid-cols-12 gap-5 p-5 md:gap-[5vw] md:p-0">
-		<div class="col-span-12 flex flex-col gap-2 md:col-span-8 md:gap-[1vw]">
+	<div class="flex gap-5 p-5 md:gap-[5vw] md:p-0">
+		<div class="flex flex-col gap-2 md:gap-[1vw]">
 			<div class="flex items-center justify-between">
 				<div>
 					<a
@@ -159,40 +186,6 @@
 					</div>
 				</div>
 			</div>
-			<a
-				href="/mal/1"
-				class="btn btn-neutral min-h-max rounded-md text-sm font-semibold leading-none md:h-[3vw] md:w-[10vw] md:rounded-[0.5vw] md:text-[1vw]"
-			>
-				<span>View detail</span>
-				<Chevron class="w-3 -rotate-90 md:w-[1vw]" />
-			</a>
-		</div>
-		<div class="col-span-4 hidden flex-col md:flex">
-			<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
-			<a href="/anime/mal/1/episode/1/2" class="flex md:mt-[0.75vw] md:gap-[1vw]">
-				<div class="relative">
-					<div class="h-full md:w-[12vw] md:rounded-[0.25vw]">
-						<img
-							class="md:w-[12vw] md:rounded-[0.25vw]"
-							src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
-							alt=""
-							loading="lazy"
-						/>
-					</div>
-					<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
-						<play class="rounded-full bg-secondary/75 md:p-[1vw]">
-							<Play class="text-white md:w-[1.25vw]" />
-						</play>
-					</overlay>
-				</div>
-				<div class="flex flex-col justify-between leading-none md:py-[1vw]">
-					<div class="flex flex-col md:gap-[0.5vw]">
-						<span class="font-semibold text-warning md:text-[1.1vw]">Finally they met</span>
-						<span class="md:text-[1vw]">Episode - 2</span>
-					</div>
-					<span class="text-surface-50 md:text-[1vw]">23 min</span>
-				</div>
-			</a>
 		</div>
 	</div>
 	<div class="grid grid-cols-12 p-5 md:gap-[5vw] md:p-0">
