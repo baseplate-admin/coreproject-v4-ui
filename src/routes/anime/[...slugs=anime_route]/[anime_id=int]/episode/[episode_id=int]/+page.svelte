@@ -9,18 +9,21 @@
 	import Settings from "$icons/shapes/settings.svelte";
 	import Share from "$icons/shapes/share.svelte";
 
-	// import CommentBox from "$components/specific/CommentBox/Index.svelte";
-	// import Comment from "$components/minor/Comment/Index.svelte";
+	import { page } from "$app/stores";
+
+	const handle_download_episode = () => {},
+		handle_next_episode = () => {},
+		handle_prev_episode = () => {};
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
 	<div class="grid grid-cols-12 md:gap-[5vw]">
-		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
+		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]">
 			<div class="relative h-64 w-full md:z-30 md:h-[35vw]">
-				<div class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]">
+				<div class="h-full w-full rounded-none object-cover md:rounded-[1vw]">
 					<img
-						class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]"
-						src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
+						class="h-full w-full rounded-none object-cover md:rounded-[1vw]"
+						src="/images/mock/banner/one_piece.avif"
 						alt="Episode"
 						loading="lazy"
 					/>
@@ -33,14 +36,14 @@
 					<div class="hidden items-center gap-[0.75vw] md:flex">
 						<span class="text-[1vw] font-semibold uppercase">sub/dub:</span>
 						<button
-							class="btn flex min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent px-[0.75vw] py-[0.5vw] text-[1vw] leading-none"
+							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none"
 						>
 							Vidstreaming (sub)
 							<Chevron class="w-[1vw]" />
 						</button>
 					</div>
 					<button
-						class="btn hidden min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
+						class="btn hidden h-max min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
 					>
 						<span>Lights:</span>
 						<div class="text-primary-300 font-semibold">Off</div>
@@ -57,15 +60,24 @@
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<a href="/anime/mal/1/episode/1">
+						<button
+							class="btn h-max min-h-max border-none !bg-transparent p-0"
+							onclick={handle_download_episode}
+						>
 							<Download class="w-4 md:w-[1.4vw]" />
-						</a>
-						<a href="/anime/mal/1/episode/1">
+						</button>
+						<button
+							class="btn h-max min-h-max border-none !bg-transparent p-0"
+							onclick={handle_prev_episode}
+						>
 							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
-						</a>
-						<a href="/anime/mal/1/episode/1">
+						</button>
+						<button
+							class="btn h-max min-h-max border-none !bg-transparent p-0"
+							onclick={handle_next_episode}
+						>
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
-						</a>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -74,65 +86,100 @@
 			<header class="flex items-center justify-between">
 				<span class="text-lg font-semibold md:text-[1.35vw]">Episodes</span>
 				<button
-					class="bg-surface-400 btn flex min-h-full items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
+					class="bg-surface-400 btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
-					EPS: 1 - 60
+					Eps: 1 - 50
 					<Chevron class="w-3 md:w-[1vw]" />
 				</button>
 			</header>
-			<div class="grid grid-cols-7 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
-				{#each { length: 60 } as _, index}
+			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
+				{#each { length: 34 } as _, index}
 					{@const idx_number = index + 1}
+					{@const is_active = Number($page.params.episode_id) === idx_number}
 					<a
-						href="../{idx_number}"
-						class="btn btn-neutral min-h-full rounded text-sm font-semibold leading-none text-accent md:h-[2.5vw] md:rounded-[0.35vw] md:text-[1.2vw]"
+						title="Episode name"
+						href="./{idx_number}"
+						class="btn btn-neutral h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+						class:!bg-primary={is_active}
 					>
 						{idx_number}
 					</a>
 				{/each}
+				<button
+					onclick={handle_next_episode}
+					title="Episode name"
+					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+				>
+					<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+				</button>
+				<button
+					onclick={handle_prev_episode}
+					title="Episode name"
+					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+				>
+					<DoubleArrow class="w-4 md:w-[1.4vw]" />
+				</button>
+				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
+					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
+					<a
+						href="/anime/mal/1/episode/{Number($page.params.episode_id) + 1}"
+						class="flex md:gap-[1.5vw]"
+					>
+						<div class="relative">
+							<img
+								class="md:w-[12vw] md:rounded-[1vw]"
+								src="/images/mock/banner/jjk.jpg"
+								alt=""
+								loading="lazy"
+							/>
+							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
+								<div class="rounded-full bg-warning md:p-[1vw]">
+									<Play class="text-accent md:w-[1.25vw]" />
+								</div>
+							</overlay>
+						</div>
+						<div
+							class="flex h-max flex-col justify-between self-center leading-none md:gap-[0.5vw]"
+						>
+							<span class="font-semibold text-warning md:text-[1.1vw]">Finally they met</span>
+							<span class="md:text-[1vw]"
+								>Episode - <strong>{Number($page.params.episode_id) + 1}</strong></span
+							>
+							<span class="text-surface-50 md:text-[1vw]">23 min</span>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-	<div class="grid grid-cols-12 gap-5 p-5 md:gap-[5vw] md:p-0">
-		<div class="col-span-12 flex flex-col gap-2 md:col-span-8 md:gap-[1vw]">
+	<div class="flex gap-5 p-5 md:gap-[5vw] md:p-0">
+		<div class="flex w-full flex-col md:gap-[1vw]">
 			<div class="flex items-center justify-between">
 				<div>
 					<a
-						href="/mal/1"
-						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.25vw] md:text-[1.1vw]"
+						href="/anime/mal/{$page.params.anime_id}"
+						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.5vw] md:text-[1.1vw]"
 					>
-						<span class="font-semibold uppercase">Demon Slayer S1</span>
-						<span class="text-surface-50 text-base md:text-[1vw]">Kimetsu no yaiba</span>
+						<span class="font-semibold uppercase leading-none text-accent">Demon Slayer S1</span>
+						<span class="text-surface-50 text-base leading-none md:text-[1vw]"
+							>Kimetsu no yaiba</span
+						>
 					</a>
 				</div>
 				<button class="btn bg-transparent p-0">
 					<Share class="md:w-[1.25vw]" />
 				</button>
 			</div>
-			<div class="accordion w-full space-y-1">
-				<div class="accordion-item">
-					<button
-						type="button"
-						class="accordion-control rounded-container-token flex w-full items-center space-x-4 bg-transparent p-0 text-start text-base font-semibold text-warning md:pb-[1vw] md:text-[1.25vw] md:leading-[1vw]"
-						id="accordion-control-0.4186117384197431"
-						aria-expanded="true"
-						aria-controls="accordion-panel-0.4186117384197431"
-					>
-						<div class="accordion-lead">EP1</div>
-						<div class="accordion-summary flex-1">Monotone/Colorful</div>
-						<div
-							class="accordion-summary-caret w-3 rotate-180 fill-current transition-transform duration-[200ms] md:w-[1.25vw]"
-						>
-							<Chevron />
-						</div>
-					</button>
-					<div
-						class="accordion-panel rounded-container-token text-surface-50 p-0 text-sm leading-snug md:text-[1vw] md:leading-[1.35vw]"
-						id="accordion-panel-0.4186117384197431"
-						role="region"
-						aria-hidden="false"
-						aria-labelledby="accordion-control-0.4186117384197431"
-					>
+			<details class="collapse rounded-none" open>
+				<summary
+					class="collapse-title !list-item h-max h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
+				>
+					EP: {$page.params.episode_id} Monotone/Colorful
+				</summary>
+				<div
+					class="collapse-content p-0 text-sm leading-snug md:mt-[1vw] md:text-[1vw] md:leading-[1.35vw]"
+				>
+					<p>
 						The autumn he was twelve, piano prodigy Kousei Arima suddenly found himself unable to
 						play the piano after his mother's death. Ever since then, it's like he's been frozen in
 						time. His childhood friend, Tsubaki Sawabe, watches over him with concern; one day, she
@@ -140,43 +187,9 @@
 						introduced to a certain girl. Kousei reluctantly heads over to the rendezvous spot.
 						There, he sees a girl playing a melodica. This girl, who allegedly has a crush on
 						Watari, is Kaori Miyazono. And she turns out to be a violinist!
-					</div>
+					</p>
 				</div>
-			</div>
-			<a
-				href="/mal/1"
-				class="btn btn-neutral min-h-max rounded-md text-sm font-semibold leading-none md:h-[3vw] md:w-[10vw] md:rounded-[0.5vw] md:text-[1vw]"
-			>
-				<span>View detail</span>
-				<Chevron class="w-3 -rotate-90 md:w-[1vw]" />
-			</a>
-		</div>
-		<div class="col-span-4 hidden flex-col md:flex">
-			<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
-			<a href="/anime/mal/1/episode/1/2" class="flex md:mt-[0.75vw] md:gap-[1vw]">
-				<div class="relative">
-					<div class="h-full md:w-[12vw] md:rounded-[0.25vw]">
-						<img
-							class="md:w-[12vw] md:rounded-[0.25vw]"
-							src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
-							alt=""
-							loading="lazy"
-						/>
-					</div>
-					<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
-						<play class="rounded-full bg-secondary/75 md:p-[1vw]">
-							<Play class="text-white md:w-[1.25vw]" />
-						</play>
-					</overlay>
-				</div>
-				<div class="flex flex-col justify-between leading-none md:py-[1vw]">
-					<div class="flex flex-col md:gap-[0.5vw]">
-						<span class="font-semibold text-warning md:text-[1.1vw]">Finally they met</span>
-						<span class="md:text-[1vw]">Episode - 2</span>
-					</div>
-					<span class="text-surface-50 md:text-[1vw]">23 min</span>
-				</div>
-			</a>
+			</details>
 		</div>
 	</div>
 	<div class="grid grid-cols-12 p-5 md:gap-[5vw] md:p-0">
@@ -233,13 +246,13 @@
 					</p>
 					<div class="flex items-center gap-2 md:w-full md:justify-between">
 						<button
-							class="bg-surface-400 btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+							class="bg-surface-400 btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
 							<Cross class="w-4 rotate-45 md:w-[1vw]" />
 							Create New
 						</button>
 						<button
-							class="bg-surface-400 btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+							class="bg-surface-400 btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
 							<Filter class="w-3 md:w-[1vw]" />
@@ -299,18 +312,13 @@
 				<span class="text-lg font-semibold md:text-[1.35vw]">Recommendations</span>
 				<div class="mt-3 grid grid-cols-3 gap-4 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1vw]">
 					{#each { length: 3 } as _}
-						<a
-							href="/myanimelist/38000"
-							class="card relative col-span-1 h-44 w-full overflow-hidden md:h-[15vw] md:rounded-[0.75vw]"
-						>
-							<div class="h-full w-full object-cover object-center">
-								<img
-									class="h-full w-full object-cover object-center"
-									src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
+						<a href="/myanimelist/38000" class="card relative col-span-1 h-44 w-full md:h-[15vw]">
+							<img
+								class="h-full w-full object-cover object-center md:rounded-[1vw]"
+								src="/images/mock/cover/jjk.webp"
+								alt=""
+								loading="lazy"
+							/>
 							<div
 								class="absolute bottom-3 z-10 flex w-full flex-col items-center gap-1 px-[0.5vw] text-center md:bottom-[1vw] md:gap-[0.25vw]"
 							>
@@ -327,14 +335,14 @@
 								</div>
 							</div>
 							<div
-								class="gradient absolute inset-0 rounded-b-[0.45vw] bg-gradient-to-t from-secondary/90 to-secondary/25"
+								class="gradient absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/25"
 							></div>
 						</a>
 					{/each}
 				</div>
 				<div class="mt-3 flex w-full justify-center md:mt-[1vw]">
 					<button
-						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
 						<Chevron class="w-4 md:w-[1vw]" />
