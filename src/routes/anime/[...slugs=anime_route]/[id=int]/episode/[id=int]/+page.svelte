@@ -16,9 +16,9 @@
 	<div class="grid grid-cols-12 md:gap-[5vw]">
 		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]">
 			<div class="relative h-64 w-full md:z-30 md:h-[35vw]">
-				<div class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]">
+				<div class="h-full w-full rounded-none object-cover md:rounded-[1vw]">
 					<img
-						class="h-full w-full rounded-none object-cover md:rounded-[0.5vw]"
+						class="h-full w-full rounded-none object-cover md:rounded-[1vw]"
 						src="/images/mock/banner/one_piece.avif"
 						alt="Episode"
 						loading="lazy"
@@ -73,18 +73,21 @@
 			<header class="flex items-center justify-between">
 				<span class="text-lg font-semibold md:text-[1.35vw]">Episodes</span>
 				<button
-					class="bg-surface-400 btn flex min-h-full items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
+					class="bg-surface-400 btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
-					EPS: 1 - 60
+					Eps: 1 - 50
 					<Chevron class="w-3 md:w-[1vw]" />
 				</button>
 			</header>
-			<div class="grid grid-cols-7 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
-				{#each { length: 60 } as _, index}
+			<div class="grid flex-1 grid-cols-7 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
+				{#each { length: 50 } as _, index}
 					{@const idx_number = index + 1}
+					{@const is_active = Number($page.params.id) === idx_number}
 					<a
-						href="../{idx_number}"
-						class="btn btn-neutral min-h-full rounded text-sm font-semibold leading-none text-accent md:h-[2.5vw] md:rounded-[0.35vw] md:text-[1.2vw]"
+						title="Episode name"
+						href="./{idx_number}"
+						class="btn btn-neutral h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+						class:!bg-primary={is_active}
 					>
 						{idx_number}
 					</a>
