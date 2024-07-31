@@ -2,7 +2,6 @@ import { error } from "@sveltejs/kit";
 import type { RequestHandler } from "./$types";
 import { get_color_thief } from "color-thief-wasm";
 import undici from "undici";
-import sharp from "sharp";
 import { redis_client } from "$lib/server/redis";
 
 export const GET: RequestHandler = async ({ url, setHeaders }) => {
