@@ -153,51 +153,43 @@
 		</div>
 	</div>
 	<div class="flex gap-5 p-5 md:gap-[5vw] md:p-0">
-		<div class="flex w-full md:gap-[1.5vw]">
-			<img
-				src="/images/mock/cover/one_piece.webp"
-				alt=""
-				loading="lazy"
-				class="object-cover md:h-[15vw] md:w-[10vw] md:rounded-[1vw]"
-			/>
-			<div class="flex w-full flex-col md:gap-[1vw]">
-				<div class="flex items-center justify-between">
-					<div>
-						<a
-							href="/anime/mal/{$page.params.anime_id}"
-							class="flex flex-col gap-1 text-lg leading-none md:gap-[0.5vw] md:text-[1.1vw]"
+		<div class="flex w-full flex-col md:gap-[1vw]">
+			<div class="flex items-center justify-between">
+				<div>
+					<a
+						href="/anime/mal/{$page.params.anime_id}"
+						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.5vw] md:text-[1.1vw]"
+					>
+						<span class="font-semibold uppercase leading-none text-accent">Demon Slayer S1</span>
+						<span class="text-surface-50 text-base leading-none md:text-[1vw]"
+							>Kimetsu no yaiba</span
 						>
-							<span class="font-semibold uppercase leading-none text-accent">Demon Slayer S1</span>
-							<span class="text-surface-50 text-base leading-none md:text-[1vw]"
-								>Kimetsu no yaiba</span
-							>
-						</a>
-					</div>
-					<button class="btn bg-transparent p-0">
-						<Share class="md:w-[1.25vw]" />
-					</button>
+					</a>
 				</div>
-				<details class="collapse rounded-none" open>
-					<summary
-						class="collapse-title !list-item h-max h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
-					>
-						EP: {$page.params.episode_id} Monotone/Colorful
-					</summary>
-					<div
-						class="collapse-content p-0 text-sm leading-snug md:mt-[1vw] md:text-[1vw] md:leading-[1.35vw]"
-					>
-						<p>
-							The autumn he was twelve, piano prodigy Kousei Arima suddenly found himself unable to
-							play the piano after his mother's death. Ever since then, it's like he's been frozen
-							in time. His childhood friend, Tsubaki Sawabe, watches over him with concern; one day,
-							she invites him on a double date. Kousei's other childhood friend, Ryouta Watari, is
-							being introduced to a certain girl. Kousei reluctantly heads over to the rendezvous
-							spot. There, he sees a girl playing a melodica. This girl, who allegedly has a crush
-							on Watari, is Kaori Miyazono. And she turns out to be a violinist!
-						</p>
-					</div>
-				</details>
+				<button class="btn bg-transparent p-0">
+					<Share class="md:w-[1.25vw]" />
+				</button>
 			</div>
+			<details class="collapse rounded-none" open>
+				<summary
+					class="collapse-title !list-item h-max h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
+				>
+					EP: {$page.params.episode_id} Monotone/Colorful
+				</summary>
+				<div
+					class="collapse-content p-0 text-sm leading-snug md:mt-[1vw] md:text-[1vw] md:leading-[1.35vw]"
+				>
+					<p>
+						The autumn he was twelve, piano prodigy Kousei Arima suddenly found himself unable to
+						play the piano after his mother's death. Ever since then, it's like he's been frozen in
+						time. His childhood friend, Tsubaki Sawabe, watches over him with concern; one day, she
+						invites him on a double date. Kousei's other childhood friend, Ryouta Watari, is being
+						introduced to a certain girl. Kousei reluctantly heads over to the rendezvous spot.
+						There, he sees a girl playing a melodica. This girl, who allegedly has a crush on
+						Watari, is Kaori Miyazono. And she turns out to be a violinist!
+					</p>
+				</div>
+			</details>
 		</div>
 	</div>
 	<div class="grid grid-cols-12 p-5 md:gap-[5vw] md:p-0">
