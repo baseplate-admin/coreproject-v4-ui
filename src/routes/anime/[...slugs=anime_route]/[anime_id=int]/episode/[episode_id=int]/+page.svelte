@@ -121,7 +121,10 @@
 				</button>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
 					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
-					<a href="/anime/mal/1/episode/1/2" class="flex md:gap-[1.5vw]">
+					<a
+						href="/anime/mal/1/episode/{Number($page.params.episode_id) + 1}"
+						class="flex md:gap-[1.5vw]"
+					>
 						<div class="relative">
 							<img
 								class="md:w-[12vw] md:rounded-[1vw]"
