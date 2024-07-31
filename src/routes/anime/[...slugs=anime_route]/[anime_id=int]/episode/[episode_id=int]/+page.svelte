@@ -258,13 +258,13 @@
 					</p>
 					<div class="flex items-center gap-2 md:w-full md:justify-between">
 						<button
-							class="bg-surface-400 btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+							class="bg-surface-400 btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
 							<Cross class="w-4 rotate-45 md:w-[1vw]" />
 							Create New
 						</button>
 						<button
-							class="bg-surface-400 btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+							class="bg-surface-400 btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
 							<Filter class="w-3 md:w-[1vw]" />
@@ -324,18 +324,13 @@
 				<span class="text-lg font-semibold md:text-[1.35vw]">Recommendations</span>
 				<div class="mt-3 grid grid-cols-3 gap-4 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1vw]">
 					{#each { length: 3 } as _}
-						<a
-							href="/myanimelist/38000"
-							class="card relative col-span-1 h-44 w-full overflow-hidden md:h-[15vw] md:rounded-[0.75vw]"
-						>
-							<div class="h-full w-full object-cover object-center">
-								<img
-									class="h-full w-full object-cover object-center"
-									src="https://mangathrill.com/wp-content/uploads/2022/02/pjimage-2022-02-09T013124.016.jpg"
-									alt=""
-									loading="lazy"
-								/>
-							</div>
+						<a href="/myanimelist/38000" class="card relative col-span-1 h-44 w-full md:h-[15vw]">
+							<img
+								class="h-full w-full object-cover object-center md:rounded-[1vw]"
+								src="/images/mock/cover/jjk.webp"
+								alt=""
+								loading="lazy"
+							/>
 							<div
 								class="absolute bottom-3 z-10 flex w-full flex-col items-center gap-1 px-[0.5vw] text-center md:bottom-[1vw] md:gap-[0.25vw]"
 							>
@@ -352,14 +347,14 @@
 								</div>
 							</div>
 							<div
-								class="gradient absolute inset-0 rounded-b-[0.45vw] bg-gradient-to-t from-secondary/90 to-secondary/25"
+								class="gradient absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/25"
 							></div>
 						</a>
 					{/each}
 				</div>
 				<div class="mt-3 flex w-full justify-center md:mt-[1vw]">
 					<button
-						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
 						<Chevron class="w-4 md:w-[1vw]" />
