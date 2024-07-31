@@ -56,7 +56,7 @@
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<a href="javasript:void(0)">
+						<a href="javascript:void(0)">
 							<Download class="w-4 md:w-[1.4vw]" />
 						</a>
 						<a href="/anime/mal/1/episode/{Number($page.params.id) - 1}">
@@ -92,6 +92,20 @@
 						{idx_number}
 					</a>
 				{/each}
+				<a
+					title="Episode name"
+					href="javascript:void(0)"
+					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+				>
+					<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+				</a>
+				<a
+					title="Episode name"
+					href="javascript:void(0)"
+					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+				>
+					<DoubleArrow class="w-4 md:w-[1.4vw]" />
+				</a>
 			</div>
 		</div>
 	</div>
