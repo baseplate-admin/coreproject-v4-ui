@@ -231,7 +231,7 @@
 			</div>
 		{/if}
 	</header>
-	<div class="flex flex-1">
+	<div class="flex flex-1 overflow-hidden">
 		<aside
 			class="hidden w-[6vw] flex-col justify-between overflow-y-auto overflow-x-hidden py-[2vw] md:flex"
 		>
