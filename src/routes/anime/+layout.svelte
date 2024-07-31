@@ -139,7 +139,7 @@
 <Modals />
 <div class="relative flex h-dvh w-full flex-col bg-secondary">
 	<header
-		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:py-[0.9375vw] md:pl-[2.1vw] md:pr-[3.75vw]"
+		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
 	>
 		<a href="/">
 			<CoreProjectLogo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]" />
@@ -322,8 +322,24 @@
 				{/each}
 			</div>
 		</aside>
-		<div id="page" class="w-full overflow-y-scroll">
-			<slot />
-		</div>
+		<main class="relative w-full overflow-y-scroll">
+			<svg
+				class="absolute left-0 top-0 z-10 md:size-[2vw]"
+				viewBox="0 0 24 24"
+				fill="none"
+				xmlns="http://www.w3.org/2000/svg"
+			>
+				<path
+					class="fill-secondary"
+					fill-rule="evenodd"
+					clip-rule="evenodd"
+					d="M24 0H0V24C0 10.7451 10.7452 0 24 0Z"
+				/>
+			</svg>
+			<div id="page" class="w-full overflow-y-scroll">
+				<slot />
+			</div>
+			<main></main>
+		</main>
 	</div>
 </div>
