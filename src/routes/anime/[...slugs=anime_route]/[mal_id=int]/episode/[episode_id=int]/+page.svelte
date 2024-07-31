@@ -59,10 +59,10 @@
 						<a href="javascript:void(0)">
 							<Download class="w-4 md:w-[1.4vw]" />
 						</a>
-						<a href="/anime/mal/1/episode/{Number($page.params.id) - 1}">
+						<a href="/anime/mal/1/episode/{Number($page.params.episode_id) - 1}">
 							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
 						</a>
-						<a href="/anime/mal/1/episode/{Number($page.params.id) + 1}">
+						<a href="/anime/mal/1/episode/{Number($page.params.episode_id) + 1}">
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
 						</a>
 					</div>
@@ -82,7 +82,7 @@
 			<div class="grid flex-1 grid-cols-7 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
 				{#each { length: 50 } as _, index}
 					{@const idx_number = index + 1}
-					{@const is_active = Number($page.params.id) === idx_number}
+					{@const is_active = Number($page.params.episode_id) === idx_number}
 					<a
 						title="Episode name"
 						href="./{idx_number}"
@@ -114,7 +114,7 @@
 			<div class="flex items-center justify-between">
 				<div>
 					<a
-						href="/mal/1"
+						href="/anime/mal/{$page.params.mal_id}"
 						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.25vw] md:text-[1.1vw]"
 					>
 						<span class="font-semibold uppercase">Demon Slayer S1</span>
