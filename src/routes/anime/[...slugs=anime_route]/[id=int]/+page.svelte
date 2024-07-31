@@ -82,7 +82,7 @@
 <div class="relative mt-16 block h-screen bg-cover md:mt-0">
 	<img
 		src="https://files.otakustudy.com/wp-content/uploads/2020/10/10153058/your-lie-in-april-cover.jpg"
-		class="absolute hidden h-full w-full select-none rounded-tl-[1.5vw] object-cover object-center md:flex"
+		class="absolute hidden h-full w-full select-none object-cover object-center md:flex"
 		alt={anime_name}
 	/>
 	<div class="gradient absolute inset-0 bg-gradient-to-t from-secondary to-secondary/80"></div>
