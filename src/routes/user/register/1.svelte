@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { blur } from "svelte/transition";
 	import Markdown from "$components/markdown.svelte";
 	import { z } from "zod";
 	import { handle_input } from "$functions/forms/handle_input";
@@ -11,9 +12,11 @@
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
+	import Eye from "$icons/shapes/eye.svelte";
 
 	let { on_submit, pages_state }: PageProps = $props();
 
+	let show_password = $state(false);
 	let confirm_password_element = $state<HTMLInputElement>();
 
 	const register_languages = async () => {
@@ -253,12 +256,28 @@
 			<label for="password" class="text-lg font-semibold leading-none md:text-[1.1vw]">
 				Password:
 			</label>
-			<input
-				bind:value={password.value}
-				oninput={handle_password_input}
-				placeholder="Password"
-				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
-			/>
+			<div class="relative flex items-center">
+				<input
+					bind:value={password.value}
+					type={show_password ? "text" : "password"}
+					oninput={handle_password_input}
+					placeholder="Password"
+					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
+				/>
+				{#if password.value}
+					<button
+						transition:blur={{ duration: 200 }}
+						class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
+						onclick={() => (show_password = !show_password)}
+					>
+						{#if show_password}
+							<Eye variant="open" class="md:size-[1.75vw]" />
+						{:else}
+							<Eye variant="close" class="md:size-[1.5vw]" />
+						{/if}
+					</button>
+				{/if}
+			</div>
 			<div class="flex flex-col">
 				<div class="grid grid-cols-4 gap-[1.5vw] md:gap-[0.75vw]">
 					{#each Array(password_strength) as _, index}
@@ -319,6 +338,7 @@
 				bind:this={confirm_password_element}
 				oninput={handle_confirm_password}
 				placeholder="Confirm Password"
+				type={show_password ? "text" : "password"}
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">

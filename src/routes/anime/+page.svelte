@@ -322,7 +322,7 @@
 											class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]"
 										>
 											<a
-												href="anime/mal/{anime.id}/episodes/1"
+												href="anime/mal/{anime.id}/episode/1"
 												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
@@ -456,7 +456,7 @@
 										</div>
 									</div>
 									<a
-										href="/anime/mal/{episode.id}/episodes/{episode.ep_number}"
+										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
@@ -527,7 +527,7 @@
 								<a
 									bind:this={floating.elements.reference}
 									{...intersections.getReferenceProps()}
-									href="/anime/mal/{anime.id}/episodes/{anime.ep_number}"
+									href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
 									in:blur
 								>
 									<img
