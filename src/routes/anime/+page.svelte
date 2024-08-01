@@ -36,7 +36,7 @@
 	// Mock data mappings
 	const latest_animes = [
 			{
-				id: 91139073,
+				id: 1,
 				name: "Jujutsu Kaisen",
 				type: "TV",
 				episodes: 24,
@@ -49,7 +49,7 @@
 				image: "/images/mock/cover/jjk.webp"
 			},
 			{
-				id: 401982288,
+				id: 2,
 				name: "One Piece",
 				type: "TV",
 				episodes: 12,
@@ -62,7 +62,7 @@
 				image: "/images/mock/cover/one_piece.webp"
 			},
 			{
-				id: 485491639,
+				id: 3,
 				name: "Demon Slayer",
 				type: "TV",
 				episodes: 12,
@@ -75,7 +75,7 @@
 				image: "/images/mock/cover/demon_slayer_training.webp"
 			},
 			{
-				id: 356704981,
+				id: 4,
 				name: "Kaiju no.8",
 				type: "TV",
 				episodes: 8,
@@ -322,7 +322,7 @@
 											class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]"
 										>
 											<a
-												href="anime/{anime.id}/episodes/1"
+												href="anime/mal/{anime.id}/episode/1"
 												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
@@ -333,7 +333,7 @@
 												<span>Ep 1</span>
 											</a>
 											<a
-												href="anime/{anime.id}"
+												href="anime/mal/{anime.id}"
 												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
 												<Info class="w-5 md:w-[1.35vw]" />
@@ -456,7 +456,7 @@
 										</div>
 									</div>
 									<a
-										href="/anime/{episode.id}/episodes/{episode.ep_number}"
+										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
 										<Play class="md:size-[1.25vw]" />
@@ -527,7 +527,7 @@
 								<a
 									bind:this={floating.elements.reference}
 									{...intersections.getReferenceProps()}
-									href="/anime/{anime.id}/episodes/{anime.ep_number}"
+									href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
 									in:blur
 								>
 									<img

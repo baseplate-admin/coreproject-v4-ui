@@ -8,7 +8,6 @@
 	import Markdown from "$components/markdown.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
-	import Eye from "$icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
 
@@ -26,8 +25,6 @@
 			return field.value && field.error.length === 0;
 		})
 	);
-
-	let password_input_type = $state<"password" | "text">("password");
 
 	const handle_username_input = (event: Event) => {
 			handle_input({
@@ -118,13 +115,12 @@
 				<label for="username" class="text-base font-semibold leading-none md:text-[1.1vw]">
 					Password:
 				</label>
-				<div class="relative flex flex-col justify-center">
+				<div class="relative flex flex-col">
 					<input
 						bind:value={password.value}
-						type={password_input_type}
 						oninput={(event) => handle_password_input(event)}
 						placeholder="enter your existing password"
-						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:py-[0.8vw] md:pl-[1.1vw] md:pr-[3.5vw] md:text-[1.1vw]"
+						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 					/>
 					{#if password.value}
 						<button
