@@ -10,10 +10,6 @@
 	import Share from "$icons/shapes/share.svelte";
 
 	import { page } from "$app/stores";
-
-	const handle_download_episode = () => {},
-		handle_next_episode = () => {},
-		handle_prev_episode = () => {};
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
@@ -60,24 +56,18 @@
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<button
+						<a
+							href="./{Number($page.params.episode_id) + 1}"
 							class="btn h-max min-h-max border-none !bg-transparent p-0"
-							onclick={handle_download_episode}
-						>
-							<Download class="w-4 md:w-[1.4vw]" />
-						</button>
-						<button
-							class="btn h-max min-h-max border-none !bg-transparent p-0"
-							onclick={handle_prev_episode}
 						>
 							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
-						</button>
-						<button
+						</a>
+						<a
+							href="./{Number($page.params.episode_id) + 1}"
 							class="btn h-max min-h-max border-none !bg-transparent p-0"
-							onclick={handle_next_episode}
 						>
 							<DoubleArrow class="w-4 md:w-[1.4vw]" />
-						</button>
+						</a>
 					</div>
 				</div>
 			</div>
