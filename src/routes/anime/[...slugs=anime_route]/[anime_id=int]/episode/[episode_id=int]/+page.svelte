@@ -196,7 +196,7 @@
 			</div>
 			<details class="collapse rounded-none" open>
 				<summary
-					class="collapse-title !list-item h-max h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
+					class="collapse-title !list-item h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
 				>
 					EP: {$page.params.episode_id} Monotone/Colorful
 				</summary>
