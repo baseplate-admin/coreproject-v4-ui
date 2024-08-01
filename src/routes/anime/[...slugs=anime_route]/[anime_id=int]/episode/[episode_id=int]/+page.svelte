@@ -12,22 +12,24 @@
 	import Portal from "svelte-portal";
 	import { blur } from "svelte/transition";
 
+	type PlayerOptions = {
+		lights: boolean;
+	};
+
 	// NOTE: remove after backend implemntation
 	const EPISODES_LENGTH = 34;
 
-	let options = $state<{
-		is_lights_on: boolean;
-	}>({
-		is_lights_on: false
+	let options = $state<PlayerOptions>({
+		lights: false
 	});
 	let player_container_el: HTMLDivElement;
 
 	function handle_lights_toggle() {
-		options.is_lights_on = !options.is_lights_on;
+		options.lights = !options.lights;
 	}
 </script>
 
-{#if options.is_lights_on}
+{#if options.lights}
 	<Portal>
 		<div
 			transition:blur
@@ -43,7 +45,7 @@
 	<div class="grid grid-cols-12 md:gap-[5vw]">
 		<div
 			class="relative col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]"
-			class:z-50={options.is_lights_on}
+			class:z-50={options.lights}
 		>
 			<div class="h-64 w-full md:z-30 md:h-[35vw]">
 				<div
@@ -59,7 +61,8 @@
 				</div>
 			</div>
 			<div
-				class="flex flex-col gap-2 px-5 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
+				class="flex flex-col gap-2 px-5 transition duration-500 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
+				class:opacity-50={options.lights}
 			>
 				<div class="flex gap-2 md:items-center md:gap-[1vw]">
 					<div class="hidden items-center gap-[0.75vw] md:flex">
@@ -76,8 +79,8 @@
 						class="btn hidden h-max min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
 					>
 						<span>Lights:</span>
-						<div class="text-primary-300 font-semibold" class:text-warning={options.is_lights_on}>
-							{options.is_lights_on ? "On" : "Off"}
+						<div class="text-primary-300 font-semibold" class:text-warning={options.lights}>
+							{options.lights ? "On" : "Off"}
 						</div>
 					</button>
 				</div>
