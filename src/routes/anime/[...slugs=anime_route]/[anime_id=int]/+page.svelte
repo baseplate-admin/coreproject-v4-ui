@@ -22,6 +22,8 @@
 	import ScrollArea from "$components/scroll_area.svelte";
 	import DominantColor from "$components/dominant_color/index.svelte";
 
+	import { page } from "$app/stores";
+
 	let anime_name = "Your Lie in April",
 		anime_japanese_name = "四月は君の嘘",
 		anime_synopsis =
@@ -336,9 +338,10 @@
 					</div>
 				</div>
 				<div class="mt-4 grid grid-cols-12 gap-5 md:mt-[2.5vw] md:gap-[2.5vw]">
-					{#each anime_episode_mapping as episode}
+					{#each anime_episode_mapping as episode, idx}
+						<!-- NOTE: idx for testing -->
 						<a
-							href="/anime/mal/1/episode/1"
+							href="/anime/mal/{$page.params.anime_id}/episode/{idx + 1}"
 							class="relative col-span-12 grid grid-cols-12 gap-4 md:col-span-4"
 						>
 							<div class="relative col-span-5 h-full w-full md:col-span-12 md:h-[18vw]">
