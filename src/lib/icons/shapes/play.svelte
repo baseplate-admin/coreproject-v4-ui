@@ -15,7 +15,7 @@
 >
 	<path
 		d="M4.16675 2.5L15.8334 10L4.16675 17.5V2.5Z"
-		stroke="#070519"
+		stroke="currentColor"
 		stroke-width="3"
 		stroke-linecap="round"
 		stroke-linejoin="round"

@@ -134,10 +134,10 @@
 						<div class="mt-3 flex items-center gap-3 md:mt-[1.5vw] md:gap-[0.75vw]">
 							<button
 								type="button"
-								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7vw] md:rounded-[0.625vw]"
+								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:rounded-[0.75vw]"
 							>
 								<div class="flex gap-3 md:gap-[0.7vw]">
-									<Play class="w-5 md:w-[1.5vw]" />
+									<Play class="w-5 stroke-accent md:w-[1.5vw]" />
 
 									<div class="flex flex-col items-start gap-1">
 										<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
@@ -150,7 +150,7 @@
 							</button>
 							<button
 								type="button"
-								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.625vw] md:text-[0.87vw] md:font-semibold"
+								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
@@ -160,7 +160,7 @@
 							</button>
 							<button
 								type="button"
-								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.625vw] md:text-[0.87vw] md:font-semibold"
+								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
@@ -170,17 +170,10 @@
 							</button>
 						</div>
 						<div class="mt-3 flex gap-2 md:mt-[0.75vw] md:gap-[0.75vw]">
-							<!-- <button
-                                type="button"
-                                aria-label="video"
-                                class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.25vw]"
-                            >
-                                <coreproject-icon-record class="w-4 md:w-[1.125vw]"></coreproject-icon-record>
-                            </button> -->
 							<button
 								type="button"
 								aria-label="edit"
-								class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.25vw]"
+								class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 							>
 								<Edit class="w-4 md:w-[1.125vw]" variant="with_underline_around_pencil" />
 							</button>
@@ -188,7 +181,7 @@
 								<button
 									type="button"
 									aria-label={button?.label}
-									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.25vw]"
+									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 								>
 									<svelte:component this={button?.icon} class="w-4 md:w-[1.125vw]" />
 								</button>
@@ -353,7 +346,7 @@
 									<img
 										src={episode.banner}
 										alt=""
-										class="h-full w-full shrink-0 rounded-md bg-cover bg-center md:rounded-t-[0.625vw]"
+										class="h-full w-full shrink-0 rounded-md bg-cover bg-center md:rounded-t-[1vw]"
 									/>
 								</div>
 								<div
@@ -499,7 +492,7 @@
 						<div class="mt-4 grid grid-cols-2 flex-col gap-4 md:mt-[1.25vw] md:flex md:gap-[1vw]">
 							<a
 								href="/"
-								class="card w-full grid-cols-7 overflow-hidden rounded-lg !bg-neutral/50 md:grid md:rounded-[0.625vw]"
+								class="card w-full grid-cols-7 overflow-hidden rounded-lg !bg-neutral/50 md:grid md:rounded-[1vw]"
 							>
 								<div class="col-span-2 block h-16 md:h-full md:w-full">
 									<img
@@ -726,7 +719,7 @@
 				</div>
 				<div class="mt-[2.5vw] block">
 					<div class="flex gap-3">
-						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">div</div>
+						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Similar Animes</div>
 						<button
 							class="bg-surface-400 btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]"
 						>
