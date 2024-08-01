@@ -8,9 +8,11 @@
 	import Markdown from "$components/markdown.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
+	import Eye from "$icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
 
+	let show_password = $state(false);
 	let username_or_email = $state({
 			value: "",
 			error: new Array<string>()
@@ -115,10 +117,11 @@
 				<label for="username" class="text-base font-semibold leading-none md:text-[1.1vw]">
 					Password:
 				</label>
-				<div class="relative flex flex-col">
+				<div class="relative flex items-center">
 					<input
 						bind:value={password.value}
 						oninput={(event) => handle_password_input(event)}
+						type={show_password ? "text" : "password"}
 						placeholder="enter your existing password"
 						class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 					/>
@@ -126,15 +129,9 @@
 						<button
 							transition:blur={{ duration: 200 }}
 							class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
-							onclick={() => {
-								if (password_input_type === "password") {
-									password_input_type = "text";
-								} else {
-									password_input_type = "password";
-								}
-							}}
+							onclick={() => (show_password = !show_password)}
 						>
-							{#if password_input_type === "password"}
+							{#if show_password}
 								<Eye variant="open" class="md:size-[1.75vw]" />
 							{:else}
 								<Eye variant="close" class="md:size-[1.5vw]" />
