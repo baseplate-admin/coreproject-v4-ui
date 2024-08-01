@@ -76,6 +76,7 @@
 		{ item: `Kuschio animation` }
 	];
 	const button_mapping = [
+		{ icon: Edit, label: "edit", variant: "with_underline_around_pencil" },
 		{ icon: Download, label: "download" },
 		{ icon: Share, label: "share" }
 	];
@@ -172,20 +173,17 @@
 							</button>
 						</div>
 						<div class="mt-3 flex gap-2 md:mt-[0.75vw] md:gap-[0.75vw]">
-							<button
-								type="button"
-								aria-label="edit"
-								class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
-							>
-								<Edit class="w-4 md:w-[1.125vw]" variant="with_underline_around_pencil" />
-							</button>
 							{#each button_mapping as button}
 								<button
 									type="button"
 									aria-label={button?.label}
 									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 								>
-									<svelte:component this={button?.icon} class="w-4 md:w-[1.125vw]" />
+									<svelte:component
+										this={button?.icon}
+										variant={button?.variant}
+										class="w-4 md:w-[1.125vw]"
+									/>
 								</button>
 							{/each}
 						</div>
