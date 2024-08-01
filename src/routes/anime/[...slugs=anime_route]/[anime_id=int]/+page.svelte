@@ -23,6 +23,7 @@
 	import DominantColor from "$components/dominant_color/index.svelte";
 
 	import { page } from "$app/stores";
+	import type { SvelteComponent } from "svelte";
 
 	let anime_name = "Your Lie in April",
 		anime_japanese_name = "四月は君の嘘",
@@ -75,7 +76,11 @@
 		// anime.aired_to
 		{ item: `Kuschio animation` }
 	];
-	const button_mapping = [
+	const button_mapping: {
+		icon: typeof SvelteComponent<{}>;
+		label: string;
+		variant?: string;
+	}[] = [
 		{ icon: Edit, label: "edit", variant: "with_underline_around_pencil" },
 		{ icon: Download, label: "download" },
 		{ icon: Share, label: "share" }
@@ -176,12 +181,12 @@
 							{#each button_mapping as button}
 								<button
 									type="button"
-									aria-label={button?.label}
+									aria-label={button.label}
 									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 								>
 									<svelte:component
-										this={button?.icon}
-										variant={button?.variant}
+										this={button.icon}
+										variant={button.variant ?? ""}
 										class="w-4 md:w-[1.125vw]"
 									/>
 								</button>
