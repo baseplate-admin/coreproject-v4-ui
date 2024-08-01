@@ -9,16 +9,49 @@
 	import Share from "$icons/shapes/share.svelte";
 
 	import { page } from "$app/stores";
+	import Portal from "svelte-portal";
+	import { blur } from "svelte/transition";
+
+	type PlayerOptions = {
+		lights: boolean;
+	};
 
 	// NOTE: remove after backend implemntation
 	const EPISODES_LENGTH = 34;
+
+	let options = $state<PlayerOptions>({
+		lights: false
+	});
+	let player_container_el: HTMLDivElement;
+
+	function handle_lights_toggle() {
+		options.lights = !options.lights;
+	}
 </script>
+
+{#if options.lights}
+	<Portal>
+		<div
+			transition:blur
+			tabindex="0"
+			role="button"
+			onmousedown={handle_lights_toggle}
+			class="absolute inset-0 z-10 bg-secondary/95"
+		></div>
+	</Portal>
+{/if}
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
 	<div class="grid grid-cols-12 md:gap-[5vw]">
-		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]">
-			<div class="relative h-64 w-full md:z-30 md:h-[35vw]">
-				<div class="h-full w-full rounded-none object-cover md:rounded-[1vw]">
+		<div
+			class="relative col-span-12 flex flex-col md:col-span-8 md:gap-[1vw]"
+			class:z-50={options.lights}
+		>
+			<div class="h-64 w-full md:z-30 md:h-[35vw]">
+				<div
+					bind:this={player_container_el}
+					class="h-full w-full rounded-none object-cover md:rounded-[1vw]"
+				>
 					<img
 						class="h-full w-full rounded-none object-cover md:rounded-[1vw]"
 						src="/images/mock/banner/one_piece.avif"
@@ -28,7 +61,8 @@
 				</div>
 			</div>
 			<div
-				class="flex flex-col gap-2 px-5 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
+				class="flex flex-col gap-2 px-5 transition duration-500 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
+				class:opacity-50={options.lights}
 			>
 				<div class="flex gap-2 md:items-center md:gap-[1vw]">
 					<div class="hidden items-center gap-[0.75vw] md:flex">
@@ -41,10 +75,13 @@
 						</button>
 					</div>
 					<button
+						onclick={handle_lights_toggle}
 						class="btn hidden h-max min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
 					>
 						<span>Lights:</span>
-						<div class="text-primary-300 font-semibold">Off</div>
+						<div class="text-primary-300 font-semibold" class:text-warning={options.lights}>
+							{options.lights ? "On" : "Off"}
+						</div>
 					</button>
 				</div>
 				<div class="flex w-full items-center justify-between md:w-auto">
@@ -162,7 +199,7 @@
 			</div>
 			<details class="collapse rounded-none" open>
 				<summary
-					class="collapse-title !list-item h-max h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
+					class="collapse-title !list-item h-max min-h-max p-0 text-base font-semibold text-warning md:text-[1.25vw]"
 				>
 					EP: {$page.params.episode_id} Monotone/Colorful
 				</summary>
