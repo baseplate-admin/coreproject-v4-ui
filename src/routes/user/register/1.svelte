@@ -12,9 +12,11 @@
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
 	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
+	import Eye from "$icons/shapes/eye.svelte";
 
 	let { on_submit, pages_state }: PageProps = $props();
 
+	let show_password = $state(false);
 	let confirm_password_element = $state<HTMLInputElement>();
 
 	const register_languages = async () => {
@@ -257,7 +259,7 @@
 			<div class="relative flex items-center">
 				<input
 					bind:value={password.value}
-					type={password_input_type}
+					type={show_password ? "text" : "password"}
 					oninput={handle_password_input}
 					placeholder="Password"
 					class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
@@ -266,15 +268,9 @@
 					<button
 						transition:blur={{ duration: 200 }}
 						class="btn absolute size-min min-h-min border-none !bg-transparent p-0 md:right-[1vw]"
-						onclick={() => {
-							if (password_input_type === "password") {
-								password_input_type = "text";
-							} else {
-								password_input_type = "password";
-							}
-						}}
+						onclick={() => (show_password = !show_password)}
 					>
-						{#if password_input_type === "password"}
+						{#if show_password}
 							<Eye variant="open" class="md:size-[1.75vw]" />
 						{:else}
 							<Eye variant="close" class="md:size-[1.5vw]" />
@@ -342,6 +338,7 @@
 				bind:this={confirm_password_element}
 				oninput={handle_confirm_password}
 				placeholder="Confirm Password"
+				type={show_password ? "text" : "password"}
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
