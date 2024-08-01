@@ -3,13 +3,15 @@
 	import Chevron from "$icons/shapes/chevron.svelte";
 	import Cross from "$icons/shapes/cross.svelte";
 	import DoubleArrow from "$icons/shapes/double_arrow.svelte";
-	import Download from "$icons/shapes/download.svelte";
 	import Filter from "$icons/shapes/filter.svelte";
 	import Play from "$icons/shapes/play.svelte";
 	import Settings from "$icons/shapes/settings.svelte";
 	import Share from "$icons/shapes/share.svelte";
 
 	import { page } from "$app/stores";
+
+	// NOTE: remove after backend implemntation
+	const EPISODES_LENGTH = 34;
 </script>
 
 <div class="mt-16 flex flex-col md:mt-0 md:gap-[3.5vw] md:py-[2vw] md:pl-[1vw] md:pr-[3.75vw]">
@@ -57,7 +59,7 @@
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
 						<a
-							href="./{Number($page.params.episode_id) + 1}"
+							href="./{Number($page.params.episode_id) - 1}"
 							class="btn h-max min-h-max border-none !bg-transparent p-0"
 						>
 							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
@@ -78,12 +80,12 @@
 				<button
 					class="bg-surface-400 btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
-					Eps: 1 - 50
+					Eps: 1 - {EPISODES_LENGTH}
 					<Chevron class="w-3 md:w-[1vw]" />
 				</button>
 			</header>
 			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
-				{#each { length: 34 } as _, index}
+				{#each { length: EPISODES_LENGTH } as _, index}
 					{@const idx_number = index + 1}
 					{@const is_active = Number($page.params.episode_id) === idx_number}
 					<a
@@ -95,20 +97,18 @@
 						{idx_number}
 					</a>
 				{/each}
-				<button
-					onclick={handle_next_episode}
-					title="Episode name"
+				<a
+					href="./{Number($page.params.episode_id) - 1}"
 					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
 					<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
-				</button>
-				<button
-					onclick={handle_prev_episode}
-					title="Episode name"
+				</a>
+				<a
+					href="./{Number($page.params.episode_id) + 1}"
 					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
 					<DoubleArrow class="w-4 md:w-[1.4vw]" />
-				</button>
+				</a>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
 					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
 					<a
