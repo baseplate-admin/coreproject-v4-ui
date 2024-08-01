@@ -161,7 +161,7 @@
 							/>
 							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
 								<div class="rounded-full bg-warning md:p-[1vw]">
-									<Play class="text-accent md:w-[1.25vw]" />
+									<Play class="text-secondary md:w-[1.25vw]" />
 								</div>
 							</overlay>
 						</div>

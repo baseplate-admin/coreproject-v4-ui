@@ -145,7 +145,7 @@
 								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:rounded-[0.75vw]"
 							>
 								<div class="flex gap-3 md:gap-[0.7vw]">
-									<Play class="w-5 stroke-accent md:w-[1.5vw]" />
+									<Play class="w-5 md:w-[1.5vw]" />
 
 									<div class="flex flex-col items-start gap-1">
 										<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
