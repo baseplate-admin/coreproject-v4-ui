@@ -17,6 +17,7 @@
 	import { FETCH_TIMEOUT } from "$constants/fetch";
 	import { reverse } from "$functions/urls/reverse";
 	import { get_csrf_token } from "$functions/get_csrf_token";
+	import AnimeCard from "$components/anime_card.svelte";
 
 	// Binding
 	let search_query = "",
@@ -427,7 +428,7 @@
 						</div>
 					{:else if thumbnail_mode === "card_with_dropdown"}
 						<div class="mt-5 grid grid-cols-3 gap-3 md:mt-[1.25vw] md:grid-cols-6 md:gap-[1.5vw]">
-							<!-- {#each results as item}
+							{#each results as item}
 								<AnimeCard
 									anime_mal_id={item?.mal_id ?? 0}
 									anime_name={item.name ?? "N/A"}
@@ -438,7 +439,7 @@
 									anime_total_episodes={item.episode_count ?? null}
 									anime_rating={item.rating ?? "N/A"}
 								/>
-							{/each} -->
+							{/each}
 						</div>
 					{/if}
 				{:else}
