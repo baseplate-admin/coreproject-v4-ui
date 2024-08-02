@@ -3,7 +3,7 @@ import { dev } from "$app/environment";
 import lang from "./lang.json" assert { type: "json" };
 
 const route_table = {
-  anime: /^\/anime\/?.*$/
+  anime: "/anime"
 };
 
 export const default_locale: keyof typeof lang = "en";
