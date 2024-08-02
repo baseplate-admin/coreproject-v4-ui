@@ -1,21 +1,23 @@
 <script lang="ts">
-	// import * as _ from "lodash-es";
-	import * as _ from "lodash-es";
+	import AnimeCard from "$components/anime_card.svelte";
 	import HoverExpand from "$components/hover_expand.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
+	import { FETCH_TIMEOUT } from "$constants/fetch";
+	import isEmpty from "$functions/array/isEmpty";
+	import uniqBy from "$functions/array/uniqBy";
 	import { cn } from "$functions/classnames";
 	import { FormatDate } from "$functions/format_date";
+	import isUndefined from "$functions/isUndefined";
 	import Chevron from "$icons/shapes/chevron.svelte";
 	import Circle from "$icons/shapes/circle.svelte";
 	import Cross from "$icons/shapes/cross.svelte";
+	import Expand from "$icons/shapes/expand.svelte";
 	import MoreBox from "$icons/shapes/more_box.svelte";
 	import Search from "$icons/shapes/search.svelte";
 	import SixGrids from "$icons/shapes/six_grids.svelte";
 	import Tick from "$icons/shapes/tick.svelte";
-	import Expand from "$icons/shapes/expand.svelte";
 	import { type Anime } from "$types/anime";
-	import { FETCH_TIMEOUT } from "$constants/fetch";
-	import AnimeCard from "$components/anime_card.svelte";
+	import { onMount } from "svelte";
 
 	// Binding
 	let search_query = "",
@@ -24,9 +26,9 @@
 
 	let search_promise: Promise<Anime[]> | null = null;
 
-	// onMount(async () => {
-	// 	search_promise = get_anime_with_serach_parameters();
-	// });
+	onMount(async () => {
+		search_promise = get_anime_with_serach_parameters();
+	});
 
 	// Mapping
 	let filter_options_mapping: {
@@ -124,10 +126,6 @@
 		change_thumbnail_mode = (mode: typeof thumbnail_mode) => {
 			thumbnail_mode = mode;
 		};
-	// isEmpty = (list: any[]) => {
-	// 	if (list.length == 0) return true;
-	// 	else return false;
-	// };
 
 	const get_anime_with_serach_parameters = async (): Promise<Anime[]> => {
 		let url = new URL(
@@ -144,7 +142,7 @@
 				.join()
 		};
 		for (const [key, val] of Object.entries(search_map)) {
-			if (!_.isEmpty(val) && !_.isUndefined(val)) {
+			if (!isEmpty(val) && !isUndefined(val)) {
 				url.searchParams.set(key, val);
 			}
 		}
@@ -161,7 +159,7 @@
 		const json = await res.json();
 
 		if (res.ok) {
-			return _.uniqBy(json["results"], "mal_id") as Array<Anime>;
+			return uniqBy(json["results"], "mal_id") as Array<Anime>;
 		} else {
 			throw new Error("Something is wrong from the backend");
 		}
@@ -169,7 +167,7 @@
 </script>
 
 <section
-	class="mt-20 flex flex-col p-5 md:mt-0 md:gap-[1.5vw] md:pb-[2.5vw] md:pl-[1.5vw] md:pr-[3.75vw] md:pt-0"
+	class="mt-20 flex h-max flex-col p-5 md:mt-0 md:gap-[1.5vw] md:pb-[2.5vw] md:pl-[1.5vw] md:pr-[3.75vw] md:pt-0"
 >
 	<div class="flex flex-col gap-2 md:gap-[0.5vw]">
 		<div class="text-3xl font-bold leading-none md:text-[2vw]">
@@ -220,7 +218,7 @@
 					<div class="relative flex items-center">
 						<span class="absolute flex cursor-pointer items-center md:gap-[0.25vw]">
 							{#if selected_items}
-								{#if !_.isEmpty(selected_items)}
+								{#if !isEmpty(selected_items)}
 									<span
 										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.25vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
@@ -252,7 +250,7 @@
 							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[11vw] md:rounded-[0.5vw] md:bg-neutral md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
 						{#if selected_items}
-							{#if !_.isEmpty(selected_items)}
+							{#if !isEmpty(selected_items)}
 								<button
 									on:click|preventDefault={() => clear_selected_items(option[0])}
 									class="btn absolute right-0 mr-3 w-4 border-none !bg-transparent p-0 md:mr-[1vw] md:w-[1vw]"
@@ -348,7 +346,7 @@
 					<span class="loading loading-ring loading-lg"></span>
 				</div>
 			{:then results}
-				{#if !_.isEmpty(results)}
+				{#if !isEmpty(results)}
 					{#if thumbnail_mode === "detailed_card"}
 						<div class="mt-5 grid grid-cols-2 gap-3 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1.5vw]">
 							{#each results as anime}
