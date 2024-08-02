@@ -6,16 +6,12 @@ const route_table = {
   anime: "/anime"
 };
 
-export const default_locale: keyof typeof lang = "en";
+export const translations_locales = ["en", "bn", "es", "de"],
+  default_locale: keyof typeof lang = "en";
 
 export const config = {
   log: { level: dev ? "warn" : "error" },
-  translations: {
-    bn: { lang },
-    en: { lang },
-    es: { lang },
-    de: { lang }
-  },
+  translations: translations_locales.reduce((acc, locale) => ({ ...acc, [locale]: { lang } }), {}),
   loaders: [
     // EN
     {
@@ -79,6 +75,3 @@ export const {
   setLocale,
   setRoute
 } = new i18n(config);
-
-// do something with this
-// loading.subscribe(($loading) => console.log($loading));
