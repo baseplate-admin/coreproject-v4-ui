@@ -1,6 +1,6 @@
 <script lang="ts">
 	// import * as _ from "lodash-es";
-	import * as _ from "lodash-es"
+	import * as _ from "lodash-es";
 	import HoverExpand from "$components/hover_expand.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { cn } from "$functions/classnames";
@@ -15,8 +15,6 @@
 	import Expand from "$icons/shapes/expand.svelte";
 	import { type Anime } from "$types/anime";
 	import { FETCH_TIMEOUT } from "$constants/fetch";
-	import { reverse } from "$functions/urls/reverse";
-	import { get_csrf_token } from "$functions/get_csrf_token";
 	import AnimeCard from "$components/anime_card.svelte";
 
 	// Binding
@@ -126,19 +124,15 @@
 		change_thumbnail_mode = (mode: typeof thumbnail_mode) => {
 			thumbnail_mode = mode;
 		};
-		// isEmpty = (list: any[]) => {
-		// 	if (list.length == 0) return true;
-		// 	else return false;
-		// };
+	// isEmpty = (list: any[]) => {
+	// 	if (list.length == 0) return true;
+	// 	else return false;
+	// };
 
 	const get_anime_with_serach_parameters = async (): Promise<Anime[]> => {
 		let url = new URL(
-			window.location.protocol +
-				"//" +
-				window.location.hostname +
-				":" +
-				window.location.port +
-				reverse(`anime-list`)
+			window.location.protocol + "//" + window.location.hostname + ":" + window.location.port
+			// + reverse(`anime-list`)
 		);
 
 		const search_map = {
@@ -159,8 +153,8 @@
 			method: "GET",
 			headers: {
 				Accept: "application/json",
-				"Content-Type": "application/json",
-				"X-CSRFToken": get_csrf_token()
+				"Content-Type": "application/json"
+				// "X-CSRFToken": get_csrf_token()
 			},
 			signal: AbortSignal.timeout(FETCH_TIMEOUT)
 		});
