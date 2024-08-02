@@ -32,23 +32,38 @@ export const config = {
     // BN
     {
       locale: "bn",
+      key: "common",
+      loader: async () => (await import("./bn/common.json")).default
+    },
+    {
+      locale: "bn",
       key: "home",
       routes: [route_table["anime"]],
-      loader: async () => (await import("./bn/home.json")).default
+      loader: async () => (await import("./bn/anime/home.json")).default
     },
     // ES
     {
       locale: "es",
+      key: "common",
+      loader: async () => (await import("./es/common.json")).default
+    },
+    {
+      locale: "es",
       key: "home",
       routes: [route_table["anime"]],
-      loader: async () => (await import("./es/home.json")).default
+      loader: async () => (await import("./es/anime/home.json")).default
     },
     // DE
     {
       locale: "de",
+      key: "common",
+      loader: async () => (await import("./de/common.json")).default
+    },
+    {
+      locale: "de",
       key: "home",
       routes: [route_table["anime"]],
-      loader: async () => (await import("./de/home.json")).default
+      loader: async () => (await import("./de/anime/home.json")).default
     }
   ]
 } satisfies Config;
