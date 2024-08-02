@@ -1,18 +1,5 @@
 {
-	"sidebar": {
-		"home": "Startseite",
-		"explore": "Erkunden",
-		"list": "Liste",
-		"schedule": "Zeitplan",
-		"forum": "Forum",
-		"settings": "Einstellungen",
-		"misc": "Sonstiges"
-	},
-	"navbar": {
-		"login": "Anmelden",
-		"register": "Registrieren"
-	},
-	"latest_episodes": {
+  "latest_episodes": {
 		"title": "Neueste Episoden",
 		"cta": "Vollständige Liste",
 		"options": {

@@ -186,13 +186,13 @@
 					href="/user/register"
 					class="btn btn-neutral h-max min-h-max leading-none md:rounded-[0.75vw] md:p-[0.9vw] md:text-[1vw]"
 				>
-					{$t("home.navbar.register")}
+					{$t("common.navbar.register")}
 				</a>
 				<a
 					href="/user/login"
 					class="btn btn-primary h-max min-h-max leading-none text-accent md:rounded-[0.75vw] md:p-[0.9vw] md:text-[1vw]"
 				>
-					{$t("home.navbar.login")}
+					{$t("common.navbar.login")}
 				</a>
 			</div>
 
@@ -215,7 +215,7 @@
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
 							<Login class="w-4 md:w-[1vw]" />
-							{$t("home.navbar.login")}
+							{$t("common.navbar.login")}
 						</a>
 					</li>
 					<li>
@@ -224,7 +224,7 @@
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
 							<Register class="w-4 md:w-[1vw]" />
-							{$t("home.navbar.register")}
+							{$t("common.navbar.register")}
 						</a>
 					</li>
 				</div>
@@ -295,7 +295,7 @@
 											</icon>
 
 											<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
-												{$t(`home.sidebar.${item_name}`)}
+												{$t(`common.sidebar.${item_name}`)}
 											</span>
 										</div>
 									{/if}
@@ -316,7 +316,7 @@
 					>
 						<svelte:component this={item_icon.component} class={item_icon.class} />
 						<span class="!m-0 text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
-							{$t(`home.sidebar.${item_name}`)}
+							{$t(`common.sidebar.${item_name}`)}
 						</span>
 					</button>
 				{/each}
