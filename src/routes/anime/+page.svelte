@@ -459,7 +459,7 @@
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
-										<Play class="md:size-[1.25vw]" />
+										<Play class="text-secondary md:size-[1.25vw]" />
 									</a>
 								</div>
 							</div>
