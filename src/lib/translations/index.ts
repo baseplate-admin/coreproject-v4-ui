@@ -17,24 +17,33 @@ export const config = {
     de: { lang }
   },
   loaders: [
+    // EN
+    {
+      locale: "en",
+      key: "common",
+      loader: async () => (await import("./en/common.json")).default
+    },
     {
       locale: "en",
       key: "home",
       routes: [route_table["anime"]],
-      loader: async () => (await import("./en/home.json")).default
+      loader: async () => (await import("./en/anime/home.json")).default
     },
+    // BN
     {
       locale: "bn",
       key: "home",
       routes: [route_table["anime"]],
       loader: async () => (await import("./bn/home.json")).default
     },
+    // ES
     {
       locale: "es",
       key: "home",
       routes: [route_table["anime"]],
       loader: async () => (await import("./es/home.json")).default
     },
+    // DE
     {
       locale: "de",
       key: "home",
