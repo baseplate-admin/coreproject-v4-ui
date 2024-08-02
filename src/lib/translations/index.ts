@@ -6,9 +6,8 @@ const route_table = {
   anime: "/anime"
 };
 
-export const translations_locales = ["en", "bn", "es", "dn"];
-
-export const default_locale: keyof typeof lang = "en";
+export const translations_locales = ["en", "bn", "es", "de"],
+  default_locale: keyof typeof lang = "en";
 
 export const config = {
   log: { level: dev ? "warn" : "error" },
