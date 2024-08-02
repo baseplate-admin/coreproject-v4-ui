@@ -75,6 +75,3 @@ export const {
   setLocale,
   setRoute
 } = new i18n(config);
-
-// do something with this
-// loading.subscribe(($loading) => console.log($loading));
