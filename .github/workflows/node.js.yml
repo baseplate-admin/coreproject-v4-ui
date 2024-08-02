@@ -7,13 +7,26 @@ on:
   push:
     branches:
       - "*"
-  pull_request:
-    branches:
-      - "*"
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
+    # Service containers to run with `runner-job`
+    services:
+      # Label used to access the service container
+      redis:
+        # Docker Hub image
+        image: redis
+        # Set health checks to wait until redis has started
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          # Maps port 6379 on service container to the host
+          - 6379:6379
 
     strategy:
       matrix:
@@ -36,4 +49,6 @@ jobs:
         run: |
           npm run build
           npm run build:node
-          npm run build:static
+
+        # env:
+        #   REDIS_URL: "redis://localhost:6379"
