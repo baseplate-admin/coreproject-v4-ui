@@ -322,8 +322,9 @@
 				{/each}
 			</div>
 		</aside>
-		<main class="relative w-full overflow-y-scroll">
-			<svg
+		<main class="relative w-full">
+			<!-- Whats thisss??? -->
+			<!-- <svg
 				class="absolute left-0 top-0 z-10 md:size-[2vw]"
 				viewBox="0 0 24 24"
 				fill="none"
@@ -335,8 +336,9 @@
 					clip-rule="evenodd"
 					d="M24 0H0V24C0 10.7451 10.7452 0 24 0Z"
 				/>
-			</svg>
-			<div id="page" class="w-full overflow-y-scroll">
+			</svg> -->
+
+			<div id="page" class="w-full">
 				<slot />
 			</div>
 			<main></main>
