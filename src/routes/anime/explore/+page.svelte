@@ -143,7 +143,8 @@
 		};
 		for (const [key, val] of Object.entries(search_map)) {
 			if (!isEmpty(val) && !isUndefined(val)) {
-				url.searchParams.set(key, val);
+				const value = typeof val === "string" ? val : "";
+				url.searchParams.set(key, value);
 			}
 		}
 
