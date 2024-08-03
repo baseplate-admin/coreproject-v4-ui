@@ -141,10 +141,9 @@
 				})
 				.join()
 		};
-		for (const [key, val] of Object.entries(search_map)) {
-			if (!isEmpty(val) && !isUndefined(val)) {
-				const value = typeof val === "string" ? val : "";
-				url.searchParams.set(key, value);
+		for (const [key, value] of Object.entries(search_map)) {
+			if (!isEmpty(value) && !isUndefined(value)) {
+				url.searchParams.set(key, String(value));
 			}
 		}
 
