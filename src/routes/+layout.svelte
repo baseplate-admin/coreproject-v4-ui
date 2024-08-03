@@ -15,7 +15,7 @@
 	{@render children()}
 </div>
 
-<div class="invisible">
+<div class="invisible hidden">
 	<img
 		src={SENSITIVE_ADVERSIEMENT_URL}
 		alt="advertisement"
