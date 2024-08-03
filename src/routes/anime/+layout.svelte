@@ -322,7 +322,7 @@
 				{/each}
 			</div>
 		</aside>
-		<main class="relative w-full">
+		<main class="relative w-full overflow-y-auto">
 			<!-- Whats thisss??? -->
 			<!-- <svg
 				class="absolute left-0 top-0 z-10 md:size-[2vw]"
