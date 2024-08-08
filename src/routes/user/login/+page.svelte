@@ -4,9 +4,8 @@
 	import { handle_input } from "$functions/forms/handle_input";
 	import { autofocus } from "$functions/forms/autofocus";
 	import { createAuthStore } from "$stores/auth.svelte";
-	import Info from "$functions/icons/shapes/info.svelte";
 	import Markdown from "$components/markdown.svelte";
-	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
+
 	import Eye from "$icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
@@ -81,8 +80,8 @@
 				href={"/anime"}
 				class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<coreproject-icon-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
-				></coreproject-icon-arrow>
+				<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+				></coreproject-shape-arrow>
 				Home
 			</a>
 			<span
@@ -105,7 +104,7 @@
 				<div
 					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
-					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 					{#if username_or_email.error.length}
 						<Markdown class="text-error" markdown={username_or_email.error.join("")} />
 					{:else}
@@ -142,7 +141,7 @@
 				<div
 					class="text-surface-300 flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
-					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 					{#if password.error.length}
 						<Markdown class="text-error" markdown={password.error.join("")} />
 					{:else}
@@ -175,7 +174,8 @@
 				class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 			>
 				<span>Continue</span>
-				<ArrowUpRight class="w-4 rotate-45 md:w-[1vw]" />
+				<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
+				></coreproject-shape-arrow-up-right>
 			</button>
 		</div>
 	</form>
