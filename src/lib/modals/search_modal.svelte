@@ -3,7 +3,7 @@
 
 	// Icon imports
 
-	import Search from "$functions/icons/shapes/search.svelte";
+	import Search from "$icons/shapes/search.svelte";
 	import Cross from "$functions/icons/shapes/cross.svelte";
 	import Circle from "$functions/icons/shapes/circle.svelte";
 	import Chevron from "$functions/icons/shapes/chevron.svelte";

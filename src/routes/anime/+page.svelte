@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Chevron from "$functions/icons/shapes/chevron.svelte";
-	import Settings from "$functions/icons/shapes/settings.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
 	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
 
 	import { swipe } from "svelte-gestures";
@@ -10,10 +10,10 @@
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
 	import Circle from "$functions/icons/shapes/circle.svelte";
-	import Play from "$functions/icons/shapes/play.svelte";
+	import Play from "$icons/shapes/play.svelte";
 	import Info from "$functions/icons/shapes/info.svelte";
 	import Edit from "$functions/icons/shapes/edit.svelte";
-	import Preference from "$functions/icons/shapes/preference.svelte";
+	import Preference from "$icons/shapes/preference.svelte";
 	import Dice from "$functions/icons/shapes/dice.svelte";
 
 	import ScrollArea from "$components/scroll_area.svelte";

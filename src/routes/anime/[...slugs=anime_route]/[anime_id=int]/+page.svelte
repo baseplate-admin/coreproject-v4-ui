@@ -1,20 +1,20 @@
 <script lang="ts">
 	// Icons
 	import Dot from "$functions/icons/shapes/dot.svelte";
-	import Play from "$functions/icons/shapes/play.svelte";
+	import Play from "$icons/shapes/play.svelte";
 	import Book from "$functions/icons/shapes/book_open.svelte";
 	import Chevron from "$functions/icons/shapes/chevron.svelte";
 	import Headphone from "$functions/icons/shapes/headphone.svelte";
 	import Edit from "$functions/icons/shapes/edit.svelte";
 	import Download from "$functions/icons/shapes/download.svelte";
-	import Share from "$functions/icons/shapes/share.svelte";
-	import Settings from "$functions/icons/shapes/settings.svelte";
-	import Search from "$functions/icons/shapes/search.svelte";
+	import Share from "$icons/shapes/share.svelte";
+	import Settings from "$icons/shapes/settings.svelte";
+	import Search from "$icons/shapes/search.svelte";
 	import Filter from "$functions/icons/shapes/filter.svelte";
 	import Cross from "$functions/icons/shapes/cross.svelte";
 	import Chat from "$functions/icons/shapes/chat.svelte";
-	import TrendingArrow from "$functions/icons/shapes/trending_up.svelte";
-	import Rating from "$functions/icons/shapes/rating.svelte";
+	import TrendingArrow from "$icons/shapes/trending_up.svelte";
+	import Rating from "$icons/shapes/rating.svelte";
 	import Hyperlink from "$functions/icons/shapes/hyperlink.svelte";
 
 	// Components

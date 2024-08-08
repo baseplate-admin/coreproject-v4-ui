@@ -7,7 +7,7 @@
 	import Info from "$functions/icons/shapes/info.svelte";
 	import Markdown from "$components/markdown.svelte";
 	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
-	import Eye from "$functions/icons/shapes/eye.svelte";
+	import Eye from "$icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
 
