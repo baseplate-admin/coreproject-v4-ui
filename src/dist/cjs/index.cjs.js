@@ -1,4 +1,3 @@
-'use strict';
-
+"use strict";
 
 //# sourceMappingURL=index.cjs.js.map
