@@ -6,7 +6,7 @@
 	const adblocker_store = createAdblockerStore();
 
 	onMount(async () => {
-		defineCustomElements();
+		defineCustomElements(window);
 	});
 
 	// Stolen from : https://github.com/fivefilters/block-ads/blob/2d47fa1c7341cbf897710574972cdcf9cefa390d/index.html#L183
