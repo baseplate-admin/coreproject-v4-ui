@@ -6,8 +6,7 @@
 	const adblocker_store = createAdblockerStore();
 
 	onMount(async () => {
-		// @ts-expect-error
-		await import("@coreproject-moe/icons");
+		await import("@coreproject-moe/icons/components");
 	});
 
 	// Stolen from : https://github.com/fivefilters/block-ads/blob/2d47fa1c7341cbf897710574972cdcf9cefa390d/index.html#L183
