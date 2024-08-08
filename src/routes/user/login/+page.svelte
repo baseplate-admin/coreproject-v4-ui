@@ -7,7 +7,6 @@
 	import Info from "$icons/shapes/info.svelte";
 	import Markdown from "$components/markdown.svelte";
 	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Arrow from "$icons/shapes/arrow.svelte";
 	import Eye from "$icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
@@ -82,7 +81,8 @@
 				href={"/anime"}
 				class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
+				<coreproject-icon-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+				></coreproject-icon-arrow>
 				Home
 			</a>
 			<span
