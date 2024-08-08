@@ -3,11 +3,6 @@
 
 	// Icon imports
 
-	import Search from "$icons/shapes/search.svelte";
-	import Cross from "$functions/icons/shapes/cross.svelte";
-	import Circle from "$functions/icons/shapes/circle.svelte";
-	import Chevron from "$functions/icons/shapes/chevron.svelte";
-
 	const modal_store = createModalStore();
 
 	let search_query = $state("");
@@ -69,7 +64,7 @@
 				class="btn absolute left-[1.25vw] h-max min-h-max border-none !bg-transparent p-0"
 				aria-label="Search"
 			>
-				<Search style="width: 1.25vw;" />
+				<coreproject-shape-search style="width: 1.25vw;"></coreproject-shape-search>
 			</button>
 			<input
 				bind:value={search_query}
@@ -86,11 +81,11 @@
 				class="btn absolute right-[1.25vw] min-h-max border-none !bg-transparent p-0"
 				onclick={() => (search_query = "")}
 			>
-				<Cross style="width: 1.5vw; opacity: 0.7;" />
+				<coreproject-shape-cross style="width: 1.5vw; opacity: 0.7;"></coreproject-shape-cross>
 			</button>
 		</form>
 
-		<div class="flex grid grid-cols-3 gap-[4vw] md:h-[30vw] md:w-[70vw]">
+		<div class="grid grid-cols-3 gap-[4vw] md:h-[30vw] md:w-[70vw]">
 			<div class="flex flex-col md:gap-[0.5vw]">
 				<span class="text-[1.2vw] font-semibold text-info">anime</span>
 				<div class="flex h-full flex-col bg-neutral md:rounded-[1vw] md:p-[1vw]">
@@ -109,7 +104,7 @@
 									<div class="flex items-center font-medium md:gap-[0.5vw] md:text-[0.8vw]">
 										<span>1996</span>
 										<span>TV</span>
-										<Circle class="md:size-[0.25vw]" />
+										<coreproject-shape-circle class="md:size-[0.25vw]"></coreproject-shape-circle>
 										<span>1009 eps</span>
 									</div>
 								</div>
@@ -121,7 +116,7 @@
 						class="mt-auto flex items-center self-center text-info md:gap-[0.5vw]"
 					>
 						<span class="font-semibold md:text-[1vw]">view all</span>
-						<Chevron class="-rotate-90 md:size-[1vw]" />
+						<coreproject-shape-chevron class="-rotate-90 md:size-[1vw]"></coreproject-shape-chevron>
 					</a>
 				</div>
 			</div>

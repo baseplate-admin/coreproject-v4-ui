@@ -1,19 +1,4 @@
 <script lang="ts">
-	import Search from "$icons/shapes/search.svelte";
-	import Home from "$functions/icons/shapes/home.svelte";
-	import Explore from "$functions/icons/shapes/explore.svelte";
-	import Misc from "$functions/icons/shapes/misc.svelte";
-	import List from "$functions/icons/shapes/list.svelte";
-	import Schedule from "$icons/shapes/schedule.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Forum from "$functions/icons/shapes/forum.svelte";
-	import AnimeCoreIcon from "$icons/logos/anime_core.svelte";
-	import Register from "$icons/shapes/register.svelte";
-	import Login from "$functions/icons/shapes/login.svelte";
-	import User from "$icons/shapes/user.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import CoreProjectLogo from "$functions/icons/shapes/logo.svelte";
-
 	import VercelHover from "$components/vercel_hover.svelte";
 	import { createAuthStore } from "$stores/auth.svelte";
 	import { page } from "$app/stores";
@@ -35,8 +20,8 @@
 			[key in string]: {
 				name?: string;
 				icon: {
-					component: any;
-					class: string;
+					component: string;
+					class?: string;
 				};
 				url?: string;
 				show_on_mobile?: boolean | undefined;
@@ -46,16 +31,14 @@
 		top: {
 			search: {
 				icon: {
-					component: Search,
-					class: "w-[1.25vw] text-black"
+					component: `<coreproject-shape-search class="w-[1.25vw] text-black"></coreproject-shape-search>`
 				}
 			}
 		},
 		middle: {
 			home: {
 				icon: {
-					component: Home,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-home class="w-[1.25vw]"></coreproject-shape-home>`
 				},
 				url: "/anime",
 				show_on_mobile: true
@@ -63,32 +46,28 @@
 
 			explore: {
 				icon: {
-					component: Explore,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-explore class="w-[1.25vw]"></coreproject-shape-explore>`
 				},
 				url: "/anime/explore",
 				show_on_mobile: true
 			},
 			list: {
 				icon: {
-					component: List,
-					class: "w-[1.7vw]"
+					component: `<coreproject-shape-list class="w-[1.7vw]"></coreproject-shape-list>`
 				},
 				url: "/anime/list",
 				show_on_mobile: false
 			},
 			schedule: {
 				icon: {
-					component: Schedule,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-schedule class="w-[1.25vw]"></coreproject-shape-schedule>`
 				},
 				url: "/anime/shedule",
 				show_on_mobile: false
 			},
 			forum: {
 				icon: {
-					component: Forum,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-forum class="w-[1.25vw]"></coreproject-shape-forum>`
 				},
 				url: "/anime/forum",
 				show_on_mobile: true
@@ -97,15 +76,13 @@
 		bottom: {
 			settings: {
 				icon: {
-					component: Settings,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-settings variant='filled' class="w-[1.25vw]"></coreproject-shape-settings>`
 				},
 				url: undefined
 			},
 			misc: {
 				icon: {
-					component: Misc,
-					class: "w-[1.25vw]"
+					component: `<coreproject-shape-misc class="w-[1.25vw]"></coreproject-shape-misc>`
 				},
 				url: undefined
 			}
@@ -114,22 +91,19 @@
 			profile: {
 				url: "/profile",
 				icon: {
-					component: User,
-					class: "w-4 md:w-[1vw]"
+					component: `<coreproject-shape-user class="w-4 md:w-[1vw]"></coreproject-shape-user>`
 				}
 			},
 			"my list": {
 				url: "/my-list",
 				icon: {
-					component: List,
-					class: "w-4 md:w-[1vw]"
+					component: `<coreproject-shape-list class="w-4 md:w-[1vw]"></coreproject-shape-list>`
 				}
 			},
 			prefernce: {
 				url: "/prefernce",
 				icon: {
-					component: Preference,
-					class: "w-4 md:w-[1vw]"
+					component: `<coreproject-shape-preference class="w-4 md:w-[1vw]"></coreproject-shape-preference>`
 				}
 			}
 		}
@@ -142,17 +116,17 @@
 		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
 	>
 		<a href="/">
-			<CoreProjectLogo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]" />
+			<coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"></coreproject-shape-logo>
 		</a>
 		<div class="relative flex items-center md:static">
 			<div class="absolute left-1/2 -translate-x-1/2">
 				<a href="/anime" class="hidden md:flex">
-					<AnimeCoreIcon class="w-[10vw]"></AnimeCoreIcon>
+					<coreproject-logo-animecore class="w-[10vw]"></coreproject-logo-animecore>
 				</a>
 				<div>
 					<form class="relative flex h-12 w-[65vw] items-center md:hidden">
 						<button class="btn absolute left-4 border-none !bg-transparent p-0" aria-label="Search">
-							<Search class="w-5" />
+							<coreproject-shape-search class="w-5"></coreproject-shape-search>
 						</button>
 						<input
 							type="text"
@@ -214,7 +188,7 @@
 							href="/user/login"
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
-							<Login class="w-4 md:w-[1vw]" />
+							<coreproject-shape-login class="w-4 md:w-[1vw]"></coreproject-shape-login>
 							{$t("common.navbar.login")}
 						</a>
 					</li>
@@ -223,7 +197,7 @@
 							href="/user/register"
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
-							<Register class="w-4 md:w-[1vw]" />
+							<coreproject-shape-register class="w-4 md:w-[1vw]"></coreproject-shape-register>
 							{$t("common.navbar.register")}
 						</a>
 					</li>
@@ -243,7 +217,7 @@
 							modal_store.open_modal("search");
 						}}
 					>
-						<Search class="w-[1.25vw] text-black" />
+						<coreproject-shape-search class="w-[1.25vw] text-black"></coreproject-shape-search>
 					</button>
 				</div>
 
@@ -282,7 +256,7 @@
 											class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 										>
 											<icon class="!text-secondary">
-												<svelte:component this={item_icon.component} class={item_icon.class} />
+												{@html item_icon.component}
 											</icon>
 										</div>
 									{:else}
@@ -291,7 +265,7 @@
 											class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 										>
 											<icon class={cn("!text-white")}>
-												<svelte:component this={item_icon.component} class={item_icon.class} />
+												{@html item_icon.component}
 											</icon>
 
 											<span class="text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
@@ -314,7 +288,8 @@
 						type="button"
 						class="btn h-[4vw] w-[4vw] flex-col justify-center gap-[0.45vw] border-none !bg-transparent p-0 text-sm"
 					>
-						<svelte:component this={item_icon.component} class={item_icon.class} />
+						{@html item_icon.component}
+
 						<span class="!m-0 text-[0.75vw] font-semibold capitalize leading-[1.05vw]">
 							{$t(`common.sidebar.${item_name}`)}
 						</span>
