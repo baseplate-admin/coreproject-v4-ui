@@ -5,8 +5,13 @@
 
 	const adblocker_store = createAdblockerStore();
 
+	let ICON_MOUNTED = false;
 	onMount(() => {
-		import("../dist/coreproject-icons/coreproject-icons.esm");
+		if (!ICON_MOUNTED) {
+			import("../dist/coreproject-icons/coreproject-icons.esm").then(() => {
+				ICON_MOUNTED = true;
+			});
+		}
 	});
 	// Stolen from : https://github.com/fivefilters/block-ads/blob/2d47fa1c7341cbf897710574972cdcf9cefa390d/index.html#L183
 	const SENSITIVE_ADVERSIEMENT_URL =
