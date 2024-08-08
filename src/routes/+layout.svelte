@@ -9,7 +9,6 @@
 		// @ts-expect-error
 		await import("@coreproject-moe/icons");
 	});
-	let ICON_MOUNTED = false;
 
 	// Stolen from : https://github.com/fivefilters/block-ads/blob/2d47fa1c7341cbf897710574972cdcf9cefa390d/index.html#L183
 	const SENSITIVE_ADVERSIEMENT_URL =
