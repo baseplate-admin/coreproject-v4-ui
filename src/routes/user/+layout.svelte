@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Refresh from "$icons/shapes/refresh.svelte";
-	import CoreProject from "$icons/text/core_project.svelte";
+	import Refresh from "$functions/icons/shapes/refresh.svelte";
+	import CoreProject from "$functions/icons/text/core_project.svelte";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { TIMER_DELAY } from "$constants/timer";

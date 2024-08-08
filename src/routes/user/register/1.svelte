@@ -7,12 +7,12 @@
 	import { cn } from "$functions/classnames";
 	import { autofocus } from "$functions/forms/autofocus";
 	import Arrow from "$icons/shapes/arrow.svelte";
-	import Info from "$icons/shapes/info.svelte";
-	import Tick from "$icons/shapes/tick.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import CoreText from "$icons/text/core.svelte";
+	import Info from "$functions/icons/shapes/info.svelte";
+	import Tick from "$functions/icons/shapes/tick.svelte";
+	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
+	import CoreText from "$functions/icons/text/core.svelte";
 	import type { PageProps } from "./types";
-	import Eye from "$icons/shapes/eye.svelte";
+	import Eye from "$functions/icons/shapes/eye.svelte";
 
 	let { on_submit, pages_state }: PageProps = $props();
 

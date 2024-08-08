@@ -1,18 +1,18 @@
 <script lang="ts">
-	import Search from "$icons/shapes/search.svelte";
-	import Home from "$icons/shapes/home.svelte";
-	import Explore from "$icons/shapes/explore.svelte";
-	import Misc from "$icons/shapes/misc.svelte";
-	import List from "$icons/shapes/list.svelte";
-	import Schedule from "$icons/shapes/schedule.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Forum from "$icons/shapes/forum.svelte";
+	import Search from "$functions/icons/shapes/search.svelte";
+	import Home from "$functions/icons/shapes/home.svelte";
+	import Explore from "$functions/icons/shapes/explore.svelte";
+	import Misc from "$functions/icons/shapes/misc.svelte";
+	import List from "$functions/icons/shapes/list.svelte";
+	import Schedule from "$functions/icons/shapes/schedule.svelte";
+	import Settings from "$functions/icons/shapes/settings.svelte";
+	import Forum from "$functions/icons/shapes/forum.svelte";
 	import AnimeCoreIcon from "$icons/logos/anime_core.svelte";
-	import Register from "$icons/shapes/register.svelte";
-	import Login from "$icons/shapes/login.svelte";
-	import User from "$icons/shapes/user.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import CoreProjectLogo from "$icons/shapes/logo.svelte";
+	import Register from "$functions/icons/shapes/register.svelte";
+	import Login from "$functions/icons/shapes/login.svelte";
+	import User from "$functions/icons/shapes/user.svelte";
+	import Preference from "$functions/icons/shapes/preference.svelte";
+	import CoreProjectLogo from "$functions/icons/shapes/logo.svelte";
 
 	import VercelHover from "$components/vercel_hover.svelte";
 	import { createAuthStore } from "$stores/auth.svelte";

@@ -1,6 +1,6 @@
 <script lang="ts">
-	import Info from "$icons/shapes/info.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import Info from "$functions/icons/shapes/info.svelte";
+	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
 
 	import { z } from "zod";

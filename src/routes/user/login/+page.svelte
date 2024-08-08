@@ -4,10 +4,10 @@
 	import { handle_input } from "$functions/forms/handle_input";
 	import { autofocus } from "$functions/forms/autofocus";
 	import { createAuthStore } from "$stores/auth.svelte";
-	import Info from "$icons/shapes/info.svelte";
+	import Info from "$functions/icons/shapes/info.svelte";
 	import Markdown from "$components/markdown.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Eye from "$icons/shapes/eye.svelte";
+	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
+	import Eye from "$functions/icons/shapes/eye.svelte";
 
 	const auth_store = createAuthStore();
 

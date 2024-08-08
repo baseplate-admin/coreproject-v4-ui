@@ -4,7 +4,7 @@
 	import Discord from "$icons/logos/discord.svelte";
 	import Github from "$icons/logos/github.svelte";
 	import Reddit from "$icons/logos/reddit.svelte";
-	import Info from "$icons/shapes/info.svelte";
+	import Info from "$functions/icons/shapes/info.svelte";
 </script>
 
 <main

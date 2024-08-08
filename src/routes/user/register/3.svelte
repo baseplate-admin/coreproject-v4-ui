@@ -1,6 +1,6 @@
 <script lang="ts">
-	import CoreText from "$icons/text/core.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+	import CoreText from "$functions/icons/text/core.svelte";
+	import ArrowUpRight from "$functions/icons/shapes/arrow_up_right.svelte";
 	import Arrow from "$icons/shapes/arrow.svelte";
 	import type { PageProps } from "./types";
 

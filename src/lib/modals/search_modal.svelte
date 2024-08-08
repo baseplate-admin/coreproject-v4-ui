@@ -3,10 +3,10 @@
 
 	// Icon imports
 
-	import Search from "$icons/shapes/search.svelte";
-	import Cross from "$icons/shapes/cross.svelte";
-	import Circle from "$icons/shapes/circle.svelte";
-	import Chevron from "$icons/shapes/chevron.svelte";
+	import Search from "$functions/icons/shapes/search.svelte";
+	import Cross from "$functions/icons/shapes/cross.svelte";
+	import Circle from "$functions/icons/shapes/circle.svelte";
+	import Chevron from "$functions/icons/shapes/chevron.svelte";
 
 	const modal_store = createModalStore();
 

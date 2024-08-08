@@ -1,12 +1,12 @@
 <script lang="ts">
-	import Chat from "$icons/shapes/chat.svelte";
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Cross from "$icons/shapes/cross.svelte";
-	import DoubleArrow from "$icons/shapes/double_arrow.svelte";
-	import Filter from "$icons/shapes/filter.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Share from "$icons/shapes/share.svelte";
+	import Chat from "$functions/icons/shapes/chat.svelte";
+	import Chevron from "$functions/icons/shapes/chevron.svelte";
+	import Cross from "$functions/icons/shapes/cross.svelte";
+	import DoubleArrow from "$functions/icons/shapes/double_arrow.svelte";
+	import Filter from "$functions/icons/shapes/filter.svelte";
+	import Play from "$functions/icons/shapes/play.svelte";
+	import Settings from "$functions/icons/shapes/settings.svelte";
+	import Share from "$functions/icons/shapes/share.svelte";
 
 	import { page } from "$app/stores";
 	import Portal from "svelte-portal";
