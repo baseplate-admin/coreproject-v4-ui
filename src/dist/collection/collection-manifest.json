@@ -1,0 +1,13 @@
+{
+  "entries": [
+    "components/coreproject-icon-arrow/coreproject-icon-arrow.js",
+    "components/coreproject-logo-anime-core/coreproject-logo-anime-core.js"
+  ],
+  "compiler": {
+    "name": "@stencil/core",
+    "version": "4.20.0",
+    "typescriptVersion": "5.5.3"
+  },
+  "collections": [],
+  "bundles": []
+}
