@@ -11,21 +11,23 @@
 	const { children } = $props();
 </script>
 
+{#if adblocker_store.state !== null}
+	<div class="invisible">
+		<img
+			src={SENSITIVE_ADVERSIEMENT_URL}
+			alt="advertisement"
+			onload={() => {
+				adblocker_store.state = false;
+			}}
+			onerror={() => {
+				adblocker_store.state = true;
+			}}
+		/>
+	</div>
+{/if}
+
 <div class="bg-secondary">
 	{@render children()}
-</div>
-
-<div class="invisible">
-	<img
-		src={SENSITIVE_ADVERSIEMENT_URL}
-		alt="advertisement"
-		onload={() => {
-			adblocker_store.state = false;
-		}}
-		onerror={() => {
-			adblocker_store.state = true;
-		}}
-	/>
 </div>
 
 <!-- svelte-ignore css_unused_selector -->
