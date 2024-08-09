@@ -52,7 +52,7 @@
 		"@zxcvbn-ts/language-nl-be": "^3.0.2",
 		"@zxcvbn-ts/language-pl": "^3.0.2",
 		"@zxcvbn-ts/language-pt-br": "^3.0.2",
-		"autoprefixer": "^10.4.19",
+		"autoprefixer": "^10.4.20",
 		"chroma-js": "^2.6.0",
 		"color-thief-wasm-web": "^1.0.11",
 		"cross-env": "^7.0.3",
