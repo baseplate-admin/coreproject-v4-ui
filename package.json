@@ -72,7 +72,7 @@
 		"marked-highlight": "^2.1.4",
 		"marked-katex-extension": "^5.1.1",
 		"marked-mangle": "^1.1.9",
-		"marked-smartypants": "^1.1.7",
+		"marked-smartypants": "^1.1.8",
 		"marked-xhtml": "^1.0.11",
 		"openapi-fetch": "^0.10.6",
 		"postcss": "^8.4.41",
