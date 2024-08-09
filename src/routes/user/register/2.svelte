@@ -1,8 +1,4 @@
 <script lang="ts">
-	import Info from "$icons/shapes/info.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-	import Arrow from "$icons/shapes/arrow.svelte";
-
 	import { z } from "zod";
 	import Markdown from "$components/markdown.svelte";
 	import { handle_input } from "$functions/forms/handle_input";
@@ -106,7 +102,8 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
+			<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+			></coreproject-shape-arrow>
 			Home
 		</a>
 		<span
@@ -131,7 +128,7 @@
 			<div
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
-				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
 				{#if username.error.length === 0}
 					<span>you can change username in your user settings later, so go bonkers!</span>
 				{:else}
@@ -151,7 +148,7 @@
 			<div
 				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
 			>
-				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
 				{#if otp.error.length === 0}
 					<span>
 						if you didn’t receive the code, check your spam folder. Or use the resend button
@@ -190,7 +187,8 @@
 			class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 		>
 			<span>Continue</span>
-			<ArrowUpRight class="w-4 rotate-45 md:w-[1vw]" />
+			<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
+			></coreproject-shape-arrow-up-right>
 		</button>
 	</div>
 </form>

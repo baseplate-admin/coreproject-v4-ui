@@ -1,22 +1,4 @@
 <script lang="ts">
-	// Icons
-	import Dot from "$icons/shapes/dot.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Book from "$icons/shapes/book_open.svelte";
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Headphone from "$icons/shapes/headphone.svelte";
-	import Edit from "$icons/shapes/edit.svelte";
-	import Download from "$icons/shapes/download.svelte";
-	import Share from "$icons/shapes/share.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Search from "$icons/shapes/search.svelte";
-	import Filter from "$icons/shapes/filter.svelte";
-	import Cross from "$icons/shapes/cross.svelte";
-	import Chat from "$icons/shapes/chat.svelte";
-	import TrendingArrow from "$icons/shapes/trending_up.svelte";
-	import Rating from "$icons/shapes/rating.svelte";
-	import Hyperlink from "$icons/shapes/hyperlink.svelte";
-
 	// Components
 	import HoverExpand from "$components/hover_expand.svelte";
 	import ScrollArea from "$components/scroll_area.svelte";
@@ -77,13 +59,22 @@
 		{ item: `Kuschio animation` }
 	];
 	const button_mapping: {
-		icon: typeof SvelteComponent<{}>;
+		icon: string;
 		label: string;
 		variant?: string;
 	}[] = [
-		{ icon: Edit, label: "edit", variant: "with_underline_around_pencil" },
-		{ icon: Download, label: "download" },
-		{ icon: Share, label: "share" }
+		{
+			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]" variant="with_underline_around_pencil"></coreproject-shape-edit>`,
+			label: "edit"
+		},
+		{
+			icon: `<coreproject-shape-download class="w-4 md:w-[1.125vw]"></coreproject-shape-download>`,
+			label: "download"
+		},
+		{
+			icon: `<coreproject-shape-share class="w-4 md:w-[1.125vw]"></coreproject-shape-share>`,
+			label: "share"
+		}
 	];
 </script>
 
@@ -135,7 +126,7 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<Dot class="w-[0.35rem] opacity-75" />
+									<coreproject-shape-dot class="w-[0.35rem] opacity-75"></coreproject-shape-dot>
 								{/if}
 							{/each}
 						</div>
@@ -145,7 +136,7 @@
 								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:rounded-[0.75vw]"
 							>
 								<div class="flex gap-3 md:gap-[0.7vw]">
-									<Play class="w-5 md:w-[1.5vw]" />
+									<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
 
 									<div class="flex flex-col items-start gap-1">
 										<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
@@ -162,7 +153,10 @@
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<Book variant="outline" class="text-surface-500 w-4 md:w-[1.5vw]"></Book>
+									<coreproject-shape-book
+										variant="outline"
+										class="text-surface-500 w-4 md:w-[1.5vw]"
+									></coreproject-shape-book>
 									<span class="leading-none">read</span>
 								</div>
 							</button>
@@ -172,7 +166,8 @@
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<Headphone class="text-surface-500 w-4 md:w-[1.5vw]"></Headphone>
+									<coreproject-shape-headphone class="text-surface-500 w-4 md:w-[1.5vw]"
+									></coreproject-shape-headphone>
 									<span class="leading-none">read</span>
 								</div>
 							</button>
@@ -184,11 +179,7 @@
 									aria-label={button.label}
 									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 								>
-									<svelte:component
-										this={button.icon}
-										variant={button.variant ?? ""}
-										class="w-4 md:w-[1.125vw]"
-									/>
+									{@html button.icon}
 								</button>
 							{/each}
 						</div>
@@ -200,7 +191,8 @@
 						<button
 							class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 						>
-							<Settings class="w-[0.9vw] opacity-75" />
+							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+							></coreproject-shape-settings>
 						</button>
 					</div>
 					<ScrollArea
@@ -232,7 +224,8 @@
 								class="btn h-min min-h-min border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Watching</span>
-								<Chevron class="text-warning-400 w-[0.625vw]" />
+								<coreproject-shape-chevron class="text-warning-400 w-[0.625vw]"
+								></coreproject-shape-chevron>
 							</button>
 						</div>
 						<div class="flex gap-[0.25vw]">
@@ -245,7 +238,8 @@
 								class="btn h-min min-h-min border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Not Rated</span>
-								<Chevron class="text-warning-400 w-[0.625vw]" />
+								<coreproject-shape-chevron class="text-warning-400 w-[0.625vw]"
+								></coreproject-shape-chevron>
 							</button>
 						</div>
 					</div>
@@ -257,7 +251,8 @@
 					<button
 						class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 					>
-						<Settings class="w-[0.9vw] opacity-75" />
+						<coreproject-shape-settings variant="outline" class="w-[0.9vw] opacity-75"
+						></coreproject-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex flex-col justify-between gap-y-5 md:mt-0 md:flex-row md:gap-y-0">
@@ -267,7 +262,7 @@
 								>23</span
 							>
 							<span class="text-xs font-semibold md:text-[1vw]">episodes</span>
-							<Dot class="w-[0.4vw] opacity-50" />
+							<coreproject-shape-dot class="w-[0.4vw] opacity-50"></coreproject-shape-dot>
 						</p>
 						<div>
 							<div class="flex w-full items-center gap-2 leading-4 md:gap-[1vw] md:leading-[1.5vw]">
@@ -287,7 +282,7 @@
 									class="flex h-full place-items-center rounded bg-secondary px-2 uppercase leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
 									>dub</span
 								>
-								<Dot class="w-[0.4vw] opacity-50" />
+								<coreproject-shape-dot class="w-[0.4vw] opacity-50"></coreproject-shape-dot>
 								<span
 									class="flex h-full place-items-center rounded bg-secondary px-2 leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
 									>1080p</span
@@ -317,7 +312,7 @@
 								class="btn btn-secondary h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
 							>
 								<span>Subbed</span>
-								<Chevron class="w-3 md:w-[1vw]"></Chevron>
+								<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
 							</button>
 						</div>
 						<div class="group hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
@@ -329,14 +324,14 @@
 								class="btn btn-secondary h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold leading-[0.9vw] md:h-[2.5vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.9vw]"
 							>
 								<span>Thumbnails</span>
-								<Chevron class="w-3 md:w-[1vw]"></Chevron>
+								<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
 							</button>
 						</div>
 						<button
 							class="bg-surface-400 btn btn-secondary h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 							aria-label="Search"
 						>
-							<Search class="w-4 md:w-[1vw]"></Search>
+							<coreproject-shape-search class="w-4 md:w-[1vw]"></coreproject-shape-search>
 						</button>
 					</div>
 				</div>
@@ -411,7 +406,8 @@
 											</span>
 										{/each}
 									</div>
-									<Dot class="w-1 opacity-50 md:w-[0.25vw]" />
+									<coreproject-shape-dot class="w-1 opacity-50 md:w-[0.25vw]"
+									></coreproject-shape-dot>
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
@@ -437,7 +433,8 @@
 							<button
 								class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<Settings class="w-[0.9vw] opacity-75"></Settings>
+								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
+								></coreproject-shape-settings>
 							</button>
 						</div>
 						<div class="flex items-center justify-between md:hidden">
@@ -449,7 +446,7 @@
 								class="btn-icon bg-surface-400 btn h-7 w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 								aria-label="Filter"
 							>
-								<Filter class="w-4 md:w-[1vw]"></Filter>
+								<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
 							</button>
 						</div>
 						<div class="md:mt-[1vw]">
@@ -472,7 +469,8 @@
 							<button
 								class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<Settings class="w-[0.9vw] opacity-75"></Settings>
+								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
+								></coreproject-shape-settings>
 							</button>
 						</div>
 						<div class="mt-2 flex items-center justify-between md:mt-[0.75vw]">
@@ -484,14 +482,15 @@
 								<button
 									class="bg-surface-400 btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 								>
-									<Cross class="w-4 rotate-45 md:w-[1vw]"></Cross>
+									<coreproject-shape-cross class="w-4 rotate-45 md:w-[1vw]"
+									></coreproject-shape-cross>
 									Create New
 								</button>
 								<button
 									class="bg-surface-400 btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 									aria-label="Filter"
 								>
-									<Filter class="w-4 md:w-[1vw]"></Filter>
+									<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
 								</button>
 							</div>
 						</div>
@@ -536,7 +535,7 @@
 											<div class="text-surface-50">7 months ago</div>
 										</div>
 										<div class="flex items-center gap-1 md:gap-[0.25vw]">
-											<Chat class="w-3 md:w-[1vw]"></Chat>
+											<coreproject-shape-chat class="w-3 md:w-[1vw]"></coreproject-shape-chat>
 											<div>69</div>
 										</div>
 									</div>
@@ -553,7 +552,8 @@
 				<button
 					class="bg-surface-400 btn btn-secondary min-h-full rounded-[0.1875vw] p-0 md:h-[1.5vw] md:w-[1.5vw]"
 				>
-					<Settings class="w-[0.9vw] opacity-75"></Settings>
+					<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+					></coreproject-shape-settings>
 				</button>
 			</div>
 			<div class="flex flex-col gap-[0.75vw]">
@@ -584,18 +584,19 @@
 				<button
 					class="btn btn-accent min-h-full md:h-[1.5vw] md:w-max md:rounded-[0.25vw] md:text-[0.75vw]"
 				>
-					<TrendingArrow class="w-[1.25vw]"></TrendingArrow>
+					<coreproject-shape-trending-up class="w-[1.25vw]"></coreproject-shape-trending-up>
 					<span>Detailed Distribution</span>
 				</button>
 				<div class="flex flex-col gap-[0.5vw] leading-none">
 					<span class="font-semibold md:text-[0.9vw] md:leading-[0.9vw]">Your rating</span>
 					<div class="flex items-center gap-[0.75vw]">
-						<Rating />
+						<!-- <Rating /> -->
 						<span class="font-bold leading-none md:text-[0.95vw]">92%</span>
 						<button
 							class="text-surface-500 btn btn-secondary min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.19vw]"
 						>
-							<Edit class="w-[0.75vw]" variant="without_underline_around_pencil"></Edit>
+							<coreproject-shape-edit class="w-[0.75vw]" variant="without_underline_around_pencil"
+							></coreproject-shape-edit>
 						</button>
 					</div>
 				</div>
@@ -603,13 +604,14 @@
 					class="btn flex h-min min-h-full w-max items-center gap-[0.5vw] border-none !bg-transparent p-0 md:text-[0.8vw]"
 				>
 					Add a review
-					<Hyperlink class="w-[0.8vw]"></Hyperlink>
+					<coreproject-shape-hyperlink class="w-[0.8vw]"></coreproject-shape-hyperlink>
 				</button>
 			</div>
 			<div class="flex gap-[0.75vw] md:mt-[6vw]">
 				<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Details</div>
 				<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
-					<Settings class="w-[0.9vw] opacity-75"></Settings>
+					<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+					></coreproject-shape-settings>
 				</button>
 			</div>
 			<div class="md:mb-[2vw] md:mt-[1.25vw]">
@@ -665,7 +667,8 @@
 						<button
 							class="bg-surface-400 btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]"
 						>
-							<Settings class="w-[0.9vw] opacity-75"></Settings>
+							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+							></coreproject-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] flex flex-col">
@@ -674,7 +677,7 @@
 							class="bg-surface-400 btn btn-secondary mt-[0.3vw] h-[2.25vw] min-h-full w-[6.625vw] gap-1 rounded-[0.375vw] p-0 text-[0.875vw]"
 						>
 							Japanese
-							<Chevron class="w-[1vw]"></Chevron>
+							<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">
@@ -710,11 +713,11 @@
 						<div class="mt-[1vw] flex flex-col">
 							<div class="btn-group">
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<Chevron class="w-[1vw] rotate-180"></Chevron>
+									<coreproject-shape-chevron class="w-[1vw] rotate-180"></coreproject-shape-chevron>
 								</button>
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">01</button>
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<Chevron class="w-[1vw]"></Chevron>
+									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 								</button>
 							</div>
 							<span class="text-surface-50 mt-[0.5vw] text-[0.75vw] leading-none"
@@ -729,7 +732,8 @@
 						<button
 							class="bg-surface-400 btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]"
 						>
-							<Settings class="w-[0.9vw] opacity-75"></Settings>
+							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+							></coreproject-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">
@@ -774,11 +778,11 @@
 						<div class="mt-[1vw] flex flex-col">
 							<div class="btn-group">
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<Chevron class="w-[1vw] rotate-180"></Chevron>
+									<coreproject-shape-chevron class="w-[1vw] rotate-180"></coreproject-shape-chevron>
 								</button>
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">01</button>
 								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<Chevron class="w-[1vw]"></Chevron>
+									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 								</button>
 							</div>
 							<span class="text-surface-50 mt-[0.5vw] text-[0.75vw] leading-none"

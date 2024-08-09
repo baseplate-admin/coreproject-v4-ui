@@ -6,10 +6,7 @@
 	import { zxcvbn, zxcvbnOptions, type OptionsType } from "@zxcvbn-ts/core";
 	import { cn } from "$functions/classnames";
 	import { autofocus } from "$functions/forms/autofocus";
-	import Arrow from "$icons/shapes/arrow.svelte";
-	import Info from "$icons/shapes/info.svelte";
-	import Tick from "$icons/shapes/tick.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
+
 	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
 	import Eye from "$icons/shapes/eye.svelte";
@@ -216,7 +213,8 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<Arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]" />
+			<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+			></coreproject-shape-arrow>
 			Home
 		</a>
 		<span
@@ -242,7 +240,7 @@
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
-				<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+				<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 				{#if email.error.length === 0 || !email.value}
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
@@ -315,9 +313,12 @@
 
 							<div class="flex items-center gap-2 md:gap-[0.5vw]">
 								{#if (password.error.length === 0 && !password.value) || (password.value && password.error.includes(key))}
-									<Tick class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]" />
+									<coreproject-shape-tick
+										class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]"
+									></coreproject-shape-tick>
 								{:else}
-									<Tick class="w-3 text-primary transition-opacity md:w-[1vw]" />
+									<coreproject-shape-tick class="w-3 text-primary transition-opacity md:w-[1vw]"
+									></coreproject-shape-tick>
 								{/if}
 
 								<span class="text-surface-300 text-[0.7rem] leading-none md:text-[0.75vw]">
@@ -343,10 +344,10 @@
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
 				{#if confirm_password.error.length === 0}
-					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 					<span>Please make sure you enter the same password in both fields</span>
 				{:else}
-					<Info class="w-3 opacity-70 md:w-[0.9vw]" />
+					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 
 					<Markdown class="text-error" markdown={confirm_password.error.join(",")} />
 				{/if}
@@ -373,7 +374,8 @@
 			)}
 		>
 			<span>Continue</span>
-			<ArrowUpRight class="w-4 rotate-45 md:w-[1vw]" />
+			<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
+			></coreproject-shape-arrow-up-right>
 		</button>
 	</div>
 </form>

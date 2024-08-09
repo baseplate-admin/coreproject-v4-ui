@@ -1,20 +1,10 @@
 <script lang="ts">
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import ArrowUpRight from "$icons/shapes/arrow_up_right.svelte";
-
 	import { swipe } from "svelte-gestures";
 	import { Timer as EasyTimer } from "easytimer.js";
 	import { tweened, type Tweened } from "svelte/motion";
 
 	import { FormatDate } from "$functions/format_date";
 	import { blur } from "svelte/transition";
-	import Circle from "$icons/shapes/circle.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Info from "$icons/shapes/info.svelte";
-	import Edit from "$icons/shapes/edit.svelte";
-	import Preference from "$icons/shapes/preference.svelte";
-	import Dice from "$icons/shapes/dice.svelte";
 
 	import ScrollArea from "$components/scroll_area.svelte";
 	import { t } from "$lib/translations";
@@ -291,13 +281,17 @@
 									class="flex flex-wrap items-center gap-2 py-2 text-xs font-semibold text-white/90 md:gap-[0.65vw] md:pb-0 md:pt-[0.5vw] md:text-[0.9375vw]"
 								>
 									<span class="leading-[1.125vw]">{anime.type}</span>
-									<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
+									<coreproject-shape-circle class="w-1 opacity-75 md:w-[0.25vw]"
+									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.episodes} eps</span>
-									<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
+									<coreproject-shape-circle class="w-1 opacity-75 md:w-[0.25vw]"
+									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">Completed</span>
-									<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
+									<coreproject-shape-circle class="w-1 opacity-75 md:w-[0.25vw]"
+									></coreproject-shape-circle>
 									<span class="capitalize leading-[1.125vw]">{formated_aired_on}</span>
-									<Circle class="w-1 opacity-75 md:w-[0.25vw]" />
+									<coreproject-shape-circle class="w-1 opacity-75 md:w-[0.25vw]"
+									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.studio}</span>
 									<div>
 										<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
@@ -329,23 +323,24 @@
 													? dominant_color
 													: chroma(dominant_color).brighten(2)}"
 											>
-												<Play class="w-4 md:w-[1.25vw]" style="fill: var(--s);" />
+												<coreproject-shape-play class="w-4 md:w-[1.25vw]" style="fill: var(--s);"
+												></coreproject-shape-play>
 												<span>Ep 1</span>
 											</a>
 											<a
 												href="anime/mal/{anime.id}"
 												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
-												<Info class="w-5 md:w-[1.35vw]" />
+												<coreproject-shape-info class="w-5 md:w-[1.35vw]"></coreproject-shape-info>
 												<span>Details</span>
 											</a>
 											<button
 												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
 											>
-												<Edit
+												<coreproject-shape-edit
 													variant="without_underline_around_pencil"
 													class="text-surface-50 w-4 md:w-[1.25vw]"
-												/>
+												></coreproject-shape-edit>
 											</button>
 										</div>
 									</div>
@@ -366,7 +361,7 @@
 					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
-					<Chevron class="rotate-90 md:size-[1.25vw]" />
+					<coreproject-shape-chevron class="rotate-90 md:size-[1.25vw]"></coreproject-shape-chevron>
 				</button>
 				<div class="flex w-full flex-col md:gap-[0.75vw]">
 					{#each latest_animes_mapping as item, idx}
@@ -406,7 +401,8 @@
 					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={add_one_to_main_hero_slide_active_index}
 				>
-					<Chevron class="-rotate-90 md:size-[1.25vw]" />
+					<coreproject-shape-chevron class="-rotate-90 md:size-[1.25vw]"
+					></coreproject-shape-chevron>
 				</button>
 			</div>
 		</div>
@@ -451,7 +447,8 @@
 											<span class="whitespace-nowrap"
 												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
 											>
-											<Circle class="opacity-75 md:size-[0.25vw]" />
+											<coreproject-shape-circle class="opacity-75 md:size-[0.25vw]"
+											></coreproject-shape-circle>
 											<span class="line-clamp-1">{episode.timestamp}</span>
 										</div>
 									</div>
@@ -459,7 +456,8 @@
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
-										<Play class="text-secondary md:size-[1.25vw]" />
+										<coreproject-shape-play class="text-secondary md:size-[1.25vw]"
+										></coreproject-shape-play>
 									</a>
 								</div>
 							</div>
@@ -489,10 +487,10 @@
 					class="flex h-full flex-col items-center bg-info md:w-[4vw] md:gap-[0.75vw] md:rounded-[1vw] md:p-[0.5vw]"
 				>
 					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
-						<Preference class="md:size-[1.25vw]" />
+						<coreproject-shape-preference class="md:size-[1.25vw]"></coreproject-shape-preference>
 					</button>
 					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
-						<Dice class="md:size-[1.5vw]" />
+						<coreproject-shape-dice class="md:size-[1.5vw]"></coreproject-shape-dice>
 					</button>
 					<div class="rounded-full bg-secondary md:h-[0.2vw] md:w-1/2"></div>
 					<ScrollArea
@@ -570,7 +568,7 @@
 					<button
 						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
-						<Chevron class="md:size-[1vw]" />
+						<coreproject-shape-chevron class="md:size-[1vw]"></coreproject-shape-chevron>
 					</button>
 				</div>
 			</div>
@@ -582,7 +580,8 @@
 			<button
 				class="btn btn-neutral hidden min-h-full rounded-[0.5vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
-				<Settings class="w-[0.9vw] opacity-75" />
+				<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+				></coreproject-shape-settings>
 			</button>
 		</div>
 		<div class="flex items-center justify-between">
@@ -592,19 +591,20 @@
 					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.options.watching")}
-					<Chevron class="w-[1vw]" />
+					<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 				</button>
 				<button
 					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.cta")}
-					<ArrowUpRight class="w-[1vw]" />
+					<coreproject-shape-arrow-up-right class="w-[1vw]"></coreproject-shape-arrow-up-right>
 				</button>
 			</div>
 			<div class="md:hidden">
 				<button class="btn btn-secondary h-max min-h-max gap-2 p-0 text-sm">
 					{$t("home.my_list.cta")}
-					<Chevron class="text-primary-400 w-4 -rotate-90" />
+					<coreproject-shape-chevron class="text-primary-400 w-4 -rotate-90"
+					></coreproject-shape-chevron>
 				</button>
 			</div>
 		</div>

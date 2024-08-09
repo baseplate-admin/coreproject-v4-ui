@@ -1,8 +1,13 @@
 <script lang="ts">
 	import { createAdblockerStore } from "$stores/adblocker.svelte";
+	import { onMount } from "svelte";
 	import "../styles/index.postcss";
-
+	import { defineCustomElements } from "@coreproject-moe/icons/components";
 	const adblocker_store = createAdblockerStore();
+
+	onMount(async () => {
+		defineCustomElements();
+	});
 
 	// Stolen from : https://github.com/fivefilters/block-ads/blob/2d47fa1c7341cbf897710574972cdcf9cefa390d/index.html#L183
 	const SENSITIVE_ADVERSIEMENT_URL =
