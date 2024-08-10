@@ -2,7 +2,7 @@
 	import { createAdblockerStore } from "$stores/adblocker.svelte";
 	import { onMount } from "svelte";
 	import "../styles/index.postcss";
-	import { defineCustomElements } from "@coreproject-moe/icons/components";
+	import { defineCustomElements } from "@coreproject-moe/icons/loader";
 	const adblocker_store = createAdblockerStore();
 
 	onMount(async () => {
