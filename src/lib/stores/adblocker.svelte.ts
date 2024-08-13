@@ -1,12 +1,12 @@
-let state: null | boolean = null;
+let _state: null | boolean = state(null);
 
 export function createAdblockerStore() {
 	return {
 		get state() {
-			return state;
+			return _state;
 		},
 		set state(value: boolean | null) {
-			state = value;
+			_state = value;
 		}
 	};
 }
