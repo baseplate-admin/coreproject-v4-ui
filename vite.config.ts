@@ -24,7 +24,7 @@ export default defineConfig({
 		target: "esnext",
 		cssTarget: "esnext",
 		minify: "terser",
-		sourcemap: true
+		//sourcemap: true
 	},
 	worker: {
 		format: "es"
