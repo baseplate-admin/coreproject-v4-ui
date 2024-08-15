@@ -1,4 +1,4 @@
-let state = $state<null | boolean>(null);
+let state = $state.frozen<null | boolean>(null);
 
 export function createAuthStore() {
 	return {
