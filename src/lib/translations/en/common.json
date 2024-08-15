@@ -1,0 +1,15 @@
+{
+	"sidebar": {
+		"home": "Home",
+		"explore": "Explore",
+		"list": "List",
+		"schedule": "Schedule",
+		"forum": "Forum",
+		"settings": "Settings",
+		"misc": "Misc"
+	},
+	"navbar": {
+		"login": "Log in",
+		"register": "Register"
+	}
+}

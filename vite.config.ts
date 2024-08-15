@@ -22,8 +22,9 @@ export default defineConfig({
 		chunkSizeWarningLimit: 2048,
 		emptyOutDir: true,
 		target: "esnext",
-		cssTarget: "esnext"
-		// minify: "terser"
+		cssTarget: "esnext",
+		minify: "terser",
+		//sourcemap: true
 	},
 	worker: {
 		format: "es"

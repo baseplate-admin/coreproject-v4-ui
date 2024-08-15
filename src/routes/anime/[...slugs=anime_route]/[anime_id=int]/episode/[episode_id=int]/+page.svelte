@@ -1,13 +1,4 @@
 <script lang="ts">
-	import Chat from "$icons/shapes/chat.svelte";
-	import Chevron from "$icons/shapes/chevron.svelte";
-	import Cross from "$icons/shapes/cross.svelte";
-	import DoubleArrow from "$icons/shapes/double_arrow.svelte";
-	import Filter from "$icons/shapes/filter.svelte";
-	import Play from "$icons/shapes/play.svelte";
-	import Settings from "$icons/shapes/settings.svelte";
-	import Share from "$icons/shapes/share.svelte";
-
 	import { page } from "$app/stores";
 	import Portal from "svelte-portal";
 	import { blur } from "svelte/transition";
@@ -71,7 +62,7 @@
 							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none"
 						>
 							Vidstreaming (sub)
-							<Chevron class="w-[1vw]" />
+							<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 						</button>
 					</div>
 					<button
@@ -91,7 +82,7 @@
 							class="bg-surface-400 btn flex items-center gap-2 rounded px-3 py-2 text-xs leading-none"
 						>
 							Vidstreaming (sub)
-							<Chevron />
+							<coreproject-shape-chevron></coreproject-shape-chevron>
 						</button>
 					</div>
 					<div class="flex items-center gap-3 md:gap-[0.75vw]">
@@ -99,13 +90,15 @@
 							href="./{Number($page.params.episode_id) - 1}"
 							class="btn h-max min-h-max border-none !bg-transparent p-0"
 						>
-							<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+							<coreproject-shape-double-arrow class="w-4 rotate-180 md:w-[1.4vw]"
+							></coreproject-shape-double-arrow>
 						</a>
 						<a
 							href="./{Number($page.params.episode_id) + 1}"
 							class="btn h-max min-h-max border-none !bg-transparent p-0"
 						>
-							<DoubleArrow class="w-4 md:w-[1.4vw]" />
+							<coreproject-shape-double-arrow class="w-4 md:w-[1.4vw]"
+							></coreproject-shape-double-arrow>
 						</a>
 					</div>
 				</div>
@@ -118,7 +111,7 @@
 					class="bg-surface-400 btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
 					Eps: 1 - {EPISODES_LENGTH}
-					<Chevron class="w-3 md:w-[1vw]" />
+					<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
 				</button>
 			</header>
 			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
@@ -138,13 +131,14 @@
 					href="./{Number($page.params.episode_id) - 1}"
 					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<DoubleArrow class="w-4 rotate-180 md:w-[1.4vw]" />
+					<coreproject-shape-double-arrow class="w-4 rotate-180 md:w-[1.4vw]"
+					></coreproject-shape-double-arrow>
 				</a>
 				<a
 					href="./{Number($page.params.episode_id) + 1}"
 					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<DoubleArrow class="w-4 md:w-[1.4vw]" />
+					<coreproject-shape-double-arrow class="w-4 md:w-[1.4vw]"></coreproject-shape-double-arrow>
 				</a>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
 					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
@@ -161,7 +155,8 @@
 							/>
 							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
 								<div class="rounded-full bg-warning md:p-[1vw]">
-									<Play class="text-accent md:w-[1.25vw]" />
+									<coreproject-shape-play class="text-secondary md:w-[1.25vw]"
+									></coreproject-shape-play>
 								</div>
 							</overlay>
 						</div>
@@ -194,7 +189,7 @@
 					</a>
 				</div>
 				<button class="btn bg-transparent p-0">
-					<Share class="md:w-[1.25vw]" />
+					<coreproject-shape-share class="md:w-[1.25vw]"></coreproject-shape-share>
 				</button>
 			</div>
 			<details class="collapse rounded-none" open>
@@ -263,7 +258,8 @@
 					<button
 						class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 					>
-						<Settings class="w-[0.9vw] opacity-75" />
+						<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+						></coreproject-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex items-center justify-between md:mt-[0.75vw]">
@@ -275,14 +271,14 @@
 						<button
 							class="bg-surface-400 btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
-							<Cross class="w-4 rotate-45 md:w-[1vw]" />
+							<coreproject-shape-cross class="w-4 rotate-45 md:w-[1vw]"></coreproject-shape-cross>
 							Create New
 						</button>
 						<button
 							class="bg-surface-400 btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
-							<Filter class="w-3 md:w-[1vw]" />
+							<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
 						</button>
 					</div>
 				</div>
@@ -327,7 +323,7 @@
 									<div class="text-surface-50">7 months ago</div>
 								</div>
 								<div class="flex items-center gap-1 md:gap-[0.25vw]">
-									<Chat class="w-3 md:w-[1vw]" />
+									<coreproject-shape-chat class="w-3 md:w-[1vw]"></coreproject-shape-chat>
 									<div>69</div>
 								</div>
 							</div>
@@ -372,7 +368,7 @@
 						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
-						<Chevron class="w-4 md:w-[1vw]" />
+						<coreproject-shape-chevron class="w-4 md:w-[1vw]"></coreproject-shape-chevron>
 					</button>
 				</div>
 			</div>

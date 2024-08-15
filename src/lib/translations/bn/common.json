@@ -1,0 +1,15 @@
+{
+	"sidebar": {
+		"home": "হোম",
+		"explore": "খুঁজুন",
+		"list": "তালিকা",
+		"schedule": "সময়সূচী",
+		"forum": "মঞ্চ",
+		"settings": "সেটিংস",
+		"misc": "বিবিধ"
+	},
+	"navbar": {
+		"login": "লগ ইন",
+		"register": "নিবন্ধন"
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"latest_episodes": {
+		"title": "Últimos episodios",
+		"cta": "Lista completa",
+		"options": {
+			"desc": "Mostrar episodios emitidos recientemente de tu Lista de Anime",
+			"cta": "Cambiar a Todos"
+		}
+	},
+	"my_list": {
+		"title": "Mi lista",
+		"cta": "Lista completa",
+		"options": {
+			"watching": "Ver"
+		}
+	}
+}

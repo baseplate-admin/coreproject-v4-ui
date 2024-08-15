@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Refresh from "$icons/shapes/refresh.svelte";
 	import CoreProject from "$icons/text/core_project.svelte";
 	import { blur } from "svelte/transition";
 	import { Timer as EasyTimer } from "easytimer.js";
@@ -105,7 +104,7 @@
 										timer.reset();
 									}}
 								>
-									<Refresh class="w-[1vw]" />
+									<coreproject-shape-refresh class="w-[1vw]"></coreproject-shape-refresh>
 								</button>
 							</div>
 						{/key}
@@ -138,7 +137,7 @@
 										timer.reset();
 									}}
 								>
-									<Refresh class="w-3" />
+									<coreproject-shape-refresh class="w-3"></coreproject-shape-refresh>
 								</button>
 							</div>
 						{/key}

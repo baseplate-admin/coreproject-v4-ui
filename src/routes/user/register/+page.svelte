@@ -45,6 +45,6 @@
 <!-- We do not need skeleton loader or anything, since this is not hydratable -->
 {#await current_page then Module}
 	{#if Module}
-		<svelte:component this={Module.default} {on_gotopage} {on_submit} {page} {pages_state} />
+		<Module.default {on_gotopage} {on_submit} {page} {pages_state} />
 	{/if}
 {/await}

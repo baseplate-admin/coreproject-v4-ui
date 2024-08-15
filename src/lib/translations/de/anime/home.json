@@ -1,0 +1,17 @@
+{
+	"latest_episodes": {
+		"title": "Neueste Episoden",
+		"cta": "Vollständige Liste",
+		"options": {
+			"desc": "Zeigt vor kurzem veröffentlichte Episoden aus deiner Anime Liste",
+			"cta": "Alle anzeigen"
+		}
+	},
+	"my_list": {
+		"title": "Meine Liste",
+		"cta": "Vollständige Liste",
+		"options": {
+			"watching": "Ansehend"
+		}
+	}
+}
