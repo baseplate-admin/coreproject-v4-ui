@@ -23,7 +23,7 @@ export default defineConfig({
 		emptyOutDir: true,
 		target: "esnext",
 		cssTarget: "esnext",
-		minify: "terser",
+		minify: "terser"
 		//sourcemap: true
 	},
 	worker: {
