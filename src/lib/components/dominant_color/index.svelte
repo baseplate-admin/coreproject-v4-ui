@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { onMount } from "svelte";
+	import { onDestroy, onMount } from "svelte";
 	import ImageWorker from "./image-worker?worker";
 	import { color_mapping } from "./store.svelte";
 	import IntersectionObserver from "$components/intersection_observer.svelte";
@@ -58,6 +58,9 @@
 			color_mapping?.set(src, data);
 			worker?.terminate();
 		};
+	});
+	onDestroy(() => {
+		color_mapping.clear();
 	});
 
 	$effect(() => {
