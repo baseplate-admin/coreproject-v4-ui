@@ -46,7 +46,7 @@
 
 			explore: {
 				icon: {
-					component: `<coreproject-shape-explore class="w-[1.25vw]"></coreproject-shape-explore>`
+					component: `<coreproject-shape-compass class="w-[1.25vw]"></coreproject-shape-compass>`
 				},
 				url: "/anime/explore",
 				show_on_mobile: true
@@ -60,7 +60,7 @@
 			},
 			schedule: {
 				icon: {
-					component: `<coreproject-shape-schedule class="w-[1.25vw]"></coreproject-shape-schedule>`
+					component: `<coreproject-shape-calendar class="w-[1.25vw]"></coreproject-shape-calendar>`
 				},
 				url: "/anime/shedule",
 				show_on_mobile: false
@@ -82,7 +82,7 @@
 			},
 			misc: {
 				icon: {
-					component: `<coreproject-shape-misc class="w-[1.25vw]"></coreproject-shape-misc>`
+					component: `<coreproject-shape-help-circle class="w-[1.25vw]"></coreproject-shape-help-circle>`
 				},
 				url: undefined
 			}
