@@ -6,6 +6,7 @@
 
 	import { page } from "$app/stores";
 	import type { SvelteComponent } from "svelte";
+	import Dot from "$icons/shapes/dot.svelte";
 
 	let anime_name = "Your Lie in April",
 		anime_japanese_name = "四月は君の嘘",
@@ -64,11 +65,11 @@
 		variant?: string;
 	}[] = [
 		{
-			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]" variant="with_underline_around_pencil"></coreproject-shape-edit>`,
+			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]" variant='line-with-pencil'></coreproject-shape-edit>`,
 			label: "edit"
 		},
 		{
-			icon: `<coreproject-shape-download class="w-4 md:w-[1.125vw]"></coreproject-shape-download>`,
+			icon: `<coreproject-shape-download variant='arrow' class="w-4 md:w-[1.125vw]"></coreproject-shape-download>`,
 			label: "download"
 		},
 		{
@@ -126,7 +127,7 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<coreproject-shape-dot class="w-[0.35rem] opacity-75"></coreproject-shape-dot>
+									<Dot class="w-[0.35rem] opacity-75"></Dot>
 								{/if}
 							{/each}
 						</div>
@@ -262,7 +263,7 @@
 								>23</span
 							>
 							<span class="text-xs font-semibold md:text-[1vw]">episodes</span>
-							<coreproject-shape-dot class="w-[0.4vw] opacity-50"></coreproject-shape-dot>
+							<Dot class="w-[0.4vw] opacity-50"></Dot>
 						</p>
 						<div>
 							<div class="flex w-full items-center gap-2 leading-4 md:gap-[1vw] md:leading-[1.5vw]">
@@ -282,7 +283,7 @@
 									class="flex h-full place-items-center rounded bg-secondary px-2 uppercase leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
 									>dub</span
 								>
-								<coreproject-shape-dot class="w-[0.4vw] opacity-50"></coreproject-shape-dot>
+								<Dot class="w-[0.4vw] opacity-50"></Dot>
 								<span
 									class="flex h-full place-items-center rounded bg-secondary px-2 leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
 									>1080p</span
@@ -406,8 +407,7 @@
 											</span>
 										{/each}
 									</div>
-									<coreproject-shape-dot class="w-1 opacity-50 md:w-[0.25vw]"
-									></coreproject-shape-dot>
+									<Dot class="w-1 opacity-50 md:w-[0.25vw]"></Dot>
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
@@ -584,7 +584,7 @@
 				<button
 					class="btn btn-accent min-h-full md:h-[1.5vw] md:w-max md:rounded-[0.25vw] md:text-[0.75vw]"
 				>
-					<coreproject-shape-trending-up class="w-[1.25vw]"></coreproject-shape-trending-up>
+					<coreproject-shape-trending variant="up" class="w-[1.25vw]"></coreproject-shape-trending>
 					<span>Detailed Distribution</span>
 				</button>
 				<div class="flex flex-col gap-[0.5vw] leading-none">
@@ -595,8 +595,7 @@
 						<button
 							class="text-surface-500 btn btn-secondary min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.19vw]"
 						>
-							<coreproject-shape-edit class="w-[0.75vw]" variant="without_underline_around_pencil"
-							></coreproject-shape-edit>
+							<coreproject-shape-edit class="w-[0.75vw]" variant="pencil"></coreproject-shape-edit>
 						</button>
 					</div>
 				</div>

@@ -338,7 +338,7 @@
 												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
 											>
 												<coreproject-shape-edit
-													variant="without_underline_around_pencil"
+													variant="line-with-pencil"
 													class="text-surface-50 w-4 md:w-[1.25vw]"
 												></coreproject-shape-edit>
 											</button>
