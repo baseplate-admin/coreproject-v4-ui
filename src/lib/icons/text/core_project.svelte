@@ -2,10 +2,10 @@
 	import { cn } from "$functions/classnames";
 
 	const core_mapping: { [key in string]: string } = {
-		c: "text-surface-100",
-		o: "text-warning-500",
-		r: "text-surface-100",
-		e: "text-surface-100"
+		c: "text-white",
+		o: "text-warning",
+		r: "text-white",
+		e: "text-white"
 	};
 
 	let { class: klass }: { class: string } = $props();
