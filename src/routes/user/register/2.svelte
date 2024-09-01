@@ -125,9 +125,7 @@
 				placeholder="Username eg: sora#4444"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
-			<div
-				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
-			>
+			<div class="flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
 				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
 				{#if username.error.length === 0}
 					<span>you can change username in your user settings later, so go bonkers!</span>
@@ -145,9 +143,7 @@
 				placeholder="One Time Password"
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
-			<div
-				class="text-surface-300 flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]"
-			>
+			<div class="flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
 				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
 				{#if otp.error.length === 0}
 					<span>
@@ -171,9 +167,7 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
-				Already have an account?
-			</span>
+			<span class="text-xs leading-none md:text-[0.75vw]"> Already have an account? </span>
 			<a
 				href={"/login"}
 				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"

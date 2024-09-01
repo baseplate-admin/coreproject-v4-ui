@@ -300,9 +300,7 @@
 				</div>
 
 				<div class="mt-3 md:mt-[1.25vw]">
-					<span
-						class="text-surface-50 text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]"
-					>
+					<span class="text-sm font-semibold uppercase leading-none tracking-wider md:text-[1vw]">
 						must contain
 					</span>
 
@@ -321,7 +319,7 @@
 									></coreproject-shape-tick>
 								{/if}
 
-								<span class="text-surface-300 text-[0.7rem] leading-none md:text-[0.75vw]">
+								<span class="text-[0.7rem] leading-none md:text-[0.75vw]">
 									{value}
 								</span>
 							</div>
@@ -356,9 +354,7 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
-				Already have an account?
-			</span>
+			<span class="text-xs leading-none md:text-[0.75vw]"> Already have an account? </span>
 			<a
 				href="./login"
 				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"

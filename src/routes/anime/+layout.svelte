@@ -131,7 +131,7 @@
 						<input
 							type="text"
 							placeholder="Search for animes, mangas..."
-							class="placeholder:text-surface-200 h-full w-full rounded-lg border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
+							class="h-full w-full rounded-lg border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
 						/>
 					</form>
 				</div>

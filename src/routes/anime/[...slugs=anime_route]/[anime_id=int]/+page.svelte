@@ -11,7 +11,7 @@
 	let anime_name = "Your Lie in April",
 		anime_japanese_name = "四月は君の嘘",
 		anime_synopsis =
-			"Kousei Arima is a child prodigy known as the \"Human Metronome\" for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.\r\n\r\nNowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.",
+			"Kousei Arima is a child prodigy known as the \"Human Metronome\"for playing the piano with precision and perfection. Guided by a strict mother and rigorous training, Kousei dominates every competition he enters, earning the admiration of his musical peers and praise from audiences. When his mother suddenly passes away, the subsequent trauma makes him unable to hear the sound of a piano, and he never takes the stage thereafter.\r\n\r\nNowadays, Kousei lives a quiet and unassuming life as a junior high school student alongside his friends Tsubaki Sawabe and Ryouta Watari. While struggling to get over his mother's death, he continues to cling to music. His monochrome life turns upside down the day he encounters the eccentric violinist Kaori Miyazono, who thrusts him back into the spotlight as her accompanist. Through a little lie, these two young musicians grow closer together as Kaori tries to fill Kousei's world with color.",
 		anime_image = "/images/YourLieInApril-bg.avif",
 		anime_episode_mapping = [
 			{
@@ -65,7 +65,7 @@
 		variant?: string;
 	}[] = [
 		{
-			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]" variant='line-with-pencil'></coreproject-shape-edit>`,
+			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]"variant='line-with-pencil'></coreproject-shape-edit>`,
 			label: "edit"
 		},
 		{
@@ -102,9 +102,7 @@
 							src={anime_image}
 							class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw]"
 						></DominantColor>
-						<div
-							class="gradient to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/75 md:hidden"
-						></div>
+						<div class="absolute inset-0 bg-gradient-to-t from-secondary/75 md:hidden"></div>
 						<div
 							class="gradient absolute inset-0 bg-gradient-to-r from-secondary/50 to-transparent md:hidden"
 						></div>
@@ -141,33 +139,28 @@
 
 									<div class="flex flex-col items-start gap-1">
 										<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
-										<span
-											class="text-surface-50 text-xs font-semibold leading-none md:text-[0.75vw]"
-											>Ep 01</span
-										>
+										<span class="text-xs font-semibold leading-none md:text-[0.75vw]">Ep 01</span>
 									</div>
 								</div>
 							</button>
 							<button
 								type="button"
-								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
+								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<coreproject-shape-book
-										variant="outline"
-										class="text-surface-500 w-4 md:w-[1.5vw]"
+									<coreproject-shape-book variant="outline" class="0 w-4 md:w-[1.5vw]"
 									></coreproject-shape-book>
 									<span class="leading-none">read</span>
 								</div>
 							</button>
 							<button
 								type="button"
-								class="bg-secondary-100 text-surface-500 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
+								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
 							>
 								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<coreproject-shape-headphone class="text-surface-500 w-4 md:w-[1.5vw]"
+									<coreproject-shape-headphone class="0 w-4 md:w-[1.5vw]"
 									></coreproject-shape-headphone>
 									<span class="leading-none">read</span>
 								</div>
@@ -250,10 +243,9 @@
 				<div class="flex border-b-2 border-neutral pb-1 md:gap-x-[0.75vw] md:border-none md:pb-0">
 					<div class="text-lg font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Episodes</div>
 					<button
-						class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+						class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:items-center md:justify-center"
 					>
-						<coreproject-shape-settings variant="outline" class="w-[0.9vw] opacity-75"
-						></coreproject-shape-settings>
+						<coreproject-shape-settings class="w-[0.9vw] opacity-75"></coreproject-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex flex-col justify-between gap-y-5 md:mt-0 md:flex-row md:gap-y-0">
@@ -302,11 +294,11 @@
 					<div class="flex items-center justify-between gap-2 md:items-end md:gap-[0.75vw]">
 						<p class="flex items-center gap-1 md:hidden">
 							<span class="text-base font-bold leading-none">23</span>
-							<span class="text-surface-50 text-sm font-semibold">episodes</span>
+							<span class="text-sm font-semibold">episodes</span>
 						</p>
 						<div class="group hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
 							<span
-								class="text-surface-50 text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
+								class="text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
 								>Type</span
 							>
 							<button
@@ -318,7 +310,7 @@
 						</div>
 						<div class="group hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
 							<span
-								class="text-surface-50 text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
+								class="text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
 								>Display Mode</span
 							>
 							<button
@@ -329,7 +321,7 @@
 							</button>
 						</div>
 						<button
-							class="bg-surface-400 btn btn-secondary h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+							class="btn btn-secondary h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 							aria-label="Search"
 						>
 							<coreproject-shape-search class="w-4 md:w-[1vw]"></coreproject-shape-search>
@@ -370,12 +362,12 @@
 									class="absolute inset-x-0 bottom-0 hidden justify-between md:-top-[2.5vw] md:flex md:px-[1vw]"
 								>
 									<p
-										class="text-surface-50 rounded bg-secondary/75 p-1 text-xs font-bold tracking-wider md:h-max md:rounded-[0.4vw] md:bg-secondary md:px-[0.55vw] md:py-[0.55vw] md:text-[0.8vw] md:leading-none"
+										class="rounded bg-secondary/75 p-1 text-xs font-bold tracking-wider md:h-max md:rounded-[0.4vw] md:bg-secondary md:px-[0.55vw] md:py-[0.55vw] md:text-[0.8vw] md:leading-none"
 									>
 										EP 01
 									</p>
 									<p
-										class="text-surface-50 rounded bg-secondary/75 p-1 py-0 text-[0.7rem] font-semibold md:h-max md:rounded-[0.4vw] md:bg-secondary md:px-[0.5vw] md:py-[0.55vw] md:text-[0.8vw] md:leading-none"
+										class="rounded bg-secondary/75 p-1 py-0 text-[0.7rem] font-semibold md:h-max md:rounded-[0.4vw] md:bg-secondary md:px-[0.5vw] md:py-[0.55vw] md:text-[0.8vw] md:leading-none"
 									>
 										{episode.duration}
 									</p>
@@ -395,13 +387,11 @@
 									</HoverExpand>
 								</div>
 
-								<div
-									class="bg-surface-900 relative flex w-full items-center gap-2 md:gap-[0.5vw] md:pt-[0.75vw]"
-								>
+								<div class="relative flex w-full items-center gap-2 md:gap-[0.5vw] md:pt-[0.75vw]">
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.formats as format}
 											<span
-												class="text-surface-50 md:bg-surface-400/50 rounded text-sm font-semibold uppercase tracking-wider md:text-[0.8vw]"
+												class="rounded text-sm font-semibold uppercase tracking-wider md:text-[0.8vw]"
 											>
 												{format}
 											</span>
@@ -411,7 +401,7 @@
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
-												class="text-surface-50 md:bg-surface-400/25 text-sm font-semibold uppercase tracking-wider md:rounded md:text-[0.8vw]"
+												class="text-sm font-semibold uppercase tracking-wider md:rounded md:text-[0.8vw]"
 											>
 												{res}
 											</span>
@@ -431,7 +421,7 @@
 								Comments
 							</div>
 							<button
-								class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+								class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
 								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
 								></coreproject-shape-settings>
@@ -440,10 +430,10 @@
 						<div class="flex items-center justify-between md:hidden">
 							<p class="flex items-center gap-1 md:hidden">
 								<span class="text-base font-bold leading-none">69</span>
-								<span class="text-surface-50 text-sm font-semibold">comments</span>
+								<span class="text-sm font-semibold">comments</span>
 							</p>
 							<button
-								class="btn-icon bg-surface-400 btn h-7 w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+								class="btn h-7 w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 								aria-label="Filter"
 							>
 								<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
@@ -467,7 +457,7 @@
 								Forum Posts
 							</div>
 							<button
-								class="bg-surface-400 btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+								class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
 								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
 								></coreproject-shape-settings>
@@ -476,18 +466,18 @@
 						<div class="mt-2 flex items-center justify-between md:mt-[0.75vw]">
 							<p class="flex items-center gap-1 md:hidden">
 								<span class="text-base font-bold leading-none">106</span>
-								<span class="text-surface-50 text-sm font-semibold">posts</span>
+								<span class="text-sm font-semibold">posts</span>
 							</p>
 							<div class="flex items-center gap-2 md:w-full md:justify-between">
 								<button
-									class="bg-surface-400 btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+									class="btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
 								>
 									<coreproject-shape-cross class="w-4 rotate-45 md:w-[1vw]"
 									></coreproject-shape-cross>
 									Create New
 								</button>
 								<button
-									class="bg-surface-400 btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+									class="btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
 									aria-label="Filter"
 								>
 									<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
@@ -516,9 +506,9 @@
 											Celebrating 10 years of Hyouka!
 										</div>
 										<div
-											class="text-surface-50 mt-2 line-clamp-3 text-[0.6rem] font-medium leading-snug md:mt-[0.5vw] md:line-clamp-2 md:text-[0.75vw] md:leading-[1.125vw]"
+											class="mt-2 line-clamp-3 text-[0.6rem] font-medium leading-snug md:mt-[0.5vw] md:line-clamp-2 md:text-[0.75vw] md:leading-[1.125vw]"
 										>
-											Ousei Arima is a child prodigy known as the "Human Metronome" for playing the
+											Ousei Arima is a child prodigy known as the "Human Metronome"for playing the
 											piano with precision and perfection. Guided by a strict mother and rigorous
 											training, Kousei dominates every competition he enters
 										</div>
@@ -532,7 +522,7 @@
 													>Eiennlaio</span
 												>
 											</div>
-											<div class="text-surface-50">7 months ago</div>
+											<div class="">7 months ago</div>
 										</div>
 										<div class="flex items-center gap-1 md:gap-[0.25vw]">
 											<coreproject-shape-chat class="w-3 md:w-[1vw]"></coreproject-shape-chat>
@@ -550,7 +540,7 @@
 			<div class="flex gap-[0.75vw]">
 				<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Ratings</div>
 				<button
-					class="bg-surface-400 btn btn-secondary min-h-full rounded-[0.1875vw] p-0 md:h-[1.5vw] md:w-[1.5vw]"
+					class="btn btn-secondary min-h-full rounded-[0.1875vw] p-0 md:h-[1.5vw] md:w-[1.5vw]"
 				>
 					<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
 					></coreproject-shape-settings>
@@ -558,27 +548,20 @@
 			</div>
 			<div class="flex flex-col gap-[0.75vw]">
 				<div class="flex items-center gap-[0.5vw]">
+					<span class="border-b-2 pb-[0.5vw] font-bold md:text-[2vw] md:leading-[1.5vw]">92%</span>
 					<span
-						class="border-surface-50/50 border-b-2 pb-[0.5vw] font-bold md:text-[2vw] md:leading-[1.5vw]"
-						>92%</span
-					>
-					<span
-						class="!border-surface-50/50 text-surface-50 divider-vertical m-0 font-semibold md:pl-1 md:text-[0.75vw] md:leading-[0.8vw]"
+						class="divider-vertical m-0 font-semibold md:pl-1 md:text-[0.75vw] md:leading-[0.8vw]"
 						>2.8k ratings</span
 					>
 				</div>
 				<div class="block">
 					<div class="flex items-center md:gap-[0.25vw]">
 						<span class="font-semibold md:text-[1vw] md:leading-[1.5vw]">#80</span>
-						<span class="text-surface-50 md:text-[0.75vw] md:leading-[0.75vw]"
-							>Trending of all time</span
-						>
+						<span class="md:text-[0.75vw] md:leading-[0.75vw]">Trending of all time</span>
 					</div>
 					<div class="flex items-center md:gap-[0.25vw]">
 						<span class="font-semibold md:text-[1vw] md:leading-[1.5vw]">#108</span>
-						<span class="text-surface-50 md:text-[0.75vw] md:leading-[0.75vw]"
-							>Most popular anime</span
-						>
+						<span class="md:text-[0.75vw] md:leading-[0.75vw]">Most popular anime</span>
 					</div>
 				</div>
 				<button
@@ -593,7 +576,7 @@
 						<!-- <Rating /> -->
 						<span class="font-bold leading-none md:text-[0.95vw]">92%</span>
 						<button
-							class="text-surface-500 btn btn-secondary min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.19vw]"
+							class="0 btn btn-secondary min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.19vw]"
 						>
 							<coreproject-shape-edit class="w-[0.75vw]" variant="pencil"></coreproject-shape-edit>
 						</button>
@@ -615,39 +598,39 @@
 			</div>
 			<div class="md:mb-[2vw] md:mt-[1.25vw]">
 				<div class="flex flex-col gap-[1.125vw] capitalize">
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">format</p>
 						<p>TV</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">episodes</p>
 						<p>22</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">episode Duration</p>
 						<p>26 Minutes</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">status</p>
 						<p>finished</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">start date</p>
 						<p>Apr 23, 2012</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">end date</p>
 						<p>Sep 16, 2012</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">season</p>
 						<p>spring 2012</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">studios</p>
 						<p>Kyoto Animation</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.75vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.75vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">producers</p>
 						<p>Animation Do</p>
 						<p>Kadokawa Shoten</p>
@@ -655,7 +638,7 @@
 						<p>Lantis</p>
 						<p>chara-ani.com</p>
 					</div>
-					<div class="text-surface-50 flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
+					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
 						<p class="font-semibold text-white">source</p>
 						<p>Night Novel</p>
 					</div>
@@ -663,17 +646,15 @@
 				<div class="mt-[2.5vw] block">
 					<div class="flex gap-[0.75vw]">
 						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Voiceover Cast</div>
-						<button
-							class="bg-surface-400 btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]"
-						>
+						<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
 							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
 							></coreproject-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] flex flex-col">
-						<span class="text-surface-50 text-[0.9375vw]">VAs</span>
+						<span class="text-[0.9375vw]">VAs</span>
 						<button
-							class="bg-surface-400 btn btn-secondary mt-[0.3vw] h-[2.25vw] min-h-full w-[6.625vw] gap-1 rounded-[0.375vw] p-0 text-[0.875vw]"
+							class="btn btn-secondary mt-[0.3vw] h-[2.25vw] min-h-full w-[6.625vw] gap-1 rounded-[0.375vw] p-0 text-[0.875vw]"
 						>
 							Japanese
 							<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
@@ -719,7 +700,7 @@
 									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 								</button>
 							</div>
-							<span class="text-surface-50 mt-[0.5vw] text-[0.75vw] leading-none"
+							<span class="mt-[0.5vw] text-[0.75vw] leading-none"
 								>Showing 1-5, out of 58 Voiceover div</span
 							>
 						</div>
@@ -728,9 +709,7 @@
 				<div class="mt-[2.5vw] block">
 					<div class="flex gap-3">
 						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Similar Animes</div>
-						<button
-							class="bg-surface-400 btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]"
-						>
+						<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
 							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
 							></coreproject-shape-settings>
 						</button>
@@ -784,9 +763,7 @@
 									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 								</button>
 							</div>
-							<span class="text-surface-50 mt-[0.5vw] text-[0.75vw] leading-none"
-								>Showing 1-8, out of 47 div</span
-							>
+							<span class="mt-[0.5vw] text-[0.75vw] leading-none">Showing 1-8, out of 47 div</span>
 						</div>
 					</div>
 				</div>

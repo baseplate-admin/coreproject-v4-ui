@@ -139,7 +139,7 @@
 					{/if}
 				</div>
 				<div
-					class="text-surface-300 flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
+					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
 					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 					{#if password.error.length}
@@ -158,9 +158,7 @@
 
 		<div class="flex items-center justify-between">
 			<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-				<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]"
-					>Don't have a core account?</span
-				>
+				<span class="text-xs leading-none md:text-[0.75vw]">Don't have a core account?</span>
 				<a
 					href="./register"
 					class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"

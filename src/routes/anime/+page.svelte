@@ -268,11 +268,9 @@
 							style="background-image: url({anime.image});"
 						>
 							<div
-								class="md:to-surface-900/25 absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
+								class="absolute inset-0 bg-gradient-to-t from-secondary/90 to-secondary/50"
 							></div>
-							<div
-								class="from-surface-900 to-surface-900/25 md:from-surface-900/50 absolute inset-0 hidden bg-gradient-to-r md:flex"
-							></div>
+							<div class="absolute inset-0 hidden bg-gradient-to-r md:flex"></div>
 							<div class="absolute bottom-0 flex flex-col p-4 md:left-0 md:p-[3vw]">
 								<span class="text-3xl font-bold text-white md:text-[2vw] md:leading-[2.375vw]"
 									>{anime.name}</span
@@ -307,7 +305,7 @@
 											gradient_mask
 											offset_scrollbar
 											parent_class="max-h-16 md:max-h-[6vw] hidden md:flex md:mt-[0.75vw]"
-											class="text-surface-200 text-xs font-medium leading-4 md:text-[0.85vw] md:leading-[1.1vw]"
+											class="text-xs font-medium leading-4 md:text-[0.85vw] md:leading-[1.1vw]"
 										>
 											{anime.synopsis}
 										</ScrollArea>
@@ -337,9 +335,7 @@
 											<button
 												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
 											>
-												<coreproject-shape-edit
-													variant="line-with-pencil"
-													class="text-surface-50 w-4 md:w-[1.25vw]"
+												<coreproject-shape-edit variant="line-with-pencil" class="w-4 md:w-[1.25vw]"
 												></coreproject-shape-edit>
 											</button>
 										</div>
@@ -585,16 +581,16 @@
 			</button>
 		</div>
 		<div class="flex items-center justify-between">
-			<span class="text-surface-50 text-sm md:text-[1vw] md:font-semibold"> 7 animes </span>
+			<span class="text-sm md:text-[1vw] md:font-semibold"> 7 animes </span>
 			<div class="hidden items-center gap-[1vw] md:flex">
 				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.options.watching")}
 					<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
 				</button>
 				<button
-					class="bg-surface-400 btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.cta")}
 					<coreproject-shape-arrow-up-right class="w-[1vw]"></coreproject-shape-arrow-up-right>

@@ -102,9 +102,7 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
-				Already have an account?
-			</span>
+			<span class="text-xs leading-none md:text-[0.75vw]"> Already have an account? </span>
 			<a
 				href={"/login"}
 				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"
