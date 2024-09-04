@@ -31,14 +31,14 @@
 		top: {
 			search: {
 				icon: {
-					component: `<coreproject-shape-search class="w-[1.25vw] text-black"></coreproject-shape-search>`
+					component: `<coreproject-shape-search class="size-[1.25vw]"></coreproject-shape-search>`
 				}
 			}
 		},
 		middle: {
 			home: {
 				icon: {
-					component: `<coreproject-shape-home class="w-[1.25vw]"></coreproject-shape-home>`
+					component: `<coreproject-shape-home class="size-[1.25vw]"></coreproject-shape-home>`
 				},
 				url: "/anime",
 				show_on_mobile: true
@@ -46,28 +46,28 @@
 
 			explore: {
 				icon: {
-					component: `<coreproject-shape-compass class="w-[1.25vw]"></coreproject-shape-compass>`
+					component: `<coreproject-shape-compass class="size-[1.25vw]"></coreproject-shape-compass>`
 				},
 				url: "/anime/explore",
 				show_on_mobile: true
 			},
 			list: {
 				icon: {
-					component: `<coreproject-shape-list class="w-[1.7vw]"></coreproject-shape-list>`
+					component: `<coreproject-shape-menu class="size-[1.25vw]"></coreproject-shape-menu>`
 				},
 				url: "/anime/list",
 				show_on_mobile: false
 			},
 			schedule: {
 				icon: {
-					component: `<coreproject-shape-calendar class="w-[1.25vw]"></coreproject-shape-calendar>`
+					component: `<coreproject-shape-calendar class="size-[1.25vw]"></coreproject-shape-calendar>`
 				},
 				url: "/anime/shedule",
 				show_on_mobile: false
 			},
 			forum: {
 				icon: {
-					component: `<coreproject-shape-forum class="w-[1.25vw]"></coreproject-shape-forum>`
+					component: `<coreproject-shape-forum class="size-[1.25vw]"></coreproject-shape-forum>`
 				},
 				url: "/anime/forum",
 				show_on_mobile: true
@@ -76,13 +76,13 @@
 		bottom: {
 			settings: {
 				icon: {
-					component: `<coreproject-shape-settings variant='filled' class="w-[1.25vw]"></coreproject-shape-settings>`
+					component: `<coreproject-shape-settings variant='filled' class="size-[1.25vw]"></coreproject-shape-settings>`
 				},
 				url: undefined
 			},
 			misc: {
 				icon: {
-					component: `<coreproject-shape-help-circle class="w-[1.25vw]"></coreproject-shape-help-circle>`
+					component: `<coreproject-shape-help-circle class="size-[1.25vw]"></coreproject-shape-help-circle>`
 				},
 				url: undefined
 			}
@@ -91,19 +91,19 @@
 			profile: {
 				url: "/profile",
 				icon: {
-					component: `<coreproject-shape-user class="w-4 md:w-[1vw]"></coreproject-shape-user>`
+					component: `<coreproject-shape-user class="size-4 md:size-[1vw]"></coreproject-shape-user>`
 				}
 			},
 			"my list": {
 				url: "/my-list",
 				icon: {
-					component: `<coreproject-shape-list class="w-4 md:w-[1vw]"></coreproject-shape-list>`
+					component: `<coreproject-shape-menu class="size-4 md:size-[1vw]"></coreproject-shape-menu>`
 				}
 			},
 			prefernce: {
 				url: "/prefernce",
 				icon: {
-					component: `<coreproject-shape-preference class="w-4 md:w-[1vw]"></coreproject-shape-preference>`
+					component: `<coreproject-shape-preference class="size-4 md:size-[1vw]"></coreproject-shape-preference>`
 				}
 			}
 		}
@@ -116,7 +116,7 @@
 		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
 	>
 		<a href="/">
-			<coreproject-shape-logo class="w-9 md:w-[2.25vw] md:pt-[0.75vw]"></coreproject-shape-logo>
+			<coreproject-shape-logo class="w-9 md:w-[2.25vw]"></coreproject-shape-logo>
 		</a>
 		<div class="relative flex items-center md:static">
 			<div class="absolute left-1/2 -translate-x-1/2">
@@ -217,7 +217,7 @@
 							modal_store.open_modal("search");
 						}}
 					>
-						<coreproject-shape-search class="w-[1.25vw] text-black"></coreproject-shape-search>
+						<coreproject-shape-search class="w-[1.25vw]"></coreproject-shape-search>
 					</button>
 				</div>
 
@@ -245,7 +245,7 @@
 								class="{cn(
 									'btn relative size-[4vw] min-h-max rounded-[1vw] border-none p-0',
 									is_active
-										? 'relative !bg-accent before:absolute before:-left-[0.15vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
+										? 'relative !bg-accent before:absolute before:-left-[0.55vw] before:z-10 before:h-[1.25vw] before:w-[0.25vw] before:rounded-full before:bg-primary'
 										: '!bg-transparent'
 								)} "
 							>
@@ -264,7 +264,7 @@
 											transition:blur
 											class="absolute inset-0 flex flex-col items-center justify-center gap-[0.5vw]"
 										>
-											<icon class={cn("!text-white")}>
+											<icon class="!text-white">
 												{@html item_icon.component}
 											</icon>
 
@@ -297,24 +297,8 @@
 				{/each}
 			</div>
 		</aside>
-		<main class="relative w-full overflow-y-scroll">
-			<svg
-				class="absolute left-0 top-0 z-10 md:size-[2vw]"
-				viewBox="0 0 24 24"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-			>
-				<path
-					class="fill-secondary"
-					fill-rule="evenodd"
-					clip-rule="evenodd"
-					d="M24 0H0V24C0 10.7451 10.7452 0 24 0Z"
-				/>
-			</svg>
-			<div id="page" class="w-full overflow-y-scroll">
-				<slot />
-			</div>
-			<main></main>
-		</main>
+		<div id="page" class="w-full overflow-y-scroll">
+			<slot />
+		</div>
 	</div>
 </div>
