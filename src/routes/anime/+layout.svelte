@@ -217,7 +217,7 @@
 							modal_store.open_modal("search");
 						}}
 					>
-						<coreproject-shape-search class="w-[1.25vw]"></coreproject-shape-search>
+						<coreproject-shape-search class="size-[1.25vw]"></coreproject-shape-search>
 					</button>
 				</div>
 

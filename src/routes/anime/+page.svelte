@@ -279,16 +279,24 @@
 									class="flex flex-wrap items-center gap-2 py-2 text-xs font-semibold text-white/90 md:gap-[0.65vw] md:pb-0 md:pt-[0.5vw] md:text-[0.9375vw]"
 								>
 									<span class="leading-[1.125vw]">{anime.type}</span>
-									<coreproject-shape-circle class="size-1 opacity-75 md:size-[0.5vw]"
+									<coreproject-shape-circle
+										variant="filled"
+										class="size-1 opacity-75 md:size-[0.5vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.episodes} eps</span>
-									<coreproject-shape-circle class="size-1 opacity-75 md:size-[0.5vw]"
+									<coreproject-shape-circle
+										variant="filled"
+										class="size-1 opacity-75 md:size-[0.5vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">Completed</span>
-									<coreproject-shape-circle class="size-1 opacity-75 md:size-[0.5vw]"
+									<coreproject-shape-circle
+										variant="filled"
+										class="size-1 opacity-75 md:size-[0.5vw]"
 									></coreproject-shape-circle>
 									<span class="capitalize leading-[1.125vw]">{formated_aired_on}</span>
-									<coreproject-shape-circle class="size-1 opacity-75 md:size-[0.5vw]"
+									<coreproject-shape-circle
+										variant="filled"
+										class="size-1 opacity-75 md:size-[0.5vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.studio}</span>
 									<div>
@@ -329,13 +337,16 @@
 												href="anime/mal/{anime.id}"
 												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
 											>
-												<coreproject-shape-info class="size-5 md:size-[1.35vw]"></coreproject-shape-info>
+												<coreproject-shape-info class="size-5 md:size-[1.35vw]"
+												></coreproject-shape-info>
 												<span>Details</span>
 											</a>
 											<button
 												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
 											>
-												<coreproject-shape-edit variant="line-with-pencil" class="size-5 md:size-[1.35vw]"
+												<coreproject-shape-edit
+													variant="line-with-pencil"
+													class="size-5 md:size-[1.35vw]"
 												></coreproject-shape-edit>
 											</button>
 										</div>
@@ -357,7 +368,8 @@
 					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
-					<coreproject-shape-chevron variant="left" class="md:size-[1.25vw]"></coreproject-shape-chevron>
+					<coreproject-shape-chevron variant="left" class="md:size-[1.25vw]"
+					></coreproject-shape-chevron>
 				</button>
 				<div class="flex w-full flex-col md:gap-[0.75vw]">
 					{#each latest_animes_mapping as item, idx}
@@ -564,7 +576,8 @@
 					<button
 						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
-						<coreproject-shape-chevron variant="down" class="md:size-[1vw]"></coreproject-shape-chevron>
+						<coreproject-shape-chevron variant="down" class="md:size-[1vw]"
+						></coreproject-shape-chevron>
 					</button>
 				</div>
 			</div>
@@ -576,7 +589,7 @@
 			<button
 				class="btn btn-neutral hidden min-h-full rounded-[0.5vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
-				<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+				<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 				></coreproject-shape-settings>
 			</button>
 		</div>
@@ -593,7 +606,8 @@
 					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
 				>
 					{$t("home.my_list.cta")}
-					<coreproject-shape-arrow-up-right class="w-[1vw]"></coreproject-shape-arrow-up-right>
+					<coreproject-shape-arrow variant="right" class="w-[1vw] rotate-45"
+					></coreproject-shape-arrow>
 				</button>
 			</div>
 			<div class="md:hidden">
