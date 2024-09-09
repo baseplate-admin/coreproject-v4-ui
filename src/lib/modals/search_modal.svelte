@@ -116,7 +116,8 @@
 						class="mt-auto flex items-center self-center text-info md:gap-[0.5vw]"
 					>
 						<span class="font-semibold md:text-[1vw]">view all</span>
-						<coreproject-shape-chevron class="-rotate-90 md:size-[1vw]"></coreproject-shape-chevron>
+						<coreproject-shape-chevron variant="right" class="md:size-[1vw]"
+						></coreproject-shape-chevron>
 					</a>
 				</div>
 			</div>
