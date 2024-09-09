@@ -5,7 +5,6 @@
 	import DominantColor from "$components/dominant_color/index.svelte";
 
 	import { page } from "$app/stores";
-	import type { SvelteComponent } from "svelte";
 	import Dot from "$icons/shapes/dot.svelte";
 
 	let anime_name = "Your Lie in April",
@@ -125,45 +124,31 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<Dot class="w-[0.35rem] opacity-75"></Dot>
+									<coreproject-shape-circle variant="filled" class="size-[0.35vw] opacity-75"
+									></coreproject-shape-circle>
 								{/if}
 							{/each}
 						</div>
 						<div class="mt-3 flex items-center gap-3 md:mt-[1.5vw] md:gap-[0.75vw]">
 							<button
 								type="button"
-								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:rounded-[0.75vw]"
+								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
 							>
-								<div class="flex gap-3 md:gap-[0.7vw]">
-									<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
+								<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
 
-									<div class="flex flex-col items-start gap-1">
-										<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
-										<span class="text-xs font-semibold leading-none md:text-[0.75vw]">Ep 01</span>
-									</div>
+								<div class="flex flex-col items-start gap-1">
+									<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
+									<span class="text-xs font-semibold leading-none md:text-[0.75vw]">Ep 01</span>
 								</div>
 							</button>
 							<button
 								type="button"
-								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
+								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:gap-0 md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
 							>
-								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<coreproject-shape-book variant="outline" class="0 w-4 md:w-[1.5vw]"
-									></coreproject-shape-book>
-									<span class="leading-none">read</span>
-								</div>
-							</button>
-							<button
-								type="button"
-								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
-								disabled
-							>
-								<div class="flex flex-col items-center gap-2 md:gap-[0.68vw]">
-									<coreproject-shape-headphone class="0 w-4 md:w-[1.5vw]"
-									></coreproject-shape-headphone>
-									<span class="leading-none">read</span>
-								</div>
+								<coreproject-shape-book variant="open" class="w-4 md:size-[1.5vw]"
+								></coreproject-shape-book>
+								<span class="leading-none">read</span>
 							</button>
 						</div>
 						<div class="mt-3 flex gap-2 md:mt-[0.75vw] md:gap-[0.75vw]">
@@ -181,11 +166,13 @@
 				</div>
 				<div class="col-span-12 mt-10 flex flex-col gap-[0.75vw] md:col-span-5 md:mt-0">
 					<div class="flex gap-[0.75vw]">
-						<div class="text-lg font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Synopsis</div>
+						<h3 class="text-lg font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+							Synopsis
+						</h3>
 						<button
-							class="btn btn-secondary hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+							class="btn btn-neutral hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 						>
-							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+							<coreproject-shape-settings variant="filled" class="size-[0.75vw] opacity-75"
 							></coreproject-shape-settings>
 						</button>
 					</div>
@@ -197,16 +184,16 @@
 					>
 						{anime_synopsis}
 					</ScrollArea>
-					<div class="hidden gap-[0.5vw] text-white md:flex md:text-[0.75vw] md:leading-[0.9vw]">
-						<!-- {#each parse_anime_genres() as item}
+					<div class="hidden gap-[0.75vw] text-white md:flex md:text-[0.75vw] md:leading-[0.9vw]">
+						{#each ["action", "romance", "shogan"] as genre}
 							<span
-								class="rounded-[0.25vw] bg-warning font-semibold text-black md:px-[0.75vw] md:py-[0.4vw]"
-								>{item}</span
+								class="rounded-[0.5vw] bg-warning font-semibold capitalize text-black md:px-[0.75vw] md:py-[0.4vw]"
+								>{genre}</span
 							>
-						{/each} -->
+						{/each}
 					</div>
 					<div
-						class="hidden w-max gap-[0.75vw] rounded-[0.25vw] bg-secondary md:flex md:px-[0.75vw] md:py-[0.5vw] md:text-[0.75vw] md:leading-[0.75vw]"
+						class="hidden w-max gap-[0.75vw] rounded-[0.5vw] bg-secondary md:flex md:px-[0.75vw] md:py-[0.5vw] md:text-[0.75vw] md:leading-[0.75vw]"
 					>
 						<div class="flex gap-[0.25vw]">
 							<span>Score:</span>
@@ -215,10 +202,10 @@
 						<div class="flex gap-[0.25vw]">
 							<span>Status:</span>
 							<button
-								class="btn h-min min-h-min border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
+								class="btn h-min min-h-min gap-[0.25vw] border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Watching</span>
-								<coreproject-shape-chevron class="text-warning-400 w-[0.625vw]"
+								<coreproject-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
 								></coreproject-shape-chevron>
 							</button>
 						</div>
@@ -232,7 +219,7 @@
 								class="btn h-min min-h-min border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Not Rated</span>
-								<coreproject-shape-chevron class="text-warning-400 w-[0.625vw]"
+								<coreproject-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
 								></coreproject-shape-chevron>
 							</button>
 						</div>
@@ -241,11 +228,14 @@
 			</div>
 			<div class="my-7 block md:my-[6vw]">
 				<div class="flex border-b-2 border-neutral pb-1 md:gap-x-[0.75vw] md:border-none md:pb-0">
-					<div class="text-lg font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Episodes</div>
+					<div class="text-lg font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+						Episodes
+					</div>
 					<button
-						class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:items-center md:justify-center"
+						class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:items-center md:justify-center"
 					>
-						<coreproject-shape-settings class="w-[0.9vw] opacity-75"></coreproject-shape-settings>
+						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+						></coreproject-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex flex-col justify-between gap-y-5 md:mt-0 md:flex-row md:gap-y-0">
@@ -255,39 +245,33 @@
 								>23</span
 							>
 							<span class="text-xs font-semibold md:text-[1vw]">episodes</span>
-							<Dot class="w-[0.4vw] opacity-50"></Dot>
+							<coreproject-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
+							></coreproject-shape-circle>
 						</p>
-						<div>
+						<div class="flex flex-col md:gap-[0.25vw]">
 							<div class="flex w-full items-center gap-2 leading-4 md:gap-[1vw] md:leading-[1.5vw]">
 								<span class="flex-shrink-0 text-[0.5rem] font-medium md:text-[0.75vw]"
 									>Available in</span
 								>
-								<div class="h-[0.1rem] w-full bg-accent opacity-25 md:h-[0.1vw]"></div>
+								<div class="h-[0.1rem] w-full bg-accent opacity-25 md:h-[0.05vw]"></div>
 							</div>
 							<div
-								class="flex h-5 gap-2 text-[0.5rem] font-bold md:h-[1.8vw] md:gap-[0.5vw] md:text-[0.75vw]"
+								class="flex h-5 items-center gap-2 text-[0.5rem] font-bold md:h-[1.8vw] md:gap-[0.75vw] md:text-[0.75vw]"
 							>
-								<span
-									class="flex h-full place-items-center rounded bg-secondary px-2 uppercase leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
-									>sub</span
-								>
-								<span
-									class="flex h-full place-items-center rounded bg-secondary px-2 uppercase leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
-									>dub</span
-								>
-								<Dot class="w-[0.4vw] opacity-50"></Dot>
-								<span
-									class="flex h-full place-items-center rounded bg-secondary px-2 leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
-									>1080p</span
-								>
-								<span
-									class="flex h-full place-items-center rounded bg-secondary px-2 leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
-									>720p</span
-								>
-								<span
-									class="flex h-full place-items-center rounded bg-secondary px-2 leading-[0.9vw] md:rounded-[0.25vw] md:px-[0.9vw]"
-									>480p</span
-								>
+								{#each ["sub", "dub"] as item}
+									<span
+										class="flex h-full place-items-center rounded bg-neutral px-2 uppercase leading-[0.9vw] md:rounded-[0.5vw] md:px-[0.9vw]"
+										>{item}</span
+									>
+								{/each}
+								<coreproject-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
+								></coreproject-shape-circle>
+								{#each ["1080p", "720p"] as item}
+									<span
+										class="flex h-full place-items-center rounded bg-neutral px-2 uppercase leading-[0.9vw] md:rounded-[0.5vw] md:px-[0.9vw]"
+										>{item}</span
+									>
+								{/each}
 							</div>
 						</div>
 					</div>
@@ -296,32 +280,28 @@
 							<span class="text-base font-bold leading-none">23</span>
 							<span class="text-sm font-semibold">episodes</span>
 						</p>
-						<div class="group hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
-							<span
-								class="text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
-								>Type</span
-							>
+						<div class="hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
+							<span class="text-[0.65rem] leading-[0.9vw] md:text-[0.8vw]">Type</span>
 							<button
-								class="btn btn-secondary h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
+								class="btn btn-neutral h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
 							>
 								<span>Subbed</span>
-								<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
+								<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+								></coreproject-shape-chevron>
 							</button>
 						</div>
-						<div class="group hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
-							<span
-								class="text-[0.65rem] leading-[0.9vw] transition-colors duration-300 group-hover:text-white md:text-[0.75vw]"
-								>Display Mode</span
-							>
+						<div class="hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
+							<span class="text-[0.65rem] leading-[0.9vw] md:text-[0.8vw]">Display Mode</span>
 							<button
-								class="btn btn-secondary h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold leading-[0.9vw] md:h-[2.5vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.9vw]"
+								class="btn btn-neutral h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
 							>
 								<span>Thumbnails</span>
-								<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
+								<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+								></coreproject-shape-chevron>
 							</button>
 						</div>
 						<button
-							class="btn btn-secondary h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+							class="btn btn-neutral h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
 							aria-label="Search"
 						>
 							<coreproject-shape-search class="w-4 md:w-[1vw]"></coreproject-shape-search>
@@ -372,9 +352,9 @@
 										{episode.duration}
 									</p>
 								</div>
-								<div class="relative flex h-max w-full flex-col items-start gap-2 md:gap-[0.25vw]">
+								<div class="relative flex h-max w-full flex-col items-start gap-2 md:gap-[0.5vw]">
 									<HoverExpand
-										class="text-sm font-medium leading-4 text-white md:text-[0.9vw] md:leading-[1.1vw]"
+										class="text-sm font-medium leading-4 text-white md:text-[1vw] md:leading-[1.25vw]"
 										height="md:max-h-[1.15vw] md:hover:max-h-[9vw]"
 									>
 										{episode.name}
@@ -391,7 +371,7 @@
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.formats as format}
 											<span
-												class="rounded text-sm font-semibold uppercase tracking-wider md:text-[0.8vw]"
+												class="rounded bg-neutral text-sm font-semibold uppercase tracking-wider md:px-[0.35vw] md:text-[0.8vw]"
 											>
 												{format}
 											</span>
@@ -417,13 +397,13 @@
 						<div
 							class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
 						>
-							<div class="text-base font-semibold md:text-[1.25vw] md:leading-[1.5vw]">
+							<h3 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
 								Comments
-							</div>
+							</h3>
 							<button
-								class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
+								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 								></coreproject-shape-settings>
 							</button>
 						</div>
@@ -453,13 +433,13 @@
 						<div
 							class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
 						>
-							<div class="text-base font-semibold md:text-[1.25vw] md:leading-[1.5vw]">
+							<h1 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
 								Forum Posts
-							</div>
+							</h1>
 							<button
-								class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<coreproject-shape-settings class="w-[0.9vw] opacity-75"
+								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 								></coreproject-shape-settings>
 							</button>
 						</div>
@@ -470,14 +450,14 @@
 							</p>
 							<div class="flex items-center gap-2 md:w-full md:justify-between">
 								<button
-									class="btn btn-secondary h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+									class="btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 								>
-									<coreproject-shape-cross class="w-4 rotate-45 md:w-[1vw]"
-									></coreproject-shape-cross>
+									<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
+									></coreproject-shape-plus>
 									Create New
 								</button>
 								<button
-									class="btn btn-secondary h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+									class="btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
 									aria-label="Filter"
 								>
 									<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
@@ -525,7 +505,8 @@
 											<div class="">7 months ago</div>
 										</div>
 										<div class="flex items-center gap-1 md:gap-[0.25vw]">
-											<coreproject-shape-chat class="w-3 md:w-[1vw]"></coreproject-shape-chat>
+											<coreproject-shape-message-circle class="w-3 md:w-[1vw]"
+											></coreproject-shape-message-circle>
 											<div>69</div>
 										</div>
 									</div>
@@ -538,17 +519,18 @@
 		</div>
 		<div class="hidden flex-col gap-[1vw] md:col-span-2 md:flex">
 			<div class="flex gap-[0.75vw]">
-				<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Ratings</div>
-				<button
-					class="btn btn-secondary min-h-full rounded-[0.1875vw] p-0 md:h-[1.5vw] md:w-[1.5vw]"
-				>
-					<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+				<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">Ratings</h3>
+				<button class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]">
+					<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 					></coreproject-shape-settings>
 				</button>
 			</div>
 			<div class="flex flex-col gap-[0.75vw]">
 				<div class="flex items-center gap-[0.5vw]">
-					<span class="border-b-2 pb-[0.5vw] font-bold md:text-[2vw] md:leading-[1.5vw]">92%</span>
+					<span
+						class="border-b-2 border-warning pb-[0.5vw] font-bold text-warning md:text-[2vw] md:leading-[1.5vw]"
+						>92%</span
+					>
 					<span
 						class="divider-vertical m-0 font-semibold md:pl-1 md:text-[0.75vw] md:leading-[0.8vw]"
 						>2.8k ratings</span
@@ -556,8 +538,8 @@
 				</div>
 				<div class="block">
 					<div class="flex items-center md:gap-[0.25vw]">
-						<span class="font-semibold md:text-[1vw] md:leading-[1.5vw]">#80</span>
-						<span class="md:text-[0.75vw] md:leading-[0.75vw]">Trending of all time</span>
+						<span class="font-semibold text-info md:text-[1vw] md:leading-[1.5vw]">#80</span>
+						<span class="text-info md:text-[0.75vw] md:leading-[0.75vw]">Trending of all time</span>
 					</div>
 					<div class="flex items-center md:gap-[0.25vw]">
 						<span class="font-semibold md:text-[1vw] md:leading-[1.5vw]">#108</span>
@@ -565,34 +547,34 @@
 					</div>
 				</div>
 				<button
-					class="btn btn-accent min-h-full md:h-[1.5vw] md:w-max md:rounded-[0.25vw] md:text-[0.75vw]"
+					class="btn btn-accent min-h-full md:h-[1.5vw] md:w-max md:rounded-[0.25vw] md:px-[0.75vw] md:text-[0.75vw]"
 				>
-					<coreproject-shape-trending variant="up" class="w-[1.25vw]"></coreproject-shape-trending>
+					<coreproject-shape-trending variant="up" class="size-[1vw]"></coreproject-shape-trending>
 					<span>Detailed Distribution</span>
 				</button>
-				<div class="flex flex-col gap-[0.5vw] leading-none">
+				<div class="flex flex-col gap-[0.5vw] leading-none md:mt-[0.5vw]">
 					<span class="font-semibold md:text-[0.9vw] md:leading-[0.9vw]">Your rating</span>
 					<div class="flex items-center gap-[0.75vw]">
 						<!-- <Rating /> -->
-						<span class="font-bold leading-none md:text-[0.95vw]">92%</span>
+						<span class="font-bold leading-none text-info md:text-[0.95vw]">92%</span>
 						<button
-							class="0 btn btn-secondary min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.19vw]"
+							class="btn btn-warning min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.35vw]"
 						>
 							<coreproject-shape-edit class="w-[0.75vw]" variant="pencil"></coreproject-shape-edit>
 						</button>
 					</div>
 				</div>
 				<button
-					class="btn flex h-min min-h-full w-max items-center gap-[0.5vw] border-none !bg-transparent p-0 md:text-[0.8vw]"
+					class="btn flex h-min min-h-full w-max items-center gap-[0.5vw] border-none !bg-transparent p-0 md:text-[0.85vw]"
 				>
 					Add a review
-					<coreproject-shape-hyperlink class="w-[0.8vw]"></coreproject-shape-hyperlink>
+					<coreproject-shape-external-link class="size-[0.8vw]"></coreproject-shape-external-link>
 				</button>
 			</div>
 			<div class="flex gap-[0.75vw] md:mt-[6vw]">
-				<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Details</div>
-				<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
-					<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+				<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">Details</h3>
+				<button class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]">
+					<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 					></coreproject-shape-settings>
 				</button>
 			</div>
@@ -645,19 +627,24 @@
 				</div>
 				<div class="mt-[2.5vw] block">
 					<div class="flex gap-[0.75vw]">
-						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Voiceover Cast</div>
-						<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
-							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+						<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+							Voiceover Cast
+						</h3>
+						<button
+							class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
+						>
+							<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 							></coreproject-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] flex flex-col">
 						<span class="text-[0.9375vw]">VAs</span>
 						<button
-							class="btn btn-secondary mt-[0.3vw] h-[2.25vw] min-h-full w-[6.625vw] gap-1 rounded-[0.375vw] p-0 text-[0.875vw]"
+							class="btn btn-neutral mt-[0.3vw] h-[2vw] min-h-full w-[6.625vw] gap-1 rounded-[0.5vw] p-0 text-[0.875vw]"
 						>
 							Japanese
-							<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
+							<coreproject-shape-chevron variant="down" class="size-[1vw]"
+							></coreproject-shape-chevron>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">
@@ -671,7 +658,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.3vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
+									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
 									>Houtarou Oreki</span
 								>
 							</div>
@@ -682,7 +669,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.3vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
+									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
 									>Yuuichi Nakamura</span
 								>
 							</div>
@@ -690,27 +677,34 @@
 								class="gradient absolute inset-0 rounded-b-[0.45vw] bg-gradient-to-t from-secondary/75 to-secondary/5"
 							></div>
 						</div>
-						<div class="mt-[1vw] flex flex-col">
-							<div class="btn-group">
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron class="w-[1vw] rotate-180"></coreproject-shape-chevron>
+						<div class="mt-[1vw] flex flex-col md:gap-[0.75vw]">
+							<div class="flex items-center md:gap-[0.5vw]">
+								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
+									<coreproject-shape-chevron variant="left" class="size-[1vw]"
+									></coreproject-shape-chevron>
 								</button>
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">01</button>
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
+								<button
+									class="btn btn-neutral min-h-full p-0 md:h-[2vw] md:w-[2vw] md:text-[0.85vw]"
+									>1</button
+								>
+								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
+									<coreproject-shape-chevron variant="right" class="size-[1vw]"
+									></coreproject-shape-chevron>
 								</button>
 							</div>
-							<span class="mt-[0.5vw] text-[0.75vw] leading-none"
-								>Showing 1-5, out of 58 Voiceover div</span
-							>
+							<span class="text-[0.75vw] leading-none">Showing 1-5, out of 58 Voiceover</span>
 						</div>
 					</div>
 				</div>
 				<div class="mt-[2.5vw] block">
-					<div class="flex gap-3">
-						<div class="font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Similar Animes</div>
-						<button class="btn btn-secondary min-h-full rounded p-0 md:h-[1.5vw] md:w-[1.5vw]">
-							<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+					<div class="flex gap-[0.75vw]">
+						<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+							Similar Animes
+						</h3>
+						<button
+							class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
+						>
+							<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 							></coreproject-shape-settings>
 						</button>
 					</div>
@@ -753,17 +747,22 @@
 								></div>
 							</a>
 						</div>
-						<div class="mt-[1vw] flex flex-col">
-							<div class="btn-group">
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron class="w-[1vw] rotate-180"></coreproject-shape-chevron>
+						<div class="mt-[1vw] flex flex-col md:gap-[0.75vw]">
+							<div class="flex items-center md:gap-[0.5vw]">
+								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
+									<coreproject-shape-chevron variant="left" class="size-[1vw]"
+									></coreproject-shape-chevron>
 								</button>
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">01</button>
-								<button class="btn btn-secondary min-h-full p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
+								<button
+									class="btn btn-neutral min-h-full p-0 md:h-[2vw] md:w-[2vw] md:text-[0.85vw]"
+									>1</button
+								>
+								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
+									<coreproject-shape-chevron variant="right" class="size-[1vw]"
+									></coreproject-shape-chevron>
 								</button>
 							</div>
-							<span class="mt-[0.5vw] text-[0.75vw] leading-none">Showing 1-8, out of 47 div</span>
+							<span class="text-[0.75vw] leading-none">Showing 1-8, out of 74 Animes</span>
 						</div>
 					</div>
 				</div>
