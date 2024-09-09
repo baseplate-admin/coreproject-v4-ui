@@ -102,7 +102,7 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+			<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
 			></coreproject-shape-arrow>
 			Home
 		</a>
@@ -126,7 +126,7 @@
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
-				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
+				<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 				{#if username.error.length === 0}
 					<span>you can change username in your user settings later, so go bonkers!</span>
 				{:else}
@@ -144,7 +144,7 @@
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-start gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
-				<coreproject-shape-arrow class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-arrow>
+				<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
 				{#if otp.error.length === 0}
 					<span>
 						if you didn’t receive the code, check your spam folder. Or use the resend button
@@ -181,8 +181,7 @@
 			class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 		>
 			<span>Continue</span>
-			<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
-			></coreproject-shape-arrow-up-right>
+			<coreproject-shape-arrow variant="right" class="w-4 md:w-[1vw]"></coreproject-shape-arrow>
 		</button>
 	</div>
 </form>

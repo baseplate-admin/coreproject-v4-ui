@@ -8,7 +8,7 @@
 
 	const pages = [form_first, form_second, form_third];
 	// current page
-	let page = $state(0);
+	let page = $state(2);
 
 	// The state of all of our pages
 	let pages_state = $state<IPagesState>({});

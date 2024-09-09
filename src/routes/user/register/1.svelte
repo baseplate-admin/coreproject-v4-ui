@@ -213,7 +213,7 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+			<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
 			></coreproject-shape-arrow>
 			Home
 		</a>
@@ -311,12 +311,12 @@
 
 							<div class="flex items-center gap-2 md:gap-[0.5vw]">
 								{#if (password.error.length === 0 && !password.value) || (password.value && password.error.includes(key))}
-									<coreproject-shape-tick
+									<coreproject-shape-check
 										class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]"
-									></coreproject-shape-tick>
+									></coreproject-shape-check>
 								{:else}
-									<coreproject-shape-tick class="w-3 text-primary transition-opacity md:w-[1vw]"
-									></coreproject-shape-tick>
+									<coreproject-shape-check class="w-3 text-primary transition-opacity md:w-[1vw]"
+									></coreproject-shape-check>
 								{/if}
 
 								<span class="text-[0.7rem] leading-none md:text-[0.75vw]">
@@ -370,8 +370,7 @@
 			)}
 		>
 			<span>Continue</span>
-			<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
-			></coreproject-shape-arrow-up-right>
+			<coreproject-shape-arrow variant="right" class="w-4 md:w-[1vw]"></coreproject-shape-arrow>
 		</button>
 	</div>
 </form>

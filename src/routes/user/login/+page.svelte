@@ -80,7 +80,7 @@
 				href={"/anime"}
 				class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+				<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
 				></coreproject-shape-arrow>
 				Home
 			</a>
@@ -172,8 +172,7 @@
 				class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 			>
 				<span>Continue</span>
-				<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
-				></coreproject-shape-arrow-up-right>
+				<coreproject-shape-log-in class="w-4 md:w-[1vw]"></coreproject-shape-log-in>
 			</button>
 		</div>
 	</form>
