@@ -6,8 +6,6 @@
 	import { createAuthStore } from "$stores/auth.svelte";
 	import Markdown from "$components/markdown.svelte";
 
-	import Eye from "$icons/shapes/eye.svelte";
-
 	const auth_store = createAuthStore();
 
 	let show_password = $state(false);
@@ -131,9 +129,11 @@
 							onclick={() => (show_password = !show_password)}
 						>
 							{#if show_password}
-								<Eye variant="open" class="md:size-[1.75vw]" />
+								<coreproject-shape-eye variant="close" class="md:size-[1.25vw]"
+								></coreproject-shape-eye>
 							{:else}
-								<Eye variant="close" class="md:size-[1.5vw]" />
+								<coreproject-shape-eye variant="open" class="md:size-[1.25vw]"
+								></coreproject-shape-eye>
 							{/if}
 						</button>
 					{/if}

@@ -5,7 +5,6 @@
 	import DominantColor from "$components/dominant_color/index.svelte";
 
 	import { page } from "$app/stores";
-	import Dot from "$icons/shapes/dot.svelte";
 
 	let anime_name = "Your Lie in April",
 		anime_japanese_name = "四月は君の嘘",
@@ -377,7 +376,8 @@
 											</span>
 										{/each}
 									</div>
-									<Dot class="w-1 opacity-50 md:w-[0.25vw]"></Dot>
+									<coreproject-shape-circle variant="filled" class="w-1 opacity-50 md:w-[0.25vw]"
+									></coreproject-shape-circle>
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
