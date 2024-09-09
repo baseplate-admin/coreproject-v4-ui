@@ -9,7 +9,6 @@
 
 	import CoreText from "$icons/text/core.svelte";
 	import type { PageProps } from "./types";
-	import Eye from "$icons/shapes/eye.svelte";
 
 	let { on_submit, pages_state }: PageProps = $props();
 
