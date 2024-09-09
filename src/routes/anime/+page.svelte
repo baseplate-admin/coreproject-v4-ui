@@ -281,22 +281,22 @@
 									<span class="leading-[1.125vw]">{anime.type}</span>
 									<coreproject-shape-circle
 										variant="filled"
-										class="size-1 opacity-75 md:size-[0.5vw]"
+										class="size-1 opacity-75 md:size-[0.35vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.episodes} eps</span>
 									<coreproject-shape-circle
 										variant="filled"
-										class="size-1 opacity-75 md:size-[0.5vw]"
+										class="size-1 opacity-75 md:size-[0.35vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">Completed</span>
 									<coreproject-shape-circle
 										variant="filled"
-										class="size-1 opacity-75 md:size-[0.5vw]"
+										class="size-1 opacity-75 md:size-[0.35vw]"
 									></coreproject-shape-circle>
 									<span class="capitalize leading-[1.125vw]">{formated_aired_on}</span>
 									<coreproject-shape-circle
 										variant="filled"
-										class="size-1 opacity-75 md:size-[0.5vw]"
+										class="size-1 opacity-75 md:size-[0.35vw]"
 									></coreproject-shape-circle>
 									<span class="leading-[1.125vw]">{anime.studio}</span>
 									<div>
@@ -455,7 +455,7 @@
 											<span class="whitespace-nowrap"
 												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
 											>
-											<coreproject-shape-circle class="opacity-75 md:size-[0.5vw]"
+											<coreproject-shape-circle variant="filled" class="opacity-75 md:size-[0.35vw]"
 											></coreproject-shape-circle>
 											<span class="line-clamp-1">{episode.timestamp}</span>
 										</div>
