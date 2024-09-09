@@ -77,8 +77,7 @@
 					<span class="mt-[4vw] text-[1vw] font-semibold leading-none"
 						>With a coreproject account, you can</span
 					>
-					<span
-						class="text-surface-200 mt-[0.5vw] max-w-[22vw] text-[1vw] font-medium leading-[1vw]"
+					<span class="mt-[0.5vw] max-w-[22vw] text-[1vw] font-medium leading-[1vw]"
 						>continue on animecore, mangacore and soundcore with same account.</span
 					>
 				</div>

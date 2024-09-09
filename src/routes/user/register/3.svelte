@@ -53,7 +53,7 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreproject-shape-arrow variant="fill" class="size-4 -rotate-90 md:size-[1.25vw]"
+			<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
 			></coreproject-shape-arrow>
 			Home
 		</a>
@@ -102,9 +102,7 @@
 	</div>
 	<div class="flex items-center justify-between">
 		<div class="flex flex-col gap-1 md:gap-[0.5vw]">
-			<span class="text-surface-100 text-xs leading-none md:text-[0.75vw]">
-				Already have an account?
-			</span>
+			<span class="text-xs leading-none md:text-[0.75vw]"> Already have an account? </span>
 			<a
 				href={"/login"}
 				class="btn btn-link size-max min-h-full p-0 text-base leading-none md:text-[1.1vw]"
@@ -118,8 +116,7 @@
 			class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 		>
 			<span>Finish</span>
-			<coreproject-shape-arrow-up-right class="w-4 rotate-45 md:w-[1vw]"
-			></coreproject-shape-arrow-up-right>
+			<coreproject-shape-log-in class="w-4 md:w-[1vw]"></coreproject-shape-log-in>
 		</button>
 	</div>
 </div>
