@@ -57,19 +57,19 @@
 			>
 				<div class="flex gap-2 md:items-center md:gap-[1vw]">
 					<div class="hidden items-center gap-[0.75vw] md:flex">
-						<span class="text-[1vw] font-semibold uppercase">sub/dub:</span>
+						<span class="text-[1vw] font-semibold uppercase text-info">sub/dub:</span>
 						<button
-							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none"
+							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none text-warning"
 						>
 							Vidstreaming (sub)
-							<coreproject-shape-chevron class="w-[1vw]"></coreproject-shape-chevron>
+							<coreproject-shape-chevron variant="down" class="w-[1vw]"></coreproject-shape-chevron>
 						</button>
 					</div>
 					<button
 						onclick={handle_lights_toggle}
 						class="btn hidden h-max min-h-full items-center !bg-transparent p-0 text-xs leading-none md:flex md:text-[0.9vw]"
 					>
-						<span>Lights:</span>
+						<span class="text-info">Lights:</span>
 						<div class="text-primary-300 font-semibold" class:text-warning={options.lights}>
 							{options.lights ? "On" : "Off"}
 						</div>
@@ -104,12 +104,13 @@
 		</div>
 		<div class="col-span-12 flex flex-col gap-3 p-5 md:col-span-4 md:gap-[0.5vw] md:p-0">
 			<header class="flex items-center justify-between">
-				<span class="text-lg font-semibold md:text-[1.35vw]">Episodes</span>
+				<span class="text-lg font-semibold text-info md:text-[1.35vw]">Episodes</span>
 				<button
 					class="btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
 					Eps: 1 - {EPISODES_LENGTH}
-					<coreproject-shape-chevron class="w-3 md:w-[1vw]"></coreproject-shape-chevron>
+					<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+					></coreproject-shape-chevron>
 				</button>
 			</header>
 			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
@@ -129,14 +130,15 @@
 					href="./{Number($page.params.episode_id) - 1}"
 					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-double-arrow class="w-4 rotate-180 md:w-[1.4vw]"
-					></coreproject-shape-double-arrow>
+					<coreproject-shape-chevrons variant="right" class="w-4 rotate-180 md:w-[1.4vw]"
+					></coreproject-shape-chevrons>
 				</a>
 				<a
 					href="./{Number($page.params.episode_id) + 1}"
 					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-double-arrow class="w-4 md:w-[1.4vw]"></coreproject-shape-double-arrow>
+					<coreproject-shape-chevrons variant="left" class="w-4 rotate-180 md:w-[1.4vw]"
+					></coreproject-shape-chevrons>
 				</a>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
 					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
@@ -152,10 +154,10 @@
 								loading="lazy"
 							/>
 							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
-								<div class="rounded-full bg-warning md:p-[1vw]">
+								<button class="btn btn-warning h-max min-h-max rounded-full md:p-[0.75vw]">
 									<coreproject-shape-play class="text-secondary md:w-[1.25vw]"
 									></coreproject-shape-play>
-								</div>
+								</button>
 							</overlay>
 						</div>
 						<div
@@ -184,7 +186,7 @@
 						<span class="text-base leading-none md:text-[1vw]">Kimetsu no yaiba</span>
 					</a>
 				</div>
-				<button class="btn bg-transparent p-0">
+				<button class="btn h-max min-h-max border-none bg-transparent p-0">
 					<coreproject-shape-share class="md:w-[1.25vw]"></coreproject-shape-share>
 				</button>
 			</div>
@@ -211,9 +213,9 @@
 		</div>
 	</div>
 	<div class="grid grid-cols-12 p-5 md:gap-[5vw] md:p-0">
-		<div class="col-span-12 flex flex-col md:col-span-7 md:gap-[0.75vw]">
+		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
 			<span
-				class="flex gap-2 border-b-2 pb-1 text-lg font-semibold md:gap-[0.75vw] md:border-none md:pb-0 md:text-[1.25vw] md:leading-[1.5vw]"
+				class="flex gap-2 border-b-2 pb-1 text-lg font-semibold text-info md:gap-[0.75vw] md:border-none md:pb-0 md:text-[1.25vw] md:leading-[1.5vw]"
 				>Comments</span
 			>
 			<div class="mt-2 flex items-center justify-between md:hidden">
@@ -245,14 +247,16 @@
 			<!-- <CommentBox />
 			<Comment api_url="" /> -->
 		</div>
-		<div class="col-span-12 mt-10 flex flex-col gap-5 md:col-span-5 md:mt-0 md:gap-[2vw]">
+		<div class="col-span-12 mt-10 flex flex-col gap-5 md:col-span-4 md:mt-0 md:gap-[2vw]">
 			<div>
 				<div class="flex gap-2 border-b-2 pb-1 md:gap-[0.75vw] md:border-none md:pb-0">
-					<div class="text-base font-semibold md:text-[1.25vw] md:leading-[1.5vw]">Forum Posts</div>
+					<h3 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+						Forum Posts
+					</h3>
 					<button
-						class="btn btn-secondary hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
+						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 					>
-						<coreproject-shape-settings variant="filled" class="w-[0.9vw] opacity-75"
+						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 						></coreproject-shape-settings>
 					</button>
 				</div>
@@ -263,13 +267,14 @@
 					</p>
 					<div class="flex items-center gap-2 md:w-full md:justify-between">
 						<button
-							class="btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+							class="btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
-							<coreproject-shape-cross class="w-4 rotate-45 md:w-[1vw]"></coreproject-shape-cross>
+							<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
+							></coreproject-shape-plus>
 							Create New
 						</button>
 						<button
-							class="btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+							class="btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
 							<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
@@ -279,7 +284,7 @@
 				<div class="mt-4 grid grid-cols-2 flex-col gap-4 md:mt-[1.25vw] md:flex md:gap-[1vw]">
 					<a
 						href="/"
-						class="card w-full grid-cols-7 overflow-hidden rounded-lg !bg-neutral/50 md:grid md:rounded-[0.625vw]"
+						class="card w-full grid-cols-7 overflow-hidden rounded-lg !bg-neutral/50 md:grid md:rounded-[1vw]"
 					>
 						<div class="col-span-2 block h-16 md:h-full md:w-full">
 							<img
@@ -317,7 +322,8 @@
 									<div>7 months ago</div>
 								</div>
 								<div class="flex items-center gap-1 md:gap-[0.25vw]">
-									<coreproject-shape-chat class="w-3 md:w-[1vw]"></coreproject-shape-chat>
+									<coreproject-shape-message-circle class="w-3 md:w-[1vw]"
+									></coreproject-shape-message-circle>
 									<div>69</div>
 								</div>
 							</div>
@@ -326,10 +332,20 @@
 				</div>
 			</div>
 			<div>
-				<span class="text-lg font-semibold md:text-[1.35vw]">Recommendations</span>
+				<div class="flex gap-2 border-b-2 pb-1 md:gap-[0.75vw] md:border-none md:pb-0">
+					<h3 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
+						Recommendations
+					</h3>
+					<button
+						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
+					>
+						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+						></coreproject-shape-settings>
+					</button>
+				</div>
 				<div class="mt-3 grid grid-cols-3 gap-4 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1vw]">
 					{#each { length: 3 } as _}
-						<a href="/myanimelist/38000" class="card relative col-span-1 h-44 w-full md:h-[15vw]">
+						<a href="/myanimelist/38000" class="card relative col-span-1 h-44 w-full md:h-[12vw]">
 							<img
 								class="h-full w-full object-cover object-center md:rounded-[1vw]"
 								src="/images/mock/cover/jjk.webp"
@@ -359,10 +375,11 @@
 				</div>
 				<div class="mt-3 flex w-full justify-center md:mt-[1vw]">
 					<button
-						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.5vw] md:px-[0.9vw] md:text-[0.875vw]"
+						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
-						<coreproject-shape-chevron class="w-4 md:w-[1vw]"></coreproject-shape-chevron>
+						<coreproject-shape-chevron variant="down" class="w-4 md:w-[1vw]"
+						></coreproject-shape-chevron>
 					</button>
 				</div>
 			</div>
