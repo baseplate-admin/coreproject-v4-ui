@@ -103,7 +103,7 @@
 					</div>
 					<div class="absolute bottom-0 col-span-12 p-5 md:static md:p-0">
 						<HoverExpand
-							class="w-full text-2xl font-bold text-white md:text-[2vw] md:leading-[2.7vw]"
+							class="w-full text-2xl font-bold text-accent md:text-[2vw] md:leading-[2.7vw]"
 							height="max-h-48 md:max-h-[10vw]"
 						>
 							{anime_name}
@@ -127,7 +127,7 @@
 						<div class="mt-3 flex items-center gap-3 md:mt-[1.5vw] md:gap-[0.75vw]">
 							<button
 								type="button"
-								class="w-26 btn btn-primary h-14 rounded-xl font-bold text-white md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
+								class="w-26 btn btn-primary h-14 rounded-xl font-bold text-accent md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
 							>
 								<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
 
@@ -180,7 +180,7 @@
 					>
 						{anime_synopsis}
 					</ScrollArea>
-					<div class="hidden gap-[0.75vw] text-white md:flex md:text-[0.75vw] md:leading-[0.9vw]">
+					<div class="hidden gap-[0.75vw] text-accent md:flex md:text-[0.75vw] md:leading-[0.9vw]">
 						{#each ["action", "romance", "shogan"] as genre}
 							<span
 								class="rounded-[0.5vw] bg-warning font-semibold capitalize text-black md:px-[0.75vw] md:py-[0.4vw]"
@@ -228,6 +228,7 @@
 						Episodes
 					</div>
 					<button
+						aria-label="Episodes"
 						class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:items-center md:justify-center"
 					>
 						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
@@ -309,32 +310,34 @@
 						<!-- NOTE: idx for testing -->
 						<a
 							href="/anime/mal/{$page.params.anime_id}/episode/{idx + 1}"
-							class="relative col-span-12 flex md:col-span-4"
+							class="relative col-span-12 flex gap-5 md:col-span-4"
 						>
-							<div class="relative flex h-full w-full md:h-[18vw] md:flex-col">
-								<div class="relative h-24 w-40 md:h-[12vw] md:w-full">
-									<img
-										src={episode.banner}
-										alt=""
-										class="h-full w-full shrink-0 rounded-md bg-cover bg-center md:rounded-t-[1vw]"
-									/>
-									<div
-										class="absolute inset-x-0 bottom-2 flex items-center justify-between px-2 md:hidden"
-									>
-										<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent"
-											>01</span
-										>
-										<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent">
-											{episode.duration}
-										</span>
-									</div>
-								</div>
+							<div class="relative flex h-24 w-40 flex-shrink-0 md:h-[18vw] md:w-full">
 								<div
 									class="absolute inset-0 flex bg-gradient-to-t from-secondary/75 to-transparent md:h-[12vw]"
 								></div>
+								<img
+									src={episode.banner}
+									alt=""
+									style="object-fit: cover;"
+									class="h-full w-full shrink-0 rounded-xl bg-center md:rounded-t-[1vw]"
+								/>
+								<div
+									class="absolute inset-x-0 bottom-0 flex items-center justify-between p-1 md:hidden"
+								>
+									<span
+										class="rounded-lg bg-secondary/75 px-2 py-1 text-xs font-semibold text-accent"
+										>01</span
+									>
+									<span
+										class="rounded-lg bg-secondary/75 px-2 py-1 text-xs font-semibold text-accent"
+									>
+										{episode.duration}
+									</span>
+								</div>
 							</div>
 							<div
-								class="col-span-7 flex h-full w-full flex-col items-start justify-between md:absolute md:bottom-0 md:col-span-12 md:h-auto md:rounded-b-[0.625vw] md:bg-secondary md:p-[1vw]"
+								class="flex h-full w-full flex-col items-start justify-between md:absolute md:bottom-0 md:h-auto md:rounded-b-[0.625vw] md:bg-secondary md:p-[1vw]"
 							>
 								<div
 									class="absolute inset-x-0 bottom-0 hidden justify-between md:-top-[2.5vw] md:flex md:px-[1vw]"
@@ -350,15 +353,17 @@
 										{episode.duration}
 									</p>
 								</div>
-								<div class="relative flex h-max w-full flex-col items-start gap-2 md:gap-[0.5vw]">
+								<div
+									class="relative flex w-full flex-col items-start gap-2 md:h-full md:h-max md:gap-[0.5vw]"
+								>
 									<HoverExpand
-										class="text-sm font-medium leading-4 text-white md:text-[1vw] md:leading-[1.25vw]"
+										class="text-sm font-medium leading-4 text-accent md:text-[1vw] md:leading-[1.25vw]"
 										height="md:max-h-[1.15vw] md:hover:max-h-[9vw]"
 									>
 										{episode.name}
 									</HoverExpand>
 									<HoverExpand
-										class="text-sm font-medium leading-4 text-white md:text-[0.9vw] md:leading-[1.1vw]"
+										class="text-sm font-medium leading-4 md:text-[0.9vw] md:leading-[1.1vw]"
 										height="md:max-h-[1.15vw] md:hover:max-h-[9vw]"
 									>
 										{episode.japanese_name}
@@ -369,7 +374,7 @@
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.formats as format}
 											<span
-												class="rounded bg-neutral text-sm font-semibold uppercase tracking-wider md:px-[0.35vw] md:text-[0.8vw]"
+												class="rounded text-xs font-semibold uppercase tracking-wider md:bg-neutral md:px-[0.35vw] md:text-[0.8vw]"
 											>
 												{format}
 											</span>
@@ -380,7 +385,7 @@
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
-												class="text-sm font-semibold uppercase tracking-wider md:rounded md:text-[0.8vw]"
+												class="text-xs font-semibold uppercase tracking-wider md:rounded md:text-[0.8vw]"
 											>
 												{res}
 											</span>
@@ -580,39 +585,39 @@
 			<div class="md:mb-[2vw] md:mt-[1.25vw]">
 				<div class="flex flex-col gap-[1.125vw] capitalize">
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">format</p>
+						<p class="font-semibold text-accent">format</p>
 						<p>TV</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">episodes</p>
+						<p class="font-semibold text-accent">episodes</p>
 						<p>22</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">episode Duration</p>
+						<p class="font-semibold text-accent">episode Duration</p>
 						<p>26 Minutes</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">status</p>
+						<p class="font-semibold text-accent">status</p>
 						<p>finished</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">start date</p>
+						<p class="font-semibold text-accent">start date</p>
 						<p>Apr 23, 2012</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">end date</p>
+						<p class="font-semibold text-accent">end date</p>
 						<p>Sep 16, 2012</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">season</p>
+						<p class="font-semibold text-accent">season</p>
 						<p>spring 2012</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">studios</p>
+						<p class="font-semibold text-accent">studios</p>
 						<p>Kyoto Animation</p>
 					</div>
 					<div class="flex flex-col gap-[0.75vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">producers</p>
+						<p class="font-semibold text-accent">producers</p>
 						<p>Animation Do</p>
 						<p>Kadokawa Shoten</p>
 						<p>Klock Worx</p>
@@ -620,7 +625,7 @@
 						<p>chara-ani.com</p>
 					</div>
 					<div class="flex flex-col gap-[0.5vw] text-[0.9375vw] leading-none">
-						<p class="font-semibold text-white">source</p>
+						<p class="font-semibold text-accent">source</p>
 						<p>Night Novel</p>
 					</div>
 				</div>
@@ -657,7 +662,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
+									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-accent md:px-[1vw]"
 									>Houtarou Oreki</span
 								>
 							</div>
@@ -668,7 +673,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-white md:px-[1vw]"
+									class="absolute bottom-[0.5vw] z-10 w-full text-center text-[0.9vw] font-bold leading-[1vw] text-accent md:px-[1vw]"
 									>Yuuichi Nakamura</span
 								>
 							</div>
@@ -719,7 +724,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.3vw] z-10 line-clamp-2 w-full px-[0.5vw] text-center text-[0.9vw] font-semibold leading-[1.25vw] text-white"
+									class="absolute bottom-[0.3vw] z-10 line-clamp-2 w-full px-[0.5vw] text-center text-[0.9vw] font-semibold leading-[1.25vw] text-accent"
 								>
 									Yahari Ore no Seishun Love Come wa Machigatteiru.
 								</span>
@@ -737,7 +742,7 @@
 									class="absolute h-full w-full object-cover object-center"
 								/>
 								<span
-									class="absolute bottom-[0.3vw] z-10 line-clamp-2 w-full px-[0.5vw] text-center text-[0.9vw] font-semibold leading-[1.25vw] text-white"
+									class="absolute bottom-[0.3vw] z-10 line-clamp-2 w-full px-[0.5vw] text-center text-[0.9vw] font-semibold leading-[1.25vw] text-accent"
 								>
 									Suzumiya Haruhi no Yuuutsu
 								</span>
