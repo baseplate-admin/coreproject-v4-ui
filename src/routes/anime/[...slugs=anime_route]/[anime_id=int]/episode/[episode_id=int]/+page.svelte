@@ -257,7 +257,7 @@
 				<div class="mt-4 grid grid-cols-2 flex-col gap-4 md:mt-[1.25vw] md:flex md:gap-[1vw]">
 					<a
 						href="/"
-						class="card w-full grid-cols-7 overflow-hidden rounded-lg !bg-neutral/50 md:grid md:rounded-[1vw]"
+						class="card w-full grid-cols-7 overflow-hidden rounded-xl !bg-neutral/50 md:grid md:rounded-[1vw]"
 					>
 						<div class="col-span-2 block h-16 md:h-full md:w-full">
 							<img
@@ -305,11 +305,14 @@
 				</div>
 			</div>
 			<div>
-				<div class="flex gap-2 border-b-2 pb-1 md:gap-[0.75vw] md:border-none md:pb-0">
+				<div
+					class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
+				>
 					<h3 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
 						Recommendations
 					</h3>
 					<button
+						aria-label="Recommendations"
 						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 					>
 						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
@@ -320,7 +323,7 @@
 					{#each { length: 3 } as _}
 						<a href="/myanimelist/38000" class="card relative col-span-1 h-44 w-full md:h-[12vw]">
 							<img
-								class="h-full w-full object-cover object-center md:rounded-[1vw]"
+								class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw]"
 								src="/images/mock/cover/jjk.webp"
 								alt=""
 								loading="lazy"
@@ -348,7 +351,7 @@
 				</div>
 				<div class="mt-3 flex w-full justify-center md:mt-[1vw]">
 					<button
-						class="btn btn-neutral h-7 min-h-full gap-2 rounded px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
+						class="btn btn-neutral h-7 min-h-full gap-2 px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
 						<coreproject-shape-chevron variant="down" class="w-4 md:w-[1vw]"
