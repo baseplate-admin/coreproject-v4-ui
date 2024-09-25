@@ -91,15 +91,11 @@
 					class="relative col-span-12 grid grid-cols-12 gap-5 md:col-span-7 md:flex md:w-full md:items-end md:gap-[2vw] md:pr-[2vw]"
 				>
 					<div class="relative col-span-12 h-96 md:h-[18.25vw] md:w-[13vw] md:flex-shrink-0">
-						<div
-							class="pointer-events-none absolute inset-0 z-10 h-[150%] w-[125%] -translate-x-8 -translate-y-28 [background-image:radial-gradient(circle_at_center,var(--color)0%,transparent_100%)] [mask-image:linear-gradient(to_bottom,rgba(7,5,25,0.95)80%,rgba(0,0,0,0)100%)] md:hidden"
-							style:--color={dominant_color}
-						></div>
-						<DominantColor
-							bind:dominant_color
+						<img
+							alt={anime_name}
 							src={anime_image}
 							class="h-full w-full rounded-xl object-cover object-center md:rounded-[1vw]"
-						></DominantColor>
+						/>
 						<div class="absolute inset-0 bg-gradient-to-t from-secondary/75 md:hidden"></div>
 						<div
 							class="gradient absolute inset-0 bg-gradient-to-r from-secondary/50 to-transparent md:hidden"
@@ -123,7 +119,7 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<coreproject-shape-circle variant="filled" class="size-[0.35vw] opacity-75"
+									<coreproject-shape-circle variant="filled" class="size-[1vw] opacity-75"
 									></coreproject-shape-circle>
 								{/if}
 							{/each}
@@ -131,19 +127,19 @@
 						<div class="mt-3 flex items-center gap-3 md:mt-[1.5vw] md:gap-[0.75vw]">
 							<button
 								type="button"
-								class="btn btn-primary h-14 w-[6.5rem] rounded-lg font-bold text-white md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
+								class="w-26 btn btn-primary h-14 rounded-xl font-bold text-white md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
 							>
 								<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
 
-								<div class="flex flex-col items-start gap-1">
+								<div class="flex flex-col items-start gap-0.5 md:gap-[0.25vw]">
 									<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
 									<span class="text-xs font-semibold leading-none md:text-[0.75vw]">Ep 01</span>
 								</div>
 							</button>
 							<button
-								type="button"
-								class="bg-secondary-100 0 btn h-14 w-14 rounded-lg capitalize md:h-[4vw] md:w-[4vw] md:gap-0 md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 								disabled
+								type="button"
+								class="btn size-14 gap-0 rounded-xl bg-secondary capitalize md:h-[4vw] md:w-[4vw] md:gap-0 md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 							>
 								<coreproject-shape-book variant="open" class="w-4 md:size-[1.5vw]"
 								></coreproject-shape-book>
@@ -155,7 +151,7 @@
 								<button
 									type="button"
 									aria-label={button.label}
-									class="btn btn-warning h-7 min-h-full w-7 rounded p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
+									class="btn btn-warning size-7 min-h-full rounded-lg p-0 md:h-[2vw] md:w-[2vw] md:rounded-[0.5vw]"
 								>
 									{@html button.icon}
 								</button>
@@ -169,6 +165,7 @@
 							Synopsis
 						</h3>
 						<button
+							aria-label="Synopsis"
 							class="btn btn-neutral hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 						>
 							<coreproject-shape-settings variant="filled" class="size-[0.75vw] opacity-75"
@@ -300,7 +297,7 @@
 							</button>
 						</div>
 						<button
-							class="btn btn-neutral h-7 min-h-max w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
+							class="btn btn-neutral size-7 min-h-max p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
 							aria-label="Search"
 						>
 							<coreproject-shape-search class="w-4 md:w-[1vw]"></coreproject-shape-search>
@@ -312,27 +309,29 @@
 						<!-- NOTE: idx for testing -->
 						<a
 							href="/anime/mal/{$page.params.anime_id}/episode/{idx + 1}"
-							class="relative col-span-12 grid grid-cols-12 gap-4 md:col-span-4"
+							class="relative col-span-12 flex md:col-span-4"
 						>
-							<div class="relative col-span-5 h-full w-full md:col-span-12 md:h-[18vw]">
-								<div class="block h-24 md:h-[12vw] md:w-full">
+							<div class="relative flex h-full w-full md:h-[18vw] md:flex-col">
+								<div class="relative h-24 w-40 md:h-[12vw] md:w-full">
 									<img
 										src={episode.banner}
 										alt=""
 										class="h-full w-full shrink-0 rounded-md bg-cover bg-center md:rounded-t-[1vw]"
 									/>
+									<div
+										class="absolute inset-x-0 bottom-2 flex items-center justify-between px-2 md:hidden"
+									>
+										<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent"
+											>01</span
+										>
+										<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent">
+											{episode.duration}
+										</span>
+									</div>
 								</div>
 								<div
 									class="absolute inset-0 flex bg-gradient-to-t from-secondary/75 to-transparent md:h-[12vw]"
 								></div>
-								<div class="absolute inset-x-0 bottom-2 flex items-center justify-between px-2">
-									<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent"
-										>01</span
-									>
-									<span class="rounded bg-secondary px-2 py-1 text-sm font-semibold text-accent">
-										{episode.duration}
-									</span>
-								</div>
 							</div>
 							<div
 								class="col-span-7 flex h-full w-full flex-col items-start justify-between md:absolute md:bottom-0 md:col-span-12 md:h-auto md:rounded-b-[0.625vw] md:bg-secondary md:p-[1vw]"
