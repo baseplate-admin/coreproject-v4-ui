@@ -623,13 +623,13 @@
 			<span class="text-sm font-semibold md:text-[1vw]"> 7 animes </span>
 			<div class="hidden items-center gap-[1vw] md:flex">
 				<button
-					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.75vw] p-0 text-[0.875vw] font-semibold md:px-[0.75vw]"
 				>
 					{$t("home.my_list.options.watching")}
 					<coreproject-shape-chevron variant="down" class="w-[1vw]"></coreproject-shape-chevron>
 				</button>
 				<button
-					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
+					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.75vw] p-0 text-[0.875vw] font-semibold md:px-[0.75vw]"
 				>
 					{$t("home.my_list.cta")}
 					<coreproject-shape-arrow variant="right" class="w-[1vw] rotate-45"
