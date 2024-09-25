@@ -221,7 +221,7 @@
 	);
 
 	const latest_episodes_mapping: {
-		color_palette: [number, number, number][] | number[][] | undefined;
+		color_palette: number[][] | undefined;
 		loaded: boolean;
 		dominant_color: string | undefined;
 		dominant_foreground_color: string | undefined;
