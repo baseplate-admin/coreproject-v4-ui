@@ -52,17 +52,18 @@
 				</div>
 			</div>
 			<div
-				class="flex flex-col gap-2 px-5 transition duration-500 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
+				class="flex flex-col gap-2 px-5 pt-5 transition duration-500 md:flex-row md:items-center md:justify-between md:gap-0 md:p-0"
 				class:opacity-50={options.lights}
 			>
 				<div class="flex gap-2 md:items-center md:gap-[1vw]">
-					<div class="hidden items-center gap-[0.75vw] md:flex">
-						<span class="text-[1vw] font-semibold uppercase text-info">sub/dub:</span>
+					<div class="flex items-center gap-2 md:gap-[0.75vw]">
+						<span class="text-xs font-semibold uppercase text-info md:text-[1vw]">sub/dub:</span>
 						<button
-							class="btn flex h-max min-h-full items-center gap-[0.5vw] rounded-[0.35vw] !bg-transparent p-0 text-[1vw] leading-none text-warning"
+							class="btn flex h-max min-h-full items-center gap-2 rounded-[0.35vw] !bg-transparent p-0 text-xs leading-none text-warning md:gap-[0.5vw] md:text-[1vw]"
 						>
 							Vidstreaming (sub)
-							<coreproject-shape-chevron variant="down" class="w-[1vw]"></coreproject-shape-chevron>
+							<coreproject-shape-chevron variant="down" class="size-3 md:size-[1vw]"
+							></coreproject-shape-chevron>
 						</button>
 					</div>
 					<button
@@ -74,31 +75,6 @@
 							{options.lights ? "On" : "Off"}
 						</div>
 					</button>
-				</div>
-				<div class="flex w-full items-center justify-between md:w-auto">
-					<div class="flex items-center gap-2 md:hidden">
-						<span class="text-xs font-semibold uppercase">sub/dub:</span>
-						<button class="btn flex items-center gap-2 rounded px-3 py-2 text-xs leading-none">
-							Vidstreaming (sub)
-							<coreproject-shape-chevron></coreproject-shape-chevron>
-						</button>
-					</div>
-					<div class="flex items-center gap-3 md:gap-[0.75vw]">
-						<a
-							href="./{Number($page.params.episode_id) - 1}"
-							class="btn h-max min-h-max border-none !bg-transparent p-0"
-						>
-							<coreproject-shape-double-arrow class="w-4 rotate-180 md:w-[1.4vw]"
-							></coreproject-shape-double-arrow>
-						</a>
-						<a
-							href="./{Number($page.params.episode_id) + 1}"
-							class="btn h-max min-h-max border-none !bg-transparent p-0"
-						>
-							<coreproject-shape-double-arrow class="w-4 md:w-[1.4vw]"
-							></coreproject-shape-double-arrow>
-						</a>
-					</div>
 				</div>
 			</div>
 		</div>
@@ -113,31 +89,33 @@
 					></coreproject-shape-chevron>
 				</button>
 			</header>
-			<div class="grid flex-1 gap-2 md:grid-cols-6 md:gap-[0.75vw]">
+			<div class="grid flex-1 grid-cols-7 gap-3 md:grid-cols-6 md:gap-[0.75vw]">
 				{#each { length: EPISODES_LENGTH } as _, index}
 					{@const idx_number = index + 1}
 					{@const is_active = Number($page.params.episode_id) === idx_number}
 					<a
 						title="Episode name"
 						href="./{idx_number}"
-						class="btn btn-neutral h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+						class="btn btn-neutral h-10 min-h-max rounded-xl border-none text-sm font-semibold leading-none text-accent md:h-auto md:rounded-[0.75vw] md:text-[1.2vw]"
 						class:!bg-primary={is_active}
 					>
 						{idx_number}
 					</a>
 				{/each}
 				<a
+					aria-label="prev anime"
 					href="./{Number($page.params.episode_id) - 1}"
-					class="btn btn-error col-start-5 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+					class="btn btn-error col-start-1 h-10 min-h-max rounded-xl border-none text-sm font-semibold leading-none text-accent md:col-start-5 md:h-auto md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-chevrons variant="right" class="w-4 rotate-180 md:w-[1.4vw]"
+					<coreproject-shape-chevrons variant="left" class="w-4 md:w-[1.4vw]"
 					></coreproject-shape-chevrons>
 				</a>
 				<a
+					aria-label="next anime"
 					href="./{Number($page.params.episode_id) + 1}"
-					class="btn btn-error col-start-6 h-auto min-h-max rounded border-none text-sm font-semibold leading-none text-accent md:rounded-[0.75vw] md:text-[1.2vw]"
+					class="btn btn-error col-start-7 h-10 min-h-max rounded-xl border-none text-sm font-semibold leading-none text-accent md:col-start-6 md:h-auto md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-chevrons variant="left" class="w-4 rotate-180 md:w-[1.4vw]"
+					<coreproject-shape-chevrons variant="right" class="w-4 md:w-[1.4vw]"
 					></coreproject-shape-chevrons>
 				</a>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
@@ -154,7 +132,10 @@
 								loading="lazy"
 							/>
 							<overlay class="absolute inset-0 flex items-center justify-center bg-secondary/50">
-								<button class="btn btn-warning h-max min-h-max rounded-full md:p-[0.75vw]">
+								<button
+									aria-label="next anime play btn"
+									class="btn btn-warning h-max min-h-max rounded-full md:p-[0.75vw]"
+								>
 									<coreproject-shape-play class="text-secondary md:w-[1.25vw]"
 									></coreproject-shape-play>
 								</button>
@@ -175,19 +156,22 @@
 		</div>
 	</div>
 	<div class="flex gap-5 p-5 md:gap-[5vw] md:p-0">
-		<div class="flex w-full flex-col md:gap-[1vw]">
+		<div class="flex w-full flex-col gap-2 md:gap-[1vw]">
 			<div class="flex items-center justify-between">
 				<div>
 					<a
 						href="/anime/mal/{$page.params.anime_id}"
-						class="flex flex-col gap-1 text-lg leading-none md:gap-[0.5vw] md:text-[1.1vw]"
+						class="flex flex-col gap-2 text-lg leading-none md:gap-[0.5vw] md:text-[1.1vw]"
 					>
 						<span class="font-semibold uppercase leading-none text-accent">Demon Slayer S1</span>
 						<span class="text-base leading-none md:text-[1vw]">Kimetsu no yaiba</span>
 					</a>
 				</div>
-				<button class="btn h-max min-h-max border-none bg-transparent p-0">
-					<coreproject-shape-share class="md:w-[1.25vw]"></coreproject-shape-share>
+				<button
+					aria-label="anime share btn"
+					class="btn h-max min-h-max border-none bg-transparent p-0"
+				>
+					<coreproject-shape-share class="w-4 md:w-[1.25vw]"></coreproject-shape-share>
 				</button>
 			</div>
 			<details class="collapse rounded-none" open>
@@ -197,7 +181,7 @@
 					EP: {$page.params.episode_id} Monotone/Colorful
 				</summary>
 				<div
-					class="collapse-content p-0 text-sm leading-snug md:mt-[1vw] md:text-[1vw] md:leading-[1.35vw]"
+					class="collapse-content mt-4 p-0 text-sm leading-snug md:mt-[1vw] md:text-[1vw] md:leading-[1.35vw]"
 				>
 					<p>
 						The autumn he was twelve, piano prodigy Kousei Arima suddenly found himself unable to
