@@ -210,7 +210,10 @@
 
 	// states
 
-	const latest_animes_mapping = $state(
+	const latest_animes_mapping: {
+		dominant_color: string | undefined;
+		loaded: boolean;
+	}[] = $state(
 		latest_animes.map(() => ({
 			dominant_color: undefined,
 			loaded: false
@@ -218,7 +221,7 @@
 	);
 
 	const latest_episodes_mapping: {
-		color_palette: [number, number, number][] | undefined;
+		color_palette: [number, number, number][] | number[][] | undefined;
 		loaded: boolean;
 		dominant_color: string | undefined;
 		dominant_foreground_color: string | undefined;
@@ -231,7 +234,11 @@
 		}))
 	);
 
-	const sidebar_mapping = $state(
+	const sidebar_mapping: {
+		open: boolean;
+		color: string | undefined;
+		loaded: boolean;
+	}[] = $state(
 		sidebar_animes.map(() => ({
 			open: false,
 			color: undefined,
