@@ -119,7 +119,9 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<coreproject-shape-circle variant="filled" class="size-[1vw] opacity-75"
+									<coreproject-shape-circle
+										variant="filled"
+										class="size-1 opacity-75 md:size-[0.35vw]"
 									></coreproject-shape-circle>
 								{/if}
 							{/each}
@@ -397,7 +399,7 @@
 					{/each}
 				</div>
 				<div class="mt-10 flex grid-cols-5 flex-col gap-10 md:mt-[3vw] md:grid md:gap-[4.375vw]">
-					<div class="md:col-span-3">
+					<div class="flex flex-col gap-2 md:col-span-3">
 						<div
 							class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
 						>
@@ -405,6 +407,7 @@
 								Comments
 							</h3>
 							<button
+								aria-label="Comments"
 								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
 								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
@@ -417,10 +420,10 @@
 								<span class="text-sm font-semibold">comments</span>
 							</p>
 							<button
-								class="btn h-7 w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+								class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 								aria-label="Filter"
 							>
-								<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
+								<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
 							</button>
 						</div>
 						<div class="md:mt-[1vw]">
@@ -441,6 +444,7 @@
 								Forum Posts
 							</h1>
 							<button
+								aria-label="Forum Posts"
 								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
 								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
@@ -454,17 +458,17 @@
 							</p>
 							<div class="flex items-center gap-2 md:w-full md:justify-between">
 								<button
-									class="btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.4vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
+									class="btn btn-neutral h-7 min-h-full gap-2 px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 								>
 									<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
 									></coreproject-shape-plus>
 									Create New
 								</button>
 								<button
-									class="btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
+									class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 									aria-label="Filter"
 								>
-									<coreproject-shape-filter class="w-4 md:w-[1vw]"></coreproject-shape-filter>
+									<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
 								</button>
 							</div>
 						</div>
