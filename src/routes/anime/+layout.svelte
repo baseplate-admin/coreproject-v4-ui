@@ -113,28 +113,26 @@
 <Modals />
 <div class="relative flex h-dvh w-full flex-col bg-secondary">
 	<header
-		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
+		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between gap-4 bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
 	>
-		<a href="/">
+		<a href="/" aria-label="animecore icon">
 			<coreproject-shape-logo class="w-9 md:w-[2.25vw]"></coreproject-shape-logo>
 		</a>
-		<div class="relative flex items-center md:static">
-			<div class="absolute left-1/2 -translate-x-1/2">
-				<a href="/anime" class="hidden md:flex">
-					<coreproject-logo-animecore class="w-[10vw]"></coreproject-logo-animecore>
+		<div class="relative flex w-full max-w-md items-center md:static md:max-w-full">
+			<div class="absolute left-1/2 w-full -translate-x-1/2">
+				<a href="/anime" class="hidden md:flex" aria-label="animecore logo">
+					<!-- <coreproject-logo-animecore class="w-[10vw]"></coreproject-logo-animecore> -->
 				</a>
-				<div>
-					<form class="relative flex h-12 w-[65vw] items-center md:hidden">
-						<button class="btn absolute left-4 border-none !bg-transparent p-0" aria-label="Search">
-							<coreproject-shape-search class="w-5"></coreproject-shape-search>
-						</button>
-						<input
-							type="text"
-							placeholder="Search for animes, mangas..."
-							class="h-full w-full rounded-lg border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
-						/>
-					</form>
-				</div>
+				<form class="relative flex h-12 w-full items-center md:hidden">
+					<button class="btn absolute left-4 border-none !bg-transparent p-0" aria-label="Search">
+						<coreproject-shape-search class="w-5"></coreproject-shape-search>
+					</button>
+					<input
+						type="text"
+						placeholder="Search for animes, mangas..."
+						class="h-full w-full rounded-xl border-none bg-neutral pl-12 text-base font-semibold text-accent shadow-lg !ring-0 placeholder:font-medium"
+					/>
+				</form>
 			</div>
 		</div>
 		{#if auth_store.state}
@@ -143,7 +141,7 @@
 					<img
 						alt=""
 						src="https://github.com/AKindWorld.png"
-						class="size-12 rounded-lg md:size-[3vw] md:rounded-[0.5vw]"
+						class="size-12 rounded-xl md:size-[3vw] md:rounded-[0.5vw]"
 					/>
 				</div>
 				<div
@@ -172,7 +170,7 @@
 
 			<div class="dropdown dropdown-end flex md:hidden">
 				<div role="button" class="avatar btn border-none !bg-transparent p-0">
-					<div class="w-12 rounded-lg md:w-[3vw] md:rounded-[0.5vw]">
+					<div class="w-12 rounded-xl md:w-[3vw] md:rounded-[0.5vw]">
 						<img
 							alt=""
 							src="https://i.pinimg.com/1200x/a8/2d/aa/a82daa4b726d8f02d8ce28f3e3b3677a.jpg"
