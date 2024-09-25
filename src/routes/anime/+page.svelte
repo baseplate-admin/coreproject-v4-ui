@@ -319,30 +319,31 @@
 										</ScrollArea>
 
 										<div
-											class="mb-2 mt-5 flex items-center gap-2 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]"
+											class="mb-2 mt-5 flex items-center gap-2.5 md:mb-0 md:mt-[1.5vw] md:gap-[1vw]"
 										>
 											<a
 												href="anime/mal/{anime.id}/episode/1"
-												class="btn btn-info flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-bold leading-none md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
+												class="btn btn-info flex min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-bold leading-none md:h-[3.5vw] md:gap-[0.5vw] md:rounded-[1vw] md:px-[1.5vw] md:text-[1vw]"
 												class:!bg-[var(--dominant-color)]={dominant_color}
 												style="--dominant-color: {chroma.contrast('#03020C', dominant_color) > 4.5
 													? dominant_color
 													: chroma(dominant_color).brighten(2)}"
 											>
-												<coreproject-shape-play class="size-4 md:size-[1.35vw]"
+												<coreproject-shape-play class="size-5 md:size-[1.35vw]"
 												></coreproject-shape-play>
 												<span>Ep 1</span>
 											</a>
 											<a
 												href="anime/mal/{anime.id}"
-												class="btn btn-secondary flex h-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none px-[1.5vw] text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw] md:text-[1vw]"
+												class="btn btn-secondary flex min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:h-[3.5vw] md:gap-[0.5vw] md:rounded-[1vw] md:px-[1.5vw] md:text-[1vw]"
 											>
 												<coreproject-shape-info class="size-5 md:size-[1.35vw]"
 												></coreproject-shape-info>
 												<span>Details</span>
 											</a>
 											<button
-												class="btn btn-secondary flex size-[3.5vw] min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:gap-[0.5vw] md:rounded-[1vw]"
+												aria-label="edit"
+												class="btn btn-square btn-secondary flex min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:size-[3.5vw] md:gap-[0.5vw] md:rounded-[1vw]"
 											>
 												<coreproject-shape-edit
 													variant="line-with-pencil"
@@ -363,20 +364,21 @@
 					/>
 				{/each}
 			</div>
-			<div class="flex w-full items-center md:gap-[1vw]">
+			<div class="flex w-full items-center gap-3 p-5 md:gap-[1vw] md:p-0">
 				<button
-					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
+					aria-label="left slide btn"
+					class="btn btn-square btn-neutral size-7 min-h-max rounded-xl p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
-					<coreproject-shape-chevron variant="left" class="md:size-[1.25vw]"
+					<coreproject-shape-chevron variant="left" class="size-4 md:size-[1.25vw]"
 					></coreproject-shape-chevron>
 				</button>
-				<div class="flex w-full flex-col md:gap-[0.75vw]">
+				<div class="flex w-full flex-col gap-2 md:gap-[0.75vw]">
 					{#each latest_animes_mapping as item, idx}
 						{#if item.dominant_color && item.loaded}
 							<div
 								hidden={main_hero_slide_active_index !== idx}
-								class="rounded-full bg-primary md:h-[0.25vw]"
+								class="h-0.5 rounded-full bg-primary md:h-[0.25vw]"
 								class:!bg-[var(--dominant-color)]={item.loaded}
 								style="
 									   width: {$tweened_progress_value}%;
@@ -386,36 +388,43 @@
 								"
 							></div>
 						{:else}
-							<div hidden={idx !== 0} class="w-full rounded-full bg-neutral md:h-[0.25vw]"></div>
+							<div
+								hidden={idx !== 0}
+								class="h-0.5 w-full rounded-full bg-neutral md:h-[0.25vw]"
+							></div>
 						{/if}
 					{/each}
-					<div class="flex w-full items-center md:gap-[1vw]">
+					<div class="flex w-full items-center gap-2 md:gap-[1vw]">
 						{#each latest_animes_mapping as item, idx}
 							{#if item.loaded}
 								<button
+									aria-label="slider block"
 									tabindex="0"
-									class=" w-full cursor-pointer overflow-hidden border-[var(--item-color)] duration-300 ease-out md:h-[0.75vw] md:rounded-[0.25vw] md:border-[0.2vw]"
+									class="h-2 w-full cursor-pointer overflow-hidden rounded border-2 border-[var(--item-color)] duration-300 ease-out md:h-[0.75vw] md:rounded-[0.25vw] md:border-[0.2vw]"
 									class:bg-[var(--item-color)]={main_hero_slide_active_index === idx}
 									style="--item-color: {item.dominant_color};"
 									onclick={() => change_main_hero_slide_active_index(idx)}
 								></button>
 							{:else}
-								<div class="w-full bg-neutral md:h-[0.7vw] md:rounded-[0.25vw]"></div>
+								<div class="h-2 w-full rounded bg-neutral md:h-[0.7vw] md:rounded-[0.25vw]"></div>
 							{/if}
 						{/each}
 					</div>
 				</div>
 				<button
-					class="btn btn-neutral min-h-max p-0 md:size-[2vw] md:rounded-[0.75vw]"
+					aria-label="slider right btn"
+					class="btn btn-square btn-neutral size-7 min-h-max rounded-xl p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={add_one_to_main_hero_slide_active_index}
 				>
-					<coreproject-shape-chevron variant="right" class="md:size-[1.25vw]"
+					<coreproject-shape-chevron variant="right" class="size-4 md:size-[1.25vw]"
 					></coreproject-shape-chevron>
 				</button>
 			</div>
 		</div>
-		<div class="flex flex-col p-4 md:h-[28vw] md:gap-[1vw] md:p-0">
-			<span class="font-bold text-accent md:text-[1.35vw]">{$t("home.latest_episodes.title")}</span>
+		<div class="flex flex-col p-5 md:h-[28vw] md:gap-[1vw] md:p-0">
+			<span class="text-xl font-bold text-accent md:text-[1.35vw]"
+				>{$t("home.latest_episodes.title")}</span
+			>
 			<div class="hidden size-full md:flex md:gap-[0.5vw]">
 				<div
 					class="grid-rows-auto relative grid w-full snap-y auto-rows-min grid-cols-2 overflow-x-hidden overflow-y-scroll scroll-smooth [scrollbar-color:rgba(255,255,255,0.12)transparent] md:gap-[1vw] md:pr-[1.5vw]"
@@ -461,6 +470,7 @@
 										</div>
 									</div>
 									<a
+										aria-label="play anime btn"
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
@@ -494,10 +504,16 @@
 				<div
 					class="flex h-full flex-col items-center bg-info md:w-[4vw] md:gap-[0.75vw] md:rounded-[1vw] md:p-[0.5vw]"
 				>
-					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
+					<button
+						aria-label="preferences"
+						class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]"
+					>
 						<coreproject-shape-preferences class="md:size-[1.25vw]"></coreproject-shape-preferences>
 					</button>
-					<button class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]">
+					<button
+						aria-label="random anime"
+						class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]"
+					>
 						<coreproject-shape-dice class="md:size-[1.5vw]"></coreproject-shape-dice>
 					</button>
 					<div class="rounded-full bg-secondary md:h-[0.2vw] md:w-1/2"></div>
@@ -531,6 +547,7 @@
 
 							{#if loaded}
 								<a
+									aria-label="anime sidebar"
 									bind:this={floating.elements.reference}
 									{...intersections.getReferenceProps()}
 									href="/anime/mal/{anime.id}/episode/{anime.ep_number}"
@@ -574,6 +591,7 @@
 						{/each}
 					</ScrollArea>
 					<button
+						aria-label="scroll sidebar anime btn"
 						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
 						<coreproject-shape-chevron variant="down" class="md:size-[1vw]"
@@ -583,18 +601,19 @@
 			</div>
 		</div>
 	</div>
-	<div class="flex flex-col p-4 pt-7 md:mb-[1vw] md:mt-[2vw] md:flex md:w-[68vw] md:p-0">
+	<div class="flex flex-col p-5 pt-7 md:mb-[1vw] md:mt-[2vw] md:flex md:w-[68vw] md:p-0">
 		<div class="flex items-center gap-[0.625vw]">
-			<span class="text-lg font-bold md:text-[1.25vw]">{$t("home.my_list.title")}</span>
+			<span class="text-xl font-bold text-accent md:text-[1.25vw]">{$t("home.my_list.title")}</span>
 			<button
+				aria-label="mylist settings btn"
 				class="btn btn-neutral hidden min-h-full rounded-[0.5vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
 				<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
 				></coreproject-shape-settings>
 			</button>
 		</div>
-		<div class="flex items-center justify-between">
-			<span class="text-sm md:text-[1vw] md:font-semibold"> 7 animes </span>
+		<div class="flex items-center items-center justify-between">
+			<span class="text-sm font-semibold md:text-[1vw]"> 7 animes </span>
 			<div class="hidden items-center gap-[1vw] md:flex">
 				<button
 					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.5vw] p-0 text-[0.875vw] font-semibold md:px-[0.5vw]"
@@ -611,7 +630,7 @@
 				</button>
 			</div>
 			<div class="md:hidden">
-				<button class="btn btn-secondary h-max min-h-max gap-2 p-0 text-sm">
+				<button class="btn btn-neutral btn-xs gap-2 text-xs">
 					{$t("home.my_list.cta")}
 					<coreproject-shape-chevron variant="down" class="text-primary-400 w-4"
 					></coreproject-shape-chevron>
