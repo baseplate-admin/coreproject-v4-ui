@@ -197,35 +197,21 @@
 		</div>
 	</div>
 	<div class="grid grid-cols-12 p-5 md:gap-[5vw] md:p-0">
-		<div class="col-span-12 flex flex-col md:col-span-8 md:gap-[0.75vw]">
+		<div class="col-span-12 flex flex-col gap-2 md:col-span-8 md:gap-[0.75vw]">
 			<span
-				class="flex gap-2 border-b-2 pb-1 text-lg font-semibold text-info md:gap-[0.75vw] md:border-none md:pb-0 md:text-[1.25vw] md:leading-[1.5vw]"
+				class="flex gap-2 border-b-2 border-neutral pb-1 text-lg font-semibold text-info md:gap-[0.75vw] md:border-none md:pb-0 md:text-[1.25vw] md:leading-[1.5vw]"
 				>Comments</span
 			>
-			<div class="mt-2 flex items-center justify-between md:hidden">
+			<div class="flex items-center justify-between md:hidden">
 				<p class="flex items-center gap-1">
 					<span class="text-base font-bold leading-none">69</span>
 					<span class="text-sm font-semibold">comments</span>
 				</p>
 				<button
-					class="btn h-7 w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.4vw] md:w-[2.4vw] md:rounded-[0.5vw] md:leading-[0.9vw]"
+					class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 					aria-label="Filter"
 				>
-					<svg
-						viewBox="0 0 20 18"
-						fill="none"
-						xmlns="http://www.w3.org/2000/svg"
-						class="w-3 md:w-[1vw]"
-						color="lightgray"
-					>
-						<path
-							d="M18.3332 1.5H1.6665L8.33317 9.38333V14.8333L11.6665 16.5V9.38333L18.3332 1.5Z"
-							stroke="currentColor"
-							stroke-width="3"
-							stroke-linecap="round"
-							stroke-linejoin="round"
-						></path>
-					</svg>
+					<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
 				</button>
 			</div>
 			<!-- <CommentBox />
@@ -233,11 +219,14 @@
 		</div>
 		<div class="col-span-12 mt-10 flex flex-col gap-5 md:col-span-4 md:mt-0 md:gap-[2vw]">
 			<div>
-				<div class="flex gap-2 border-b-2 pb-1 md:gap-[0.75vw] md:border-none md:pb-0">
+				<div
+					class="flex gap-2 border-b-2 border-neutral pb-1 md:gap-[0.75vw] md:border-none md:pb-0"
+				>
 					<h3 class="text-base font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">
 						Forum Posts
 					</h3>
 					<button
+						aria-label="forum settings"
 						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 					>
 						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
@@ -251,14 +240,14 @@
 					</p>
 					<div class="flex items-center gap-2 md:w-full md:justify-between">
 						<button
-							class="btn btn-neutral h-7 min-h-full gap-2 rounded px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
+							class="btn btn-neutral h-7 min-h-full gap-2 px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
 							<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
 							></coreproject-shape-plus>
 							Create New
 						</button>
 						<button
-							class="btn btn-neutral h-7 min-h-full w-auto rounded p-0 font-semibold md:ml-0 md:h-[2.25vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
+							class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
 							<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
