@@ -5,7 +5,8 @@
 	import { cn } from "$functions/classnames";
 	import { FormatDate } from "$functions/format_date";
 	import { onMount } from "svelte";
-	import Anime from "$types/anime";
+	import type { Anime } from "$types/anime";
+	import { is_empty } from "$functions/array/is_empty";
 
 	// Binding
 	let search_query = "",
@@ -130,7 +131,7 @@
 				.join()
 		};
 		for (const [key, value] of Object.entries(search_map)) {
-			if (!isEmpty(value) && !isUndefined(value)) {
+			if (!is_empty(value)) {
 				url.searchParams.set(key, String(value));
 			}
 		}
