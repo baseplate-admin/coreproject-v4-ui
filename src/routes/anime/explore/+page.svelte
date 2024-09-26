@@ -105,6 +105,7 @@
 
 			// update filer_options_mapping
 			filter_options_mapping[key] = filter_option;
+			console.log(filter_option);
 			// run fetch
 			handle_input();
 		},
@@ -207,7 +208,9 @@
 				<div class={cn(klass, "group dropdown dropdown-bottom")}>
 					<span class="font-semibold leading-none md:text-[1vw]">{title}</span>
 					<div class="relative flex items-center">
-						<span class="absolute flex cursor-pointer items-center md:gap-[0.25vw]">
+						<span
+							class="pointer-events-none absolute flex cursor-pointer items-center md:gap-[0.25vw]"
+						>
 							{#if selected_items}
 								{#if !is_empty(selected_items)}
 									<span
@@ -218,7 +221,7 @@
 									</span>
 								{:else}
 									<span
-										class="ml-3 text-base duration-300 group-focus-within:opacity-0 md:ml-[1vw] md:text-[0.9vw]"
+										class="ml-3 text-base group-focus-within:opacity-0 md:ml-[1vw] md:text-[0.9vw]"
 										>Any</span
 									>
 								{/if}
@@ -240,20 +243,18 @@
 							role="button"
 							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[11vw] md:rounded-[0.5vw] md:bg-neutral md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
-						{#if selected_items}
-							{#if !is_empty(selected_items)}
-								<button
-									aria-label="Clear input"
-									on:click|preventDefault={() => clear_selected_items(option[0])}
-									class="btn absolute right-0 mr-3 w-4 border-none !bg-transparent p-0 md:mr-[1vw] md:w-[1vw]"
-								>
-									<coreproject-shape-x class="md:w-[1vw]"></coreproject-shape-x>
-								</button>
-							{/if}
+						{#if !is_empty(selected_items ?? [])}
+							<button
+								aria-label="Clear input"
+								on:click|preventDefault={() => clear_selected_items(option[0])}
+								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
+							>
+								<coreproject-shape-x variant="no-border" class="md:w-[1vw]"></coreproject-shape-x>
+							</button>
 						{:else}
 							<button
 								aria-label="Dropdown btn"
-								class="btn absolute right-0 mr-3 w-4 border-none !bg-transparent p-0 md:mr-[1vw] md:w-[1vw]"
+								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
 							>
 								<coreproject-shape-chevron variant="down" class="md:w-[1vw]"
 								></coreproject-shape-chevron>
@@ -271,12 +272,11 @@
 								parent_class="md:max-h-[30vw] bg-neutral w-full"
 							>
 								{#each Object.values(filter_items) as value}
-									{@const is_selected = selected_items?.some((item) => item === value)}
+									{@const is_selected = selected_items?.some((item) => item === String(value))}
 
 									<button
 										on:click|preventDefault={() => {
-											const val = String(value);
-											update_selected_items(option[0], val);
+											update_selected_items(option[0], String(value));
 										}}
 										class="btn btn-neutral relative flex h-max min-h-max items-center justify-start rounded-none p-3 py-3 text-sm leading-none md:rounded-[0.35vw] md:px-[1vw] md:py-[0.75vw] md:text-[0.9vw]"
 									>
@@ -286,8 +286,8 @@
 											<div
 												class="absolute right-3 rounded-full bg-primary p-1 text-white md:right-[0.75vw] md:p-[0.25vw]"
 											>
-												<coreproject-shape-tick class="w-2 text-white md:w-[0.75vw]"
-												></coreproject-shape-tick>
+												<coreproject-shape-check class="w-2 text-white md:w-[0.75vw]"
+												></coreproject-shape-check>
 											</div>
 										{/if}
 									</button>
