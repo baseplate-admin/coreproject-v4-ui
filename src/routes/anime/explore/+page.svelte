@@ -7,6 +7,7 @@
 	import { onMount } from "svelte";
 	import type { Anime } from "$types/anime";
 	import { is_empty } from "$functions/array/is_empty";
+	import { uniq_by } from "$functions/array/uniq_by";
 
 	// Binding
 	let search_query = "",
@@ -148,7 +149,7 @@
 		const json = await res.json();
 
 		if (res.ok) {
-			return uniqBy(json["results"], "mal_id") as Array<Anime>;
+			return uniq_by(json["results"], "mal_id") as Array<Anime>;
 		} else {
 			throw new Error("Something is wrong from the backend");
 		}
@@ -170,7 +171,8 @@
 	<div class="mt-7 flex flex-col gap-1 md:hidden">
 		<span class="text-base font-semibold leading-none">Search Animes</span>
 		<div class="relative flex items-center">
-			<Search class="pointer-events-none absolute ml-4 w-4" />
+			<coreproject-shape-search class="pointer-events-none absolute ml-4 size-4"
+			></coreproject-shape-search>
 			<input
 				type="text"
 				placeholder="Looking for specific anime? Start from here..."
@@ -185,7 +187,7 @@
 				<span class="text-[1vw] font-semibold leading-none">Search Animes</span>
 				<div class="relative flex items-center">
 					<div class="absolute md:ml-[1vw]">
-						<Search class="md:w-[1.1vw]" />
+						<coreproject-shape-search class="md:w-[1.1vw]"></coreproject-shape-search>
 					</div>
 					<input
 						bind:value={search_query}
@@ -207,7 +209,7 @@
 					<div class="relative flex items-center">
 						<span class="absolute flex cursor-pointer items-center md:gap-[0.25vw]">
 							{#if selected_items}
-								{#if !isEmpty(selected_items)}
+								{#if !is_empty(selected_items)}
 									<span
 										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.25vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
@@ -239,19 +241,22 @@
 							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[11vw] md:rounded-[0.5vw] md:bg-neutral md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
 						{#if selected_items}
-							{#if !isEmpty(selected_items)}
+							{#if !is_empty(selected_items)}
 								<button
+									aria-label="Clear input"
 									on:click|preventDefault={() => clear_selected_items(option[0])}
 									class="btn absolute right-0 mr-3 w-4 border-none !bg-transparent p-0 md:mr-[1vw] md:w-[1vw]"
 								>
-									<Cross class="md:w-[1vw]" />
+									<coreproject-shape-x class="md:w-[1vw]"></coreproject-shape-x>
 								</button>
 							{/if}
 						{:else}
 							<button
+								aria-label="Dropdown btn"
 								class="btn absolute right-0 mr-3 w-4 border-none !bg-transparent p-0 md:mr-[1vw] md:w-[1vw]"
 							>
-								<Chevron class="md:w-[1vw]" />
+								<coreproject-shape-chevron variant="down" class="md:w-[1vw]"
+								></coreproject-shape-chevron>
 							</button>
 						{/if}
 					</div>
@@ -265,7 +270,7 @@
 								class="flex w-full flex-col md:p-[0.35vw]"
 								parent_class="md:max-h-[30vw] bg-neutral w-full"
 							>
-								{#each Object.entries(filter_items) as [key, value]}
+								{#each Object.values(filter_items) as value}
 									{@const is_selected = selected_items?.some((item) => item === value)}
 
 									<button
@@ -281,7 +286,8 @@
 											<div
 												class="absolute right-3 rounded-full bg-primary p-1 text-white md:right-[0.75vw] md:p-[0.25vw]"
 											>
-												<Tick class="w-2 text-white md:w-[0.75vw]" />
+												<coreproject-shape-tick class="w-2 text-white md:w-[0.75vw]"
+												></coreproject-shape-tick>
 											</div>
 										{/if}
 									</button>
@@ -294,9 +300,10 @@
 		</div>
 
 		<button
+			aria-label="MoreBox"
 			class="btn btn-neutral h-max min-h-max rounded-lg p-[0.85rem] md:rounded-[0.5vw] md:p-[0.8vw]"
 		>
-			<MoreBox class="w-4 md:w-[1.1vw]" />
+			<coreproject-shape-more class="w-4 md:w-[1.1vw]"></coreproject-shape-more>
 		</button>
 	</div>
 
@@ -310,21 +317,23 @@
 			</div>
 			<div class="flex gap-3 md:gap-[1vw]">
 				<button class="btn h-max min-h-max border-none !bg-transparent p-0">
-					<Expand class="w-5 md:w-[1.25vw]" />
+					<coreproject-shape-expand class="w-5 md:w-[1.25vw]"></coreproject-shape-expand>
 					<span class="font-semibold md:text-[1vw]">Trending</span>
 				</button>
 				<div class="divider divider-horizontal m-0"></div>
 				<button
+					aria-label="Grid layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
 					on:click={() => change_thumbnail_mode("card_with_dropdown")}
 				>
-					<SixGrids class="w-5 md:w-[1.15vw]" />
+					<coreproject-shape-grid class="w-5 md:w-[1.15vw]"></coreproject-shape-grid>
 				</button>
 				<button
+					aria-label="Thumbnail layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
 					on:click={() => change_thumbnail_mode("detailed_card")}
 				>
-					<MoreBox class="w-[1.1rem] md:w-[1vw]" />
+					<coreproect-shape-more class="w-[1.1rem] md:w-[1vw]"></coreproect-shape-more>
 				</button>
 			</div>
 		</div>
@@ -335,7 +344,7 @@
 					<span class="loading loading-ring loading-lg"></span>
 				</div>
 			{:then results}
-				{#if !isEmpty(results)}
+				{#if !is_empty(results)}
 					{#if thumbnail_mode === "detailed_card"}
 						<div class="mt-5 grid grid-cols-2 gap-3 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1.5vw]">
 							{#each results as anime}
@@ -379,7 +388,10 @@
 											</span>
 											<div class="flex items-center gap-1 md:gap-[0.5vw]">
 												<span class="text-xs md:text-[0.8vw]">{anime.source}</span>
-												<Circle class="w-1 opacity-50 md:w-[0.25vw]" />
+												<coreproject-shape-circle
+													variant="filled"
+													class="w-1 opacity-50 md:w-[0.25vw]"
+												></coreproject-shape-circle>
 												<span class="text-xs md:text-[0.8vw]">{anime.episode_count} eps</span>
 											</div>
 											<ScrollArea
@@ -409,17 +421,124 @@
 						</div>
 					{:else if thumbnail_mode === "card_with_dropdown"}
 						<div class="mt-5 grid grid-cols-3 gap-3 md:mt-[1.25vw] md:grid-cols-6 md:gap-[1.5vw]">
-							{#each results as item}
-								<AnimeCard
-									anime_mal_id={item?.mal_id ?? 0}
-									anime_name={item.name ?? "N/A"}
-									anime_studios={item.studios ?? []}
-									anime_image={item.cover ?? ""}
-									anime_genres={item.genres ?? []}
-									anime_synopsis={item.synopsis ?? ""}
-									anime_total_episodes={item.episode_count ?? null}
-									anime_rating={item.rating ?? "N/A"}
-								/>
+							{#each results as anime}
+								<div class="dropdown dropdown-hover">
+									<button class="relative w-full" tabindex="0" aria-expanded={false}>
+										<img
+											class="h-44 w-full rounded-lg object-cover object-center md:h-[20vw] md:rounded-[0.5vw]"
+											src={anime.cover}
+											alt={anime.name}
+											style=""
+											loading="lazy"
+										/>
+										<div
+											class="absolute inset-x-0 bottom-0 rounded-b-lg backdrop-blur md:rounded-b-[0.5vw]"
+										>
+											<div
+												class="flex w-full flex-col items-start gap-1 bg-secondary/95 p-3 md:gap-[0.35vw] md:p-[1vw]"
+											>
+												<HoverExpand
+													class="line-clamp-1 w-full text-start text-sm font-semibold text-accent md:line-clamp-none md:text-[1vw] md:leading-[1.35vw]"
+													height="md:max-h-[1.35vw] hover:max-h-[10vw]"
+												>
+													{anime.name}
+												</HoverExpand>
+												<div
+													class="hidden items-center gap-2 text-xs leading-none md:flex md:gap-[0.35vw] md:text-[0.8vw]"
+												>
+													{#each anime.studios ?? [] as studio, index}
+														{@const show_dot = index !== (anime.studios ?? []).length - 1}
+
+														<span>{studio.name}</span>
+														{#if show_dot}
+															<coreproject-shape-circle class="md:w-[0.25vw]"
+															></coreproject-shape-circle>
+														{/if}
+													{/each}
+												</div>
+												<span class="text-xs md:hidden"
+													>{anime.studios && anime.studios[0].name}</span
+												>
+											</div>
+										</div>
+									</button>
+
+									<button
+										tabindex="0"
+										class="dropdown-content top-0 z-10 hidden flex-col leading-none md:flex md:w-[20vw] md:px-[1.5vw]"
+									>
+										<div
+											class="flex flex-col bg-neutral text-start md:gap-[0.35vw] md:rounded-[0.75vw] md:rounded-t-[0.3vw] md:p-[1vw]"
+										>
+											<span class="font-semibold text-accent md:text-[1vw] md:leading-[1.25vw]"
+												>{anime.name}</span
+											>
+											<div
+												class="text-surface-50 flex w-full items-center md:gap-[0.35vw] md:text-[0.8vw]"
+											>
+												<div class="flex items-center md:gap-[0.5vw]">
+													<coreproject-shape-star class="md:w-[0.9vw]"></coreproject-shape-star>
+													<span class="text-surface-50 leading-none md:text-[0.8vw]"
+														>{anime.rating} rating</span
+													>
+												</div>
+												<coreproject-shape-circle class="w-1 md:w-[0.25vw]"
+												></coreproject-shape-circle>
+												<span>TV</span>
+												<coreproject-shape-circle class="w-1 md:w-[0.25vw]"
+												></coreproject-shape-circle>
+												<span>{anime.episode_count} episdoes</span>
+											</div>
+											<div
+												class="text-surface-50 flex items-center gap-2 text-xs leading-none md:gap-[0.35vw] md:text-[0.8vw]"
+											>
+												{#each anime.studios ?? [] as studio, index}
+													{@const show_dot = index !== (anime.studios ?? []).length - 1}
+
+													<span>{studio.name}</span>
+													{#if show_dot}
+														<coreproject-shape-circle class="md:w-[0.25vw]"
+														></coreproject-shape-circle>
+													{/if}
+												{/each}
+											</div>
+											<div class="flex items-center md:my-[0.35vw] md:gap-[0.5vw]">
+												{#each anime.genres ?? [] as genre}
+													<spam
+														class="bg-warning font-semibold capitalize leading-none text-black md:rounded-[0.25vw] md:px-[0.6vw] md:py-[0.3vw] md:text-[0.8vw]"
+													>
+														{genre.name}
+													</spam>
+												{/each}
+											</div>
+											<ScrollArea
+												gradient_mask
+												offset_scrollbar
+												parent_class="md:max-h-[4vw]"
+												class="text-surface-50 md:text-[0.8vw] md:leading-[1vw]"
+											>
+												{anime.synopsis}
+											</ScrollArea>
+											<div class="divider md:m-0 md:before:h-[0.15vw] md:after:h-[0.15vw]"></div>
+											<div class="flex items-center md:gap-[0.5vw]">
+												<a
+													href="/anime/mal/{anime.mal_id}/episode/1"
+													class="btn btn-primary h-[2.75vw] min-h-full flex-1 leading-none text-accent md:rounded-[0.5vw]"
+												>
+													<coreproject-shape-play class="md:w-[0.9vw]"></coreproject-shape-play>
+													<span class="font-semibold md:text-[0.9vw]">Start Watching</span>
+												</a>
+												<a
+													aria-label="Info"
+													href="/anime/mal/{anime.mal_id}"
+													class="btn btn-square h-[2.75vw] min-h-full p-0 leading-none md:rounded-[0.5vw]"
+												>
+													<coreproject-shape-info class="md:w-[1.2vw]"></coreproject-shape-info>
+												</a>
+											</div>
+										</div>
+									</button>
+								</div>
 							{/each}
 						</div>
 					{/if}
