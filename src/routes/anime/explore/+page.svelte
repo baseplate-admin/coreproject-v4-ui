@@ -105,7 +105,6 @@
 
 			// update filer_options_mapping
 			filter_options_mapping[key] = filter_option;
-			console.log(filter_option);
 			// run fetch
 			handle_input();
 		},
