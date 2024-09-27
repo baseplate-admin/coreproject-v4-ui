@@ -31,49 +31,49 @@
 	} = {
 		time_range: {
 			title: "Time Range",
-			class: "hidden flex-col md:gap-[0.35vw]",
+			class: "hidden flex-col",
 			value: "",
 			items: [],
 			selected_items: []
 		},
 		genres: {
 			title: "Genres",
-			class: "md:flex flex-col md:gap-[0.35vw]",
+			class: "flex flex-col",
 			value: "",
 			items: ["action", "adventure", "hentai", "romance"],
 			selected_items: []
 		},
 		year: {
 			title: "Year",
-			class: "hidden md:flex flex-col md:gap-[0.35vw]",
+			class: "hidden md:flex flex-col",
 			value: "",
 			items: [2020, 2021, 2022, 2023],
 			selected_items: []
 		},
 		season: {
 			title: "Season",
-			class: "md:flex flex-col md:gap-[0.35vw]",
+			class: "flex flex-col",
 			value: "",
 			items: ["winter", "spring", "summer", "fall"],
 			selected_items: []
 		},
 		format: {
 			title: "Format",
-			class: "hidden md:flex flex-col md:gap-[0.35vw]",
+			class: "hidden md:flex flex-col",
 			value: "",
 			items: ["tv show", "movie"],
 			selected_items: []
 		},
 		airing_status: {
 			title: "Airing Status",
-			class: "hidden flex-col md:gap-[0.35vw]",
+			class: "hidden flex-col",
 			value: "",
 			items: [],
 			selected_items: []
 		},
 		sort_by: {
 			title: "Sort by",
-			class: "hidden flex-col md:gap-[0.35vw]",
+			class: "hidden flex-col",
 			value: "",
 			items: [],
 			selected_items: []
@@ -167,7 +167,7 @@
 		>
 	</div>
 
-	<div class="mt-7 flex flex-col gap-1 md:hidden">
+	<div class="mt-7 flex flex-col gap-2 md:hidden">
 		<span class="text-base font-semibold leading-none">Search Animes</span>
 		<div class="relative flex items-center">
 			<coreproject-shape-search class="pointer-events-none absolute ml-4 size-4"
@@ -175,12 +175,12 @@
 			<input
 				type="text"
 				placeholder="Looking for specific anime? Start from here..."
-				class="w-full rounded-lg border-none bg-neutral py-3 pl-12 leading-none focus:ring-0 md:bg-neutral"
+				class="w-full rounded-xl border-none bg-neutral py-3 pl-12 leading-none focus:ring-0 md:bg-neutral"
 			/>
 		</div>
 	</div>
 
-	<div class="mt-2 flex items-end justify-between gap-3 md:mt-0 md:gap-0">
+	<div class="mt-4 flex items-end justify-between gap-3 md:mt-0 md:gap-0">
 		<div class="flex items-center gap-3 md:gap-[1.5vw]">
 			<div class="hidden flex-col md:flex md:gap-[0.5vw]">
 				<span class="text-[1vw] font-semibold leading-none">Search Animes</span>
@@ -193,7 +193,7 @@
 						on:input={handle_input}
 						type="text"
 						placeholder="Looking for specific anime? Start from here..."
-						class="w-[30vw] border-none bg-neutral py-[0.8vw] pl-[3vw] text-[1vw] font-semibold leading-none text-neutral-content placeholder:font-medium placeholder:text-neutral-content/75 focus:ring-0 md:rounded-[0.75vw] md:bg-neutral"
+						class="w-[30vw] rounded-[0.75vw] border-none bg-neutral py-[0.8vw] pl-[3vw] text-[1vw] font-semibold leading-none text-neutral-content placeholder:font-medium placeholder:text-neutral-content/75 focus:ring-0"
 					/>
 				</div>
 			</div>
@@ -203,7 +203,7 @@
 				{@const selected_items = option[1].selected_items}
 				{@const filter_items = option[1].items}
 
-				<div class={cn(klass, "group dropdown dropdown-bottom md:gap-[0.5vw]")}>
+				<div class={cn(klass, "group dropdown dropdown-bottom gap-2 md:gap-[0.5vw]")}>
 					<span class="font-semibold leading-none md:text-[1vw]">{title}</span>
 					<div class="relative flex items-center">
 						<span
@@ -212,7 +212,7 @@
 							{#if selected_items}
 								{#if selected_items.length}
 									<span
-										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
+										class="badge badge-primary ml-3 rounded-md p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
 										<!-- show first item -->
 										{selected_items[0]}
@@ -226,7 +226,7 @@
 								<!-- show count of remaining items if exists -->
 								{#if selected_items.length > 1}
 									<span
-										class="badge badge-neutral ml-1 rounded p-1 text-sm font-semibold md:ml-[0.15vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
+										class="badge badge-neutral ml-1 rounded-md p-1 text-sm font-semibold md:ml-[0.15vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
 										+{selected_items.filter((item) => item !== selected_items[0]).length}
 									</span>
@@ -239,9 +239,9 @@
 							type="text"
 							tabindex="0"
 							role="button"
-							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[10vw] md:rounded-[0.75vw] md:bg-neutral/50 md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
+							class="peer placeholder w-full rounded-lg border-none bg-neutral/50 py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[10vw] md:rounded-[0.75vw] md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
-						{#if (selected_items ?? []).length}
+						{#if selected_items?.length}
 							<button
 								aria-label="Clear input"
 								on:click|preventDefault={() => clear_selected_items(option[0])}
@@ -305,35 +305,35 @@
 		</button>
 	</div>
 
-	<div class="mt-16 md:mt-[1.5vw]">
-		<div class="flex items-center justify-between">
+	<div class="mt-16 flex flex-col gap-5 md:mt-[1.5vw] md:gap-[1vw]">
+		<div class="flex items-center justify-between gap-2 md:gap-0">
 			<div class="flex flex-col gap-2 md:gap-[0.35vw]">
 				<span class="text-xl font-semibold leading-none text-accent md:text-[1.35vw]"
 					>Trending Now</span
 				>
 				<span class="text-sm leading-none md:text-[1vw]">Crowd Favorites: Anime Hits and Hype</span>
 			</div>
-			<div class="flex gap-3 md:gap-[0.75vw]">
+			<div class="flex gap-2 md:gap-[0.75vw]">
 				<button class="btn h-max min-h-max border-none !bg-transparent p-0 md:gap-[0.75vw]">
-					<coreproject-shape-expand class="w-5 md:w-[1vw]"></coreproject-shape-expand>
+					<coreproject-shape-expand class="w-4 md:w-[1vw]"></coreproject-shape-expand>
 					<span class="font-semibold md:text-[1vw]">Trending</span>
 				</button>
 				<div
-					class="divider divider-horizontal m-0 md:w-[0.75vw] md:before:w-[0.15vw] md:after:w-[0.15vw]"
+					class="divider divider-horizontal m-0 md:w-[0.5vw] md:before:w-[0.15vw] md:after:w-[0.15vw]"
 				></div>
 				<button
 					aria-label="Grid layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
 					on:click={() => change_thumbnail_mode("card_with_dropdown")}
 				>
-					<coreproject-shape-grid class="w-5 md:w-[1.15vw]"></coreproject-shape-grid>
+					<coreproject-shape-grid class="w-4 md:w-[1.15vw]"></coreproject-shape-grid>
 				</button>
 				<button
 					aria-label="Thumbnail layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
 					on:click={() => change_thumbnail_mode("detailed_card")}
 				>
-					<coreproject-shape-box class="w-5 md:w-[1.15vw]"></coreproject-shape-box>
+					<coreproject-shape-box class="w-4 md:w-[1.15vw]"></coreproject-shape-box>
 				</button>
 			</div>
 		</div>
@@ -543,7 +543,9 @@
 						</div>
 					{/if}
 				{:else}
-					<div class="flex h-full flex-col items-center justify-center gap-[0.5vw] text-[1.1vw]">
+					<div
+						class="flex h-full flex-col items-center justify-center gap-[0.5vw] text-lg md:text-[1.1vw]"
+					>
 						<span class="font-medium leading-none">No match found!</span>
 						<span class="text-center font-semibold leading-none text-error">
 							Couldn't find animes with: "{search_query}"
@@ -553,7 +555,9 @@
 					</div>
 				{/if}
 			{:catch error}
-				<div class="flex h-full flex-col items-center justify-center gap-[0.2vw] text-[1.1vw]">
+				<div
+					class="flex h-full flex-col items-center justify-center gap-2 text-lg md:gap-[0.2vw] md:text-[1.1vw]"
+				>
 					<span class="font-medium leading-none">Oh no, something is wrong!</span>
 					<span class="text-center font-semibold leading-none text-error">{@html error}</span>
 				</div>
