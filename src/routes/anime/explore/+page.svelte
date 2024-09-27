@@ -457,15 +457,15 @@
 												<div
 													class="hidden items-center gap-2 text-xs leading-none md:flex md:gap-[0.35vw] md:text-[0.8vw]"
 												>
-													{#each anime.studios ?? [] as studio, index}
-														{@const show_dot = anime?.studios?.[index] !== anime.studios?.at(-1)}
-
-														<span>{studio.name}</span>
-														{#if show_dot}
-															<coreproject-shape-circle class="md:w-[0.25vw]"
-															></coreproject-shape-circle>
-														{/if}
-													{/each}
+													{#if anime.studios}
+														{#each anime.studios as studio}
+															<span>{studio.name}</span>
+															{#if studio !== anime.studios.at(-1)}
+																<coreproject-shape-circle class="md:w-[0.25vw]"
+																></coreproject-shape-circle>
+															{/if}
+														{/each}
+													{/if}
 												</div>
 												<span class="text-xs md:hidden">{anime?.studios?.[0].name}</span>
 											</div>
