@@ -6,7 +6,6 @@
 	import { FormatDate } from "$functions/format_date";
 	import { onMount } from "svelte";
 	import type { Anime } from "$types/anime";
-	import { is_empty } from "$functions/array/is_empty";
 	import { uniq_by } from "$functions/array/uniq_by";
 
 	// Binding
@@ -132,7 +131,7 @@
 				.join()
 		};
 		for (const [key, value] of Object.entries(search_map)) {
-			if (!is_empty(value)) {
+			if (value?.length) {
 				url.searchParams.set(key, String(value));
 			}
 		}
@@ -211,7 +210,7 @@
 							class="pointer-events-none absolute flex cursor-pointer items-center md:gap-[0.25vw]"
 						>
 							{#if selected_items}
-								{#if !is_empty(selected_items)}
+								{#if selected_items.length}
 									<span
 										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.25vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
@@ -242,7 +241,7 @@
 							role="button"
 							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[11vw] md:rounded-[0.5vw] md:bg-neutral md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
-						{#if !is_empty(selected_items ?? [])}
+						{#if (selected_items ?? []).length}
 							<button
 								aria-label="Clear input"
 								on:click|preventDefault={() => clear_selected_items(option[0])}
@@ -343,7 +342,7 @@
 					<span class="loading loading-ring loading-lg"></span>
 				</div>
 			{:then results}
-				{#if !is_empty(results)}
+				{#if results.length}
 					{#if thumbnail_mode === "detailed_card"}
 						<div class="mt-5 grid grid-cols-2 gap-3 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1.5vw]">
 							{#each results as anime}
