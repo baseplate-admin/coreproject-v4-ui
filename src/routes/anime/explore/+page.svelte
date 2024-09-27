@@ -190,7 +190,9 @@
 					</div>
 					<input
 						bind:value={search_query}
-						on:input={handle_input}
+						oninput={async () => {
+							await handle_input();
+						}}
 						type="text"
 						placeholder="Looking for specific anime? Start from here..."
 						class="w-[30vw] rounded-[0.75vw] border-none bg-neutral py-[0.8vw] pl-[3vw] text-[1vw] font-semibold leading-none text-neutral-content placeholder:font-medium placeholder:text-neutral-content/75 focus:ring-0"
@@ -235,7 +237,9 @@
 						</span>
 						<input
 							bind:value={option[1].value}
-							on:blur={() => (option[1].value = "")}
+							onblur={(event) => {
+								option[1].value = "";
+							}}
 							type="text"
 							tabindex="0"
 							role="button"
@@ -244,7 +248,10 @@
 						{#if selected_items?.length}
 							<button
 								aria-label="Clear input"
-								on:click|preventDefault={() => clear_selected_items(option[0])}
+								onclick={(event) => {
+									event.preventDefault();
+									clear_selected_items(option[0]);
+								}}
 								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
 							>
 								<coreproject-shape-x variant="no-border" class="md:w-[1vw]"></coreproject-shape-x>
@@ -273,7 +280,8 @@
 									{@const is_selected = selected_items?.some((item) => item === String(value))}
 
 									<button
-										on:click|preventDefault={() => {
+										onclick={(event) => {
+											event.preventDefault();
 											update_selected_items(option[0], String(value));
 										}}
 										class="btn btn-neutral relative flex h-max min-h-max items-center justify-start rounded-none p-3 py-3 text-sm leading-none md:rounded-[0.5vw] md:px-[1vw] md:py-[0.75vw] md:text-[0.9vw]"
@@ -324,14 +332,18 @@
 				<button
 					aria-label="Grid layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
-					on:click={() => change_thumbnail_mode("card_with_dropdown")}
+					onclick={() => {
+						change_thumbnail_mode("card_with_dropdown");
+					}}
 				>
 					<coreproject-shape-grid class="w-4 md:w-[1.15vw]"></coreproject-shape-grid>
 				</button>
 				<button
 					aria-label="Thumbnail layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
-					on:click={() => change_thumbnail_mode("detailed_card")}
+					onclick={() => {
+						change_thumbnail_mode("detailed_card");
+					}}
 				>
 					<coreproject-shape-box class="w-4 md:w-[1.15vw]"></coreproject-shape-box>
 				</button>
@@ -428,7 +440,6 @@
 											class="h-44 w-full rounded-lg object-cover object-center md:h-[20vw] md:rounded-[0.5vw]"
 											src={anime.cover}
 											alt={anime.name}
-											style=""
 											loading="lazy"
 										/>
 										<div
@@ -447,7 +458,7 @@
 													class="hidden items-center gap-2 text-xs leading-none md:flex md:gap-[0.35vw] md:text-[0.8vw]"
 												>
 													{#each anime.studios ?? [] as studio, index}
-														{@const show_dot = index !== (anime.studios ?? []).length - 1}
+														{@const show_dot = anime?.studios?.[index] !== anime.studios?.at(-1)}
 
 														<span>{studio.name}</span>
 														{#if show_dot}
@@ -456,9 +467,7 @@
 														{/if}
 													{/each}
 												</div>
-												<span class="text-xs md:hidden"
-													>{anime.studios && anime.studios[0].name}</span
-												>
+												<span class="text-xs md:hidden">{anime?.studios?.[0].name}</span>
 											</div>
 										</div>
 									</button>
@@ -493,7 +502,7 @@
 												class="text-surface-50 flex items-center gap-2 text-xs leading-none md:gap-[0.35vw] md:text-[0.8vw]"
 											>
 												{#each anime.studios ?? [] as studio, index}
-													{@const show_dot = index !== (anime.studios ?? []).length - 1}
+													{@const show_dot = anime.studios?.[index] !== anime.studios?.at(-1)}
 
 													<span>{studio.name}</span>
 													{#if show_dot}
