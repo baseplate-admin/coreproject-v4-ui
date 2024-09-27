@@ -182,7 +182,7 @@
 
 	<div class="mt-2 flex items-end justify-between gap-3 md:mt-0 md:gap-0">
 		<div class="flex items-center gap-3 md:gap-[1.5vw]">
-			<div class="hidden flex-col gap-[0.35vw] md:flex">
+			<div class="hidden flex-col md:flex md:gap-[0.5vw]">
 				<span class="text-[1vw] font-semibold leading-none">Search Animes</span>
 				<div class="relative flex items-center">
 					<div class="absolute md:ml-[1vw]">
@@ -193,7 +193,7 @@
 						on:input={handle_input}
 						type="text"
 						placeholder="Looking for specific anime? Start from here..."
-						class="w-[30vw] rounded-[0.5vw] border-none bg-neutral py-[0.8vw] pl-[3vw] text-[1vw] font-semibold leading-none text-neutral-content placeholder:font-medium placeholder:text-neutral-content/75 focus:ring-0 md:bg-neutral"
+						class="w-[30vw] border-none bg-neutral py-[0.8vw] pl-[3vw] text-[1vw] font-semibold leading-none text-neutral-content placeholder:font-medium placeholder:text-neutral-content/75 focus:ring-0 md:rounded-[0.75vw] md:bg-neutral"
 					/>
 				</div>
 			</div>
@@ -203,7 +203,7 @@
 				{@const selected_items = option[1].selected_items}
 				{@const filter_items = option[1].items}
 
-				<div class={cn(klass, "group dropdown dropdown-bottom")}>
+				<div class={cn(klass, "group dropdown dropdown-bottom md:gap-[0.5vw]")}>
 					<span class="font-semibold leading-none md:text-[1vw]">{title}</span>
 					<div class="relative flex items-center">
 						<span
@@ -212,7 +212,7 @@
 							{#if selected_items}
 								{#if selected_items.length}
 									<span
-										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.25vw] md:p-[0.35vw] md:text-[0.85vw]"
+										class="badge badge-primary ml-3 rounded p-1 text-sm font-semibold capitalize md:ml-[0.75vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
 										<!-- show first item -->
 										{selected_items[0]}
@@ -226,7 +226,7 @@
 								<!-- show count of remaining items if exists -->
 								{#if selected_items.length > 1}
 									<span
-										class="badge ml-1 rounded p-1 text-sm font-semibold md:ml-[0.15vw] md:h-[1.5vw] md:rounded-[0.25vw] md:p-[0.35vw] md:text-[0.85vw]"
+										class="badge badge-neutral ml-1 rounded p-1 text-sm font-semibold md:ml-[0.15vw] md:h-[1.5vw] md:rounded-[0.5vw] md:p-[0.35vw] md:text-[0.85vw]"
 									>
 										+{selected_items.filter((item) => item !== selected_items[0]).length}
 									</span>
@@ -239,7 +239,7 @@
 							type="text"
 							tabindex="0"
 							role="button"
-							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[11vw] md:rounded-[0.5vw] md:bg-neutral md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
+							class="peer placeholder w-full rounded-lg border-none bg-neutral py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[10vw] md:rounded-[0.75vw] md:bg-neutral/50 md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
 						{#if (selected_items ?? []).length}
 							<button
@@ -262,7 +262,7 @@
 
 					{#if filter_items}
 						<div
-							class="dropdown-content z-10 mt-2 w-full overflow-x-hidden rounded-lg md:mt-[1vw] md:rounded-[0.5vw]"
+							class="dropdown-content z-10 mt-2 w-full overflow-x-hidden rounded-lg md:mt-[1vw] md:rounded-[0.75vw]"
 						>
 							<ScrollArea
 								gradient_mask={false}
@@ -276,7 +276,7 @@
 										on:click|preventDefault={() => {
 											update_selected_items(option[0], String(value));
 										}}
-										class="btn btn-neutral relative flex h-max min-h-max items-center justify-start rounded-none p-3 py-3 text-sm leading-none md:rounded-[0.35vw] md:px-[1vw] md:py-[0.75vw] md:text-[0.9vw]"
+										class="btn btn-neutral relative flex h-max min-h-max items-center justify-start rounded-none p-3 py-3 text-sm leading-none md:rounded-[0.5vw] md:px-[1vw] md:py-[0.75vw] md:text-[0.9vw]"
 									>
 										<span class="capitalize">{value}</span>
 
@@ -298,10 +298,10 @@
 		</div>
 
 		<button
-			aria-label="MoreBox"
-			class="btn btn-neutral h-max min-h-max rounded-lg p-[0.85rem] md:rounded-[0.5vw] md:p-[0.8vw]"
+			aria-label="Preferences"
+			class="btn btn-neutral h-max min-h-max rounded-lg border-none p-[0.85rem] md:rounded-[0.75vw] md:p-[0.8vw]"
 		>
-			<coreproject-shape-more class="w-4 md:w-[1.1vw]"></coreproject-shape-more>
+			<coreproject-shape-preferences class="w-4 md:w-[1.1vw]"></coreproject-shape-preferences>
 		</button>
 	</div>
 
@@ -313,12 +313,14 @@
 				>
 				<span class="text-sm leading-none md:text-[1vw]">Crowd Favorites: Anime Hits and Hype</span>
 			</div>
-			<div class="flex gap-3 md:gap-[1vw]">
-				<button class="btn h-max min-h-max border-none !bg-transparent p-0">
-					<coreproject-shape-expand class="w-5 md:w-[1.25vw]"></coreproject-shape-expand>
+			<div class="flex gap-3 md:gap-[0.75vw]">
+				<button class="btn h-max min-h-max border-none !bg-transparent p-0 md:gap-[0.75vw]">
+					<coreproject-shape-expand class="w-5 md:w-[1vw]"></coreproject-shape-expand>
 					<span class="font-semibold md:text-[1vw]">Trending</span>
 				</button>
-				<div class="divider divider-horizontal m-0"></div>
+				<div
+					class="divider divider-horizontal m-0 md:w-[0.75vw] md:before:w-[0.15vw] md:after:w-[0.15vw]"
+				></div>
 				<button
 					aria-label="Grid layout"
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
@@ -331,7 +333,7 @@
 					class="btn h-max min-h-max border-none !bg-transparent p-0"
 					on:click={() => change_thumbnail_mode("detailed_card")}
 				>
-					<coreproect-shape-more class="w-[1.1rem] md:w-[1vw]"></coreproect-shape-more>
+					<coreproject-shape-box class="w-5 md:w-[1.15vw]"></coreproject-shape-box>
 				</button>
 			</div>
 		</div>
