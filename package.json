@@ -102,7 +102,7 @@
 	"optionalDependencies": {
 		"@rollup/rollup-darwin-arm64": "4.22.2",
 		"@rollup/rollup-linux-x64-gnu": "4.22.5",
-		"@rollup/rollup-win32-arm64-msvc": "4.22.2"
+		"@rollup/rollup-win32-arm64-msvc": "4.22.5"
 	},
 	"dependencies": {
 		"@coreproject-moe/icons": "^0.0.56",
