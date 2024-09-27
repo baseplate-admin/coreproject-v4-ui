@@ -131,7 +131,7 @@
 				.join()
 		};
 		for (const [key, value] of Object.entries(search_map)) {
-			if (value?.length) {
+			if (!(value?.length === 0)) {
 				url.searchParams.set(key, String(value));
 			}
 		}
@@ -245,7 +245,7 @@
 							role="button"
 							class="peer placeholder w-full rounded-lg border-none bg-neutral/50 py-3 text-base font-semibold leading-none text-neutral-content placeholder:font-medium focus:ring-0 md:w-[10vw] md:rounded-[0.75vw] md:py-[0.8vw] md:pl-[1vw] md:text-[1vw]"
 						/>
-						{#if selected_items?.length}
+						{#if !(selected_items?.length === 0)}
 							<button
 								aria-label="Clear input"
 								onclick={(event) => {
