@@ -68,7 +68,7 @@
 		"katex": "^0.16.11",
 		"marked": "^14.1.2",
 		"marked-emoji": "^1.4.2",
-		"marked-highlight": "^2.1.4",
+		"marked-highlight": "^2.2.0",
 		"marked-katex-extension": "^5.1.2",
 		"marked-mangle": "^1.1.9",
 		"marked-smartypants": "^1.1.8",
