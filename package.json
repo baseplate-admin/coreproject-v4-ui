@@ -83,7 +83,7 @@
 		"rollup-plugin-visualizer": "^5.12.0",
 		"sass": "^1.81.0",
 		"svelte": "^5.2.0",
-		"svelte-check": "^4.0.6",
+		"svelte-check": "^4.0.8",
 		"svelte-gestures": "^5.0.6",
 		"svelte-intersection-observer": "^1.0.0",
 		"sveltekit-i18n": "^2.4.2",
