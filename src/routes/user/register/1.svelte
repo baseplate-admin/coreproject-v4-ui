@@ -212,8 +212,8 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
-			></coreproject-shape-arrow>
+			<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
+			></coreicons-shape-arrow>
 			Home
 		</a>
 		<span
@@ -239,7 +239,7 @@
 				class="w-full rounded-xl border-2 border-neutral bg-transparent p-3.5 px-5 text-base font-medium leading-none outline-none !ring-0 transition-colors duration-300 placeholder:text-white/50 focus:border-primary md:rounded-[0.75vw] md:border-[0.2vw] md:px-[1.1vw] md:py-[0.8vw] md:text-[1.1vw]"
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
-				<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
+				<coreicons-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreicons-shape-info>
 				{#if email.error.length === 0 || !email.value}
 					<span>we’ll send you a verification email, so please ensure it’s active</span>
 				{:else}
@@ -268,11 +268,11 @@
 						onclick={() => (show_password = !show_password)}
 					>
 						{#if show_password}
-							<coreproject-shape-eye variant="close" class="md:size-[1.25vw]"
-							></coreproject-shape-eye>
+							<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"
+							></coreicons-shape-eye>
 						{:else}
-							<coreproject-shape-eye variant="open" class="md:size-[1.25vw]"
-							></coreproject-shape-eye>
+							<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"
+							></coreicons-shape-eye>
 						{/if}
 					</button>
 				{/if}
@@ -312,12 +312,12 @@
 
 							<div class="flex items-center gap-2 md:gap-[0.5vw]">
 								{#if (password.error.length === 0 && !password.value) || (password.value && password.error.includes(key))}
-									<coreproject-shape-check
+									<coreicons-shape-check
 										class="w-3 text-primary opacity-30 transition-opacity md:w-[1vw]"
-									></coreproject-shape-check>
+									></coreicons-shape-check>
 								{:else}
-									<coreproject-shape-check class="w-3 text-primary transition-opacity md:w-[1vw]"
-									></coreproject-shape-check>
+									<coreicons-shape-check class="w-3 text-primary transition-opacity md:w-[1vw]"
+									></coreicons-shape-check>
 								{/if}
 
 								<span class="text-[0.7rem] leading-none md:text-[0.75vw]">
@@ -343,10 +343,10 @@
 			/>
 			<div class="flex items-center gap-2 text-xs leading-none md:gap-[0.5vw] md:text-[0.75vw]">
 				{#if confirm_password.error.length === 0}
-					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
+					<coreicons-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreicons-shape-info>
 					<span>Please make sure you enter the same password in both fields</span>
 				{:else}
-					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
+					<coreicons-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreicons-shape-info>
 
 					<Markdown class="text-error" markdown={confirm_password.error.join(",")} />
 				{/if}
@@ -371,7 +371,7 @@
 			)}
 		>
 			<span>Continue</span>
-			<coreproject-shape-arrow variant="right" class="w-4 md:w-[1vw]"></coreproject-shape-arrow>
+			<coreicons-shape-arrow variant="right" class="w-4 md:w-[1vw]"></coreicons-shape-arrow>
 		</button>
 	</div>
 </form>

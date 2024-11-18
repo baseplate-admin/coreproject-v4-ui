@@ -103,7 +103,7 @@
 										timer.reset();
 									}}
 								>
-									<coreproject-shape-refresh class="w-[1vw]"></coreproject-shape-refresh>
+									<coreicons-shape-refresh class="w-[1vw]"></coreicons-shape-refresh>
 								</button>
 							</div>
 						{/key}
@@ -136,7 +136,7 @@
 										timer.reset();
 									}}
 								>
-									<coreproject-shape-refresh class="w-3"></coreproject-shape-refresh>
+									<coreicons-shape-refresh class="w-3"></coreicons-shape-refresh>
 								</button>
 							</div>
 						{/key}

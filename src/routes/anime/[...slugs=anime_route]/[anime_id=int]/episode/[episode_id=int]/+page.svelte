@@ -62,8 +62,8 @@
 							class="btn flex h-max min-h-full items-center gap-2 rounded-[0.35vw] !bg-transparent p-0 text-xs leading-none text-warning md:gap-[0.5vw] md:text-[1vw]"
 						>
 							Vidstreaming (sub)
-							<coreproject-shape-chevron variant="down" class="size-3 md:size-[1vw]"
-							></coreproject-shape-chevron>
+							<coreicons-shape-chevron variant="down" class="size-3 md:size-[1vw]"
+							></coreicons-shape-chevron>
 						</button>
 					</div>
 					<button
@@ -85,8 +85,8 @@
 					class="btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
 					Eps: 1 - {EPISODES_LENGTH}
-					<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
-					></coreproject-shape-chevron>
+					<coreicons-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+					></coreicons-shape-chevron>
 				</button>
 			</header>
 			<div class="grid flex-1 grid-cols-7 gap-3 md:grid-cols-6 md:gap-[0.75vw]">
@@ -107,16 +107,16 @@
 					href="./{Number($page.params.episode_id) - 1}"
 					class="btn btn-error col-start-1 h-10 min-h-max rounded-xl border-none text-sm font-semibold leading-none text-accent md:col-start-5 md:h-auto md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-chevrons variant="left" class="w-4 md:w-[1.4vw]"
-					></coreproject-shape-chevrons>
+					<coreicons-shape-chevrons variant="left" class="w-4 md:w-[1.4vw]"
+					></coreicons-shape-chevrons>
 				</a>
 				<a
 					aria-label="next anime"
 					href="./{Number($page.params.episode_id) + 1}"
 					class="btn btn-error col-start-7 h-10 min-h-max rounded-xl border-none text-sm font-semibold leading-none text-accent md:col-start-6 md:h-auto md:rounded-[0.75vw] md:text-[1.2vw]"
 				>
-					<coreproject-shape-chevrons variant="right" class="w-4 md:w-[1.4vw]"
-					></coreproject-shape-chevrons>
+					<coreicons-shape-chevrons variant="right" class="w-4 md:w-[1.4vw]"
+					></coreicons-shape-chevrons>
 				</a>
 				<div class="col-span-full hidden flex-col md:mt-[1vw] md:flex md:gap-[1vw]">
 					<span class="font-semibold uppercase md:text-[1.1vw]">next episode</span>
@@ -136,8 +136,8 @@
 									aria-label="next anime play btn"
 									class="btn btn-warning h-max min-h-max rounded-full md:p-[0.75vw]"
 								>
-									<coreproject-shape-play class="text-secondary md:w-[1.25vw]"
-									></coreproject-shape-play>
+									<coreicons-shape-play class="text-secondary md:w-[1.25vw]"
+									></coreicons-shape-play>
 								</button>
 							</overlay>
 						</div>
@@ -171,7 +171,7 @@
 					aria-label="anime share btn"
 					class="btn h-max min-h-max border-none bg-transparent p-0"
 				>
-					<coreproject-shape-share class="w-4 md:w-[1.25vw]"></coreproject-shape-share>
+					<coreicons-shape-share class="w-4 md:w-[1.25vw]"></coreicons-shape-share>
 				</button>
 			</div>
 			<details class="collapse rounded-none" open>
@@ -211,7 +211,7 @@
 					class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 					aria-label="Filter"
 				>
-					<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
+					<coreicons-shape-filter class="w-3 md:w-[1vw]"></coreicons-shape-filter>
 				</button>
 			</div>
 			<!-- <CommentBox />
@@ -229,8 +229,8 @@
 						aria-label="forum settings"
 						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 					>
-						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-						></coreproject-shape-settings>
+						<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+						></coreicons-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex items-center justify-between md:mt-[0.75vw]">
@@ -242,15 +242,15 @@
 						<button
 							class="btn btn-neutral h-7 min-h-full gap-2 px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 						>
-							<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
-							></coreproject-shape-plus>
+							<coreicons-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
+							></coreicons-shape-plus>
 							Create New
 						</button>
 						<button
 							class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 							aria-label="Filter"
 						>
-							<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
+							<coreicons-shape-filter class="w-3 md:w-[1vw]"></coreicons-shape-filter>
 						</button>
 					</div>
 				</div>
@@ -295,8 +295,8 @@
 									<div>7 months ago</div>
 								</div>
 								<div class="flex items-center gap-1 md:gap-[0.25vw]">
-									<coreproject-shape-message-circle class="w-3 md:w-[1vw]"
-									></coreproject-shape-message-circle>
+									<coreicons-shape-message-circle class="w-3 md:w-[1vw]"
+									></coreicons-shape-message-circle>
 									<div>69</div>
 								</div>
 							</div>
@@ -315,8 +315,8 @@
 						aria-label="Recommendations"
 						class="btn btn-neutral hidden min-h-full p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 					>
-						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-						></coreproject-shape-settings>
+						<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+						></coreicons-shape-settings>
 					</button>
 				</div>
 				<div class="mt-3 grid grid-cols-3 gap-4 md:mt-[1.25vw] md:grid-cols-3 md:gap-[1vw]">
@@ -354,8 +354,8 @@
 						class="btn btn-neutral h-7 min-h-full gap-2 px-3 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 					>
 						Load more
-						<coreproject-shape-chevron variant="down" class="w-4 md:w-[1vw]"
-						></coreproject-shape-chevron>
+						<coreicons-shape-chevron variant="down" class="w-4 md:w-[1vw]"
+						></coreicons-shape-chevron>
 					</button>
 				</div>
 			</div>

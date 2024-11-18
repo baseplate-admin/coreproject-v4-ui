@@ -78,8 +78,8 @@
 				href={"/anime"}
 				class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 			>
-				<coreproject-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
-				></coreproject-shape-arrow>
+				<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
+				></coreicons-shape-arrow>
 				Home
 			</a>
 			<span
@@ -102,7 +102,7 @@
 				<div
 					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
-					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
+					<coreicons-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreicons-shape-info>
 					{#if username_or_email.error.length}
 						<Markdown class="text-error" markdown={username_or_email.error.join("")} />
 					{:else}
@@ -129,11 +129,11 @@
 							onclick={() => (show_password = !show_password)}
 						>
 							{#if show_password}
-								<coreproject-shape-eye variant="close" class="md:size-[1.25vw]"
-								></coreproject-shape-eye>
+								<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"
+								></coreicons-shape-eye>
 							{:else}
-								<coreproject-shape-eye variant="open" class="md:size-[1.25vw]"
-								></coreproject-shape-eye>
+								<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"
+								></coreicons-shape-eye>
 							{/if}
 						</button>
 					{/if}
@@ -141,7 +141,7 @@
 				<div
 					class="flex items-center gap-2 text-[0.7rem] leading-none md:gap-[0.5vw] md:text-[0.8vw]"
 				>
-					<coreproject-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreproject-shape-info>
+					<coreicons-shape-info class="w-3 opacity-70 md:w-[0.9vw]"></coreicons-shape-info>
 					{#if password.error.length}
 						<Markdown class="text-error" markdown={password.error.join("")} />
 					{:else}
@@ -172,7 +172,7 @@
 				class="btn btn-primary h-max min-h-max rounded-lg p-4 text-base font-semibold leading-none text-accent md:rounded-[0.75vw] md:px-[1.25vw] md:py-[1vw] md:text-[0.95vw]"
 			>
 				<span>Continue</span>
-				<coreproject-shape-log-in class="w-4 md:w-[1vw]"></coreproject-shape-log-in>
+				<coreicons-shape-log-in class="w-4 md:w-[1vw]"></coreicons-shape-log-in>
 			</button>
 		</div>
 	</form>

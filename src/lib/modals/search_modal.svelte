@@ -64,7 +64,7 @@
 				class="btn absolute left-[1.25vw] h-max min-h-max border-none !bg-transparent p-0"
 				aria-label="Search"
 			>
-				<coreproject-shape-search style="width: 1.25vw;"></coreproject-shape-search>
+				<coreicons-shape-search style="width: 1.25vw;"></coreicons-shape-search>
 			</button>
 			<input
 				bind:value={search_query}
@@ -81,7 +81,7 @@
 				class="btn absolute right-[1.25vw] min-h-max border-none !bg-transparent p-0"
 				onclick={() => (search_query = "")}
 			>
-				<coreproject-shape-cross style="width: 1.5vw; opacity: 0.7;"></coreproject-shape-cross>
+				<coreicons-shape-cross style="width: 1.5vw; opacity: 0.7;"></coreicons-shape-cross>
 			</button>
 		</form>
 
@@ -104,7 +104,7 @@
 									<div class="flex items-center font-medium md:gap-[0.5vw] md:text-[0.8vw]">
 										<span>1996</span>
 										<span>TV</span>
-										<coreproject-shape-circle class="md:size-[0.25vw]"></coreproject-shape-circle>
+										<coreicons-shape-circle class="md:size-[0.25vw]"></coreicons-shape-circle>
 										<span>1009 eps</span>
 									</div>
 								</div>
@@ -116,8 +116,8 @@
 						class="mt-auto flex items-center self-center text-info md:gap-[0.5vw]"
 					>
 						<span class="font-semibold md:text-[1vw]">view all</span>
-						<coreproject-shape-chevron variant="right" class="md:size-[1vw]"
-						></coreproject-shape-chevron>
+						<coreicons-shape-chevron variant="right" class="md:size-[1vw]"
+						></coreicons-shape-chevron>
 					</a>
 				</div>
 			</div>
