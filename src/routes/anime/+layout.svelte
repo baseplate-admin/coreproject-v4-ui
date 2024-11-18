@@ -31,14 +31,14 @@
 		top: {
 			search: {
 				icon: {
-					component: `<coreproject-shape-search class="size-[1.25vw]"></coreproject-shape-search>`
+					component: `<coreicons-shape-search class="size-[1.25vw]"></coreicons-shape-search>`
 				}
 			}
 		},
 		middle: {
 			home: {
 				icon: {
-					component: `<coreproject-shape-home class="size-[1.25vw]"></coreproject-shape-home>`
+					component: `<coreicons-shape-home class="size-[1.25vw]"></coreicons-shape-home>`
 				},
 				url: "/anime",
 				show_on_mobile: true
@@ -46,28 +46,28 @@
 
 			explore: {
 				icon: {
-					component: `<coreproject-shape-compass class="size-[1.25vw]"></coreproject-shape-compass>`
+					component: `<coreicons-shape-compass class="size-[1.25vw]"></coreicons-shape-compass>`
 				},
 				url: "/anime/explore",
 				show_on_mobile: true
 			},
 			list: {
 				icon: {
-					component: `<coreproject-shape-menu class="size-[1.25vw]"></coreproject-shape-menu>`
+					component: `<coreicons-shape-menu class="size-[1.25vw]"></coreicons-shape-menu>`
 				},
 				url: "/anime/list",
 				show_on_mobile: false
 			},
 			schedule: {
 				icon: {
-					component: `<coreproject-shape-calendar class="size-[1.25vw]"></coreproject-shape-calendar>`
+					component: `<coreicons-shape-calendar class="size-[1.25vw]"></coreicons-shape-calendar>`
 				},
 				url: "/anime/shedule",
 				show_on_mobile: false
 			},
 			forum: {
 				icon: {
-					component: `<coreproject-shape-forum class="size-[1.25vw]"></coreproject-shape-forum>`
+					component: `<coreicons-shape-forum class="size-[1.25vw]"></coreicons-shape-forum>`
 				},
 				url: "/anime/forum",
 				show_on_mobile: true
@@ -76,13 +76,13 @@
 		bottom: {
 			settings: {
 				icon: {
-					component: `<coreproject-shape-settings variant='filled' class="size-[1.25vw]"></coreproject-shape-settings>`
+					component: `<coreicons-shape-settings variant='filled' class="size-[1.25vw]"></coreicons-shape-settings>`
 				},
 				url: undefined
 			},
 			misc: {
 				icon: {
-					component: `<coreproject-shape-help-circle class="size-[1.25vw]"></coreproject-shape-help-circle>`
+					component: `<coreicons-shape-help-circle class="size-[1.25vw]"></coreicons-shape-help-circle>`
 				},
 				url: undefined
 			}
@@ -91,19 +91,19 @@
 			profile: {
 				url: "/profile",
 				icon: {
-					component: `<coreproject-shape-user class="size-4 md:size-[1vw]"></coreproject-shape-user>`
+					component: `<coreicons-shape-user class="size-4 md:size-[1vw]"></coreicons-shape-user>`
 				}
 			},
 			"my list": {
 				url: "/my-list",
 				icon: {
-					component: `<coreproject-shape-menu class="size-4 md:size-[1vw]"></coreproject-shape-menu>`
+					component: `<coreicons-shape-menu class="size-4 md:size-[1vw]"></coreicons-shape-menu>`
 				}
 			},
 			prefernce: {
 				url: "/prefernce",
 				icon: {
-					component: `<coreproject-shape-preference class="size-4 md:size-[1vw]"></coreproject-shape-preference>`
+					component: `<coreicons-shape-preference class="size-4 md:size-[1vw]"></coreicons-shape-preference>`
 				}
 			}
 		}
@@ -116,16 +116,16 @@
 		class="absolute top-0 z-10 flex h-[4.5rem] w-full flex-none items-center justify-between gap-4 bg-secondary/95 px-4 backdrop-blur-3xl md:static md:h-[5vw] md:bg-secondary md:px-[1.75vw] md:py-[1vw]"
 	>
 		<a href="/" aria-label="animecore icon">
-			<coreproject-shape-logo class="w-9 md:w-[2.25vw]"></coreproject-shape-logo>
+			<coreicons-shape-logo class="size-9 md:size-[2.25vw]"></coreicons-shape-logo>
 		</a>
 		<div class="relative flex w-full max-w-md items-center md:static md:max-w-full">
 			<div class="absolute left-1/2 w-full -translate-x-1/2">
 				<a href="/anime" class="hidden md:flex" aria-label="animecore logo">
-					<!-- <coreproject-logo-animecore class="w-[10vw]"></coreproject-logo-animecore> -->
+					<!-- <coreicons-logo-animecore class="w-[10vw]"></coreicons-logo-animecore> -->
 				</a>
 				<form class="relative flex h-12 w-full items-center md:hidden">
 					<button class="btn absolute left-4 border-none !bg-transparent p-0" aria-label="Search">
-						<coreproject-shape-search class="w-5"></coreproject-shape-search>
+						<coreicons-shape-search class="w-5"></coreicons-shape-search>
 					</button>
 					<input
 						type="text"
@@ -186,7 +186,7 @@
 							href="/user/login"
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
-							<coreproject-shape-login class="w-4 md:w-[1vw]"></coreproject-shape-login>
+							<coreicons-shape-login class="w-4 md:w-[1vw]"></coreicons-shape-login>
 							{$t("common.navbar.login")}
 						</a>
 					</li>
@@ -195,7 +195,7 @@
 							href="/user/register"
 							class="flex items-center gap-3 !bg-transparent p-0 leading-none !text-white"
 						>
-							<coreproject-shape-register class="w-4 md:w-[1vw]"></coreproject-shape-register>
+							<coreicons-shape-register class="w-4 md:w-[1vw]"></coreicons-shape-register>
 							{$t("common.navbar.register")}
 						</a>
 					</li>
@@ -215,7 +215,7 @@
 							modal_store.open_modal("search");
 						}}
 					>
-						<coreproject-shape-search class="size-[1.25vw]"></coreproject-shape-search>
+						<coreicons-shape-search class="size-[1.25vw]"></coreicons-shape-search>
 					</button>
 				</div>
 

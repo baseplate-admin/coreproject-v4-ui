@@ -170,8 +170,8 @@
 	<div class="mt-7 flex flex-col gap-2 md:hidden">
 		<span class="text-base font-semibold leading-none">Search Animes</span>
 		<div class="relative flex items-center">
-			<coreproject-shape-search class="pointer-events-none absolute ml-4 size-4"
-			></coreproject-shape-search>
+			<coreicons-shape-search class="pointer-events-none absolute ml-4 size-4"
+			></coreicons-shape-search>
 			<input
 				type="text"
 				placeholder="Looking for specific anime? Start from here..."
@@ -185,8 +185,8 @@
 			<div class="hidden flex-col md:flex md:gap-[0.5vw]">
 				<span class="text-[1vw] font-semibold leading-none">Search Animes</span>
 				<div class="relative flex items-center">
-					<div class="absolute md:ml-[1vw]">
-						<coreproject-shape-search class="md:w-[1.1vw]"></coreproject-shape-search>
+					<div class="absolute flex md:ml-[1vw]">
+						<coreicons-shape-search class="md:size-[1.1vw]"></coreicons-shape-search>
 					</div>
 					<input
 						bind:value={search_query}
@@ -252,17 +252,17 @@
 									event.preventDefault();
 									clear_selected_items(option[0]);
 								}}
-								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
+								class="absolute right-0 mr-3 flex w-4 md:mr-[1vw] md:size-[1vw]"
 							>
-								<coreproject-shape-x variant="no-border" class="md:w-[1vw]"></coreproject-shape-x>
+								<coreicons-shape-x variant="no-border" class="md:size-[1vw]"></coreicons-shape-x>
 							</button>
 						{:else}
 							<button
 								aria-label="Dropdown btn"
-								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
+								class="absolute right-0 mr-3 flex w-4 md:mr-[1vw] md:size-[1vw]"
 							>
-								<coreproject-shape-chevron variant="down" class="md:w-[1vw]"
-								></coreproject-shape-chevron>
+								<coreicons-shape-chevron variant="down" class="md:size-[1vw]"
+								></coreicons-shape-chevron>
 							</button>
 						{/if}
 					</div>
@@ -290,10 +290,10 @@
 
 										{#if is_selected}
 											<div
-												class="absolute right-3 rounded-full bg-primary p-1 text-white md:right-[0.75vw] md:p-[0.25vw]"
+												class="absolute right-3 grid size-5 place-items-center rounded-full bg-primary text-white md:right-[0.75vw] md:size-[1.25vw]"
 											>
-												<coreproject-shape-check class="w-2 text-white md:w-[0.75vw]"
-												></coreproject-shape-check>
+												<coreicons-shape-check class="size-3 text-white md:size-[0.75vw]"
+												></coreicons-shape-check>
 											</div>
 										{/if}
 									</button>
@@ -309,7 +309,7 @@
 			aria-label="Preferences"
 			class="btn btn-neutral h-max min-h-max rounded-lg border-none p-[0.85rem] md:rounded-[0.75vw] md:p-[0.8vw]"
 		>
-			<coreproject-shape-preferences class="w-4 md:w-[1.1vw]"></coreproject-shape-preferences>
+			<coreicons-shape-preferences class="w-4 md:w-[1.1vw]"></coreicons-shape-preferences>
 		</button>
 	</div>
 
@@ -323,7 +323,7 @@
 			</div>
 			<div class="flex gap-2 md:gap-[0.75vw]">
 				<button class="btn h-max min-h-max border-none !bg-transparent p-0 md:gap-[0.75vw]">
-					<coreproject-shape-expand class="w-4 md:w-[1vw]"></coreproject-shape-expand>
+					<coreicons-shape-expand class="w-4 md:w-[1vw]"></coreicons-shape-expand>
 					<span class="font-semibold md:text-[1vw]">Trending</span>
 				</button>
 				<div
@@ -336,7 +336,7 @@
 						change_thumbnail_mode("card_with_dropdown");
 					}}
 				>
-					<coreproject-shape-grid class="w-4 md:w-[1.15vw]"></coreproject-shape-grid>
+					<coreicons-shape-grid class="w-4 md:w-[1.15vw]"></coreicons-shape-grid>
 				</button>
 				<button
 					aria-label="Thumbnail layout"
@@ -345,7 +345,7 @@
 						change_thumbnail_mode("detailed_card");
 					}}
 				>
-					<coreproject-shape-box class="w-4 md:w-[1.15vw]"></coreproject-shape-box>
+					<coreicons-shape-box class="w-4 md:w-[1.15vw]"></coreicons-shape-box>
 				</button>
 			</div>
 		</div>
@@ -400,10 +400,10 @@
 											</span>
 											<div class="flex items-center gap-1 md:gap-[0.5vw]">
 												<span class="text-xs md:text-[0.8vw]">{anime.source}</span>
-												<coreproject-shape-circle
+												<coreicons-shape-circle
 													variant="filled"
 													class="w-1 opacity-50 md:w-[0.25vw]"
-												></coreproject-shape-circle>
+												></coreicons-shape-circle>
 												<span class="text-xs md:text-[0.8vw]">{anime.episode_count} eps</span>
 											</div>
 											<ScrollArea
@@ -461,8 +461,8 @@
 														{#each anime.studios as studio}
 															<span>{studio.name}</span>
 															{#if studio !== anime.studios.at(-1)}
-																<coreproject-shape-circle class="md:w-[0.25vw]"
-																></coreproject-shape-circle>
+																<coreicons-shape-circle class="md:w-[0.25vw]"
+																></coreicons-shape-circle>
 															{/if}
 														{/each}
 													{/if}
@@ -486,16 +486,14 @@
 												class="text-surface-50 flex w-full items-center md:gap-[0.35vw] md:text-[0.8vw]"
 											>
 												<div class="flex items-center md:gap-[0.5vw]">
-													<coreproject-shape-star class="md:w-[0.9vw]"></coreproject-shape-star>
+													<coreicons-shape-star class="md:w-[0.9vw]"></coreicons-shape-star>
 													<span class="text-surface-50 leading-none md:text-[0.8vw]"
 														>{anime.rating} rating</span
 													>
 												</div>
-												<coreproject-shape-circle class="w-1 md:w-[0.25vw]"
-												></coreproject-shape-circle>
+												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"></coreicons-shape-circle>
 												<span>TV</span>
-												<coreproject-shape-circle class="w-1 md:w-[0.25vw]"
-												></coreproject-shape-circle>
+												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"></coreicons-shape-circle>
 												<span>{anime.episode_count} episdoes</span>
 											</div>
 											<div
@@ -506,8 +504,7 @@
 
 													<span>{studio.name}</span>
 													{#if show_dot}
-														<coreproject-shape-circle class="md:w-[0.25vw]"
-														></coreproject-shape-circle>
+														<coreicons-shape-circle class="md:w-[0.25vw]"></coreicons-shape-circle>
 													{/if}
 												{/each}
 											</div>
@@ -534,7 +531,7 @@
 													href="/anime/mal/{anime.mal_id}/episode/1"
 													class="btn btn-primary h-[2.75vw] min-h-full flex-1 leading-none text-accent md:rounded-[0.5vw]"
 												>
-													<coreproject-shape-play class="md:w-[0.9vw]"></coreproject-shape-play>
+													<coreicons-shape-play class="md:w-[0.9vw]"></coreicons-shape-play>
 													<span class="font-semibold md:text-[0.9vw]">Start Watching</span>
 												</a>
 												<a
@@ -542,7 +539,7 @@
 													href="/anime/mal/{anime.mal_id}"
 													class="btn btn-square h-[2.75vw] min-h-full p-0 leading-none md:rounded-[0.5vw]"
 												>
-													<coreproject-shape-info class="md:w-[1.2vw]"></coreproject-shape-info>
+													<coreicons-shape-info class="md:w-[1.2vw]"></coreicons-shape-info>
 												</a>
 											</div>
 										</div>

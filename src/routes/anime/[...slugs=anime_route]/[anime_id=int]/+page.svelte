@@ -63,15 +63,15 @@
 		variant?: string;
 	}[] = [
 		{
-			icon: `<coreproject-shape-edit class="w-4 md:w-[1.125vw]"variant='line-with-pencil'></coreproject-shape-edit>`,
+			icon: `<coreicons-shape-edit class="w-4 md:w-[1.125vw]"variant='line-with-pencil'></coreicons-shape-edit>`,
 			label: "edit"
 		},
 		{
-			icon: `<coreproject-shape-download variant='arrow' class="w-4 md:w-[1.125vw]"></coreproject-shape-download>`,
+			icon: `<coreicons-shape-download variant='arrow' class="w-4 md:w-[1.125vw]"></coreicons-shape-download>`,
 			label: "download"
 		},
 		{
-			icon: `<coreproject-shape-share class="w-4 md:w-[1.125vw]"></coreproject-shape-share>`,
+			icon: `<coreicons-shape-share class="w-4 md:w-[1.125vw]"></coreicons-shape-share>`,
 			label: "share"
 		}
 	];
@@ -119,10 +119,10 @@
 							{#each second_mapping as map}
 								<span>{map.item}</span>
 								{#if second_mapping.at(-1) !== map}
-									<coreproject-shape-circle
+									<coreicons-shape-circle
 										variant="filled"
 										class="size-1 opacity-75 md:size-[0.35vw]"
-									></coreproject-shape-circle>
+									></coreicons-shape-circle>
 								{/if}
 							{/each}
 						</div>
@@ -131,7 +131,7 @@
 								type="button"
 								class="w-26 btn btn-primary h-14 rounded-xl font-bold text-accent md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
 							>
-								<coreproject-shape-play class="w-5 md:w-[1.5vw]"></coreproject-shape-play>
+								<coreicons-shape-play class="size-5 md:size-[1.5vw]"></coreicons-shape-play>
 
 								<div class="flex flex-col items-start gap-0.5 md:gap-[0.25vw]">
 									<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
@@ -143,8 +143,8 @@
 								type="button"
 								class="btn size-14 gap-0 rounded-xl bg-secondary capitalize md:h-[4vw] md:w-[4vw] md:gap-0 md:rounded-[0.75vw] md:text-[0.87vw] md:font-semibold"
 							>
-								<coreproject-shape-book variant="open" class="w-4 md:size-[1.5vw]"
-								></coreproject-shape-book>
+								<coreicons-shape-book variant="open" class="w-4 md:size-[1.5vw]"
+								></coreicons-shape-book>
 								<span class="leading-none">read</span>
 							</button>
 						</div>
@@ -170,8 +170,8 @@
 							aria-label="Synopsis"
 							class="btn btn-neutral hidden min-h-full rounded-[0.1875vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 						>
-							<coreproject-shape-settings variant="filled" class="size-[0.75vw] opacity-75"
-							></coreproject-shape-settings>
+							<coreicons-shape-settings variant="filled" class="size-[0.75vw] opacity-75"
+							></coreicons-shape-settings>
 						</button>
 					</div>
 					<ScrollArea
@@ -203,8 +203,8 @@
 								class="btn h-min min-h-min gap-[0.25vw] border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Watching</span>
-								<coreproject-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
-								></coreproject-shape-chevron>
+								<coreicons-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
+								></coreicons-shape-chevron>
 							</button>
 						</div>
 						<div class="flex gap-[0.25vw]">
@@ -217,8 +217,8 @@
 								class="btn h-min min-h-min border-none !bg-transparent p-0 leading-none md:text-[0.75vw]"
 							>
 								<span class="font-semibold text-warning">Not Rated</span>
-								<coreproject-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
-								></coreproject-shape-chevron>
+								<coreicons-shape-chevron variant="down" class="text-warning-400 w-[0.75vw]"
+								></coreicons-shape-chevron>
 							</button>
 						</div>
 					</div>
@@ -233,8 +233,8 @@
 						aria-label="Episodes"
 						class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw] md:items-center md:justify-center"
 					>
-						<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-						></coreproject-shape-settings>
+						<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+						></coreicons-shape-settings>
 					</button>
 				</div>
 				<div class="mt-2 flex flex-col justify-between gap-y-5 md:mt-0 md:flex-row md:gap-y-0">
@@ -244,8 +244,8 @@
 								>23</span
 							>
 							<span class="text-xs font-semibold md:text-[1vw]">episodes</span>
-							<coreproject-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
-							></coreproject-shape-circle>
+							<coreicons-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
+							></coreicons-shape-circle>
 						</p>
 						<div class="flex flex-col md:gap-[0.25vw]">
 							<div class="flex w-full items-center gap-2 leading-4 md:gap-[1vw] md:leading-[1.5vw]">
@@ -263,8 +263,8 @@
 										>{item}</span
 									>
 								{/each}
-								<coreproject-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
-								></coreproject-shape-circle>
+								<coreicons-shape-circle variant="filled" class="w-[0.4vw] opacity-50"
+								></coreicons-shape-circle>
 								{#each ["1080p", "720p"] as item}
 									<span
 										class="flex h-full place-items-center rounded bg-neutral px-2 uppercase leading-[0.9vw] md:rounded-[0.5vw] md:px-[0.9vw]"
@@ -285,8 +285,8 @@
 								class="btn btn-neutral h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
 							>
 								<span>Subbed</span>
-								<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
-								></coreproject-shape-chevron>
+								<coreicons-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+								></coreicons-shape-chevron>
 							</button>
 						</div>
 						<div class="hidden flex-col gap-2 md:flex md:gap-[0.5vw]">
@@ -295,15 +295,15 @@
 								class="btn btn-neutral h-7 min-h-full rounded px-3 text-[0.65rem] font-semibold md:h-[2.5vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.9vw] md:leading-[0.9vw]"
 							>
 								<span>Thumbnails</span>
-								<coreproject-shape-chevron variant="down" class="w-3 md:w-[1vw]"
-								></coreproject-shape-chevron>
+								<coreicons-shape-chevron variant="down" class="w-3 md:w-[1vw]"
+								></coreicons-shape-chevron>
 							</button>
 						</div>
 						<button
 							class="btn btn-neutral size-7 min-h-max p-0 font-semibold md:ml-0 md:h-[2.5vw] md:w-[2.4vw] md:rounded-[0.75vw] md:leading-[0.9vw]"
 							aria-label="Search"
 						>
-							<coreproject-shape-search class="w-4 md:w-[1vw]"></coreproject-shape-search>
+							<coreicons-shape-search class="w-4 md:w-[1vw]"></coreicons-shape-search>
 						</button>
 					</div>
 				</div>
@@ -382,8 +382,8 @@
 											</span>
 										{/each}
 									</div>
-									<coreproject-shape-circle variant="filled" class="w-1 opacity-50 md:w-[0.25vw]"
-									></coreproject-shape-circle>
+									<coreicons-shape-circle variant="filled" class="w-1 opacity-50 md:w-[0.25vw]"
+									></coreicons-shape-circle>
 									<div class="flex gap-2 leading-none md:gap-[0.65vw]">
 										{#each episode.resolutions as res}
 											<span
@@ -410,8 +410,8 @@
 								aria-label="Comments"
 								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-								></coreproject-shape-settings>
+								<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+								></coreicons-shape-settings>
 							</button>
 						</div>
 						<div class="flex items-center justify-between md:hidden">
@@ -423,7 +423,7 @@
 								class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 								aria-label="Filter"
 							>
-								<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
+								<coreicons-shape-filter class="w-3 md:w-[1vw]"></coreicons-shape-filter>
 							</button>
 						</div>
 						<div class="md:mt-[1vw]">
@@ -447,8 +447,8 @@
 								aria-label="Forum Posts"
 								class="btn btn-neutral hidden min-h-full rounded p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 							>
-								<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-								></coreproject-shape-settings>
+								<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+								></coreicons-shape-settings>
 							</button>
 						</div>
 						<div class="mt-2 flex items-center justify-between md:mt-[0.75vw]">
@@ -460,15 +460,15 @@
 								<button
 									class="btn btn-neutral h-7 min-h-full gap-2 px-2 text-xs font-semibold md:h-[2.25vw] md:rounded-[0.75vw] md:px-[0.9vw] md:text-[0.875vw]"
 								>
-									<coreproject-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
-									></coreproject-shape-plus>
+									<coreicons-shape-plus variant="no-border" class="w-4 md:w-[1vw]"
+									></coreicons-shape-plus>
 									Create New
 								</button>
 								<button
 									class="btn btn-square btn-neutral size-7 min-h-full font-semibold md:ml-0 md:size-[2.25vw] md:rounded-[0.75vw] md:p-0 md:leading-[0.9vw]"
 									aria-label="Filter"
 								>
-									<coreproject-shape-filter class="w-3 md:w-[1vw]"></coreproject-shape-filter>
+									<coreicons-shape-filter class="w-3 md:w-[1vw]"></coreicons-shape-filter>
 								</button>
 							</div>
 						</div>
@@ -513,8 +513,8 @@
 											<div class="">7 months ago</div>
 										</div>
 										<div class="flex items-center gap-1 md:gap-[0.25vw]">
-											<coreproject-shape-message-circle class="w-3 md:w-[1vw]"
-											></coreproject-shape-message-circle>
+											<coreicons-shape-message-circle class="w-3 md:w-[1vw]"
+											></coreicons-shape-message-circle>
 											<div>69</div>
 										</div>
 									</div>
@@ -529,8 +529,8 @@
 			<div class="flex gap-[0.75vw]">
 				<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">Ratings</h3>
 				<button class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]">
-					<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-					></coreproject-shape-settings>
+					<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+					></coreicons-shape-settings>
 				</button>
 			</div>
 			<div class="flex flex-col gap-[0.75vw]">
@@ -557,7 +557,7 @@
 				<button
 					class="btn btn-accent min-h-full md:h-[1.5vw] md:w-max md:rounded-[0.25vw] md:px-[0.75vw] md:text-[0.75vw]"
 				>
-					<coreproject-shape-trending variant="up" class="size-[1vw]"></coreproject-shape-trending>
+					<coreicons-shape-trending variant="up" class="size-[1vw]"></coreicons-shape-trending>
 					<span>Detailed Distribution</span>
 				</button>
 				<div class="flex flex-col gap-[0.5vw] leading-none md:mt-[0.5vw]">
@@ -566,9 +566,10 @@
 						<!-- <Rating /> -->
 						<span class="font-bold leading-none text-info md:text-[0.95vw]">92%</span>
 						<button
-							class="btn btn-warning min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.35vw]"
+							aria-label="Edit rating"
+							class="btn btn-warning min-h-full p-[0.3vw] md:size-[1.375vw] md:rounded-[0.35vw]"
 						>
-							<coreproject-shape-edit class="w-[0.75vw]" variant="pencil"></coreproject-shape-edit>
+							<coreicons-shape-edit class="size-[0.75vw]" variant="pencil"></coreicons-shape-edit>
 						</button>
 					</div>
 				</div>
@@ -576,14 +577,14 @@
 					class="btn flex h-min min-h-full w-max items-center gap-[0.5vw] border-none !bg-transparent p-0 md:text-[0.85vw]"
 				>
 					Add a review
-					<coreproject-shape-external-link class="size-[0.8vw]"></coreproject-shape-external-link>
+					<coreicons-shape-external-link class="size-[0.8vw]"></coreicons-shape-external-link>
 				</button>
 			</div>
 			<div class="flex gap-[0.75vw] md:mt-[6vw]">
 				<h3 class="font-semibold text-info md:text-[1.25vw] md:leading-[1.5vw]">Details</h3>
 				<button class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]">
-					<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-					></coreproject-shape-settings>
+					<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+					></coreicons-shape-settings>
 				</button>
 			</div>
 			<div class="md:mb-[2vw] md:mt-[1.25vw]">
@@ -641,8 +642,8 @@
 						<button
 							class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 						>
-							<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-							></coreproject-shape-settings>
+							<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+							></coreicons-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] flex flex-col">
@@ -651,8 +652,7 @@
 							class="btn btn-neutral mt-[0.3vw] h-[2vw] min-h-full w-[6.625vw] gap-1 rounded-[0.5vw] p-0 text-[0.875vw]"
 						>
 							Japanese
-							<coreproject-shape-chevron variant="down" class="size-[1vw]"
-							></coreproject-shape-chevron>
+							<coreicons-shape-chevron variant="down" class="size-[1vw]"></coreicons-shape-chevron>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">
@@ -688,16 +688,16 @@
 						<div class="mt-[1vw] flex flex-col md:gap-[0.75vw]">
 							<div class="flex items-center md:gap-[0.5vw]">
 								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron variant="left" class="size-[1vw]"
-									></coreproject-shape-chevron>
+									<coreicons-shape-chevron variant="left" class="size-[1vw]"
+									></coreicons-shape-chevron>
 								</button>
 								<button
 									class="btn btn-neutral min-h-full p-0 md:h-[2vw] md:w-[2vw] md:text-[0.85vw]"
 									>1</button
 								>
 								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron variant="right" class="size-[1vw]"
-									></coreproject-shape-chevron>
+									<coreicons-shape-chevron variant="right" class="size-[1vw]"
+									></coreicons-shape-chevron>
 								</button>
 							</div>
 							<span class="text-[0.75vw] leading-none">Showing 1-5, out of 58 Voiceover</span>
@@ -712,8 +712,8 @@
 						<button
 							class="btn btn-neutral min-h-full p-0 md:h-[1.5vw] md:w-[1.5vw] md:rounded-[0.5vw]"
 						>
-							<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-							></coreproject-shape-settings>
+							<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+							></coreicons-shape-settings>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">
@@ -758,16 +758,16 @@
 						<div class="mt-[1vw] flex flex-col md:gap-[0.75vw]">
 							<div class="flex items-center md:gap-[0.5vw]">
 								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron variant="left" class="size-[1vw]"
-									></coreproject-shape-chevron>
+									<coreicons-shape-chevron variant="left" class="size-[1vw]"
+									></coreicons-shape-chevron>
 								</button>
 								<button
 									class="btn btn-neutral min-h-full p-0 md:h-[2vw] md:w-[2vw] md:text-[0.85vw]"
 									>1</button
 								>
 								<button class="btn btn-neutral min-h-full bg-neutral/50 p-0 md:h-[2vw] md:w-[2vw]">
-									<coreproject-shape-chevron variant="right" class="size-[1vw]"
-									></coreproject-shape-chevron>
+									<coreicons-shape-chevron variant="right" class="size-[1vw]"
+									></coreicons-shape-chevron>
 								</button>
 							</div>
 							<span class="text-[0.75vw] leading-none">Showing 1-8, out of 74 Animes</span>

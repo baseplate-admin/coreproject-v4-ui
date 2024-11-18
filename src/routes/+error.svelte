@@ -18,22 +18,20 @@
 		{/if}
 		<div class="flex items-center gap-3 md:gap-[2vw]">
 			<a href={REDDIT_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
-				<coreproject-logo-reddit class="size-6 text-warning md:size-[1.75vw]"
-				></coreproject-logo-reddit>
+				<coreicons-logo-reddit class="size-6 text-warning md:size-[1.75vw]"></coreicons-logo-reddit>
 			</a>
 			<a href={DISCORD_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
-				<coreproject-logo-discord class="size-6 text-warning md:size-[1.75vw]"
-				></coreproject-logo-discord>
+				<coreicons-logo-discord class="size-6 text-warning md:size-[1.75vw]"
+				></coreicons-logo-discord>
 			</a>
 			<a href={GITHUB_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
-				<coreproject-logo-github class="size-6 text-warning md:size-[1.75vw]"
-				></coreproject-logo-github>
+				<coreicons-logo-github class="size-6 text-warning md:size-[1.75vw]"></coreicons-logo-github>
 			</a>
 		</div>
 		<div class="flex flex-col gap-3 md:gap-[1vw]">
 			<div class="flex items-center gap-1.5 md:gap-[0.5vw]">
 				<span class="font-semibold text-accent md:text-[1.25vw]">Quick Links</span>
-				<coreproject-shape-info class="size-4 md:size-[1vw]"></coreproject-shape-info>
+				<coreicons-shape-info class="size-4 md:size-[1vw]"></coreicons-shape-info>
 			</div>
 			<div
 				class="flex flex-wrap items-center gap-3 text-sm leading-none [&>a]:btn-link md:gap-[1vw] md:text-[1vw]"

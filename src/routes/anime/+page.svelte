@@ -286,25 +286,25 @@
 									class="flex flex-wrap items-center gap-2 py-2 text-xs font-semibold text-white/90 md:gap-[0.65vw] md:pb-0 md:pt-[0.5vw] md:text-[0.9375vw]"
 								>
 									<span class="leading-[1.125vw]">{anime.type}</span>
-									<coreproject-shape-circle
+									<coreicons-shape-circle
 										variant="filled"
 										class="size-1 opacity-75 md:size-[0.35vw]"
-									></coreproject-shape-circle>
+									></coreicons-shape-circle>
 									<span class="leading-[1.125vw]">{anime.episodes} eps</span>
-									<coreproject-shape-circle
+									<coreicons-shape-circle
 										variant="filled"
 										class="size-1 opacity-75 md:size-[0.35vw]"
-									></coreproject-shape-circle>
+									></coreicons-shape-circle>
 									<span class="leading-[1.125vw]">Completed</span>
-									<coreproject-shape-circle
+									<coreicons-shape-circle
 										variant="filled"
 										class="size-1 opacity-75 md:size-[0.35vw]"
-									></coreproject-shape-circle>
+									></coreicons-shape-circle>
 									<span class="capitalize leading-[1.125vw]">{formated_aired_on}</span>
-									<coreproject-shape-circle
+									<coreicons-shape-circle
 										variant="filled"
 										class="size-1 opacity-75 md:size-[0.35vw]"
-									></coreproject-shape-circle>
+									></coreicons-shape-circle>
 									<span class="leading-[1.125vw]">{anime.studio}</span>
 									<div>
 										<div class="flex gap-2 pb-2 pt-3 md:gap-[0.5vw] md:pt-0">
@@ -336,26 +336,26 @@
 													? dominant_color
 													: chroma(dominant_color).brighten(2)}"
 											>
-												<coreproject-shape-play class="size-5 md:size-[1.35vw]"
-												></coreproject-shape-play>
+												<coreicons-shape-play class="size-5 md:size-[1.35vw]"
+												></coreicons-shape-play>
 												<span>Ep 1</span>
 											</a>
 											<a
 												href="anime/mal/{anime.id}"
 												class="btn btn-secondary flex min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:h-[3.5vw] md:gap-[0.5vw] md:rounded-[1vw] md:px-[1.5vw] md:text-[1vw]"
 											>
-												<coreproject-shape-info class="size-5 md:size-[1.35vw]"
-												></coreproject-shape-info>
+												<coreicons-shape-info class="size-5 md:size-[1.35vw]"
+												></coreicons-shape-info>
 												<span>Details</span>
 											</a>
 											<button
 												aria-label="edit"
 												class="btn btn-square btn-secondary flex min-h-max flex-nowrap justify-center gap-2 rounded-xl border-none text-base font-semibold leading-none text-info md:size-[3.5vw] md:gap-[0.5vw] md:rounded-[1vw]"
 											>
-												<coreproject-shape-edit
+												<coreicons-shape-edit
 													variant="line-with-pencil"
 													class="size-5 md:size-[1.35vw]"
-												></coreproject-shape-edit>
+												></coreicons-shape-edit>
 											</button>
 										</div>
 									</div>
@@ -377,8 +377,8 @@
 					class="btn btn-square btn-neutral size-7 min-h-max rounded-xl p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={minus_one_to_main_hero_slide_active_index}
 				>
-					<coreproject-shape-chevron variant="left" class="size-4 md:size-[1.25vw]"
-					></coreproject-shape-chevron>
+					<coreicons-shape-chevron variant="left" class="size-4 md:size-[1.25vw]"
+					></coreicons-shape-chevron>
 				</button>
 				<div class="flex w-full flex-col gap-2 md:gap-[0.75vw]">
 					{#each latest_animes_mapping as item, idx}
@@ -423,8 +423,8 @@
 					class="btn btn-square btn-neutral size-7 min-h-max rounded-xl p-0 md:size-[2vw] md:rounded-[0.75vw]"
 					onclick={add_one_to_main_hero_slide_active_index}
 				>
-					<coreproject-shape-chevron variant="right" class="size-4 md:size-[1.25vw]"
-					></coreproject-shape-chevron>
+					<coreicons-shape-chevron variant="right" class="size-4 md:size-[1.25vw]"
+					></coreicons-shape-chevron>
 				</button>
 			</div>
 		</div>
@@ -471,8 +471,8 @@
 											<span class="whitespace-nowrap"
 												>Ep {episode.ep_number.toString().padStart(2, "0")}</span
 											>
-											<coreproject-shape-circle variant="filled" class="opacity-75 md:size-[0.35vw]"
-											></coreproject-shape-circle>
+											<coreicons-shape-circle variant="filled" class="opacity-75 md:size-[0.35vw]"
+											></coreicons-shape-circle>
 											<span class="line-clamp-1">{episode.timestamp}</span>
 										</div>
 									</div>
@@ -481,8 +481,8 @@
 										href="/anime/mal/{episode.id}/episode/{episode.ep_number}"
 										class="btn h-max min-h-max border-none !bg-[var(--dominant-fg-color)] md:mr-[0.5vw] md:rounded-[1vw] md:p-[0.75vw]"
 									>
-										<coreproject-shape-play class="text-secondary md:size-[1.25vw]"
-										></coreproject-shape-play>
+										<coreicons-shape-play class="text-secondary md:size-[1.25vw]"
+										></coreicons-shape-play>
 									</a>
 								</div>
 							</div>
@@ -515,13 +515,13 @@
 						aria-label="preferences"
 						class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]"
 					>
-						<coreproject-shape-preferences class="md:size-[1.25vw]"></coreproject-shape-preferences>
+						<coreicons-shape-preferences class="md:size-[1.25vw]"></coreicons-shape-preferences>
 					</button>
 					<button
 						aria-label="random anime"
 						class="btn btn-secondary min-h-max p-0 md:size-[3vw] md:rounded-[0.75vw]"
 					>
-						<coreproject-shape-dice class="md:size-[1.5vw]"></coreproject-shape-dice>
+						<coreicons-shape-dice class="md:size-[1.5vw]"></coreicons-shape-dice>
 					</button>
 					<div class="rounded-full bg-secondary md:h-[0.2vw] md:w-1/2"></div>
 					<ScrollArea
@@ -601,8 +601,7 @@
 						aria-label="scroll sidebar anime btn"
 						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
-						<coreproject-shape-chevron variant="down" class="md:size-[1vw]"
-						></coreproject-shape-chevron>
+						<coreicons-shape-chevron variant="down" class="md:size-[1vw]"></coreicons-shape-chevron>
 					</button>
 				</div>
 			</div>
@@ -615,8 +614,8 @@
 				aria-label="mylist settings btn"
 				class="btn btn-neutral hidden min-h-full rounded-[0.5vw] p-0 md:flex md:h-[1.5vw] md:w-[1.5vw]"
 			>
-				<coreproject-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
-				></coreproject-shape-settings>
+				<coreicons-shape-settings variant="filled" class="w-[0.75vw] opacity-75"
+				></coreicons-shape-settings>
 			</button>
 		</div>
 		<div class="flex items-center items-center justify-between">
@@ -626,21 +625,20 @@
 					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.75vw] p-0 text-[0.875vw] font-semibold md:px-[0.75vw]"
 				>
 					{$t("home.my_list.options.watching")}
-					<coreproject-shape-chevron variant="down" class="w-[1vw]"></coreproject-shape-chevron>
+					<coreicons-shape-chevron variant="down" class="w-[1vw]"></coreicons-shape-chevron>
 				</button>
 				<button
 					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.75vw] p-0 text-[0.875vw] font-semibold md:px-[0.75vw]"
 				>
 					{$t("home.my_list.cta")}
-					<coreproject-shape-arrow variant="right" class="w-[1vw] rotate-45"
-					></coreproject-shape-arrow>
+					<coreicons-shape-arrow variant="right" class="w-[1vw] rotate-45"></coreicons-shape-arrow>
 				</button>
 			</div>
 			<div class="md:hidden">
 				<button class="btn btn-neutral btn-xs gap-2 text-xs">
 					{$t("home.my_list.cta")}
-					<coreproject-shape-chevron variant="down" class="text-primary-400 w-4"
-					></coreproject-shape-chevron>
+					<coreicons-shape-chevron variant="down" class="text-primary-400 w-4"
+					></coreicons-shape-chevron>
 				</button>
 			</div>
 		</div>
