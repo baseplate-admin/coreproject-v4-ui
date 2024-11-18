@@ -185,8 +185,8 @@
 			<div class="hidden flex-col md:flex md:gap-[0.5vw]">
 				<span class="text-[1vw] font-semibold leading-none">Search Animes</span>
 				<div class="relative flex items-center">
-					<div class="absolute md:ml-[1vw]">
-						<coreicons-shape-search class="md:w-[1.1vw]"></coreicons-shape-search>
+					<div class="absolute flex md:ml-[1vw]">
+						<coreicons-shape-search class="md:size-[1.1vw]"></coreicons-shape-search>
 					</div>
 					<input
 						bind:value={search_query}
@@ -252,16 +252,16 @@
 									event.preventDefault();
 									clear_selected_items(option[0]);
 								}}
-								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
+								class="absolute right-0 mr-3 flex w-4 md:mr-[1vw] md:size-[1vw]"
 							>
-								<coreicons-shape-x variant="no-border" class="md:w-[1vw]"></coreicons-shape-x>
+								<coreicons-shape-x variant="no-border" class="md:size-[1vw]"></coreicons-shape-x>
 							</button>
 						{:else}
 							<button
 								aria-label="Dropdown btn"
-								class="absolute right-0 mr-3 w-4 md:mr-[1vw] md:w-[1vw]"
+								class="absolute right-0 mr-3 flex w-4 md:mr-[1vw] md:size-[1vw]"
 							>
-								<coreicons-shape-chevron variant="down" class="md:w-[1vw]"
+								<coreicons-shape-chevron variant="down" class="md:size-[1vw]"
 								></coreicons-shape-chevron>
 							</button>
 						{/if}
@@ -290,9 +290,9 @@
 
 										{#if is_selected}
 											<div
-												class="absolute right-3 rounded-full bg-primary p-1 text-white md:right-[0.75vw] md:p-[0.25vw]"
+												class="absolute right-3 grid size-5 place-items-center rounded-full bg-primary text-white md:right-[0.75vw] md:size-[1.25vw]"
 											>
-												<coreicons-shape-check class="w-2 text-white md:w-[0.75vw]"
+												<coreicons-shape-check class="size-3 text-white md:size-[0.75vw]"
 												></coreicons-shape-check>
 											</div>
 										{/if}
@@ -491,11 +491,9 @@
 														>{anime.rating} rating</span
 													>
 												</div>
-												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"
-												></coreicons-shape-circle>
+												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"></coreicons-shape-circle>
 												<span>TV</span>
-												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"
-												></coreicons-shape-circle>
+												<coreicons-shape-circle class="w-1 md:w-[0.25vw]"></coreicons-shape-circle>
 												<span>{anime.episode_count} episdoes</span>
 											</div>
 											<div
@@ -506,8 +504,7 @@
 
 													<span>{studio.name}</span>
 													{#if show_dot}
-														<coreicons-shape-circle class="md:w-[0.25vw]"
-														></coreicons-shape-circle>
+														<coreicons-shape-circle class="md:w-[0.25vw]"></coreicons-shape-circle>
 													{/if}
 												{/each}
 											</div>

@@ -64,7 +64,7 @@
 				class="btn absolute left-[1.25vw] h-max min-h-max border-none !bg-transparent p-0"
 				aria-label="Search"
 			>
-				<coreicons-shape-search style="width: 1.25vw;"></coreicons-shape-search>
+				<coreicons-shape-search class="size-[1.5vw]"></coreicons-shape-search>
 			</button>
 			<input
 				bind:value={search_query}
@@ -152,7 +152,9 @@
 					class="text-info underline">Explore</a
 				> page
 			</p>
-			<div class="transform rounded-full bg-success md:size-[1.25vw] md:-translate-y-[0.5vw]"></div>
+			<div
+				class="transform rounded-full bg-success md:size-[1.25vw] md:-translate-y-[0.25vw]"
+			></div>
 		</div>
 	</div>
 	<form method="dialog" class="modal-backdrop">

@@ -212,8 +212,7 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
-			></coreicons-shape-arrow>
+			<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"></coreicons-shape-arrow>
 			Home
 		</a>
 		<span
@@ -268,11 +267,9 @@
 						onclick={() => (show_password = !show_password)}
 					>
 						{#if show_password}
-							<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"
-							></coreicons-shape-eye>
+							<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"></coreicons-shape-eye>
 						{:else}
-							<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"
-							></coreicons-shape-eye>
+							<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"></coreicons-shape-eye>
 						{/if}
 					</button>
 				{/if}

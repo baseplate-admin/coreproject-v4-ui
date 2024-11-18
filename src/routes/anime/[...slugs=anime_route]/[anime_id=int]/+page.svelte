@@ -131,7 +131,7 @@
 								type="button"
 								class="w-26 btn btn-primary h-14 rounded-xl font-bold text-accent md:h-[4vw] md:w-[7.5vw] md:gap-[0.5vw] md:rounded-[0.75vw]"
 							>
-								<coreicons-shape-play class="w-5 md:w-[1.5vw]"></coreicons-shape-play>
+								<coreicons-shape-play class="size-5 md:size-[1.5vw]"></coreicons-shape-play>
 
 								<div class="flex flex-col items-start gap-0.5 md:gap-[0.25vw]">
 									<span class="text-sm leading-none md:text-[0.9vw]">Watch</span>
@@ -566,9 +566,10 @@
 						<!-- <Rating /> -->
 						<span class="font-bold leading-none text-info md:text-[0.95vw]">92%</span>
 						<button
-							class="btn btn-warning min-h-full p-[0.3vw] md:h-[1.375vw] md:w-[1.375vw] md:rounded-[0.35vw]"
+							aria-label="Edit rating"
+							class="btn btn-warning min-h-full p-[0.3vw] md:size-[1.375vw] md:rounded-[0.35vw]"
 						>
-							<coreicons-shape-edit class="w-[0.75vw]" variant="pencil"></coreicons-shape-edit>
+							<coreicons-shape-edit class="size-[0.75vw]" variant="pencil"></coreicons-shape-edit>
 						</button>
 					</div>
 				</div>
@@ -651,8 +652,7 @@
 							class="btn btn-neutral mt-[0.3vw] h-[2vw] min-h-full w-[6.625vw] gap-1 rounded-[0.5vw] p-0 text-[0.875vw]"
 						>
 							Japanese
-							<coreicons-shape-chevron variant="down" class="size-[1vw]"
-							></coreicons-shape-chevron>
+							<coreicons-shape-chevron variant="down" class="size-[1vw]"></coreicons-shape-chevron>
 						</button>
 					</div>
 					<div class="mt-[1vw] block">

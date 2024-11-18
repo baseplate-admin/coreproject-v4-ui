@@ -53,8 +53,7 @@
 			href={"/anime"}
 			class="btn btn-link h-max min-h-max p-0 text-base md:gap-[0.5vw] md:text-[1.25vw]"
 		>
-			<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"
-			></coreicons-shape-arrow>
+			<coreicons-shape-arrow variant="left" class="size-4 md:size-[1.25vw]"></coreicons-shape-arrow>
 			Home
 		</a>
 		<span

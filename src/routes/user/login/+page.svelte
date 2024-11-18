@@ -129,11 +129,9 @@
 							onclick={() => (show_password = !show_password)}
 						>
 							{#if show_password}
-								<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"
-								></coreicons-shape-eye>
+								<coreicons-shape-eye variant="close" class="md:size-[1.25vw]"></coreicons-shape-eye>
 							{:else}
-								<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"
-								></coreicons-shape-eye>
+								<coreicons-shape-eye variant="open" class="md:size-[1.25vw]"></coreicons-shape-eye>
 							{/if}
 						</button>
 					{/if}

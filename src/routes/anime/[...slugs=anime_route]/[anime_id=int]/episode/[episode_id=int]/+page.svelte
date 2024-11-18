@@ -85,8 +85,7 @@
 					class="btn flex h-max min-h-max items-center gap-2 rounded !bg-transparent px-3 py-2 text-xs font-semibold leading-none md:gap-[0.5vw] md:rounded-[0.35vw] md:px-[0.75vw] md:py-[0.5vw] md:text-[1vw]"
 				>
 					Eps: 1 - {EPISODES_LENGTH}
-					<coreicons-shape-chevron variant="down" class="w-3 md:w-[1vw]"
-					></coreicons-shape-chevron>
+					<coreicons-shape-chevron variant="down" class="w-3 md:w-[1vw]"></coreicons-shape-chevron>
 				</button>
 			</header>
 			<div class="grid flex-1 grid-cols-7 gap-3 md:grid-cols-6 md:gap-[0.75vw]">
@@ -136,7 +135,7 @@
 									aria-label="next anime play btn"
 									class="btn btn-warning h-max min-h-max rounded-full md:p-[0.75vw]"
 								>
-									<coreicons-shape-play class="text-secondary md:w-[1.25vw]"
+									<coreicons-shape-play class="text-secondary md:size-[1.25vw]"
 									></coreicons-shape-play>
 								</button>
 							</overlay>

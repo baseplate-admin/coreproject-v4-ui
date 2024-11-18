@@ -18,16 +18,14 @@
 		{/if}
 		<div class="flex items-center gap-3 md:gap-[2vw]">
 			<a href={REDDIT_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
-				<coreicons-logo-reddit class="size-6 text-warning md:size-[1.75vw]"
-				></coreicons-logo-reddit>
+				<coreicons-logo-reddit class="size-6 text-warning md:size-[1.75vw]"></coreicons-logo-reddit>
 			</a>
 			<a href={DISCORD_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
 				<coreicons-logo-discord class="size-6 text-warning md:size-[1.75vw]"
 				></coreicons-logo-discord>
 			</a>
 			<a href={GITHUB_LINK} target="_blank" class="btn h-max min-h-max !bg-transparent p-0">
-				<coreicons-logo-github class="size-6 text-warning md:size-[1.75vw]"
-				></coreicons-logo-github>
+				<coreicons-logo-github class="size-6 text-warning md:size-[1.75vw]"></coreicons-logo-github>
 			</a>
 		</div>
 		<div class="flex flex-col gap-3 md:gap-[1vw]">

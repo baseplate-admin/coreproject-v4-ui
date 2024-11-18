@@ -601,8 +601,7 @@
 						aria-label="scroll sidebar anime btn"
 						class="btn btn-secondary grid min-h-max place-items-center p-0 md:h-[1.25vw] md:w-[3vw] md:rounded-[0.75vw]"
 					>
-						<coreicons-shape-chevron variant="down" class="md:size-[1vw]"
-						></coreicons-shape-chevron>
+						<coreicons-shape-chevron variant="down" class="md:size-[1vw]"></coreicons-shape-chevron>
 					</button>
 				</div>
 			</div>
@@ -632,8 +631,7 @@
 					class="btn btn-neutral h-[2.25vw] min-h-max gap-[0.625vw] rounded-[0.75vw] p-0 text-[0.875vw] font-semibold md:px-[0.75vw]"
 				>
 					{$t("home.my_list.cta")}
-					<coreicons-shape-arrow variant="right" class="w-[1vw] rotate-45"
-					></coreicons-shape-arrow>
+					<coreicons-shape-arrow variant="right" class="w-[1vw] rotate-45"></coreicons-shape-arrow>
 				</button>
 			</div>
 			<div class="md:hidden">
