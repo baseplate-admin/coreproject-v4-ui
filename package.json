@@ -106,7 +106,7 @@
 		"@rollup/rollup-win32-arm64-msvc": "4.27.3"
 	},
 	"dependencies": {
-		"@vercel/analytics": "^1.4.0",
+		"@vercel/analytics": "^1.4.1",
 		"@vercel/speed-insights": "^1.1.0",
 		"svelte-portal": "^2.2.1"
 	}
