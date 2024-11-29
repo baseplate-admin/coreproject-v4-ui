@@ -77,7 +77,7 @@
 		"openapi-fetch": "^0.13.0",
 		"postcss": "^8.4.49",
 		"postcss-load-config": "^6.0.1",
-		"prettier": "^3.3.3",
+		"prettier": "^3.4.1",
 		"prettier-plugin-svelte": "^3.3.2",
 		"prettier-plugin-tailwindcss": "^0.6.9",
 		"quick-lru": "^7.0.0",
