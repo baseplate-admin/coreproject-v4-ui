@@ -102,7 +102,7 @@
 	},
 	"optionalDependencies": {
 		"@rollup/rollup-darwin-arm64": "4.28.0",
-		"@rollup/rollup-linux-x64-gnu": "4.27.4",
+		"@rollup/rollup-linux-x64-gnu": "4.28.0",
 		"@rollup/rollup-win32-arm64-msvc": "4.28.0"
 	},
 	"dependencies": {
