@@ -98,7 +98,7 @@
 		"vite": "^6.0.3",
 		"vitest": "^2.1.8",
 		"xss": "^1.0.15",
-		"zod": "^3.24.0"
+		"zod": "^3.24.1"
 	},
 	"optionalDependencies": {
 		"@rollup/rollup-darwin-arm64": "4.28.1",
