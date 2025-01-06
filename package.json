@@ -85,7 +85,7 @@
 		"sass": "^1.83.0",
 		"svelte": "^5.16.2",
 		"svelte-check": "^4.1.1",
-		"svelte-gestures": "^5.0.6",
+		"svelte-gestures": "^5.0.7",
 		"svelte-intersection-observer": "^1.0.0",
 		"sveltekit-i18n": "^2.4.2",
 		"tailwind-merge": "^2.6.0",
