@@ -6,7 +6,7 @@ const route_table = {
 	anime: "/anime"
 };
 
-export const translations_locales = ["en", "bn", "es", "de"],
+export const translations_locales = ["en", "bn", "es", "de", "ar"],
 	default_locale: keyof typeof lang = "en";
 
 export const config = {
@@ -60,6 +60,13 @@ export const config = {
 			key: "home",
 			routes: [route_table["anime"]],
 			loader: async () => (await import("./de/anime/home.json")).default
+		},
+		// AR
+		{
+			locale: "ar",
+			key: "home",
+			routes: [route_table["anime"]],
+			loader: async () => (await import("./ar/anime/home.json")).default
 		}
 	]
 } satisfies Config;
