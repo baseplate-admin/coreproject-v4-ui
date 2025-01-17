@@ -63,6 +63,11 @@ export const config = {
 		},
 		// AR
 		{
+                        locale: "ar",
+                        key: "common",
+                        loader: async () => (await import("./ar/common.json")).default
+                },
+		{
 			locale: "ar",
 			key: "home",
 			routes: [route_table["anime"]],
