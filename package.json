@@ -107,7 +107,7 @@
 	},
 	"dependencies": {
 		"@vercel/analytics": "^1.4.1",
-		"@vercel/speed-insights": "^1.1.0",
+		"@vercel/speed-insights": "^1.2.0",
 		"svelte-portal": "^2.2.1"
 	}
 }
