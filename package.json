@@ -82,7 +82,7 @@
 		"prettier-plugin-tailwindcss": "^0.6.11",
 		"quick-lru": "^7.0.0",
 		"rollup-plugin-visualizer": "^5.14.0",
-		"sass": "^1.84.0",
+		"sass": "^1.85.0",
 		"svelte": "^5.20.0",
 		"svelte-check": "^4.1.4",
 		"svelte-gestures": "^5.1.3",
