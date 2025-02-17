@@ -101,7 +101,7 @@
 		"zod": "^3.24.2"
 	},
 	"optionalDependencies": {
-		"@rollup/rollup-darwin-arm64": "4.34.7",
+		"@rollup/rollup-darwin-arm64": "4.34.8",
 		"@rollup/rollup-linux-x64-gnu": "4.34.8",
 		"@rollup/rollup-win32-arm64-msvc": "4.34.8"
 	},
