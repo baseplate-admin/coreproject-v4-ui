@@ -35,7 +35,7 @@
 		"@tailwindcss/typography": "^0.5.16",
 		"@types/chroma-js": "^3.1.1",
 		"@types/eslint": "^9.6.1",
-		"@typescript-eslint/eslint-plugin": "^8.25.0",
+		"@typescript-eslint/eslint-plugin": "^8.26.0",
 		"@typescript-eslint/parser": "^8.25.0",
 		"@zxcvbn-ts/core": "^3.0.4",
 		"@zxcvbn-ts/language-ar": "^3.1.0",
