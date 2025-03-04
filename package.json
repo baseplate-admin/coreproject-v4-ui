@@ -68,7 +68,7 @@
 		"jsdom": "^26.0.0",
 		"katex": "^0.16.21",
 		"marked": "^15.0.7",
-		"marked-emoji": "^1.4.3",
+		"marked-emoji": "^2.0.0",
 		"marked-highlight": "^2.2.1",
 		"marked-katex-extension": "^5.1.4",
 		"marked-mangle": "^1.1.10",
