@@ -23,7 +23,7 @@
 	},
 	"devDependencies": {
 		"@coreproject-moe/icons": "^0.0.67",
-		"@playwright/test": "^1.51.0",
+		"@playwright/test": "^1.51.1",
 		"@skeletonlabs/floating-ui-svelte": "^0.3.9",
 		"@sveltejs/adapter-auto": "^4.0.0",
 		"@sveltejs/adapter-node": "^5.2.12",
