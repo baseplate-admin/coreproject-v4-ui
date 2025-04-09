@@ -80,7 +80,7 @@
 		"prettier": "^3.5.3",
 		"prettier-plugin-svelte": "^3.3.3",
 		"prettier-plugin-tailwindcss": "^0.6.11",
-		"quick-lru": "^7.0.0",
+		"quick-lru": "^7.0.1",
 		"rollup-plugin-visualizer": "^5.14.0",
 		"sass": "^1.86.3",
 		"svelte": "^5.25.8",
