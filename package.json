@@ -67,7 +67,7 @@
 		"html-entities": "^2.5.3",
 		"jsdom": "^26.1.0",
 		"katex": "^0.16.22",
-		"marked": "^15.0.9",
+		"marked": "^15.0.10",
 		"marked-emoji": "^2.0.0",
 		"marked-highlight": "^2.2.1",
 		"marked-katex-extension": "^5.1.4",
